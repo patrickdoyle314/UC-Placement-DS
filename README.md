@@ -112,7 +112,7 @@ python alignment/align_mp.py         # optional, local only: coincidence checks 
 | Path | What it is |
 |---|---|
 | `src/measure.py` | pandas + NumPy: concentration (HHI, effective number, Gini, top-10 share, Lorenz) and persistence (Spearman, Kendall) by fiscal year; county size tiers and their Markov transition matrix; writes the parquet table |
-| `src/geography.py` | GeoPandas + libpysal + esda: global Moran's I and LISA clusters (states: releases per school-age child; counties: years listed), Moran's I by year, release share vs school-age share |
+| `src/geography.py` | GeoPandas + libpysal + esda + NumPy: global Moran's I (esda) and LISA clusters (states: releases per school-age child; counties: years listed), Moran's I by year, release share vs school-age share. LISA's permutation test is written in NumPy so that ties count on purpose and results don't change when numba is installed |
 | `src/build_week4_memo.py` | Writes `docs/week4_findings_memo.md` from the results tables, with the tier transition chart |
 | `src/share_baseline.py` | Share model, baseline stage: next year's state shares from last year, a 3-year mean, or all years pooled, backtested |
 | `docs/MODEL_CARD_share_model.md` | Model card: data, baselines and scores, the planned Bayesian model, limitations |
@@ -173,7 +173,9 @@ Full memo with charts and methods: [`docs/week4_findings_memo.md`](docs/week4_fi
    volume (73 listed in FY2020, 338 in FY2022, 109 in FY2025); a 1,000+ county stays 1,000+ the next year 58% of the time.
 3. **Releases cluster.** Moran's I is 0.48 for state release rates per school-age child and 0.40 for how often
    counties are listed (both p = 0.0001), and every single year is significant. Eight county clusters (the largest
-   runs from Prince George's County, MD to Suffolk County, NY) received 51% of all FY2015–FY2025 releases.
+   runs from Prince George's County, MD to Suffolk County, NY) received 51% of all FY2015–FY2025 releases. Of the
+   151 High-High counties, 58 pass a false-discovery-rate correction. That figure was 105 before the
+   November 10, 2026 fix to how ties are counted (see the CHANGELOG).
 4. **Compared with school-age population,** listed counties took 1.4–2.0 times their share each year. The 70
    counties listed every year received 59% of releases and have 31% of the nation's school-age children.
 

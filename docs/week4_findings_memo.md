@@ -1,6 +1,6 @@
 # Week 4 findings memo: concentration, stability and geography
 
-*Where Unaccompanied Children Are Placed. Unaccompanied children released to sponsors, FY2015–FY2025. Built from the data by `python src/build_week4_memo.py` on October 31, 2026; every number is read from `results/`. Service planning only.*
+*Where Unaccompanied Children Are Placed. Unaccompanied children released to sponsors, FY2015–FY2025. Built from the data by `python src/build_week4_memo.py` on November 10, 2026; every number is read from `results/`. Service planning only.*
 
 **Check-in question:** is the pattern stable enough that last year predicts next year?
 
@@ -40,20 +40,20 @@
 
 ![Moran's I by year](../results/figures/week4_moran_by_year.png)
 
-- **Local clusters, states (LISA).** High-High: MD, DC, VA, DE, NC, GA, CT (high rates among high-rate neighbors). Low-Low: MT, ID, UT, SD. Low-High: PA. With only 49 places, no single state cluster passes a false-discovery-rate correction, so read the state clusters as suggestive; the overall result above is strong.
+- **Local clusters, states (LISA).** High-High: MD, DC, VA, DE, NC, CT (high rates among high-rate neighbors). Low-Low: MT, ID, UT, OH, SD. Low-High: PA. With only 49 places, no single state cluster passes a false-discovery-rate correction, so read the state clusters as suggestive; the overall result above is strong.
 
 ![State clusters](../results/figures/week4_state_clusters.png)
 
-- **Local clusters, counties (LISA).** 151 counties are High-High (105 pass the false-discovery-rate correction). Grouped by shared borders they form 31 clusters; the eight largest hold 51% of all FY2015–FY2025 releases.
+- **Local clusters, counties (LISA).** 151 counties are High-High (58 pass the false-discovery-rate correction). Grouped by shared borders they form 31 clusters; the eight largest hold 51% of all FY2015–FY2025 releases.
 
 | # | Cluster (largest counties at each end) | States | Counties | Share of national releases | Average years listed (of 11) |
 |---|---|---|---|---|---|
-| 1 | Prince George's County, MD to Suffolk County, NY | NJ NY MD PA VA | 53 | 20.8% | 7.8 |
+| 1 | Prince George's County, MD to Suffolk County, NY | NJ NY MD PA VA | 54 | 20.9% | 7.8 |
 | 2 | Los Angeles County, CA | CA | 9 | 6.8% | 9.4 |
 | 3 | Harris County, TX | TX | 5 | 6.3% | 7.0 |
 | 4 | Miami-Dade County, FL | FL | 6 | 5.3% | 9.3 |
 | 5 | Dallas County, TX | TX | 4 | 3.5% | 9.5 |
-| 6 | Alameda County, CA | CA | 12 | 3.4% | 7.7 |
+| 6 | Alameda County, CA | CA | 11 | 3.3% | 8.3 |
 | 7 | Suffolk County, MA to Providence County, RI | MA NH RI | 9 | 2.6% | 7.9 |
 | 8 | DeKalb County, GA | GA | 6 | 2.3% | 8.8 |
 
@@ -86,7 +86,7 @@
 
 - **Data.** Migration Policy Institute tabulation of ORR releases to sponsors (state and listed county, FY2015–FY2025); Census Bureau Vintage 2024 estimates of children aged 5–17 (July 1, 2024, used as one reference year for every fiscal year); Census 2023 cartographic boundary files (1:20m).
 - **Neighbors.** Queen contiguity (shared border or corner), row-standardized, for the 48 contiguous states and DC. Alaska, Hawaii and the territories have no land neighbors and are left out. A few island counties are linked to their nearest county. Connecticut's four listed counties are left out of the county analysis because its 2023 Census counties are planning regions that do not match them.
-- **Tests.** Moran's I and LISA with 9,999 random permutations and a fixed seed; local clusters at p < 0.05, with false-discovery-rate counts reported alongside (`results/lisa_summary.csv`).
+- **Tests.** Moran's I and LISA with 9,999 random permutations and a fixed seed; local clusters at p < 0.05, with false-discovery-rate counts reported alongside (`results/lisa_summary.csv`). Most counties were never listed, so many shuffles tie the real value exactly; a tie counts as at least as extreme, so a never-listed county among never-listed neighbors is not called a cluster. Before November 10, 2026 the tie handling was left to rounding inside the esda library, which reported 105 High-High counties passing the correction and 753 Low-Low counties; the results also changed when numba was installed. LISA is now computed with NumPy and gives the same answer either way.
 - **County variable.** Years listed (0–11) uses only the published fact that a county had 50 or more releases in a year. Counties under the threshold are never estimated or backed out.
 - **School-age ratio.** First release location only, not later moves. Released children are not all of school age. Counties without a population match (Connecticut) are left out of both shares.
 - **Tiers.** The transition matrix covers counties listed at least once, so moves into and out of "not listed" are among counties that were listed in some year.

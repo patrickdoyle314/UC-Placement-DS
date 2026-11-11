@@ -6,8 +6,11 @@
 # published county rows exactly, so no county-year is invented or lost).
 #
 # Python ideas: building small DataFrames by hand, libpysal's lat2W (a ready-made grid of neighbors),
-# np.tile and np.indices for patterns, pytest.approx, reusing the needs_data marker.
+# np.tile and np.indices for patterns, pytest.approx, reusing the needs_data marker, and subprocess to run
+# the same code in a fresh Python with numba hidden.
 # ===================================================================================================
+import subprocess
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -65,6 +68,31 @@ def test_moran_positive_for_blocks_negative_for_checkerboard():
     assert geography.global_moran(halves, w)["moran_i"] > 0.5
     assert geography.global_moran(halves, w)["p_sim"] < 0.01
     assert geography.global_moran(checker, w)["moran_i"] == pytest.approx(-1.0)
+
+
+def test_local_moran_finds_a_block_but_not_ties():
+    # A 10 x 10 grid of zeros with one 3 x 3 block of high values in a corner. The block is a real
+    # High-High cluster. A zero surrounded by zeros ties with most shuffles, so it must not be called
+    # Low-Low just because of how ties are counted.
+    w = lat2W(10, 10)
+    w.transform = "r"
+    grid = np.zeros((10, 10))
+    grid[:3, :3] = 10
+    labels, p = geography.local_moran(grid.ravel(), w)
+    assert labels[11] == "High-High"  # the block's center cell (row 1, column 1)
+    assert (labels[grid.ravel() == 0] != "Low-Low").all()
+    assert p[99] > 0.5  # far corner: all-zero neighbors, mostly ties
+
+
+def test_local_moran_same_with_or_without_numba():
+    # esda's LISA changed when numba was installed; ours must give identical p-values either way.
+    code = ("import sys; {block}sys.path.insert(0, r'{root}'); import numpy as np; "
+            "from libpysal.weights import lat2W; from src import geography as g; w = lat2W(8, 8); "
+            "w.transform = 'r'; y = (np.indices((8, 8)).sum(axis=0) % 3 == 0).ravel() * 1.0; "
+            "print(g.local_moran(y, w)[1].round(6).tolist())")
+    runs = [subprocess.run([sys.executable, "-c", code.format(block=b, root=ROOT)], capture_output=True, text=True,
+                           check=True).stdout for b in ("", "sys.modules['numba'] = None; ")]
+    assert runs[0] == runs[1] and runs[0].startswith("[")
 
 
 def test_connected_groups_splits_separate_blocks():

@@ -28,8 +28,8 @@ Usage  : python src/geography.py
 # clustering uses only the published fact "listed or not listed" in each year.
 #
 # Python ideas: GeoPandas (tables with a map shape per row), spatial weights (who neighbors whom),
-# esda's Moran and Moran_Local with permutation tests, a breadth-first search to group neighboring
-# counties into clusters, matplotlib maps with a hand-made legend.
+# esda's Moran with a permutation test, a hand-written NumPy permutation test for LISA (local Moran), a
+# breadth-first search to group neighboring counties into clusters, matplotlib maps with a hand-made legend.
 # ===================================================================================================
 import warnings
 from pathlib import Path
@@ -44,7 +44,7 @@ import matplotlib.ticker as mtick
 import numpy as np
 import pandas as pd
 from esda import fdr
-from esda.moran import Moran, Moran_Local
+from esda.moran import Moran
 from matplotlib.patches import Patch
 from libpysal.weights import KNN, Queen, attach_islands
 
@@ -125,10 +125,39 @@ def global_moran(y, w) -> dict:
 
 
 def local_moran(y, w) -> tuple[np.ndarray, np.ndarray]:
-    """LISA label per place: High-High = a high value among high neighbors, and so on; else Not significant."""
-    m = Moran_Local(np.asarray(y, dtype=float), w, permutations=PERMUTATIONS, seed=SEED)
-    quadrant = pd.Series(m.q).map(QUADRANT).to_numpy()
-    return np.where(m.p_sim < ALPHA, quadrant, "Not significant"), m.p_sim
+    """LISA label per place: High-High = a high value among high neighbors, and so on; else Not significant.
+
+    The same test as esda's Moran_Local (conditional permutation: keep the place's own value, give it
+    randomly drawn neighbors 9,999 times), written out in NumPy for two reasons:
+    - Repeatable. esda switches to a different random-number engine when numba is installed (PyMC installs
+      it), and the county results changed with it. NumPy's seeded generator gives the same draws everywhere.
+    - Ties. County values are whole numbers of years (0-11) and most counties are 0, so for a never-listed
+      county about 4 in 10 shuffles give exactly the real statistic. A tie is "as extreme as the real data"
+      on both sides, so a place surrounded by look-alikes is not called significant. In esda, tiny rounding
+      differences decided which side a tie fell on.
+    """
+    y = np.asarray(y, dtype=float)
+    z = (y - y.mean()) / y.std()  # standardize, as esda does
+    rows = w.sparse.tocsr()  # row i holds place i's neighbors (indices) and their weights (data)
+    lag = rows @ z  # weighted average of each place's neighbors
+    n = len(z)
+    # One shared set of random neighbor draws, as esda does: each row picks distinct places from the n - 1
+    # others, enough for the place with the most neighbors.
+    most = int(np.diff(rows.indptr).max())
+    rng = np.random.default_rng(SEED)
+    draws = np.stack([rng.choice(n - 1, size=most, replace=False) for _ in range(PERMUTATIONS)])
+    p = np.empty(n)
+    for i in range(n):
+        wi = rows.data[rows.indptr[i]:rows.indptr[i + 1]]
+        others = np.delete(z, i)  # everyone but place i, so i is never its own random neighbor
+        shuffled = z[i] * (others[draws[:, :len(wi)]] @ wi)  # 9,999 statistics under "no spatial pattern"
+        real, tol = z[i] * lag[i], 1e-9 * (1 + abs(z[i] * lag[i]))  # tol absorbs floating-point noise
+        at_least = min((shuffled >= real - tol).sum(), (shuffled <= real + tol).sum())  # the nearer tail
+        p[i] = (at_least + 1) / (PERMUTATIONS + 1)
+    # Quadrant from the signs of the place and its neighbors, numbered as esda numbers them (QUADRANT).
+    quadrant = np.select([(z > 0) & (lag > 0), (z <= 0) & (lag > 0), (z <= 0) & (lag <= 0)], [1, 2, 3], default=4)
+    labels = pd.Series(quadrant).map(QUADRANT).to_numpy()
+    return np.where(p < ALPHA, labels, "Not significant"), p
 
 
 def lisa_summary(g, level: str) -> pd.DataFrame:

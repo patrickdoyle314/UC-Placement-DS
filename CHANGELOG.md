@@ -13,6 +13,29 @@ dates are when the change was made.
   hash changed; files, authors and dates did not). The README's "How this was built" section is now the record
   of which parts were AI-assisted.
 
+### Fixed
+- **Week 4 county clusters (LISA) depended on rounding and on whether numba was installed.**
+  - Found in a clean rebuild on 2026-11-10. Installing PyMC (2026-11-07) also installed numba, and esda then
+    switched to a different permutation engine. The county results changed: Low-Low went from 753 counties
+    to 0, and High-High counties passing the false-discovery-rate correction went from 105 to 67.
+  - Cause: most counties were never listed (value 0), so for a typical never-listed county about 44% of the
+    9,999 shuffles tie the real statistic exactly. Whether a tie counted for or against significance was
+    left to floating-point rounding. Without numba most ties fell on the "significant" side, which is where
+    the 753 Low-Low counties came from.
+  - `src/geography.py` now runs the LISA permutation test in NumPy with a seeded generator. A tie counts as
+    at least as extreme on both sides. Results are identical with numba installed and with it blocked.
+    Global Moran's I is unchanged.
+  - New figures: 151 High-High counties at p < 0.05, of which 58 pass the correction (was 105); Low-Low 0
+    (was 753); High-Low 0 (was 35); Low-High 100, 15 after the correction (was 112 and 45). The eight largest
+    clusters still hold 51% of releases. Cluster 1 has 54 counties (was 53) and cluster 6 has 11 (was 12).
+    States: Georgia drops out of High-High (p 0.052) and Ohio joins Low-Low; no state cluster passes the
+    correction, as before.
+  - Regenerated: `results/lisa_*.csv`, `results/figures/week4_*_clusters.png`, `docs/week4_findings_memo.md`
+    (its methods section now explains the tie handling). The [0.5.0] note "105 of 151" is superseded.
+  - `tests/test_geography.py`: two new checks. On a grid, a real High-High block is found but zeros among
+    zeros are not called Low-Low. The same LISA run in two fresh Python processes, one with numba hidden,
+    gives identical p-values.
+
 ## [0.6.2] - 2026-10-31 (Week 3 review)
 
 Week 3 checked on its own against Weeks 1–2 and the BRD (FR-07, FR-08, NFR-03, NFR-07, NFR-08). Week 4 was not

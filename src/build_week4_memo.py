@@ -235,7 +235,12 @@ def main():
         "counties are linked to their nearest county. Connecticut's four listed counties are left out of the "
         "county analysis because its 2023 Census counties are planning regions that do not match them.",
         f"- **Tests.** Moran's I and LISA with 9,999 random permutations and a fixed seed; local clusters at "
-        f"p < 0.05, with false-discovery-rate counts reported alongside (`results/lisa_summary.csv`).",
+        f"p < 0.05, with false-discovery-rate counts reported alongside (`results/lisa_summary.csv`). Most "
+        f"counties were never listed, so many shuffles tie the real value exactly; a tie counts as at least as "
+        f"extreme, so a never-listed county among never-listed neighbors is not called a cluster. Before "
+        f"November 10, 2026 the tie handling was left to rounding inside the esda library, which reported 105 "
+        f"High-High counties passing the correction and 753 Low-Low counties; the results also changed when "
+        f"numba was installed. LISA is now computed with NumPy and gives the same answer either way.",
         "- **County variable.** Years listed (0–11) uses only the published fact that a county had 50 or more "
         "releases in a year. Counties under the threshold are never estimated or backed out.",
         "- **School-age ratio.** First release location only, not later moves. Released children are not all of "

@@ -1,10 +1,10 @@
 cluster,name,largest_counties,states,counties,listed_releases_fy2015_2025,share_of_national_releases,mean_years_listed
-1,"Prince George's County, MD to Suffolk County, NY","Prince George's County, MD; Suffolk County, NY; Queens County, NY",NJ NY MD PA VA,53,149869,0.2081,7.8
+1,"Prince George's County, MD to Suffolk County, NY","Prince George's County, MD; Suffolk County, NY; Queens County, NY",NJ NY MD PA VA,54,150605,0.2091,7.8
 2,"Los Angeles County, CA","Los Angeles County, CA; Orange County, CA; Riverside County, CA",CA,9,48983,0.068,9.4
 3,"Harris County, TX","Harris County, TX; Galveston County, TX; Fort Bend County, TX",TX,5,45364,0.063,7.0
 4,"Miami-Dade County, FL","Miami-Dade County, FL; Palm Beach County, FL; Broward County, FL",FL,6,38251,0.0531,9.3
 5,"Dallas County, TX","Dallas County, TX; Tarrant County, TX; Denton County, TX",TX,4,25208,0.035,9.5
-6,"Alameda County, CA","Alameda County, CA; San Mateo County, CA; Contra Costa County, CA",CA,12,24120,0.0335,7.7
+6,"Alameda County, CA","Alameda County, CA; San Mateo County, CA; Contra Costa County, CA",CA,11,24069,0.0334,8.3
 7,"Suffolk County, MA to Providence County, RI","Suffolk County, MA; Essex County, MA; Middlesex County, MA",MA NH RI,9,18712,0.026,7.9
 8,"DeKalb County, GA","DeKalb County, GA; Gwinnett County, GA; Cobb County, GA",GA,6,16577,0.023,8.8
 9,"Orange County, FL","Orange County, FL; Hillsborough County, FL; Manatee County, FL",FL,11,14877,0.0207,6.2
