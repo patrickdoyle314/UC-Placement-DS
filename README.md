@@ -275,6 +275,9 @@ Findings for the plan:
 
 ## Limitations
 
+Every assumption behind the analysis and the model, with its status and a dated history of changes, is in
+[docs/ASSUMPTIONS.md](docs/ASSUMPTIONS.md).
+
 - **First release location only.** A child is counted in the county where they were first released to a
   sponsor; later moves are not tracked.
 - **Small counties are not published.** Counties with fewer than 50 releases in a year appear only inside their
@@ -301,8 +304,9 @@ Weeks 1–4 and Week 7 was written with AI assistance (Claude, by Anthropic): da
 maps, the app and the tests. This section, not the commit history, records which parts are which. The project owner writes the
 Week 5 share model, the Week 6 scenario engine and the written summary. AI assistance on those parts is limited
 to the spec and acceptance tests ([`docs/spec_week5_week6.md`](docs/spec_week5_week6.md),
-`tests/test_acceptance.py`), step-by-step guidance (what each step is for, the choices it involves, and how to
-check it, without code), and code review.
+`tests/test_acceptance.py`), the assumptions register ([`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md), written
+with AI assistance; the items marked "Decided" are the owner's decisions), step-by-step guidance (what each
+step is for, the choices it involves, and how to check it, without code), and code review.
 
 ## Exchange with adjacent projects
 
