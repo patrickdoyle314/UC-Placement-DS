@@ -26,7 +26,8 @@ From `src/measure.py` (`results/concentration_by_year.csv`, `results/persistence
 - **Concentrated, slowly spreading.** State HHI is 0.058–0.074 (equivalent to 13.5–17.3 equal-sized
   states). The 10 largest states took 75% of releases in FY2016 and 64% in FY2024.
 - **Very stable ranks.** Spearman rank correlation of state shares between consecutive years is
-  0.985–0.996 (Kendall 0.910–0.962). That stability is why "last year's shares" is hard to beat.
+  0.985–0.996 (Kendall 0.910–0.962) in FY2015–FY2025, and 0.983 (Kendall 0.906) from FY2014 to FY2015, the
+  first pair the share model uses. That stability is why "last year's shares" is hard to beat.
 
 ## Stage 1: baselines (built)
 

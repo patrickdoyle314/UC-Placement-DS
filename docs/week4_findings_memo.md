@@ -4,7 +4,7 @@
 
 **Check-in question:** is the pattern stable enough that last year predicts next year?
 
-**Answer.** For states, yes. State rankings barely move from one year to the next (rank correlation 0.985 or higher every year), and simply reusing last year's shares misses each state's share by 0.21 percentage points on average, the best of the three simple rules tried. For counties, *where* children are released is just as steady, but *how many* counties cross ORR's 50-release publication threshold rises and falls with national volume, so a county's size tier last year is a weaker guide than its share. Releases are also clustered in space: eight metropolitan clusters received 51% of all children released in FY2015–FY2025.
+**Answer.** For states, yes. State rankings barely move from one year to the next (rank correlation 0.985 or higher every year in FY2015–FY2025, and 0.983 from FY2014 to FY2015, a pair the share model also uses), and simply reusing last year's shares misses each state's share by 0.21 percentage points on average, the best of the three simple rules tried. For counties, *where* children are released is just as steady, but *how many* counties cross ORR's 50-release publication threshold rises and falls with national volume, so a county's size tier last year is a weaker guide than its share. Releases are also clustered in space: eight metropolitan clusters received 51% of all children released in FY2015–FY2025.
 
 ## Terms
 
@@ -21,7 +21,7 @@
 
 ## 2. Stability
 
-- **State rankings.** Year-to-year rank correlations of state shares: Spearman 0.985–0.996, Kendall 0.910–0.962. Simple rules for next year's state shares, scored on FY2018–FY2025 (weighted by releases):
+- **State rankings.** Year-to-year rank correlations of state shares: Spearman 0.985–0.996, Kendall 0.910–0.962 (FY2015–FY2025; from FY2014 to FY2015, a pair the share model also uses, 0.983 and 0.906). Simple rules for next year's state shares, scored on FY2018–FY2025 (weighted by releases):
 
 | Rule | Mean absolute error (share points) | Log score per release (higher is better) |
 |---|---|---|

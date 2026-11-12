@@ -167,7 +167,8 @@ The same per-year maps are saved as images by the Week 2 notebook (see Week 2 re
 Full memo with charts and methods: [`docs/week4_findings_memo.md`](docs/week4_findings_memo.md). Check-in question:
 *is the pattern stable enough that last year predicts next year?*
 
-1. **States, yes.** Year-to-year state rank correlations are 0.985 or higher, and "last year's shares" misses each
+1. **States, yes.** Year-to-year state rank correlations are 0.985 or higher in FY2015–FY2025 (0.983 from FY2014
+   to FY2015, a pair the share model also uses), and "last year's shares" misses each
    state's share by 0.21 percentage points on average, the best of three simple rules.
 2. **Counties: steady places, moving counts.** How many counties clear the 50-release threshold follows national
    volume (73 listed in FY2020, 338 in FY2022, 109 in FY2025); a 1,000+ county stays 1,000+ the next year 58% of the time.
@@ -213,7 +214,8 @@ evenly over this many places": higher means more spread out.
    narrow range (`hhi_low` to `hhi`). The effective numbers above are the low end of that range. The ten largest
    counties are always listed, so their share is exact.
 3. **Persistence** (`persistence_state_ranks.csv`, `persistence_county_ranks.csv`). Year-to-year rank
-   correlations of state shares are Spearman 0.985–0.996 and Kendall 0.910–0.962. Among the 73–310 counties
+   correlations of state shares are Spearman 0.985–0.996 and Kendall 0.910–0.962 (FY2015–FY2025; from FY2014 to
+   FY2015, a pair the share model also uses, they are 0.983 and 0.906). Among the 73–310 counties
    published in both years of a pair, they are Spearman 0.877–0.968 and Kendall 0.699–0.857.
 4. **Tiers** (`tier_transitions.csv` pooled; `tier_transitions_by_year.csv` for each pair of years). A county
    with 1,000+ releases stays 1,000+ the next year 58% of the time; one with 50–199 falls below the threshold 34%
@@ -234,7 +236,8 @@ Five findings, FY2015–FY2025 (BRD FR-05):
 1. National releases ranged from 16,864 (FY2020) to 127,512 (FY2022); FY2021–FY2024 hold 62% of all releases, and
    FY2025 fell to 24,259, 76% below FY2024.
 2. The six largest receiving states (TX, CA, FL, NY, MD, NJ) took 53% of releases; Texas's share stayed between
-   11.7% and 14.9%, and year-to-year state rank correlations never fell below 0.985 (FY2017 to FY2018).
+   11.7% and 14.9%, and year-to-year state rank correlations never fell below 0.985 (FY2017 to FY2018). FY2014 to
+   FY2015, which the share model also uses, is 0.983.
 3. The 20 largest receiving counties took 34% of releases; Harris County, TX received the most children in 9 of
    11 years, and all 20 were listed (50+ releases) every year.
 4. Listed counties ranged from 73 (FY2020) to 338 (FY2022) and held 63%–89% of releases; the rest are the

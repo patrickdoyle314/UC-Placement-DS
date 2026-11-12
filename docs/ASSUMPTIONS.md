@@ -32,7 +32,7 @@ language) are rules rather than assumptions; they are in the README.
 | ID | Assumption | Evidence, or what happens if it is wrong | Where | Status |
 |---|---|---|---|---|
 | AS-08 | Expected releases = national volume × a place's share. Volume is a scenario, not a forecast; only shares are modeled. | Volume swung 7.6-fold (16,864 in FY2020 to 127,512 in FY2022) with policy and events. | §1 | Design |
-| AS-09 | Past shares inform future ones (A-02). | State rank correlation is 0.985 or higher every year, and "same as last year" misses by 0.212 share points. A policy change could still move shares more than any past year did. | §3, §4, §13 | Design |
+| AS-09 | Past shares inform future ones (A-02). | State rank correlation is 0.985 or higher every year from FY2016 on (0.983 from FY2014 to FY2015), and "same as last year" misses by 0.212 share points. A policy change could still move shares more than any past year did. | §3, §4, §13 | Design |
 | AS-10 | Shares themselves vary from year to year, more than counting noise, so the model is Dirichlet-multinomial. | For the largest states, shares move about 4 to 7 times more than counting noise alone (in standard deviation). | §4, §5 | Design |
 | AS-11 | One concentration κ for all states. | Large and small states may vary differently; calibration is reported separately for the 10 largest states and the other 41 to check it. | §5, spec | Design |
 | AS-12 | Expected shares = softmax(α + ρ × log last year's shares). ρ = 1 and α = 0 give naive. | Lets the fit fall back on naive; the backtest decides. | §6 | Design |
@@ -64,6 +64,7 @@ language) are rules rather than assumptions; they are in the README.
 | AS-28 | Calibration passes if pooled coverage is 70% to 90%. | An operational tolerance, not a statistical test: states in the same year move together, so the 408 state-years are not independent checks (independent checks would give 76% to 84%). | §11, spec, tests | Design |
 | AS-29 | "Large" states are the 10 with the most releases in each fit's training years; the other 41 are "small". | Used only to report calibration by size. | spec | Design |
 | AS-30 | Figures are rounded to whole children; a sum of rounded parts may be off by up to 1% or 2 children. | Largest-remainder rounding would keep sums exact. | §12, `src/scenario_contract.py` | Design |
+| AS-39 | Until the share model is validated, the engine runs on the fallback (R-03): last year's shares, with a Dirichlet error whose κ is fitted to the year-over-year changes, every place weighted equally. The Dirichlet share model replaces it later; nothing else in the engine changes. | Lets the app and scenario tables exist before the share model (the BRD's D-05 puts the model first, so outputs are labeled as the fallback). In a check before coding, this calibrated at about 83% for states and 87% for counties (about 60% for the 10 largest states); weighting places by size instead gave 91%, too wide. The exact error model is recorded in `fallback_error_model`. | spec, `results/scenarios.json` | Decided 2026-11-11 |
 
 ## Service needs (school-age children)
 
@@ -87,6 +88,9 @@ language) are rules rather than assumptions; they are in the README.
 
 Newest first. Each line says what changed and which files were updated with it.
 
+- **2026-11-11:**
+  - AS-09 corrected: the 0.985 rank correlation holds from FY2016 on. Now that FY2014 serves as "last year" for FY2015 (AS-15), that pair counts too, at 0.983. Found when the numbers were re-run before the Word copies. Updated: this register, the review doc, both Word copies, the README, the share-model card and the week 4 memo (its builder, `src/build_week4_memo.py`, now computes the FY2014 pair from the data).
+  - AS-39 added: the owner chose to build the scenario engine on the fallback first, to have the app and scenario tables for the deliverable. Updated: this register and the review doc.
 - **2026-11-10:**
   - AS-35 changed: λ for the point estimate went from 8/13 (ages spread evenly) to 0.863 (ORR's FY2026 split of 0–5 and 6–12). Updated in the spec, the acceptance tests and math doc §12.
   - The ORR age file was recorded as downloaded (2026-11-04, now in `data/raw/orr/`).

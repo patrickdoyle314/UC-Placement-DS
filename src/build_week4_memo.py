@@ -78,6 +78,13 @@ def main():
     sa, always = read("school_age_comparison.csv"), read("county_school_age_always_listed.csv")
     df = pd.read_parquet(ROOT / "data/processed/releases_by_fy_geo.parquet")
     nat = df[(df.geo_level == "national") & df.fiscal_year.between(2015, 2025)]
+    # The share model also uses FY2014 as a starting "last year" (docs/ASSUMPTIONS.md, AS-15), one year before
+    # this memo's FY2015-FY2025. Same rank correlations as src/measure.py for that one extra pair: the 50 states
+    # and DC, each state's share of the year's releases. .dropna() keeps states present in both years.
+    s51 = df[(df.geo_level == "state") & ~df.state.isin(["PR", "VI"]) & df.fiscal_year.isin([2014, 2015])]
+    w14 = s51.pivot_table(index="state", columns="fiscal_year", values="releases", aggfunc="sum")
+    w14 = (w14 / w14.sum()).dropna()
+    fy14 = {m: w14[2014].corr(w14[2015], method=m) for m in ("spearman", "kendall")}
     us_releases, us_pop = int(nat.releases.sum()), float(nat.pop_5_17_2024.iloc[0])
     chart_tiers(trans)
 
@@ -122,7 +129,8 @@ def main():
         "**Check-in question:** is the pattern stable enough that last year predicts next year?",
         "",
         f"**Answer.** For states, yes. State rankings barely move from one year to the next (rank correlation "
-        f"{pers.spearman.min():.3f} or higher every year), and simply reusing last year's shares misses each state's "
+        f"{pers.spearman.min():.3f} or higher every year in FY2015–FY2025, and {fy14['spearman']:.3f} from FY2014 to "
+        f"FY2015, a pair the share model also uses), and simply reusing last year's shares misses each state's "
         f"share by {naive.mae_share_points:.2f} percentage points on average, the best of the three simple rules tried. "
         f"For counties, *where* children are released is just as steady, but *how many* counties cross ORR's "
         f"50-release publication threshold rises and falls with national volume, so a county's size tier last year "
@@ -156,7 +164,9 @@ def main():
         "## 2. Stability",
         "",
         f"- **State rankings.** Year-to-year rank correlations of state shares: Spearman {pers.spearman.min():.3f}–"
-        f"{pers.spearman.max():.3f}, Kendall {pers.kendall.min():.3f}–{pers.kendall.max():.3f}. Simple rules for "
+        f"{pers.spearman.max():.3f}, Kendall {pers.kendall.min():.3f}–{pers.kendall.max():.3f} (FY2015–FY2025; from "
+        f"FY2014 to FY2015, a pair the share model also uses, {fy14['spearman']:.3f} and {fy14['kendall']:.3f}). "
+        f"Simple rules for "
         f"next year's state shares, scored on FY2018–FY2025 (weighted by releases):",
         "",
         md_table(base_table),
