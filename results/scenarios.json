@@ -1,0 +1,75 @@
+{
+ "base_fiscal_year": 2025,
+ "share_model": "Last year's shares with an error model (fallback, BRD risk R-03)",
+ "draws": 10000,
+ "seed": 20261101,
+ "range": [
+  0.1,
+  0.9
+ ],
+ "scenarios": [
+  {
+   "id": "low",
+   "label": "Low",
+   "national_releases": 16864,
+   "source_fiscal_year": 2020
+  },
+  {
+   "id": "median",
+   "label": "Median",
+   "national_releases": 52267,
+   "source_fiscal_year": 2016
+  },
+  {
+   "id": "high",
+   "label": "High",
+   "national_releases": 127512,
+   "source_fiscal_year": 2022
+  }
+ ],
+ "measures": [
+  {
+   "id": "releases",
+   "label": "Children released to sponsors",
+   "definition": "Unaccompanied children expected to be released to sponsors in the place in one fiscal year, if the national total were the scenario's. Counted at the first release location."
+  },
+  {
+   "id": "school_age",
+   "label": "School-age children",
+   "definition": "Children released who are aged 5 to 17: releases x 0.967. The fraction is ORR's published age mix of children in its care (ages 13 and over, plus the part of the 0-12 group aged 5 to 12), applied to every place alike (assumption A-03). Local age mixes may differ; the fraction could be as low as 0.908 or as high as 1.0."
+  }
+ ],
+ "age_mix_source": "ORR UAC Age Data, yearly table FY2019-FY2025 and FY2026 monthly counts (published 2026-10-07), downloaded 2026-11-04",
+ "age_mix": {
+  "ages": "13-14, 15-16 and 17+, plus lambda x 0-12",
+  "lambda": 0.8631,
+  "point_fiscal_years": [
+   2025
+  ],
+  "school_age_fraction": 0.9671,
+  "low": 0.9077,
+  "high": 1.0
+ },
+ "fallback_error_model": "Next year's expected shares are FY2025's actual shares. Each simulated year draws the states' shares around them with one kappa for the 10 largest states (988) and one for the other 41 (3,659), then counts the scenario's children out across the states (a multinomial draw). Inside each state the listed counties and other counties are drawn the same way with kappa 404. Kappa is fitted to the year-over-year changes FY2014-FY2025: each place's squared miss under last year's shares is divided by its counting noise, and kappa is the value at which the Dirichlet-multinomial expects the same total, every place weighted equally.",
+ "error_model_version": "b",
+ "version_choice": "Version (b) has the lower mean interval score over the 408 held-out state-years (1.04 against 1.13 share points). Its ranges held for 78% of the 10 largest states' years and 85% of the others', against 60% and 89%. The rule is in choose_version in src/scenarios.py. The same replay picks the version, so its coverage is not an independent check.",
+ "kappa": {
+  "state_one_kappa": 2387,
+  "state_large": 988,
+  "state_small": 3659,
+  "county": 404,
+  "large_states": [
+   "TX",
+   "CA",
+   "FL",
+   "NY",
+   "MD",
+   "VA",
+   "NJ",
+   "GA",
+   "NC",
+   "TN"
+  ],
+  "fitted_on": "FY2014-FY2025"
+ }
+}

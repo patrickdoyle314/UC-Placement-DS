@@ -1,7 +1,7 @@
 """The files the Week 6 scenario engine must write, and the checks run on them before anyone sees them.
 
-The engine itself (src/scenarios.py) is written by the project owner; docs/spec_week5_week6.md explains
-the format. The Streamlit app calls problems() and shows nothing from the scenario files if it finds
+The engine is src/scenarios.py (in this fork it was written with AI assistance; see the README), and
+docs/spec_week5_week6.md explains the format. The Streamlit app calls problems() and shows nothing from the scenario files if it finds
 any, so a guardrail slip (for example a county under 50 releases shown by itself) can't reach a planner.
 tests/test_acceptance.py runs the same checks.
 """

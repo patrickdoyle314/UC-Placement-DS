@@ -83,13 +83,28 @@ rule is pessimistic: it must hold under three scorings (the main one with the 0.
 floor of 0.5 of a release; and places with no releases the year before left out). If the model fails any of
 them, the scenario engine keeps last year's shares.
 
-## Until then: the fallback (being built)
+## Until then: the fallback (built in the fork, 2026-11-14)
 
-The scenario engine is built first on last year's shares with a Dirichlet error model (AS-39), in two
-versions compared head to head (AS-40): one κ for all 51 places, and one κ each for the 10 largest states
-and for the other 41. In a check before coding, one κ gave 80% ranges that held for about 83% of
-state-years but only about 60% for the 10 largest states, which receive about two thirds of children; two
-gave about 78% and 85%. The results, and which version the tables use, go here once the engine has run.
+The scenario engine runs on last year's shares with a Dirichlet error model (AS-39), in two versions
+compared head to head (AS-40): one κ for all 51 places, and one κ each for the 10 largest states and for the
+other 41. It was written with AI assistance in a fork of the repository (README, "How this was built").
+
+Replaying FY2018–FY2025 from earlier years only (`results/scenario_variant_comparison.csv`):
+
+| Version | 80% range held, all 408 state-years | 10 largest states | Other 41 | Mean interval score |
+|---|---|---|---|---|
+| (a) one κ | 83.3% | 60.0% | 89.0% | 1.13 |
+| (b) two κ | 83.6% | 77.5% | 85.1% | 1.04 |
+
+- The tables use version (b), which has the lower interval score. Fitted on all eleven changes, κ is
+  988 for the 10 largest states, 3,659 for the other 41 and 404 for
+  counties.
+- County ranges held for 86.3% of the county-years scored.
+- Limits: California's range held in only 3 of 8 years under (b); coverage runs from
+  69% of states in FY2018 to 96% in
+  FY2022; and the replay that picks the version is the same one that scores it.
+- The fallback only puts ranges around last year's shares. It does not try to predict which way a share
+  will move; that is the share model's job, and the share model is not built yet.
 
 ## Limitations
 

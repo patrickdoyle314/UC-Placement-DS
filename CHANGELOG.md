@@ -6,6 +6,21 @@ dates are when the change was made.
 ## [Unreleased]
 
 ### Added
+- **Scenario engine, in a fork of the repository** (2026-11-14): `src/scenarios.py`, written with AI assistance
+  at the owner's direction (README, "How this was built"). It runs on the fallback (AS-39): FY2025's shares
+  with a Dirichlet error model, children counted out with a multinomial, in two versions compared head to head
+  (AS-40).
+  - Writes `results/scenarios.json`, `scenario_releases.csv`, `scenario_calibration.csv`,
+    `scenario_calibration_by_size.csv` and `scenario_variant_comparison.csv`. A rerun gives identical files.
+  - The tables use version (b), picked by a rule in the code: its ranges held for 77.5% of the 10
+    largest states' years (60.0% with one κ) and its mean interval score is 1.04 against
+    1.13. Pooled coverage is 83.6% for states and 86.3% for counties.
+  - The 50-release test for a county is worked out before any random draw (AS-26), so the same counties are
+    shown whatever the seed.
+  - `tests/test_scenarios.py`: 15 unit tests on made-up data, including that the κ fit recovers a known κ.
+    The nine scenario acceptance tests now run and pass; the share-model ones stay skipped.
+  - The app's Scenario tab shows the tables. Its "About" text, the README and `src/scenario_contract.py` now
+    say the engine is AI-written in this fork.
 - **Assumptions register** (2026-11-10): `docs/ASSUMPTIONS.md` lists every assumption the project rests on
   (AS-01 onward) with its evidence, where it is used, a status (Decided, Design, Data, Open) and a dated
   history. Linked from the README and the spec.

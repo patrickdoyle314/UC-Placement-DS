@@ -160,7 +160,8 @@ plainly and make naive the shares the scenario engine uses. That is FR-12's acce
   two calibration files describe that version.
 - **Calibration (FR-14, NFR-10):** for each held-out year FY2018–FY2025, simulate from earlier years
   only, using that year's actual national total. Count how many states, and how many listed counties,
-  landed inside their 80% range. Pooled over the years, this should be about 80%; the test accepts
+  landed inside their 80% range. A county is scored only if it would get a row: listed in both that year
+  and the year before, and expecting 50 or more releases (fork, 2026-11-14). Pooled over the years, this should be about 80%; the test accepts
   70%–90%. That band is an operational tolerance, not a statistical test: states in the same year move
   together, so the 408 state-years are not independent checks.
 - **Calibration by state size (review):** one κ for all states may fit the big states and the small ones
@@ -198,7 +199,9 @@ plainly and make naive the shares the scenario engine uses. That is FR-12's acce
     - primary language: [ORR primary language](https://acf.gov/orr/data/UAC-Primary-Language)
 - **Guardrail (FR-19, NFR-03):**
   - A county gets its own row only if it is listed in FY2025 (decided) and its expected releases in that
-    scenario are 50 or more.
+    scenario are 50 or more. The test uses the national total × the county's starting share, which the
+    average of the draws lands on, so the same counties are shown whatever the random seed (fork,
+    2026-11-14).
   - Everything else in the state goes into one "other counties" row. Fold a listed county under 50 into
     it by adding its draws to the other-counties draws before taking the mean and percentiles.
   - Round every figure to whole children.

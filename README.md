@@ -4,6 +4,12 @@ Where unaccompanied children were released to sponsors across U.S. states and co
 FY2015–FY2025, and what a future rise in national volume would mean for local services
 (schools, legal aid, case management). Service planning only.
 
+**This repository is a fork.** It was made on November 14, 2026 from the project owner's working copy of
+UC-Placement, at the owner's direction, so the scenario engine could be finished on schedule. In this fork
+the scenario engine (`src/scenarios.py`) and its unit tests were written by an AI assistant (Claude). In the
+original repository that part is the owner's to write. [How this was built](#how-this-was-built) says which
+parts are which.
+
 - Plan of record: [`docs/portfolio_plan_2026-10-20.docx`](docs/portfolio_plan_2026-10-20.docx)
 - Problem statement (Week 1, draft for approval): [`docs/problem_statement.md`](docs/problem_statement.md)
 - Week 4 findings memo (concentration, stability, geography): [`docs/week4_findings_memo.md`](docs/week4_findings_memo.md)
@@ -17,13 +23,15 @@ FY2015–FY2025, and what a future rise in national volume would mean for local 
 Week 2 was reviewed against Week 1 and the BRD on its own: it now runs on Week 1's table alone and includes
 the per-year maps. Week 3 was reviewed the same way: county concentration now counts counties one by one
 (it had counted all unlisted counties as one place), and Lorenz curves and per-year transition matrices are
-added. Week 7 built: the Streamlit app, its tests and a reshaping unit test. The app's History tab
-works now. Its Scenario tab waits for the scenario engine, which the project owner is writing to
-[`docs/spec_week5_week6.md`](docs/spec_week5_week6.md): first on last year's shares with an error model, in
-two versions compared head to head, and later on the Bayesian share model (AS-39 and AS-40 in
-[`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md)). FSO and contract-lead sign-off
+added. Week 7 built: the Streamlit app, its tests and a reshaping unit test. The scenario engine
+is built in this fork (November 14, 2026) on the fallback the BRD allows: last year's shares with an error
+model, in two versions compared head to head (AS-39 and AS-40 in
+[`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md)). The app's Scenario tab now shows its tables; the results are
+under [Scenario engine](#scenario-engine-results-on-the-fallback). The Bayesian share model is not built, and
+its acceptance tests are still skipped. FSO and contract-lead sign-off
 is still pending.
-Current work is kept in a private repository. A copy through v0.6.2 (Weeks 1–4 and the app) is public at
+This fork is a local repository and has not been pushed anywhere. The original's current work is kept in a
+private repository. A copy through v0.6.2 (Weeks 1–4 and the app) is public at
 [UC-Public](https://github.com/patrickdoyle314/UC-Public), released by the project owner on November 4, 2026.
 The alignment notes with the MP project stay local and unpublished.
 
@@ -56,6 +64,7 @@ UC-Placement/
   src/measure.py, src/share_baseline.py, src/run_sql.py   Week 3 measures, tiers, share baselines, SQL runner
   src/geography.py, src/build_week4_memo.py              Week 4: Moran's I, LISA, school-age comparison; memo
   src/scenario_contract.py  format and guardrail checks for the scenario engine's files
+  src/scenarios.py      scenario engine (fallback): scenarios, error model, simulation, calibration
   app/                  Week 7: Streamlit app (streamlit_app.py) and its glossary (terms.py)
   notebooks/            Week 2 exploratory notebook and its builder (needs only Week 1's table)
   sql/                  SQL statements (DuckDB over parquet)
@@ -110,6 +119,7 @@ python src/share_baseline.py         # Week 3: share baselines and their backtes
 python src/run_sql.py                # Week 3: state ranks in SQL (DuckDB)
 python src/geography.py              # Week 4: Moran's I, LISA, school-age comparison (after src/measure.py)
 python src/build_week4_memo.py       # Week 4 findings memo, from the results tables
+python src/scenarios.py              # scenario engine: scenario tables, calibration, version comparison
 streamlit run app/streamlit_app.py   # Week 7: the scenario app, in your browser
 python exchange/export_exchange.py   # aggregates for adjacent projects
 python alignment/align_mp.py         # optional, local only: coincidence checks with MP
@@ -139,6 +149,57 @@ python src/geography.py
 python src/build_week4_memo.py
 python -m pytest
 ```
+
+## Scenario engine: results on the fallback
+
+`python src/scenarios.py` writes the scenario tables the app shows (about 30 seconds). Until the share
+model is validated it runs on the fallback the BRD allows (risk R-03): next year's expected shares are
+FY2025's actual shares, and an error model sets the ranges around them (AS-39).
+
+| Scenario | National releases | Year it comes from | Texas: expected (80% range) | County rows | In "other counties" |
+|---|---|---|---|---|---|
+| Low | 16,864 | FY2020 | 2,385 (2,148 to 2,631) | 81 | 42.2% |
+| Median | 52,267 | FY2016 | 7,394 (6,672 to 8,138) | 110 | 34.9% |
+| High | 127,512 | FY2022 | 18,006 (16,239 to 19,835) | 110 | 34.9% |
+
+- **Simulation.** Each of 10,000 simulated years draws the states' shares around FY2025's, counts the
+  scenario's children out across the 51 places, and does the same inside each state for its FY2025-listed
+  counties and one "other counties" group. Expected is the average of the draws; the 80% range runs from
+  their 10th to their 90th percentile.
+- **Error model.** One number, κ, says how far shares really moved from one year to the next in
+  FY2014–FY2025. A smaller κ means wider ranges. It is fitted with every place weighted equally.
+- **Two versions, compared head to head (AS-40).** Each held-out year FY2018–FY2025 was replayed from
+  earlier years only, with the same seed for both versions:
+
+  | Version | State-years | 80% range held | Mean width (share points) | Mean interval score (lower is better) |
+  |---|---|---|---|---|
+  | (a) one κ for all states | all 408 | 83.3% | 0.623 | 1.127 |
+  |  | 10 largest states, 80 | 60.0% | 1.434 | 3.655 |
+  |  | other 41 states, 328 | 89.0% | 0.425 | 0.510 |
+  | (b) one κ for the 10 largest states, one for the rest | all 408 | 83.6% | 0.704 | 1.039 |
+  |  | 10 largest states, 80 | 77.5% | 2.126 | 3.268 |
+  |  | other 41 states, 328 | 85.1% | 0.358 | 0.496 |
+
+  The tables use **version (b)**. The engine takes the version with the lower mean interval score among those
+  whose pooled coverage is 70% to 90%; a tie goes to (a). Fitted on all eleven changes, κ is
+  988 for the 10 largest states and 3,659 for the other 41 (one κ for all
+  would be 2,387), and 404 for counties.
+- **What the comparison does not settle.** Under (b), 79% of children were in a state whose range
+  held (65% under (a)), but California's range held in only 3 of the 8 years.
+  Coverage also changes from year to year: from 69% of states in FY2018 to
+  96% in FY2022. The same replay picks the version, so its coverage is not
+  an independent check.
+- **Counties.** The ranges held for 86.3% of the 1,345 county-years scored: counties
+  listed in both years and expecting 50 or more releases.
+- **School-age children.** Releases × 0.967, from ORR's FY2025 age mix of children in
+  its care. The fraction could be as low as 0.908 or as high as 1.0 (AS-34 to AS-37).
+- **50-release rule.** A county gets a row only if it was listed in FY2025 and expects 50 or more releases in
+  the scenario; otherwise it is inside its state's "other counties" figure. In the low scenario
+  29 of the 110 listed counties are folded this way. Whether a county expects 50 is
+  worked out before any random draw, so the same counties are shown whatever the seed (AS-26). The District of
+  Columbia's remainder in the low scenario covers one county, so the app leaves it blank (AS-41).
+- **Checks.** `tests/test_acceptance.py` checks the files. `tests/test_scenarios.py` checks the steps on
+  made-up data, including that the κ fit finds a known κ again (within 15%).
 
 ## Week 7: the scenario app
 
@@ -328,12 +389,21 @@ Every assumption behind the analysis and the model, with its status and a dated 
 
 The project owner set the question, scope, guardrails and tools, and reviewed the results. Most of the code for
 Weeks 1–4 and Week 7 was written with AI assistance (Claude, by Anthropic): data assembly, measures, geography,
-maps, the app and the tests. This section, not the commit history, records which parts are which. The project owner writes the
-Week 5 share model, the Week 6 scenario engine and the written summary. AI assistance on those parts is limited
-to the spec and acceptance tests ([`docs/spec_week5_week6.md`](docs/spec_week5_week6.md),
-`tests/test_acceptance.py`), the assumptions register ([`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md), written
-with AI assistance; the items marked "Decided" are the owner's decisions), step-by-step guidance (what each
-step is for, the choices it involves, and how to check it, without code), and code review.
+maps, the app and the tests. This section, not the commit history, records which parts are which.
+
+**In this fork the scenario engine is AI-written.** The plan was for the project owner to write the share
+model, the scenario engine and the written summary, with AI help limited to the spec, the acceptance tests,
+step-by-step guidance without code, and review. On November 14, 2026, short on time, the owner had Claude
+write the scenario engine in a fork of the repository instead. Claude wrote `src/scenarios.py` and
+`tests/test_scenarios.py`, following the spec, the acceptance tests and the step guide it had written
+earlier. It also made two choices the assumptions register leaves to the owner, both marked there as not
+confirmed: the year of ORR's age mix behind the point estimate (FY2025, AS-37) and the rule that picks between
+the two versions of the error model (AS-40). In the original repository the scenario engine is still the
+owner's to write.
+
+The share model is not written in either repository. The written summary is the owner's. The assumptions
+register ([`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md)) was written with AI assistance; the items marked
+"Decided" are the owner's decisions.
 
 ## Exchange with adjacent projects
 
