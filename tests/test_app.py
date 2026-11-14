@@ -127,3 +127,20 @@ def test_app_shows_no_figures_from_files_that_fail(tmp_path, monkeypatch):
 def test_app_explains_missing_scenario_files(tmp_path, monkeypatch):
     at = run_app(tmp_path, monkeypatch)
     assert any("not built yet" in i.value for i in at.info)
+
+
+def test_app_shows_coverage_for_large_and_small_states(monkeypatch):  # owner's decision on H2 (a), 2026-11-11
+    at = run_app(FIXTURE, monkeypatch)
+    note = [c.value for c in at.caption if "backtests" in c.value]
+    assert note and "60% of the 10 largest states" in note[0] and "85% of the other 41" in note[0]
+
+
+def test_one_county_remainder_is_flagged():  # guardrail 3: a remainder that is one county is not shown
+    row = lambda level, state, key=None: dict(scenario="low", geo_level=level, state=state, county_key=key,
+                                              measure="releases", expected=60)
+    table = pd.DataFrame([row("state", "DE"), row("county", "DE", "sussex|DE"), row("county", "DE", "kent|DE"),
+                          row("other_counties", "DE"),                       # 3 counties, 2 shown: one left
+                          row("state", "TX"), row("county", "TX", "harris|TX"), row("other_counties", "TX")])
+    flagged = sc.one_county_remainders(table, {"DE": 3, "TX": 254})
+    assert flagged.tolist() == [False, False, False, True, False, False, False]
+    assert not sc.one_county_remainders(table, {}).any()  # no county counts known: nothing is flagged

@@ -3,6 +3,18 @@
 *Assessed 2026-10-22, after Week 1.* Service planning only: every candidate predicts aggregate releases
 for states and counties, never anything about an individual child, sponsor or household.
 
+> **Note, 2026-11-11.** This is a dated note; `docs/spec_week5_week6.md` and `docs/ASSUMPTIONS.md` now govern.
+> Two things below no longer hold.
+> 1. *"Must beat 0.206 share points."* The winner is picked on the log score under a fixed, pessimistic rule
+>    (AS-20), not on mean absolute error.
+> 2. *The county result.* The probe scored "last year" on counties it had never seen: a county new to the list
+>    got only the floor, and new counties took up to 27% of a year's releases. On the matched categories now
+>    used (counties listed in both years, plus other; AS-16), last year's shares is the best simple rule for
+>    counties too: 1.01 share points against 1.22 for the three-year mean and 1.51 pooled (10 largest states,
+>    FY2017–FY2025). So the case for partial pooling at county level is not supported by this probe. The
+>    owner's working view is that a more complicated model is not necessarily better and a simpler
+>    distribution may serve, especially since many counties do not appear every year (AS-43).
+
 ## What exists today
 
 No model yet. The plan schedules the share model for Week 5 and the scenario engine for Week 6. A

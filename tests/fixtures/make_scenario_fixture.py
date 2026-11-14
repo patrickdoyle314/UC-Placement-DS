@@ -50,6 +50,11 @@ def main():
                         coverage=round(round(places * 0.8) / places, 3))
                    for fy in range(2018, 2026) for level, places in (("state", 51), ("county", 120))]
     pd.DataFrame(calibration).to_csv(OUT / "scenario_calibration.csv", index=False)
+    # Coverage by state size: the two groups add up to the state row above (6 + 35 = 41 of 51).
+    by_size = [dict(fiscal_year=fy, size_group=group, places=places, inside_80=inside,
+                    coverage=round(inside / places, 3), mean_width_share_points=width)
+               for fy in range(2018, 2026) for group, places, inside, width in (("large", 10, 6, 1.4), ("small", 41, 35, 0.4))]
+    pd.DataFrame(by_size).to_csv(OUT / "scenario_calibration_by_size.csv", index=False)
 
     manifest = {
         "source": "test fixture",

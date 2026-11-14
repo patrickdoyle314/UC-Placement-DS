@@ -19,7 +19,8 @@ GLOSSARY = {
     "Listed county": "A county with 50 or more children released in a fiscal year. Only these counties are "
                      "published by name.",
     "Other counties": "All of a state's counties below the 50-release threshold, as one figure. The app never "
-                      "splits it up or shows those counties one by one.",
+                      "splits it up or shows those counties one by one, and leaves it blank where it would "
+                      "cover a single county.",
     "County": "A listed county, named as in the published data.",
     "Years listed (of 11)": "How many of the 11 fiscal years FY2015-FY2025 the county had 50 or more children "
                             "released. A high number means steady need; a low number means need that comes and goes.",

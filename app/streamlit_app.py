@@ -46,6 +46,14 @@ def history() -> pd.DataFrame:
     return df[df.fiscal_year.isin(FISCAL_YEARS)]
 
 
+def counties_in_state(hist) -> dict:
+    """{state: number of counties}, from the Week 1 table's other-counties rows (listed + unlisted)."""
+    if hist is None or "unlisted_counties" not in hist.columns:
+        return {}
+    other = hist[hist.geo_level == "other_counties"].dropna(subset=["unlisted_counties"])
+    return (other.listed_counties + other.unlisted_counties).groupby(other.state).first().astype(int).to_dict()
+
+
 @st.cache_data
 def county_shapes(fips: tuple) -> dict:
     import geopandas as gpd  # only needed for the county maps
@@ -166,22 +174,30 @@ with tab_scenario:
         scen, m = scenarios[scenario_id], by_id[measure_id]
         rows = table[table.scenario == scenario_id].copy()
         rows["place"] = rows.county_name.where(rows.geo_level != "state", rows.state_name)
+        # A remainder that covers a single county is that county's own figure: leave it blank.
+        one_county = sc.one_county_remainders(rows, counties_in_state(hist))
+        rows.loc[one_county, sc.NUMBERS] = np.nan
         states = rows[rows.geo_level == "state"]
         if one_state:
             rows = rows[rows.state == state]
         shown = rows[rows.measure == measure_id]
 
         left, right = st.columns(2)
-        national = states[states.measure == measure_id].expected.sum()
+        # The scenario's own total for releases (the rounded state rows can add up a few children off).
+        national = scen["national_releases"] if measure_id == "releases" else \
+            states[states.measure == measure_id].expected.sum()
         left.metric(f"{m['label']}, nationally", f"{national:,.0f}", help=m["definition"])
         if one_state:
             s_row = shown[shown.geo_level == "state"].iloc[0]
             right.metric(f"{m['label']}, {names[state]}", f"{s_row.expected:,.0f}",
                          help=f"80% range: {s_row.lower_80:,.0f} to {s_row.upper_80:,.0f}")
             right.caption(f"80% range: {s_row.lower_80:,.0f} to {s_row.upper_80:,.0f}")
-        cover = sc.coverage(calibration)
+        cover, by_size = sc.coverage(calibration), sc.coverage_by_size(RESULTS)
+        # Large states receive most children, so their coverage is shown separately whenever it is known.
+        size_note = (f" ({by_size['large']:.0%} of the 10 largest states, {by_size['small']:.0%} of the other 41)"
+                     if {"large", "small"} <= set(by_size) else "")
         st.caption(f"{GLOSSARY['Expected']} {GLOSSARY['80% range']} In backtests of FY2018-FY2025, the ranges "
-                   f"held the actual figure for {cover.get('state', 0):.0%} of states and "
+                   f"held the actual figure for {cover.get('state', 0):.0%} of states{size_note} and "
                    f"{cover.get('county', 0):.0%} of listed counties. Share model: {manifest['share_model']}.")
 
         hover = {"shade": False, "expected": ":,", "lower_80": ":,", "upper_80": ":,", "state": False}
@@ -206,6 +222,8 @@ with tab_scenario:
         st.dataframe(state_table, hide_index=True, column_config=column_help(state_table, measures),
                      key="states_table")
         st.markdown("**Counties and other counties**")
+        if one_county.any():
+            st.caption("An other counties figure is left blank where it would cover a single county.")
         county_table = wide_table(rows[rows.geo_level != "state"], measures)
         st.dataframe(county_table, hide_index=True, column_config=column_help(county_table, measures),
                      key="counties_table")

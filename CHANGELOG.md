@@ -5,7 +5,48 @@ dates are when the change was made.
 
 ## [Unreleased]
 
+### Added
+- **Assumptions register** (2026-11-10): `docs/ASSUMPTIONS.md` lists every assumption the project rests on
+  (AS-01 onward) with its evidence, where it is used, a status (Decided, Design, Data, Open) and a dated
+  history. Linked from the README and the spec.
+- **Four model decisions confirmed by the owner** (2026-11-08), written into the spec and the acceptance tests:
+  the floor for zero shares (AS-14), FY2014 as the first "last year" (AS-15), the winner rule (AS-20) and the
+  school-age fraction (AS-34, AS-36). The scenario engine counts children out instead of multiplying (AS-24)
+  and shows only counties listed in FY2025 (AS-25).
+- **Fallback engine first** (2026-11-11, AS-39): the scenario engine is built on last year's shares with an
+  error model before the Bayesian share model.
+- After a logic check of the whole project on 2026-11-11, the owner's decisions on its findings:
+  - **Pessimistic winner rule** (AS-20). The rule must hold under three scorings: the main one, naive with a
+    floor of 0.5 of a release, and places with no releases the year before left out. New file in the spec:
+    `results/share_model_backtest_checks.csv`. The tests round each log-score gap to six decimals, so a gap
+    of exactly 0.0005 is no longer left to floating-point noise. Three new acceptance tests.
+  - **Two versions of the fallback, compared head to head** (AS-40): one κ for all places, and one κ each
+    for the 10 largest states and the other 41. New file in the spec:
+    `results/scenario_variant_comparison.csv`, with coverage, range width and interval score by state size.
+    One new acceptance test.
+  - **The app shows coverage by state size** next to the pooled figure (`coverage_by_size` in
+    `src/scenario_contract.py`), and its national figure for releases is the scenario's own total.
+  - **One-county remainders are marked not publishable** (AS-41). The Week 1 table has two new columns,
+    `unlisted_counties` and `publishable`. An "other counties" row that covers exactly one county is that
+    county's own count: Delaware in FY2019, FY2021, FY2022 and FY2023, and the District of Columbia in FY2020.
+    `exchange/export_exchange.py` now passes the flag on (it wrote `true` for every row), the manifest's
+    threshold is 50, and the app leaves such a figure blank (`one_county_remainders`).
+  - **Math document in the repository**: `docs/math_methods_and_principles_2026-11-06.pdf`, so the register's
+    section references can be followed. It is the November 6 revision; the register's History overrides it.
+  - AS-43: the owner's working view that a simpler model may serve better than the planned one.
+- README Data table: the ORR age file (`data/raw/orr/UAC-Age-Data_Sep_2026_0.xlsx`, downloaded 2026-11-04).
+
 ### Changed
+- **School-age point estimate** (2026-11-10, AS-35): λ, the part of ORR's 0–12 group aged 5 to 12, is 0.863 from
+  ORR's own FY2026 split of 0–5 and 6–12, instead of 8/13 (ages spread evenly). The low–high range is unchanged.
+- **AS-09 corrected** (2026-11-11): the state rank correlation of 0.985 or higher holds from FY2016 on; from
+  FY2014 to FY2015, a pair the share model also uses, it is 0.983. The memo builder now computes that pair.
+- Documents brought in line with the register (2026-11-11): the model card (FY2014's role, the winner rule, the
+  fallback, 0–9 releases a year in the territories, the two floor scales), the README (status, FY2014, results
+  figures), the problem statement, and a dated note on `docs/modeling_candidates.md`, whose county result is
+  superseded. AS-24's evidence is now given as a theoretical case with the measured figures beside it.
+- Week 4 memo: 71 counties were listed in all 11 years, of which 70 have a Census population figure (it said
+  70); LISA p-values are described as one-sided; the next-phases paragraph matches the spec.
 - README Week 3 results: what the Lorenz curves show, and why county curves (listed counties only) should be
   compared across years with care. In FY2020 and FY2025 only 73 and 109 counties were listed.
 - README "How this was built": AI assistance on Weeks 5–6 now also includes step-by-step guidance without code.
@@ -14,6 +55,21 @@ dates are when the change was made.
   of which parts were AI-assisted.
 
 ### Fixed
+- **README status** (2026-11-12): it said this repository had been public since October 25. Current work is
+  kept in a private repository; the public copy, UC-Public, holds the project through v0.6.2. The owner
+  confirmed that FSO and contract-lead sign-off is still pending, so the sign-off sentences are unchanged (AS-38).
+- **The District of Columbia was treated as a county that never reached 50 releases** (2026-11-11, AS-42).
+  - MPI's county sheet has no row for DC, which it reports as a state, so DC had no county rows. In the county
+    analysis it came out as "never listed, next to a cluster" (Low-High, p = 0.0001), although it had 50 or
+    more releases in 10 of the 11 years.
+  - `src/build_dataset.py` now gives DC a county row from its state total in those years. The Week 1 table
+    has 3,684 rows (was 3,673), 2,400 of them county rows (was 2,389), for 394 counties (was 393).
+  - New figures: 152 High-High counties, 59 after the false-discovery-rate correction (were 151 and 58);
+    Low-High 98, 14 after the correction (were 100 and 15); county Moran's I 0.41 (was 0.40); cluster 1 has 55
+    counties and 21.3% of releases (were 54 and 20.9%); the eight largest clusters hold 51.4% (was 51.1%).
+    Listed counties per year rise by one in every year but FY2020: 110 in FY2025 (was 109), 339 in FY2022.
+  - No conclusion changes. Regenerated: the Week 1 table, every county table and chart in `results/`, the
+    Week 2 notebook and the Week 4 memo.
 - **Week 4 county clusters (LISA) depended on rounding and on whether numba was installed.**
   - Found in a clean rebuild on 2026-11-10. Installing PyMC (2026-11-07) also installed numba, and esda then
     switched to a different permutation engine. The county results changed: Low-Low went from 753 counties

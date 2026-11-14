@@ -21,7 +21,7 @@ scenarios. It does not forecast next month.
 ## Scope
 
 - **Population:** unaccompanied children released from ORR custody to sponsors, FY2015–FY2025
-  (FY2014 is also in the source file and is kept for reference).
+  (FY2014 is also in the source file; the share model uses it only as the starting "last year" for FY2015).
 - **Geography:** states, and counties that received 50 or more children in a year. All other
   counties in a state are one "other counties" group, never split further.
 - **Measures:** releases to sponsors per fiscal year (October–September); school-age population

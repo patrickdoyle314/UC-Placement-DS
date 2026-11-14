@@ -3,9 +3,12 @@
 Rows:
   national        all releases that fiscal year
   state           state total
-  county          a county MPI lists that year (>= 50 releases); suppressed county-years are not rows
+  county          a county MPI lists that year (>= 50 releases); suppressed county-years are not rows.
+                  The District of Columbia is one county-equivalent that MPI's county sheet leaves out;
+                  it gets a county row from its state total in the years it reached 50.
   other_counties  state total minus listed counties: the real, unlisted group of smaller counties.
-                  Never split further (plan guardrail: no backing out counties under 50).
+                  Never split further (plan guardrail: no backing out counties under 50). When the
+                  group is a single county, the row is marked publishable = False.
 
 Census join: July 1, 2024 county estimates (Vintage 2024) as one reference year for every row:
 total population and school-age population (ages 5-17).
@@ -24,7 +27,9 @@ Usage  : python src/build_dataset.py
 # counties"), with the Census population of each place attached. Every later step reads this table.
 #
 # Guardrail built in here: counties appear only in years ORR published them (50+ releases). The rest
-# of a state is one "other counties" row and is never split or estimated.
+# of a state is one "other counties" row and is never split or estimated. If that row covers exactly
+# one county (Delaware in four years), it is that county's own unpublished count, so it is marked
+# publishable = False and the publishing code (exchange/, the app) leaves it out.
 #
 # Layout: settings and lookup tables at the top; then the readers (norm and county_key clean county
 # names, load_census and load_mpi read the two source files); then reshape(), which matches counties to
@@ -36,7 +41,7 @@ Usage  : python src/build_dataset.py
 import csv
 import re
 import unicodedata
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 import openpyxl
@@ -47,6 +52,12 @@ CENSUS = ROOT / "data/raw/census/cc-est2024-agesex-all.csv"
 OUT = ROOT / "data/processed"
 FYS = list(range(2014, 2026))
 CENSUS_YEAR_CODE = "6"  # July 1, 2024 in Vintage 2024 files
+THRESHOLD = 50  # ORR publishes a county only in years with 50 or more releases
+# A state that is one county-equivalent: its state total is its county's count, but MPI's Counties sheet
+# has no row for it. {state name: (county name, postal code)}
+SINGLE_COUNTY_STATES = {"District of Columbia": ("District of Columbia", "DC")}
+# The Census file lists Connecticut's nine planning regions; MPI and ORR use its eight historical counties.
+COUNTIES_IN_STATE = {"CT": 8}
 
 USPS = {  # state name -> two-letter postal code
     "Alabama": "AL", "Alaska": "AK", "Arizona": "AZ", "Arkansas": "AR", "California": "CA", "Colorado": "CO",
@@ -63,7 +74,7 @@ USPS = {  # state name -> two-letter postal code
 }
 # The output table's columns, in order
 COLUMNS = ["fiscal_year", "geo_level", "state", "state_name", "county_fips", "county_name", "county_key",
-           "releases", "listed_counties", "pop_total_2024", "pop_5_17_2024"]
+           "releases", "listed_counties", "pop_total_2024", "pop_5_17_2024", "unlisted_counties", "publishable"]
 
 
 # MPI and the Census spell county names differently (accents, "St." vs "Saint", "County" suffix).
@@ -123,6 +134,17 @@ def load_mpi():
     return states, counties
 
 
+# The District of Columbia had 50 or more releases in most years, yet it is missing from MPI's county
+# list because it is reported as a state. Without a county row it would look like a county that never
+# reached the threshold. The rule is the same as for every county: a row only in years with 50 or more.
+def add_single_county_states(mpi_states, mpi_counties):
+    """Add a county entry, built from the state total, for each single-county state the source leaves out."""
+    for st_name, (county, st) in SINGLE_COUNTY_STATES.items():
+        if st_name in mpi_states and not any(s == st for _, s, _ in mpi_counties):
+            mpi_counties.append((county, st, {fy: (v if v is not None and v >= THRESHOLD else None)
+                                              for fy, v in mpi_states[st_name].items()}))
+
+
 # The reshaping step: match MPI counties to Census FIPS codes, build one row per fiscal year and place,
 # and check that the numbers add up. It reads and writes no files, so tests can run it on made-up counties.
 def reshape(us, mpi_states, mpi_counties, census, census_states):
@@ -136,9 +158,14 @@ def reshape(us, mpi_states, mpi_counties, census, census_states):
         else:
             unmatched.append((st, name))
 
+    # How many counties each state has, to know how many sit inside "other counties" in a given year.
+    # Counter counts how often each state code appears among the Census county keys.
+    n_counties = Counter(st for st, _ in census)
+    n_counties.update({st: n - n_counties[st] for st, n in COUNTIES_IN_STATE.items() if st in n_counties})
+
     rows, recon = [], []
     for fy in FYS:
-        rows.append(dict(fiscal_year=fy, geo_level="national", releases=us[fy] or 0,
+        rows.append(dict(fiscal_year=fy, geo_level="national", releases=us[fy] or 0, publishable=True,
                          pop_total_2024=sum(v[0] for v in census_states.values()),
                          pop_5_17_2024=sum(v[1] for v in census_states.values())))
         state_sum = 0
@@ -150,7 +177,7 @@ def reshape(us, mpi_states, mpi_counties, census, census_states):
             state_sum += total
             spop = census_states[st] if st in census_states else ["", ""]  # PR and VI are not in the county file
             rows.append(dict(fiscal_year=fy, geo_level="state", state=st, state_name=st_name, releases=total,
-                             pop_total_2024=spop[0], pop_5_17_2024=spop[1]))
+                             pop_total_2024=spop[0], pop_5_17_2024=spop[1], publishable=True))
             listed = [(n, s, v[fy]) for n, s, v in mpi_counties if s == st and v[fy]]
             listed_pop = [0, 0]
             for n, s, val in listed:
@@ -160,7 +187,7 @@ def reshape(us, mpi_states, mpi_counties, census, census_states):
                     listed_pop[1] += school
                 rows.append(dict(fiscal_year=fy, geo_level="county", state=st, state_name=st_name, county_fips=f,
                                  county_name=f"{n}, {st}", county_key=county_key(n, st), releases=val,
-                                 pop_total_2024=tot, pop_5_17_2024=school))
+                                 pop_total_2024=tot, pop_5_17_2024=school, publishable=True))
             # "Other counties" = state total minus the listed counties: a real, published remainder. It is never
             # split further; estimating counties under 50 releases would undo ORR's privacy threshold.
             other = total - sum(v for _, _, v in listed)
@@ -168,8 +195,12 @@ def reshape(us, mpi_states, mpi_counties, census, census_states):
             # needs every listed county's population. If one has no Census match (Connecticut), it stays blank
             # rather than being guessed. all(...) is True only when every item in the list is True.
             all_matched = all((n, s) in fips for n, s, _ in listed)
+            # How many counties the remainder covers. If it is exactly one, the remainder is that county's own
+            # count, which the source did not publish: keep it so totals add up, but mark it not publishable.
+            unlisted = max(n_counties[st] - len(listed), 0) if st in n_counties else ""
             rows.append(dict(fiscal_year=fy, geo_level="other_counties", state=st, state_name=st_name,
                              county_name=f"Other counties, {st}", releases=other, listed_counties=len(listed),
+                             unlisted_counties=unlisted, publishable=unlisted != 1,
                              pop_total_2024=spop[0] - listed_pop[0] if all_matched and spop[0] != "" else "",
                              pop_5_17_2024=spop[1] - listed_pop[1] if all_matched and spop[1] != "" else ""))
             # Reconciliation: in every state-year the listed counties must not add up to more than the state
@@ -187,6 +218,8 @@ def main():
     census, census_states = load_census()
     mpi_states, mpi_counties = load_mpi()
     us = mpi_states.pop("United States")
+    in_source = len(mpi_counties)
+    add_single_county_states(mpi_states, mpi_counties)
     rows, recon, unmatched, fips = reshape(us, mpi_states, mpi_counties, census, census_states)
     OUT.mkdir(parents=True, exist_ok=True)
 
@@ -207,7 +240,11 @@ def main():
 
     bad = [r for r in recon if not r["ok"]]
     print(f"rows: {len(rows)}  (county rows: {sum(r['geo_level'] == 'county' for r in rows)})")
-    print(f"MPI counties: {len(mpi_counties)}, matched to FIPS: {len(fips)}, unmatched: {len(unmatched)}")
+    print(f"counties: {len(mpi_counties)} ({in_source} in MPI's list, {len(mpi_counties) - in_source} added from "
+          f"a state total), matched to FIPS: {len(fips)}, unmatched: {len(unmatched)}")
+    held = [r for r in rows if r["publishable"] is False]
+    print(f"other-counties rows that are one county (not publishable): {len(held)}",
+          sorted({(r['state'], r['fiscal_year']) for r in held}))
     print(f"reconciliation: {len(recon)} checks, {len(bad)} failed")
     for r in bad[:10]:
         print("  FAILED:", r)

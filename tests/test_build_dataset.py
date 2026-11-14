@@ -61,3 +61,24 @@ def test_reconciliation_flags_counties_above_the_state_total():
     _, recon, _, _ = bd.reshape(*made_up_inputs(harris_2020=600))
     failed = [(r["fiscal_year"], r["state"]) for r in recon if not r["ok"]]
     assert failed == [(2020, "TX")]
+
+
+def test_single_county_state_gets_a_county_row_only_at_50_or_more():
+    # DC is one county-equivalent that the source reports only as a state (owner's decision, 2026-11-11)
+    mpi_states = {"District of Columbia": {2019: 322, 2020: 48, 2021: None}, "Texas": {2019: 500, 2020: 500, 2021: 500}}
+    mpi_counties = [("Harris County", "TX", {2019: 200, 2020: 200, 2021: 200})]
+    bd.add_single_county_states(mpi_states, mpi_counties)
+    assert mpi_counties[-1] == ("District of Columbia", "DC", {2019: 322, 2020: None, 2021: None})
+    bd.add_single_county_states(mpi_states, mpi_counties)  # running it twice adds nothing
+    assert len(mpi_counties) == 2
+
+
+def test_a_remainder_of_exactly_one_county_is_not_publishable():
+    # The made-up Census has two Texas counties. With one listed, "other counties" is the other county's
+    # own count; with both listed, or neither, it is not a single county.
+    rows, _, _, _ = bd.reshape(*made_up_inputs())
+    other = {r["fiscal_year"]: r for r in rows if r["geo_level"] == "other_counties" and r["state"] == "TX"}
+    assert (other[2019]["unlisted_counties"], other[2019]["publishable"]) == (1, False)  # only Harris listed
+    assert (other[2020]["unlisted_counties"], other[2020]["publishable"]) == (0, True)   # Harris and Dallas
+    assert all(r["publishable"] for r in rows if r["geo_level"] != "other_counties")
+

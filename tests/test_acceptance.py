@@ -2,24 +2,28 @@
 
 Each test is skipped until the output it checks exists (see docs/spec_week5_week6.md). The tests marked
 "review" come from the outside review of the math doc (2026-11-05); "decided" marks the model decisions
-the owner confirmed on 2026-11-08.
+the owner confirmed on 2026-11-08, and "decided 2026-11-11" those made after the logic check: the
+pessimistic winner rule and the two versions of the fallback's error model.
 """
 import json
 from pathlib import Path
 
+import numpy as np
 import openpyxl
 import pandas as pd
 import pytest
 
 from src import measure
 from src import scenario_contract as sc
-from src.share_baseline import EPS
+from src.share_baseline import EPS, state_shares
 
 ROOT = Path(__file__).resolve().parent.parent
 BACKTEST = ROOT / "results/share_model_backtest.csv"
 SUMMARY = ROOT / "results/share_model_summary.csv"
 MODEL_RECORD = ROOT / "results/share_model.json"
+CHECKS = ROOT / "results/share_model_backtest_checks.csv"
 BY_SIZE = ROOT / "results/scenario_calibration_by_size.csv"
+VERSIONS = ROOT / "results/scenario_variant_comparison.csv"
 AGE_FILE = ROOT / "data/raw/orr/UAC-Age-Data_Sep_2026_0.xlsx"
 HELD_OUT = range(2018, 2026)
 LEVELS = ("state", "county")
@@ -29,6 +33,11 @@ MIN_WINS = 6           # (decided) the model must beat naive in at least 6 of th
 FIRST_LAG_YEAR = 2014  # (decided) FY2014 serves only as "last year" for FY2015
 CHECK_FLOOR = 0.5      # (decided) the refit that shows the floor barely moves rho
 LAMBDA_EVEN = 8 / 13   # (decided) the low end: ages spread evenly within ORR's 0-12 group
+# (decided 2026-11-11) The winner rule is pessimistic: it must also hold under these two scorings.
+#   floor_0.5       naive's forecast gets a floor of 0.5 of a release instead of 0.0001
+#   zeros_left_out  places with no releases the year before are left out of that year's score
+CHECK_SCORINGS = ("floor_0.5", "zeros_left_out")
+SIZE_GROUPS = {"all": 408, "large": 80, "small": 328}  # state-years pooled over the 8 held-out years
 
 week5 = pytest.mark.skipif(not BACKTEST.exists() or not SUMMARY.exists(),
                            reason="Week 5 output not built yet (src/share_model.py)")
@@ -37,23 +46,51 @@ week5_record = pytest.mark.skipif(not MODEL_RECORD.exists(),
 week6 = pytest.mark.skipif(not sc.available(), reason="Week 6 output not built yet (src/scenarios.py)")
 week6_by_size = pytest.mark.skipif(not BY_SIZE.exists(),
                                    reason="Week 6 calibration by state size not written yet")
+week5_checks = pytest.mark.skipif(not CHECKS.exists(),
+                                  reason="pessimistic scorings not written yet (share_model_backtest_checks.csv)")
+week6_versions = pytest.mark.skipif(not VERSIONS.exists(),
+                                    reason="comparison of the two fallback versions not written yet")
 needs_data = pytest.mark.skipif(not (ROOT / "data/processed/releases_by_fy_geo.parquet").exists(),
                                 reason="run src/build_dataset.py and src/measure.py first")
 
 
 def log_gap(bt: pd.DataFrame, level: str, method: str) -> pd.DataFrame:
-    """Per held-out year: the method's log score minus naive's, with that year's releases."""
+    """Per held-out year: the method's log score minus naive's, with that year's releases.
+
+    Gaps are rounded to six decimals, so a difference of exactly 0.0005 counts as a win and is not left to
+    floating-point noise (-3.1675 minus -3.1680 is not exactly 0.0005 in binary).
+    """
     mine = bt[(bt.level == level) & (bt.method == method)].set_index("fiscal_year")
     naive = bt[(bt.level == level) & (bt.method == "naive")].set_index("fiscal_year")
-    return pd.DataFrame({"gap": mine.log_score - naive.log_score, "releases": mine.releases})
+    return pd.DataFrame({"gap": (mine.log_score - naive.log_score).round(6), "releases": mine.releases})
 
 
 def passes_winner_rule(bt: pd.DataFrame, level: str, method: str) -> bool:
     """(decided) Both mean log scores beat naive's, and at least 6 of the 8 years do; ties go to naive."""
     g = log_gap(bt, level, method)
-    release_weighted = (g.gap * g.releases).sum() / g.releases.sum()
-    equal_weighted = g.gap.mean()
+    if len(g) != len(HELD_OUT) or g.gap.isna().any():
+        return False  # a missing year can't count as a win
+    release_weighted = round((g.gap * g.releases).sum() / g.releases.sum(), 6)
+    equal_weighted = round(g.gap.mean(), 6)
     return release_weighted >= TIE and equal_weighted >= TIE and int((g.gap >= TIE).sum()) >= MIN_WINS
+
+
+def passes_pessimistic_rule(bt: pd.DataFrame, checks: pd.DataFrame, level: str, method: str) -> bool:
+    """(decided 2026-11-11) The winner rule must hold under the main scoring and under each check scoring."""
+    return passes_winner_rule(bt, level, method) and all(
+        passes_winner_rule(checks[checks.scoring == scoring], level, method) for scoring in CHECK_SCORINGS)
+
+
+def naive_state_log_score(wide: pd.DataFrame, fy: int, scoring: str) -> tuple[float, int]:
+    """Naive's state log score for one held-out year under a check scoring, and the releases it scores."""
+    last, actual = wide.loc[fy - 1].to_numpy(), wide.loc[fy].to_numpy()
+    if scoring == "zeros_left_out":
+        keep = last > 0
+        last, actual = last[keep], actual[keep]
+        p = last / last.sum()
+    else:
+        p = (last + CHECK_FLOOR) / (last + CHECK_FLOOR).sum()
+    return float(np.sum(actual * np.log(p)) / actual.sum()), int(actual.sum())
 
 
 def orr_yearly_age_shares(path=AGE_FILE) -> dict:
@@ -118,7 +155,7 @@ def test_summary_matches_the_backtest():  # FR-12 (review: both averages, and ye
         naive = bt[(bt.level == level) & (bt.method == "naive")].set_index("fiscal_year")
         mine = rows.set_index("fiscal_year")
         wins_mae = int((mine.mae_share_points < naive.mae_share_points).sum())
-        wins_log = int((mine.log_score - naive.log_score >= TIE).sum())  # (decided) smaller gaps are ties
+        wins_log = int(((mine.log_score - naive.log_score).round(6) >= TIE).sum())  # (decided) smaller gaps are ties
         for weighting in ("release", "equal"):
             row = summary[(summary.level == level) & (summary.method == method) & (summary.weighting == weighting)]
             assert len(row) == 1, (level, method, weighting)
@@ -149,15 +186,49 @@ def test_model_record_has_the_rule_the_winner_priors_and_sampler():  # FR-12, NF
 
 @week5
 @week5_record
-def test_the_winner_is_the_one_the_fixed_rule_picks():  # FR-12 (decided)
-    bt = pd.read_csv(BACKTEST)
+def test_the_winner_is_the_one_the_fixed_rule_picks():  # FR-12 (decided; pessimistic since 2026-11-11)
+    assert CHECKS.exists(), "the winner needs the pessimistic scorings: write results/share_model_backtest_checks.csv"
+    bt, checks = pd.read_csv(BACKTEST), pd.read_csv(CHECKS)
     record = json.loads(MODEL_RECORD.read_text(encoding="utf-8"))
     method = record.get("model_method")
     assert method and method != "naive" and method in set(bt.method), \
         "share_model.json needs 'model_method': your method's name in the backtest"
+    assert set(record.get("scorings", [])) == {"floor_0.0001", *CHECK_SCORINGS}, "list the three scorings in 'scorings'"
     for level in LEVELS:
-        expected = method if passes_winner_rule(bt, level, method) else "naive"
+        expected = method if passes_pessimistic_rule(bt, checks, level, method) else "naive"
         assert record["winner"][level] == expected, (level, record["winner"][level], expected)
+
+
+@week5
+@week5_checks
+def test_pessimistic_scorings_cover_every_year_level_and_method():  # FR-12 (decided 2026-11-11)
+    bt, checks = pd.read_csv(BACKTEST), pd.read_csv(CHECKS)
+    assert {"fiscal_year", "level", "method", "scoring", "releases", "log_score"} <= set(checks.columns)
+    assert set(checks.scoring) == set(CHECK_SCORINGS), set(checks.scoring)
+    assert checks.log_score.notna().all() and (checks.log_score <= 0).all()
+    key = ["fiscal_year", "level", "method"]
+    for scoring in CHECK_SCORINGS:
+        part = checks[checks.scoring == scoring]
+        assert not part.duplicated(key).any(), scoring
+        both = bt.merge(part, on=key, how="left", suffixes=("_main", ""))
+        assert both.log_score.notna().all(), (scoring, "a year, level or method in the backtest is missing")
+        if scoring == "floor_0.5":       # the same children are scored; only naive's floor changes
+            assert (both.releases == both.releases_main).all()
+        else:                            # leaving places out can only score fewer children
+            assert (both.releases <= both.releases_main).all()
+
+
+@week5_checks
+@needs_data
+def test_naive_state_scores_under_the_check_scorings_match_the_data():  # FR-12 (decided 2026-11-11)
+    checks, wide = pd.read_csv(CHECKS), state_shares()
+    naive = checks[(checks.level == "state") & (checks.method == "naive")].set_index(["scoring", "fiscal_year"])
+    for scoring in CHECK_SCORINGS:
+        for fy in HELD_OUT:
+            score, releases = naive_state_log_score(wide, fy, scoring)
+            row = naive.loc[(scoring, fy)]
+            assert row.log_score == pytest.approx(score, abs=1e-5), (scoring, fy, row.log_score, score)
+            assert row.releases == releases, (scoring, fy)
 
 
 @week5_record
@@ -282,3 +353,27 @@ def test_a_fallback_says_what_error_model_it_uses():  # R-03 (review)
     manifest, _, _ = sc.load()
     if "dirichlet" not in manifest["share_model"].lower():
         assert str(manifest.get("fallback_error_model", "")).strip(), "describe the fallback's error model"
+
+
+@week6
+@week6_versions
+def test_the_two_fallback_versions_are_compared_head_to_head():  # FR-14, NFR-10 (decided 2026-11-11)
+    versions = pd.read_csv(VERSIONS)
+    assert {"version", "size_group", "places", "inside_80", "coverage", "mean_width_share_points",
+            "mean_interval_score"} <= set(versions.columns)
+    table = versions.set_index(["version", "size_group"])
+    assert set(table.index) == {(v, g) for v in ("a", "b") for g in SIZE_GROUPS}, sorted(table.index)
+    for version in ("a", "b"):
+        rows = table.loc[version]
+        assert rows.places.to_dict() == SIZE_GROUPS, (version, rows.places.to_dict())
+        assert rows.inside_80["large"] + rows.inside_80["small"] == rows.inside_80["all"], version
+        assert (rows.coverage - rows.inside_80 / rows.places).abs().max() <= 0.001, version
+        assert (rows.mean_width_share_points > 0).all()
+        assert (rows.mean_interval_score >= rows.mean_width_share_points - 1e-9).all()  # width plus penalties
+    manifest, _, calibration = sc.load()
+    chosen = manifest.get("error_model_version")
+    assert chosen in ("a", "b"), "scenarios.json needs 'error_model_version': the version the tables use"
+    assert str(manifest.get("version_choice", "")).strip(), "say in 'version_choice' why that version was chosen"
+    states = calibration[calibration.geo_level == "state"]
+    assert int(states.inside_80.sum()) == int(table.loc[(chosen, "all")].inside_80), \
+        "scenario_calibration.csv must describe the chosen version"

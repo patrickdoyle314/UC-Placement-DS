@@ -13,6 +13,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parent.parent
 RESULTS = ROOT / "results"
 MANIFEST, TABLE, CALIBRATION = "scenarios.json", "scenario_releases.csv", "scenario_calibration.csv"
+BY_SIZE = "scenario_calibration_by_size.csv"  # coverage for the 10 largest states and for the other 41
 
 SCENARIOS = ("low", "median", "high")
 GEO_LEVELS = ("state", "county", "other_counties")
@@ -43,6 +44,32 @@ def coverage(calibration: pd.DataFrame) -> dict:
     """Share of held-out actuals that fell inside their 80% range, pooled over years, per geo level."""
     pooled = calibration.groupby("geo_level")[["inside_80", "places"]].sum()
     return (pooled.inside_80 / pooled.places).round(3).to_dict()
+
+
+def coverage_by_size(results=RESULTS) -> dict:
+    """Pooled coverage for the large and the small states, or {} if that file has not been written.
+
+    One pooled figure hides a gap: the ranges can hold for most small states and still miss for the large
+    ones, where most children are released. The app shows both next to the pooled figure.
+    """
+    path = Path(results) / BY_SIZE
+    if not path.exists():
+        return {}
+    pooled = pd.read_csv(path).groupby("size_group")[["inside_80", "places"]].sum()
+    return (pooled.inside_80 / pooled.places).round(3).to_dict()
+
+
+def one_county_remainders(table: pd.DataFrame, counties_in_state: dict) -> pd.Series:
+    """True for an other-counties row that covers exactly one county.
+
+    A state's remainder covers its counties minus the county rows shown in that scenario. If that leaves
+    one county, the figure is that county's own number, so the app leaves it blank (guardrail 3).
+    counties_in_state: {state code: number of counties}; a state missing from it is never flagged.
+    """
+    county = table[(table.geo_level == "county") & (table.measure == "releases")]
+    shown = county.groupby(["scenario", "state"]).size().to_dict()
+    left = [counties_in_state.get(s, 0) - shown.get((sc, s), 0) for sc, s in zip(table.scenario, table.state)]
+    return (table.geo_level == "other_counties") & (pd.Series(left, index=table.index) == 1)
 
 
 def close(a, b) -> bool:

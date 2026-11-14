@@ -1,6 +1,6 @@
 # Week 4 findings memo: concentration, stability and geography
 
-*Where Unaccompanied Children Are Placed. Unaccompanied children released to sponsors, FY2015–FY2025. Built from the data by `python src/build_week4_memo.py` on November 10, 2026; every number is read from `results/`. Service planning only.*
+*Where Unaccompanied Children Are Placed. Unaccompanied children released to sponsors, FY2015–FY2025. Built from the data by `python src/build_week4_memo.py` on November 11, 2026; every number is read from `results/`. Service planning only.*
 
 **Check-in question:** is the pattern stable enough that last year predicts next year?
 
@@ -29,14 +29,14 @@
 | Mean of last 3 years | 0.227 | -3.1693 |
 | All earlier years pooled | 0.294 | -3.1768 |
 
-- **County tiers.** Each of the 393 counties listed at least once is placed in a tier every year. A county with 1,000+ releases stays in that tier the next year 58% of the time and moves to 200–999 41% of the time. A county with 50–199 releases falls below the threshold the next year 34% of the time. These moves follow national volume: 226 counties were listed in FY2019, 73 in FY2020, 338 in FY2022 and 109 in FY2025.
+- **County tiers.** Each of the 394 counties listed at least once is placed in a tier every year. A county with 1,000+ releases stays in that tier the next year 58% of the time and moves to 200–999 41% of the time. A county with 50–199 releases falls below the threshold the next year 34% of the time. These moves follow national volume: 227 counties were listed in FY2019, 73 in FY2020, 339 in FY2022 and 110 in FY2025.
 
 ![Tier transitions](../results/figures/week4_tier_transitions.png)
 
 ## 3. Geography: releases cluster
 
-- **Overall clustering (Moran's I).** States with high release rates per school-age child border other high-rate states: Moran's I = 0.48 (p = 0.0001, 49 contiguous states and DC). Counties that are often listed border other often-listed counties: Moran's I = 0.40 (p = 0.0001, 3,100 counties). Moran's I runs from -1 to +1; 0 means no spatial pattern.
-- **Steady over time.** Every year from FY2015 to FY2025 both tests are significant (p < 0.05): Moran's I 0.39–0.50 for states and 0.29–0.33 for counties. Clustering did not weaken in the surge years or the low years.
+- **Overall clustering (Moran's I).** States with high release rates per school-age child border other high-rate states: Moran's I = 0.48 (p = 0.0001, 49 contiguous states and DC). Counties that are often listed border other often-listed counties: Moran's I = 0.41 (p = 0.0001, 3,100 counties). Moran's I runs from -1 to +1; 0 means no spatial pattern.
+- **Steady over time.** Every year from FY2015 to FY2025 both tests are significant (p < 0.05): Moran's I 0.39–0.50 for states and 0.29–0.34 for counties. Clustering did not weaken in the surge years or the low years.
 
 ![Moran's I by year](../results/figures/week4_moran_by_year.png)
 
@@ -44,11 +44,11 @@
 
 ![State clusters](../results/figures/week4_state_clusters.png)
 
-- **Local clusters, counties (LISA).** 151 counties are High-High (58 pass the false-discovery-rate correction). Grouped by shared borders they form 31 clusters; the eight largest hold 51% of all FY2015–FY2025 releases.
+- **Local clusters, counties (LISA).** 152 counties are High-High (59 pass the false-discovery-rate correction). Grouped by shared borders they form 31 clusters; the eight largest hold 51% of all FY2015–FY2025 releases.
 
 | # | Cluster (largest counties at each end) | States | Counties | Share of national releases | Average years listed (of 11) |
 |---|---|---|---|---|---|
-| 1 | Prince George's County, MD to Suffolk County, NY | NJ NY MD PA VA | 54 | 20.9% | 7.8 |
+| 1 | Prince George's County, MD to Suffolk County, NY | NJ NY MD PA VA DC | 55 | 21.3% | 7.9 |
 | 2 | Los Angeles County, CA | CA | 9 | 6.8% | 9.4 |
 | 3 | Harris County, TX | TX | 5 | 6.3% | 7.0 |
 | 4 | Miami-Dade County, FL | FL | 6 | 5.3% | 9.3 |
@@ -62,7 +62,7 @@
 ## 4. Release shares compared with school-age population
 
 - **Listed counties** took 1.4–2.0 times their share of the nation's school-age children each year; **other counties** as a group took 0.3–0.6 times. The listed-county ratio was highest in FY2015 (2.0) and FY2020 (2.0) and lowest in FY2024 (1.4): in low-volume years releases concentrate in fewer places.
-- **70 counties were listed in all 11 years.** Together they received 59% of all releases but have 31% of the nation's school-age children. 58 of the 70 have a ratio above 1; the median is 2.2.
+- **71 counties were listed in all 11 years; 70 of them have a Census population figure.** Those 70 received 59% of all releases but have 31% of the nation's school-age children. 58 of the 70 have a ratio above 1; the median is 2.2. No Census match, so left out: Fairfield County, CT.
 
 | County | Releases FY2015-FY2025 | Per 1,000 children aged 5-17 | School-age ratio |
 |---|---|---|---|
@@ -80,14 +80,14 @@
 ## What this means for the next phases
 
 - **Week 5 (share model).** "Last year's shares" is a strong baseline (0.21 share points); the Bayesian model has to beat it on held-out years, or the write-up explains why not.
-- **Week 6 (scenarios).** County counts depend on whether a county clears the 50-release threshold, which depends on national volume. Reporting scenarios by cluster and by state, alongside listed counties, keeps ranges honest. The school-age ratios show where the same national volume means the largest relative need for school services; ORR's published age mix will turn releases into school-age children.
+- **Week 6 (scenarios).** County counts depend on whether a county clears the 50-release threshold, which depends on national volume. The scenario tables therefore report each state, the counties listed in the latest year, and one other-counties figure per state. The school-age ratios show where the same national volume means the largest relative need for school services; ORR's published age mix will turn releases into school-age children.
 
 ## Methods and limits
 
 - **Data.** Migration Policy Institute tabulation of ORR releases to sponsors (state and listed county, FY2015–FY2025); Census Bureau Vintage 2024 estimates of children aged 5–17 (July 1, 2024, used as one reference year for every fiscal year); Census 2023 cartographic boundary files (1:20m).
 - **Neighbors.** Queen contiguity (shared border or corner), row-standardized, for the 48 contiguous states and DC. Alaska, Hawaii and the territories have no land neighbors and are left out. A few island counties are linked to their nearest county. Connecticut's four listed counties are left out of the county analysis because its 2023 Census counties are planning regions that do not match them.
-- **Tests.** Moran's I and LISA with 9,999 random permutations and a fixed seed; local clusters at p < 0.05, with false-discovery-rate counts reported alongside (`results/lisa_summary.csv`). Most counties were never listed, so many shuffles tie the real value exactly; a tie counts as at least as extreme, so a never-listed county among never-listed neighbors is not called a cluster. Before November 10, 2026 the tie handling was left to rounding inside the esda library, which reported 105 High-High counties passing the correction and 753 Low-Low counties; the results also changed when numba was installed. LISA is now computed with NumPy and gives the same answer either way.
-- **County variable.** Years listed (0–11) uses only the published fact that a county had 50 or more releases in a year. Counties under the threshold are never estimated or backed out.
+- **Tests.** Moran's I and LISA with 9,999 random permutations and a fixed seed; local clusters at p < 0.05 (one-sided: the nearer tail of the shuffled values, the usual convention for this test), with false-discovery-rate counts reported alongside (`results/lisa_summary.csv`). Most counties were never listed, so many shuffles tie the real value exactly; a tie counts as at least as extreme, so a never-listed county among never-listed neighbors is not called a cluster. Before November 10, 2026 the tie handling was left to rounding inside the esda library, which reported 105 High-High counties passing the correction and 753 Low-Low counties; the results also changed when numba was installed. LISA is now computed with NumPy and gives the same answer either way.
+- **County variable.** Years listed (0–11) uses only the published fact that a county had 50 or more releases in a year. Counties under the threshold are never estimated or backed out. The District of Columbia is one county-equivalent that the source reports only as a state; it is counted as a county in the 10 years its total reached 50.
 - **School-age ratio.** First release location only, not later moves. Released children are not all of school age. Counties without a population match (Connecticut) are left out of both shares.
 - **Tiers.** The transition matrix covers counties listed at least once, so moves into and out of "not listed" are among counties that were listed in some year.
 

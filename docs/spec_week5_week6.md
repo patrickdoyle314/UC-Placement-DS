@@ -18,6 +18,11 @@ counties listed in FY2025. These items are marked "(decided)".*
 instead of spreading ages evenly (8/13); the low–high range is unchanged. Every assumption, with its
 status and history, is listed in `docs/ASSUMPTIONS.md`.*
 
+*Updated 2026-11-11, after a logic check of the whole project: four owner decisions. The winner rule is
+now pessimistic (it must hold under three scorings). The fallback's error model is built in two versions
+and compared head to head. The District of Columbia is treated as a county. An "other counties" figure
+that covers a single county is marked not publishable. These items are marked "(decided 2026-11-11)".*
+
 Check progress at any time:
 
 ```bash
@@ -61,6 +66,18 @@ Each test is skipped until the file it checks exists. Once the file is there, th
   years, and ties go to naive. MAE is reported but does not decide. With 8 years no rule can prove the model
   better (6 wins out of 8 happen by luck about 15% of the time); the rule only keeps a winner from being
   picked on noise. Copy this rule into `winner_rule`.
+- **Pessimistic scoring (decided 2026-11-11).** The winner rule is applied three times, and your model is
+  used at a level only if it passes all three:
+  1. **Main** (`floor_0.0001`): scored as `src/share_baseline.py` scores, with the 0.0001 floor.
+  2. **`floor_0.5`:** naive's forecast gets a floor of 0.5 of a release instead. Your model's forecast is
+     not changed.
+  3. **`zeros_left_out`:** places with no releases the year before are left out of that year's score for
+     both methods, and each forecast is rescaled to add to 1 over the places that remain.
+
+  Why: in FY2018–FY2021 one state a year had no releases the year before and 2 to 4 in the scored year.
+  Under the main scoring those 12 children cost naive 0.0007 to 0.0024 of log score per child, more than the
+  0.0005 tie, so a model could win those years on them alone. Write log scores with six decimals; the tests
+  round each gap to six decimals before comparing it with 0.0005. List the three scorings in `scorings`.
 
 **Writes:**
 
@@ -68,6 +85,7 @@ Each test is skipped until the file it checks exists. Once the file is there, th
 |---|---|
 | `results/share_model_backtest.csv` | `fiscal_year, level, method, releases, mae_share_points, log_score`. Here `level` is `state` or `county`, and `releases` is the number of releases scored that year at that level. Include a `naive` row and your model's row for every held-out year and level. |
 | `results/share_model_summary.csv` | `level, method, weighting, mae_share_points, log_score, years_beating_naive_mae, years_beating_naive_log`. One row per level × method × `weighting`, where `weighting` is `release` (weighted by `releases`, as `src/share_baseline.py` does) or `equal` (plain mean of the 8 years). The last two columns count the held-out years in which the method beat naive: lower MAE, or a log score higher by at least 0.0005 (review, decided). |
+| `results/share_model_backtest_checks.csv` | `fiscal_year, level, method, scoring, releases, log_score` (decided 2026-11-11). The same years, levels and methods as the backtest file, scored under `floor_0.5` and under `zeros_left_out`. Under `zeros_left_out`, `releases` counts only the children in the places that are scored. |
 | `results/share_model.json` | The model's record (review): see below. |
 
 `share_model.json` makes the fit reproducible and shows that the sampler worked:
@@ -77,6 +95,7 @@ Each test is skipped until the file it checks exists. Once the file is there, th
   "model_method": "your method's name, as in the backtest",
   "winner_rule": "the winner rule above",
   "winner": {"state": "naive or your method's name", "county": "naive or your method's name"},
+  "scorings": ["floor_0.0001", "floor_0.5", "zeros_left_out"],
   "first_lag_year": 2014,
   "floor": 0.0001,
   "floor_check": [
@@ -97,8 +116,8 @@ Each test is skipped until the file it checks exists. Once the file is there, th
 - `diagnostics`: one entry per fit. That is every backtest fit (`trained_through` 2017 to 2024) at both
   levels, plus the fits through 2025 that the scenario engine uses. Every fit must have R-hat at most 1.01,
   bulk effective sample size at least 400, and no divergences (Vehtari et al. 2021).
-- `winner`: the method that won at each level under `winner_rule`: `model_method` if it passed, else
-  `naive`. The tests recompute this from the backtest.
+- `winner`: the method that won at each level under `winner_rule`: `model_method` if it passed under all
+  three scorings, else `naive`. The tests recompute this from the backtest and the checks file.
 
 Then update `docs/MODEL_CARD_share_model.md` with which method won and why. If the baseline wins, say so
 plainly and make naive the shares the scenario engine uses. That is FR-12's acceptance condition.
@@ -114,16 +133,31 @@ plainly and make naive the shares the scenario engine uses. That is FR-12's acce
   starting from FY2025's actual shares. Then count the scenario's N children out across the 51 places,
   x ~ Multinomial(N, θ), and count each state's x_s out across its county categories,
   Multinomial(x_s, φ), with φ from the county model. Do not multiply N by θ: that leaves out counting
-  noise, and county ranges would then hold only about 70% of outcomes. N is the full national total,
+  noise. In theory county ranges would then hold only about 70% of outcomes; measured on the fallback the
+  difference is small (84% against 86%), and why is still being looked into (AS-24). N is the full national total,
   including the few releases to Puerto Rico and the Virgin Islands, which the counting spreads over the 51
   places. Report the mean of the draws as the expected value, and the 10th and 90th percentiles as the 80%
   range.
-- **County categories (decided):** the counties listed in FY2025 (109 counties in 34 states) plus one
-  "other counties" group per state. A county listed only in earlier years has no FY2025 count to start
-  from, so it stays inside "other counties".
+- **County categories (decided):** the counties listed in FY2025 (110 counties, in 34 states and the
+  District of Columbia) plus one "other counties" group per state. A county listed only in earlier years
+  has no FY2025 count to start from, so it stays inside "other counties". The District of Columbia is
+  treated as a county (decided 2026-11-11): in the Week 1 table its one category is its county row, and
+  its "other counties" is zero.
 - **Fallback:** until Week 5 is validated, "last year's shares" with an error model is the BRD's allowed
   fallback (risk R-03). Say which one you used in `share_model`. If it is the fallback, describe the error
   model in `fallback_error_model`: how the ranges around last year's shares are made (review).
+- **Two versions of the fallback, compared head to head (decided 2026-11-11).** With one κ for all 51
+  places, the ranges held for about 83% of state-years but only about 60% for the 10 largest states, which
+  receive about two thirds of children. Build both versions:
+  - **(a)** one κ for all places;
+  - **(b)** one κ for the large states and one for the other 41, each fitted on its own group's past misses.
+    "Large" means the 10 states with the most releases in the training years, as in the calibration by
+    state size below.
+
+  Run both through the same calibration: the same held-out years, the same seed and the same number of
+  draws. Write the comparison to `results/scenario_variant_comparison.csv` (below). Record the version the
+  scenario tables use in `error_model_version` (`"a"` or `"b"`) and the reason in `version_choice`. The
+  two calibration files describe that version.
 - **Calibration (FR-14, NFR-10):** for each held-out year FY2018–FY2025, simulate from earlier years
   only, using that year's actual national total. Count how many states, and how many listed counties,
   landed inside their 80% range. Pooled over the years, this should be about 80%; the test accepts
@@ -133,7 +167,8 @@ plainly and make naive the shares the scenario engine uses. That is FR-12's acce
   differently. For each held-out year, report the state results separately for `large` states (the 10
   states with the most releases in the years that fit was trained on) and `small` states (the other 41),
   with the average width of the 80% range. If coverage differs a lot between the two, say in the model
-  card what you changed, or why you kept one κ.
+  card what you changed, or why you kept one κ. The app shows these two figures next to the pooled one
+  (decided 2026-11-11).
 - **Service needs (FR-15):** at least `school_age`, from ORR's published age mix. The source is
   [ORR's UAC Age Data](https://acf.gov/orr/data/uac/age), an XLSX file of children in ORR care by age
   (published Oct 7, 2026). The copy is `data/raw/orr/UAC-Age-Data_Sep_2026_0.xlsx`, downloaded
@@ -167,6 +202,11 @@ plainly and make naive the shares the scenario engine uses. That is FR-12's acce
   - Everything else in the state goes into one "other counties" row. Fold a listed county under 50 into
     it by adding its draws to the other-counties draws before taking the mean and percentiles.
   - Round every figure to whole children.
+  - **One-county remainders (decided 2026-11-11).** If a state's "other counties" row covers exactly one
+    county (the state's counties minus the county rows shown), the figure is that county's own. Write the
+    row as usual so the totals add up; the app leaves it blank by itself (`one_county_remainders` in
+    `src/scenario_contract.py`). With FY2025 as the base year this happens only for the District of
+    Columbia in the low scenario.
 
 **Writes three files to `results/`:**
 
@@ -191,7 +231,9 @@ plainly and make naive the shares the scenario engine uses. That is FR-12's acce
   "age_mix_source": "ORR UAC Age Data, yearly table FY2019-FY2025 (published 2026-10-07), downloaded 2026-11-04",
   "age_mix": {"ages": "13-14, 15-16 and 17+, plus lambda x 0-12", "lambda": 0.8631, "point_fiscal_years": [2025],
               "school_age_fraction": 0.0, "low": 0.0, "high": 1.0},
-  "fallback_error_model": "only if share_model is the fallback: how its ranges are made"
+  "fallback_error_model": "only if share_model is the fallback: how its ranges are made",
+  "error_model_version": "a or b: the version the tables use",
+  "version_choice": "why that version, from the comparison file"
 }
 ```
 
@@ -217,6 +259,13 @@ coverage, mean_width_share_points`, with one `large` and one `small` row per hel
 add up to that year's `state` row in `scenario_calibration.csv`. `mean_width_share_points` is the average
 of (upper − lower) over the group's states, as shares × 100.
 
+`scenario_variant_comparison.csv` (decided 2026-11-11) has the columns `version, size_group, places,
+inside_80, coverage, mean_width_share_points, mean_interval_score`. It has one row per version (`a`, `b`)
+and size group (`all`, `large`, `small`), pooled over the eight held-out years: 408, 80 and 328
+state-years. The interval score of one state-year is the width of its 80% range plus 10 times any distance
+by which the actual figure falls outside the range, in share points (10 is 2 ÷ 0.2). Lower is better: it
+rewards ranges that are narrow and still hold (Gneiting and Raftery 2007).
+
 ## What the acceptance tests check
 
 | Test | Requirement |
@@ -226,13 +275,15 @@ of (upper − lower) over the group's states, as shares × 100.
 | Summary compares your model with the naive baseline at both levels | FR-12 |
 | Summary matches the backtest: both averages and the years each method beat naive, with the 0.0005 tie (review, decided) | FR-12 |
 | `share_model.json` records the winner rule, the winner, priors and sampler settings (review) | FR-12, NFR-07 |
-| The winner is the one the fixed winner rule picks from the backtest (decided) | FR-12 |
+| The winner is the one the fixed winner rule picks from the backtest, under all three scorings (decided, 2026-11-11) | FR-12 |
+| The checks file covers every year, level and method, and naive's state scores in it match the data (decided 2026-11-11) | FR-12 |
 | The floor matches naive's, and the 0.5-release refit is recorded (decided) | FR-11 |
 | FY2014 is the first "last year": each fit's `transitions` = `trained_through` − 2014 (decided) | FR-11, FR-12 |
 | Every fit has R-hat ≤ 1.01, bulk ESS ≥ 400 and no divergences (review) | FR-11 |
 | Calibration is reported for large and small states, adding up to the state totals (review) | FR-14, NFR-10 |
 | The school-age fraction uses λ from ORR's 0–5 / 6–12 split, and its low and high match ORR's file (review, decided) | FR-15, A-03 |
 | A fallback share model says what error model it uses (review) | R-03 |
+| Both fallback versions are in the comparison file for all, large and small states; the version used and the reason are recorded (decided 2026-11-11) | FR-14, NFR-10 |
 | Scenario volumes are the lowest, median and highest years, with the right source years | FR-13 |
 | The files pass every check in `src/scenario_contract.py` (format, ranges, sums, the 50-release rule) | FR-18, FR-19, NFR-03 |
 | Every county shown is listed in FY2025 (decided) | FR-19, NFR-03 |

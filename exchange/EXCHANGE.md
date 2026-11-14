@@ -59,9 +59,15 @@ which snapshot date), `publication_threshold`, `row_count` and `measures` (ident
 ## Measures produced by this project (UC-Placement: unaccompanied children released to sponsors)
 
 Source: Migration Policy Institute tabulation of ACF/ORR data, FY2014–FY2025
-(`data/raw/mpi/`), reshaped by `src/build_dataset.py`. All values are already public, so every row is
-`publishable = true`. County rows exist only where MPI publishes the county (50 or more releases
-that year); `other_counties` is the state total minus listed counties and is never split further.
+(`data/raw/mpi/`), reshaped by `src/build_dataset.py`. County rows exist only where MPI publishes the
+county (50 or more releases that year); `other_counties` is the state total minus listed counties and is
+never split further. The District of Columbia, one county-equivalent that MPI reports only as a state,
+has a county row in the years its total reached 50.
+
+Every row is `publishable = true` except one kind: an `other_counties` row that covers exactly one county.
+That figure is the one county's own count, which the source withheld, so it is marked
+`publishable = false` (rule 2 applies; the threshold in the manifest is 50). In FY2014–FY2025 this is
+Delaware in FY2019, FY2021, FY2022 and FY2023, and the District of Columbia in FY2020.
 
 | measure | levels | meaning |
 |---|---|---|

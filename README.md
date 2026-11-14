@@ -8,6 +8,9 @@ FY2015–FY2025, and what a future rise in national volume would mean for local 
 - Problem statement (Week 1, draft for approval): [`docs/problem_statement.md`](docs/problem_statement.md)
 - Week 4 findings memo (concentration, stability, geography): [`docs/week4_findings_memo.md`](docs/week4_findings_memo.md)
 - Spec for the Week 5 share model and Week 6 scenario engine: [`docs/spec_week5_week6.md`](docs/spec_week5_week6.md)
+- Assumptions register (every assumption, its status and a dated history): [`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md)
+- Math document (methods and mathematical principles, November 6 revision):
+  [`docs/math_methods_and_principles_2026-11-06.pdf`](docs/math_methods_and_principles_2026-11-06.pdf)
 - Changes: [`CHANGELOG.md`](CHANGELOG.md)
 
 **Status:** Weeks 1–4 done (data assembly, exploratory analysis, concentration and persistence, geography).
@@ -15,11 +18,14 @@ Week 2 was reviewed against Week 1 and the BRD on its own: it now runs on Week 1
 the per-year maps. Week 3 was reviewed the same way: county concentration now counts counties one by one
 (it had counted all unlisted counties as one place), and Lorenz curves and per-year transition matrices are
 added. Week 7 built: the Streamlit app, its tests and a reshaping unit test. The app's History tab
-works now. Its Scenario tab waits for the Week 5 share model and Week 6 scenario engine, which the project
-owner is writing to [`docs/spec_week5_week6.md`](docs/spec_week5_week6.md). FSO and contract-lead sign-off
+works now. Its Scenario tab waits for the scenario engine, which the project owner is writing to
+[`docs/spec_week5_week6.md`](docs/spec_week5_week6.md): first on last year's shares with an error model, in
+two versions compared head to head, and later on the Bayesian share model (AS-39 and AS-40 in
+[`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md)). FSO and contract-lead sign-off
 is still pending.
-This repository is **public** since October 25, 2026, released by the project owner. The alignment notes
-with the MP project stay local and unpublished.
+Current work is kept in a private repository. A copy through v0.6.2 (Weeks 1–4 and the app) is public at
+[UC-Public](https://github.com/patrickdoyle314/UC-Public), released by the project owner on November 4, 2026.
+The alignment notes with the MP project stay local and unpublished.
 
 ## Built alongside another project
 
@@ -44,7 +50,8 @@ These apply to every file, chart and write-up in this project:
 ```
 UC-Placement/
   README.md, CHANGELOG.md
-  docs/                 plan of record (.docx, kept local), problem statement, Week 4 memo, Week 5-6 spec
+  docs/                 plan of record (.docx, kept local), problem statement, Week 4 memo, Week 5-6 spec,
+                        assumptions register, math document (PDF)
   src/build_dataset.py  Week 1: reshape MPI data, add other-counties rows, join Census
   src/measure.py, src/share_baseline.py, src/run_sql.py   Week 3 measures, tiers, share baselines, SQL runner
   src/geography.py, src/build_week4_memo.py              Week 4: Moran's I, LISA, school-age comparison; memo
@@ -74,10 +81,11 @@ notebook's code cells → `src/geography.py` (GeoPandas, spatial statistics).
 
 | Source | File | Notes |
 |---|---|---|
-| [Migration Policy Institute: Released to Sponsors by State and County, FY 2014–2025](https://www.migrationpolicy.org/data-tool/unaccompanied-children-state-county) | `data/raw/mpi/mpi-data-hub_uacsbystate-county-fy2014-fy2025.xlsx` (133,945 bytes, downloaded 2026-10-22) | Tabulation of ACF/ORR data. Counties listed only for years with ≥ 50 releases. First release location only. Includes FY2014, Puerto Rico and the U.S. Virgin Islands. |
+| [Migration Policy Institute: Released to Sponsors by State and County, FY 2014–2025](https://www.migrationpolicy.org/data-tool/unaccompanied-children-state-county) | `data/raw/mpi/mpi-data-hub_uacsbystate-county-fy2014-fy2025.xlsx` (133,945 bytes, downloaded 2026-10-22) | Tabulation of ACF/ORR data. Counties listed only for years with ≥ 50 releases. First release location only. Includes FY2014, Puerto Rico and the U.S. Virgin Islands. Its county sheet has no row for the District of Columbia (see Week 1 results). |
 | [Census Bureau Vintage 2024 county estimates by age and sex](https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/counties/asrh/) | `data/raw/census/cc-est2024-agesex-all.csv` (8,723,627 bytes, downloaded 2026-10-22) | County FIPS codes; July 1, 2024 total and ages 5–17 population. Covers the 50 states and DC only. |
 | Census ACS 5-year (language spoken at home) | — | Pending: needs a free Census API key, which you request yourself at api.census.gov. |
 | [Census 2023 cartographic boundary files](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html) (1:20,000,000) | `data/raw/geo/cb_2023_us_state_20m.zip`, `cb_2023_us_county_20m.zip` | State and county shapes for the maps and the app. |
+| [ORR: Unaccompanied Alien Children age data](https://acf.gov/orr/data/uac/age) | `data/raw/orr/UAC-Age-Data_Sep_2026_0.xlsx` (16,414 bytes, published 2026-10-07, downloaded 2026-11-04) | Children in ORR care by age group: yearly shares for FY2019–FY2025 and FY2026 month-end counts. For the school-age fraction in the scenario engine (spec; AS-34 to AS-37). |
 
 ### Fiscal-year alignment
 
@@ -85,7 +93,7 @@ Every figure is placed on the federal fiscal year (October 1 – September 30):
 
 | Source | Its own period | How it is aligned |
 |---|---|---|
-| MPI release counts | Federal fiscal year | Used as published. FY2015–FY2025 are analyzed; FY2014 stays in the Week 1 table only. |
+| MPI release counts | Federal fiscal year | Used as published. FY2015–FY2025 are analyzed. FY2014 is used only as the starting "last year" for FY2015 in the share model (AS-15). |
 | Census Vintage 2024 estimates | July 1, 2024 (inside FY2024) | One fixed reference population for every fiscal year, not re-estimated year by year. |
 | Census ACS 5-year (pending) | A five-calendar-year period | To be used the same way: a fixed reference, labeled with its period. |
 | ORR age data (Week 6) | Federal fiscal year | The engine uses the fiscal year it names in `results/scenarios.json`. |
@@ -139,7 +147,8 @@ Median or High, each one a real year's national total from FY2015–FY2025) and 
 
 - **Scenario:** state and county maps of expected releases or school-age children, and sortable tables with the
   expected value and the 80% range for every state, listed county and state "other counties" figure. It also
-  shows how often the ranges held the actual figure in backtests.
+  shows how often the ranges held the actual figure in backtests: for all states, and separately for the 10
+  largest states and the other 41, since one pooled figure can hide a gap between them.
 - **History:** published counts for any fiscal year on state and county maps, the national or state trend, and
   how many of the 11 years each county was listed (steady or changing need).
 - **Definitions:** a plain-language glossary. Every table column also has its own help text.
@@ -151,6 +160,8 @@ Guardrails are enforced in code, not only stated:
   example a county with fewer than 50 expected releases shown by itself, the app shows the problem instead of
   the numbers.
 - The History tab shades a county only in years it was published (50+ releases).
+- An "other counties" figure that would cover a single county is left blank, because it would be that
+  county's own number (AS-41).
 
 The tests run the app on synthetic scenario files in `tests/fixtures/scenarios/`, which are made up and describe
 nothing real. They check that:
@@ -171,14 +182,16 @@ Full memo with charts and methods: [`docs/week4_findings_memo.md`](docs/week4_fi
    to FY2015, a pair the share model also uses), and "last year's shares" misses each
    state's share by 0.21 percentage points on average, the best of three simple rules.
 2. **Counties: steady places, moving counts.** How many counties clear the 50-release threshold follows national
-   volume (73 listed in FY2020, 338 in FY2022, 109 in FY2025); a 1,000+ county stays 1,000+ the next year 58% of the time.
-3. **Releases cluster.** Moran's I is 0.48 for state release rates per school-age child and 0.40 for how often
+   volume (73 listed in FY2020, 339 in FY2022, 110 in FY2025); a 1,000+ county stays 1,000+ the next year 58% of the time.
+3. **Releases cluster.** Moran's I is 0.48 for state release rates per school-age child and 0.41 for how often
    counties are listed (both p = 0.0001), and every single year is significant. Eight county clusters (the largest
    runs from Prince George's County, MD to Suffolk County, NY) received 51% of all FY2015–FY2025 releases. Of the
-   151 High-High counties, 58 pass a false-discovery-rate correction. That figure was 105 before the
-   November 10, 2026 fix to how ties are counted (see the CHANGELOG).
-4. **Compared with school-age population,** listed counties took 1.4–2.0 times their share each year. The 70
-   counties listed every year received 59% of releases and have 31% of the nation's school-age children.
+   152 High-High counties, 59 pass a false-discovery-rate correction. That figure was 105 before the
+   November 10, 2026 fix to how ties are counted, and 58 before the District of Columbia was counted as a county
+   on November 11 (see the CHANGELOG).
+4. **Compared with school-age population,** listed counties took 1.4–2.0 times their share each year. 71 counties
+   were listed every year; the 70 with a Census population figure received 59% of releases and have 31% of the
+   nation's school-age children.
 
 ## Week 3 results: concentration and persistence
 
@@ -188,17 +201,17 @@ evenly over this many places": higher means more spread out.
 
 | Fiscal year | States: effective number | States: top-10 share | Listed counties | Counties: effective number (at least) | Counties: top-10 share | Unlisted counties' share |
 |---|---|---|---|---|---|---|
-| FY2015 | 14.7 | 72% | 108 | 71 | 29% | 27% |
-| FY2016 | 13.5 | 75% | 156 | 60 | 33% | 18% |
-| FY2017 | 13.6 | 74% | 138 | 64 | 31% | 20% |
-| FY2018 | 14.9 | 70% | 124 | 82 | 26% | 27% |
-| FY2019 | 14.8 | 72% | 226 | 76 | 27% | 15% |
+| FY2015 | 14.7 | 72% | 109 | 71 | 29% | 26% |
+| FY2016 | 13.5 | 75% | 157 | 60 | 33% | 17% |
+| FY2017 | 13.6 | 74% | 139 | 63 | 31% | 20% |
+| FY2018 | 14.9 | 70% | 125 | 82 | 26% | 26% |
+| FY2019 | 14.8 | 72% | 227 | 75 | 27% | 14% |
 | FY2020 | 14.5 | 71% | 73 | 76 | 26% | 36% |
-| FY2021 | 15.6 | 70% | 298 | 88 | 24% | 12% |
-| FY2022 | 15.3 | 69% | 338 | 88 | 24% | 11% |
-| FY2023 | 16.4 | 67% | 334 | 107 | 22% | 12% |
-| FY2024 | 17.3 | 64% | 322 | 132 | 19% | 15% |
-| FY2025 | 16.5 | 65% | 109 | 112 | 21% | 35% |
+| FY2021 | 15.6 | 70% | 299 | 88 | 24% | 12% |
+| FY2022 | 15.3 | 69% | 339 | 88 | 24% | 10% |
+| FY2023 | 16.4 | 67% | 335 | 107 | 22% | 12% |
+| FY2024 | 17.3 | 64% | 323 | 132 | 19% | 15% |
+| FY2025 | 16.5 | 65% | 110 | 112 | 21% | 35% |
 
 1. **Concentration** (`concentration_by_year.csv`, Lorenz curves in `lorenz_by_year.csv` and
    [`results/figures/week3_lorenz.png`](results/figures/week3_lorenz.png)). Releases are concentrated, and the
@@ -206,7 +219,7 @@ evenly over this many places": higher means more spread out.
    and 0.39–0.61 among listed counties.
    - **States:** the largest fifth of states received 64%–76% of children each year, and the smaller half 7%–10%.
    - **Counties:** the county curves and Gini cover listed counties only, and the number listed swings with
-     volume. They look flattest in FY2020 and FY2025, when only 73 and 109 counties reached 50 releases and
+     volume. They look flattest in FY2020 and FY2025, when only 73 and 110 counties reached 50 releases and
      the listed set held only larger counties. So compare county curves across years with care, and use the
      effective numbers above for trends.
 2. **How counties are counted.** Counties under 50 releases are not published, and they are never split or
@@ -215,7 +228,7 @@ evenly over this many places": higher means more spread out.
    counties are always listed, so their share is exact.
 3. **Persistence** (`persistence_state_ranks.csv`, `persistence_county_ranks.csv`). Year-to-year rank
    correlations of state shares are Spearman 0.985–0.996 and Kendall 0.910–0.962 (FY2015–FY2025; from FY2014 to
-   FY2015, a pair the share model also uses, they are 0.983 and 0.906). Among the 73–310 counties
+   FY2015, a pair the share model also uses, they are 0.983 and 0.906). Among the 73–311 counties
    published in both years of a pair, they are Spearman 0.877–0.968 and Kendall 0.699–0.857.
 4. **Tiers** (`tier_transitions.csv` pooled; `tier_transitions_by_year.csv` for each pair of years). A county
    with 1,000+ releases stays 1,000+ the next year 58% of the time; one with 50–199 falls below the threshold 34%
@@ -240,10 +253,10 @@ Five findings, FY2015–FY2025 (BRD FR-05):
    FY2015, which the share model also uses, is 0.983.
 3. The 20 largest receiving counties took 34% of releases; Harris County, TX received the most children in 9 of
    11 years, and all 20 were listed (50+ releases) every year.
-4. Listed counties ranged from 73 (FY2020) to 338 (FY2022) and held 63%–89% of releases; the rest are the
+4. Listed counties ranged from 73 (FY2020) to 339 (FY2022) and held 63%–90% of releases; the rest are the
    unlisted "other counties" group, never split further.
-5. Per school-age child (ages 5–17, 2024), the highest totals were in Maryland, DC and Virginia (36 per 1,000) and
-   the lowest in Hawaii, Vermont and Alaska. 389 of the 393 listed counties are on the county map (4 Connecticut
+5. Per school-age child (ages 5–17, 2024), the highest totals were in Maryland (36 per 1,000), DC (31) and
+   Virginia (26), and the lowest in Hawaii, Vermont and Alaska. 390 of the 394 listed counties are on the county map (4 Connecticut
    counties have no FIPS match; Alaska, Hawaii and Puerto Rico are left off the maps).
 
 State and county maps for every fiscal year, on one shared color scale (BRD FR-06):
@@ -255,13 +268,14 @@ shade only published counts (50+ releases).
 
 `src/build_dataset.py` writes:
 
-- **`data/processed/releases_by_fy_geo.csv`**: 3,673 rows, one per fiscal year × geography:
-  12 national, 636 state (50 states, DC, PR, VI), 2,389 county, 636 "other counties".
+- **`data/processed/releases_by_fy_geo.csv`**: 3,684 rows, one per fiscal year × geography:
+  12 national, 636 state (50 states, DC, PR, VI), 2,400 county, 636 "other counties".
   Columns: `fiscal_year, geo_level, state, state_name, county_fips, county_name, county_key, releases,
-  listed_counties, pop_total_2024, pop_5_17_2024`.
+  listed_counties, pop_total_2024, pop_5_17_2024, unlisted_counties, publishable`.
 - **`data/processed/reconciliation.csv`**: 648 checks, **all pass**. For every state and year, listed
   counties plus "other counties" equal the state total. For every year, states sum to the national total.
-- **`data/processed/county_fips_unmatched.csv`**: 389 of 393 MPI counties matched to a FIPS code. The 4
+- **`data/processed/county_fips_unmatched.csv`**: 390 of 394 counties matched to a FIPS code (MPI's 393 and the
+  District of Columbia). The 4
   unmatched are Connecticut counties (Fairfield, Hartford, New Haven, New London): since 2022 the Census
   reports Connecticut by planning region, not county.
 
@@ -275,6 +289,14 @@ Findings for the plan:
   FY 2014–2025 total column; read that way, the states add up to the national total in every year.
 - Census population is one reference year (July 1, 2024) on every row. Puerto Rico and the Virgin Islands
   have no population in this file.
+- MPI's county sheet has no row for the **District of Columbia**, which it reports as a state. DC is one
+  county-equivalent, and it had 50 or more releases in every year but FY2020 (48). It therefore gets a county
+  row from its state total in those years (AS-42). Without the row it counted as a county that never reached
+  the threshold.
+- A state's "other counties" figure sometimes covers a **single county**: Delaware in FY2019, FY2021, FY2022
+  and FY2023 (two of its three counties were listed) and DC in FY2020. That figure is the one county's own
+  count, which ORR withheld. Those five rows stay in the table so totals add up, marked
+  `publishable = False`; the exchange file flags them and the app leaves them blank (AS-41).
 - The plan says to join ACS county data. Total and school-age population come from the Vintage 2024
   estimates above, which need no API key; the ACS join (language spoken at home) is pending (see Data).
 

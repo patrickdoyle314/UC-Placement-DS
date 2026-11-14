@@ -86,6 +86,13 @@ def main():
     w14 = (w14 / w14.sum()).dropna()
     fy14 = {m: w14[2014].corr(w14[2015], method=m) for m in ("spearman", "kendall")}
     us_releases, us_pop = int(nat.releases.sum()), float(nat.pop_5_17_2024.iloc[0])
+    # Counties listed in all 11 years, whether or not they have a Census match (the school-age table below
+    # can only hold the ones that do), and the years the District of Columbia counts as a listed county.
+    c11 = df[(df.geo_level == "county") & df.fiscal_year.between(2015, 2025)]
+    years11 = c11.groupby("county_name").fiscal_year.nunique()
+    every_year = set(years11[years11 == 11].index)
+    no_match = sorted(every_year - set(always.county_name))
+    dc_years = int(years11.get("District of Columbia, DC", 0))
     chart_tiers(trans)
 
     # ---- numbers used in the text
@@ -218,9 +225,11 @@ def main():
         f"times. The listed-county ratio was highest in FY{by_ratio.index[-1]} ({by_ratio.iloc[-1]:.1f}) and "
         f"FY{by_ratio.index[-2]} ({by_ratio.iloc[-2]:.1f}) and lowest in FY{by_ratio.index[0]} "
         f"({by_ratio.iloc[0]:.1f}): in low-volume years releases concentrate in fewer places.",
-        f"- **{len(always)} counties were listed in all 11 years.** Together they received {always_rel:.0%} of all "
-        f"releases but have {always_pop:.0%} of the nation's school-age children. {(always.ratio > 1).sum()} of the "
-        f"{len(always)} have a ratio above 1; the median is {always.ratio.median():.1f}.",
+        f"- **{len(every_year)} counties were listed in all 11 years; {len(always)} of them have a Census "
+        f"population figure.** Those {len(always)} received {always_rel:.0%} of all releases but have "
+        f"{always_pop:.0%} of the nation's school-age children. {(always.ratio > 1).sum()} of the {len(always)} "
+        f"have a ratio above 1; the median is {always.ratio.median():.1f}."
+        + (f" No Census match, so left out: {', '.join(no_match)}." if no_match else ""),
         "",
         md_table(ratio_table),
         "",
@@ -231,8 +240,9 @@ def main():
         f"- **Week 5 (share model).** \"Last year's shares\" is a strong baseline ({naive.mae_share_points:.2f} share "
         f"points); the Bayesian model has to beat it on held-out years, or the write-up explains why not.",
         "- **Week 6 (scenarios).** County counts depend on whether a county clears the 50-release threshold, which "
-        "depends on national volume. Reporting scenarios by cluster and by state, alongside listed counties, keeps "
-        "ranges honest. The school-age ratios show where the same national volume means the largest relative need "
+        "depends on national volume. The scenario tables therefore report each state, the counties listed in the "
+        "latest year, and one other-counties figure per state. The school-age ratios show where the same national "
+        "volume means the largest relative need "
         "for school services; ORR's published age mix will turn releases into school-age children.",
         "",
         "## Methods and limits",
@@ -245,14 +255,17 @@ def main():
         "counties are linked to their nearest county. Connecticut's four listed counties are left out of the "
         "county analysis because its 2023 Census counties are planning regions that do not match them.",
         f"- **Tests.** Moran's I and LISA with 9,999 random permutations and a fixed seed; local clusters at "
-        f"p < 0.05, with false-discovery-rate counts reported alongside (`results/lisa_summary.csv`). Most "
+        f"p < 0.05 (one-sided: the nearer tail of the shuffled values, the usual convention for this test), "
+        f"with false-discovery-rate counts reported alongside (`results/lisa_summary.csv`). Most "
         f"counties were never listed, so many shuffles tie the real value exactly; a tie counts as at least as "
         f"extreme, so a never-listed county among never-listed neighbors is not called a cluster. Before "
         f"November 10, 2026 the tie handling was left to rounding inside the esda library, which reported 105 "
         f"High-High counties passing the correction and 753 Low-Low counties; the results also changed when "
         f"numba was installed. LISA is now computed with NumPy and gives the same answer either way.",
         "- **County variable.** Years listed (0–11) uses only the published fact that a county had 50 or more "
-        "releases in a year. Counties under the threshold are never estimated or backed out.",
+        "releases in a year. Counties under the threshold are never estimated or backed out. The District of "
+        "Columbia is one county-equivalent that the source reports only as a state; it is counted as a county in "
+        f"the {dc_years} years its total reached 50.",
         "- **School-age ratio.** First release location only, not later moves. Released children are not all of "
         "school age. Counties without a population match (Connecticut) are left out of both shares.",
         "- **Tiers.** The transition matrix covers counties listed at least once, so moves into and out of "

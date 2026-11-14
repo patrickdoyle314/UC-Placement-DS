@@ -1,5 +1,5 @@
 cluster,name,largest_counties,states,counties,listed_releases_fy2015_2025,share_of_national_releases,mean_years_listed
-1,"Prince George's County, MD to Suffolk County, NY","Prince George's County, MD; Suffolk County, NY; Queens County, NY",NJ NY MD PA VA,54,150605,0.2091,7.8
+1,"Prince George's County, MD to Suffolk County, NY","Prince George's County, MD; Suffolk County, NY; Queens County, NY",NJ NY MD PA VA DC,55,153333,0.2129,7.9
 2,"Los Angeles County, CA","Los Angeles County, CA; Orange County, CA; Riverside County, CA",CA,9,48983,0.068,9.4
 3,"Harris County, TX","Harris County, TX; Galveston County, TX; Fort Bend County, TX",TX,5,45364,0.063,7.0
 4,"Miami-Dade County, FL","Miami-Dade County, FL; Palm Beach County, FL; Broward County, FL",FL,6,38251,0.0531,9.3
