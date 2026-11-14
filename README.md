@@ -30,8 +30,8 @@ model, in two versions compared head to head (AS-39 and AS-40 in
 under [Scenario engine](#scenario-engine-results-on-the-fallback). The Bayesian share model is not built, and
 its acceptance tests are still skipped. FSO and contract-lead sign-off
 is still pending.
-This fork is a local repository and has not been pushed anywhere. The original's current work is kept in a
-private repository. A copy through v0.6.2 (Weeks 1–4 and the app) is public at
+This fork is kept in its own private repository. The original's current work is kept in a separate private
+repository. A copy through v0.6.2 (Weeks 1–4 and the app) is public at
 [UC-Public](https://github.com/patrickdoyle314/UC-Public), released by the project owner on November 4, 2026.
 The alignment notes with the MP project stay local and unpublished.
 
