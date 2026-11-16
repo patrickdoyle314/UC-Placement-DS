@@ -102,6 +102,7 @@ Newest first. Each line says what changed and which files were updated with it.
   - AS-20 applied: naive won at both levels (4 of 8 years for states, 4 of 8 for counties; 6 needed). The scenario engine keeps last year's shares (AS-39), and AS-43's view is supported.
   - AS-13: the priors are written out; Claude set them and the owner has not confirmed them. AS-14: the floor check moved ρ from 0.915 to 0.931. AS-12 and AS-18: the fitted ρ values are in the rows.
   - Updated in the fork: the model card, the README, the app's "About" text, the scenario engine (it now reads the backtest's result), `requirements.txt` and the changelog. Not updated: the math doc, the review copies and the Word copies.
+  - AS-38 (no change to the row): the owner had the fork's repository made public on this date. Sign-off was not yet recorded, so the row stays Open.
 - **2026-11-14, in the fork** (the owner had Claude build the scenario engine in a fork of the repository):
   - `src/scenarios.py` and `tests/test_scenarios.py` were written with AI assistance. The README's "How this was built" says so.
   - AS-39: the fallback engine is built; its κ values and coverage are in the row.

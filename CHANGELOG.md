@@ -5,6 +5,11 @@ dates are when the change was made.
 
 ## [Unreleased]
 
+### Changed
+- **The fork's repository made public** (2026-11-16) at the project owner's direction. FSO and contract-lead
+  sign-off was not yet recorded (AS-38). Before the change, all 23 commits were checked: no local-only
+  folder (`alignment/`, `coaching/`, `writeups/`, `data/`, `exchange/outbox/`), key or personal detail is in them.
+
 ### Added
 - **Share model, in the fork** (2026-11-16): `src/share_model.py`, written with AI assistance at the owner's
   direction (README, "How this was built"). A Dirichlet-multinomial model in PyMC for state shares and for

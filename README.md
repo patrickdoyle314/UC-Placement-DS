@@ -31,8 +31,8 @@ under [Scenario engine](#scenario-engine-results-on-the-fallback). The Bayesian 
 and tested against last year's shares. It did not beat them at either level, so the scenario tables keep last
 year's shares ([Share model](#share-model-results)). All 20 acceptance tests now run and pass. FSO and contract-lead sign-off
 is still pending.
-This fork is kept in its own private repository. The original's current work is kept in a separate private
-repository. A copy through v0.6.2 (Weeks 1–4 and the app) is public at
+This fork's repository was made public on November 16, 2026, at the project owner's direction, before that
+sign-off was recorded (AS-38). The original's current work is kept in a separate private repository. A copy through v0.6.2 (Weeks 1–4 and the app) is public at
 [UC-Public](https://github.com/patrickdoyle314/UC-Public), released by the project owner on November 4, 2026.
 The alignment notes with the MP project stay local and unpublished.
 
