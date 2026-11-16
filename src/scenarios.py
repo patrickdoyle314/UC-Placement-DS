@@ -4,9 +4,10 @@ For each scenario the engine starts from last year's shares (FY2025), simulates 
 and reports for every state, and every county it may show, the expected number of children released to
 sponsors with an 80% range, plus the school-age children among them.
 
-This is the fallback the business requirements allow while the share model is not validated (risk R-03):
-"last year's shares" with an error model. The error model is built in two versions and compared head to
-head on FY2018-FY2025; the tables use the version the comparison picks (docs/ASSUMPTIONS.md, AS-39, AS-40).
+The shares are "last year's shares" with an error model, the fallback the business requirements allow
+(risk R-03). The Bayesian share model (src/share_model.py) was tested against last year's shares and did not
+beat them, so they stay (FR-12). The error model is built in two versions and compared head to head on
+FY2018-FY2025; the tables use the version the comparison picks (docs/ASSUMPTIONS.md, AS-39, AS-40).
 
 Reads : data/processed/releases_by_fy_geo.parquet, data/raw/orr/UAC-Age-Data_Sep_2026_0.xlsx
 Writes: results/scenarios.json, scenario_releases.csv, scenario_calibration.csv,
@@ -54,6 +55,7 @@ from src.share_baseline import EPS  # noqa: E402  the tiny floor for a count of 
 DATA = ROOT / "data/processed/releases_by_fy_geo.parquet"
 AGE_FILE = ROOT / "data/raw/orr/UAC-Age-Data_Sep_2026_0.xlsx"
 RESULTS = ROOT / "results"
+MODEL_RECORD = RESULTS / "share_model.json"  # written by src/share_model.py: which method won the backtest
 
 BASE_YEAR = 2025              # the most recent published year: next year starts from its shares (AS-23)
 FIRST_LAG_YEAR = 2014         # FY2014 serves only as "last year" for FY2015 (AS-15)
@@ -452,6 +454,21 @@ def choose_version(comparison: pd.DataFrame) -> tuple:
 
 # --------------------------------------------------------------------------- steps 7 and 9: write and report
 
+def share_model_status() -> str:
+    """Which shares the tables rest on, in words, from the share model's backtest record.
+
+    This engine runs on last year's shares only. If the backtest ever picks the share model at a level,
+    the engine stops instead of writing tables from shares the winner rule did not choose.
+    """
+    if not MODEL_RECORD.exists():
+        return "Last year's shares with an error model (fallback, BRD risk R-03; the share model has not been run)"
+    won = json.loads(MODEL_RECORD.read_text(encoding="utf-8"))["winner"]
+    if any(method != "naive" for method in won.values()):
+        sys.exit(f"The backtest picked the share model ({won}); this engine only runs on last year's shares. "
+                 "Extend simulate_states/simulate_counties to draw from the model before building the tables.")
+    return "Last year's shares with an error model (the share model did not beat them in the backtest, FR-12)"
+
+
 def manifest(volumes: list, mix: dict, version: str, reason: str, kappa: dict) -> dict:
     """results/scenarios.json: what the tables are, how they were made, and with which settings."""
     spread = (f"one kappa for all 51 places ({kappa['state_one_kappa']:,.0f})" if version == "a" else
@@ -459,7 +476,7 @@ def manifest(volumes: list, mix: dict, version: str, reason: str, kappa: dict) -
               f"({kappa['state_small']:,.0f})")
     return {
         "base_fiscal_year": BASE_YEAR,
-        "share_model": "Last year's shares with an error model (fallback, BRD risk R-03)",
+        "share_model": share_model_status(),
         "draws": DRAWS, "seed": SEED, "range": list(RANGE),
         "scenarios": volumes,
         "measures": [

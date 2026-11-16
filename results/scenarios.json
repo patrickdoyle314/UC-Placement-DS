@@ -1,6 +1,6 @@
 {
  "base_fiscal_year": 2025,
- "share_model": "Last year's shares with an error model (fallback, BRD risk R-03)",
+ "share_model": "Last year's shares with an error model (the share model did not beat them in the backtest, FR-12)",
  "draws": 10000,
  "seed": 20261101,
  "range": [

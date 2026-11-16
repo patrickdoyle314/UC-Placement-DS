@@ -6,8 +6,8 @@ FY2015–FY2025, and what a future rise in national volume would mean for local 
 
 **This repository is a fork.** It was made on November 14, 2026 from the project owner's working copy of
 UC-Placement, at the owner's direction, so the scenario engine could be finished on schedule. In this fork
-the scenario engine (`src/scenarios.py`) and its unit tests were written by an AI assistant (Claude). In the
-original repository that part is the owner's to write. [How this was built](#how-this-was-built) says which
+the scenario engine (`src/scenarios.py`), the share model (`src/share_model.py`) and their unit tests were
+written by an AI assistant (Claude). In the original repository those parts are the owner's to write. [How this was built](#how-this-was-built) says which
 parts are which.
 
 - Plan of record: [`docs/portfolio_plan_2026-10-20.docx`](docs/portfolio_plan_2026-10-20.docx)
@@ -27,8 +27,9 @@ added. Week 7 built: the Streamlit app, its tests and a reshaping unit test. The
 is built in this fork (November 14, 2026) on the fallback the BRD allows: last year's shares with an error
 model, in two versions compared head to head (AS-39 and AS-40 in
 [`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md)). The app's Scenario tab now shows its tables; the results are
-under [Scenario engine](#scenario-engine-results-on-the-fallback). The Bayesian share model is not built, and
-its acceptance tests are still skipped. FSO and contract-lead sign-off
+under [Scenario engine](#scenario-engine-results-on-the-fallback). The Bayesian share model was built in this fork on November 16
+and tested against last year's shares. It did not beat them at either level, so the scenario tables keep last
+year's shares ([Share model](#share-model-results)). All 20 acceptance tests now run and pass. FSO and contract-lead sign-off
 is still pending.
 This fork is kept in its own private repository. The original's current work is kept in a separate private
 repository. A copy through v0.6.2 (Weeks 1–4 and the app) is public at
@@ -65,6 +66,7 @@ UC-Placement/
   src/geography.py, src/build_week4_memo.py              Week 4: Moran's I, LISA, school-age comparison; memo
   src/scenario_contract.py  format and guardrail checks for the scenario engine's files
   src/scenarios.py      scenario engine (fallback): scenarios, error model, simulation, calibration
+  src/share_model.py    Bayesian share model (PyMC): fits, backtest against naive, winner rule
   app/                  Week 7: Streamlit app (streamlit_app.py) and its glossary (terms.py)
   notebooks/            Week 2 exploratory notebook and its builder (needs only Week 1's table)
   sql/                  SQL statements (DuckDB over parquet)
@@ -119,6 +121,7 @@ python src/share_baseline.py         # Week 3: share baselines and their backtes
 python src/run_sql.py                # Week 3: state ranks in SQL (DuckDB)
 python src/geography.py              # Week 4: Moran's I, LISA, school-age comparison (after src/measure.py)
 python src/build_week4_memo.py       # Week 4 findings memo, from the results tables
+python src/share_model.py            # share model: 19 fits and the backtest against naive (about half an hour)
 python src/scenarios.py              # scenario engine: scenario tables, calibration, version comparison
 streamlit run app/streamlit_app.py   # Week 7: the scenario app, in your browser
 python exchange/export_exchange.py   # aggregates for adjacent projects
@@ -150,11 +153,64 @@ python src/build_week4_memo.py
 python -m pytest
 ```
 
+## Share model: results
+
+`python src/share_model.py` fits a Bayesian Dirichlet-multinomial model with PyMC and tests it against
+"same shares as last year" (naive). Each held-out year FY2018–FY2025 is predicted by a model fitted on
+earlier years only: 19 fits, about half an hour.
+
+**Result: last year's shares win at both levels, so the scenario tables keep them (FR-12).**
+
+| Level | Method | Log score, release-weighted | Log score, equal-weighted | Mean absolute error (share points) | Years it beat naive |
+|---|---|---|---|---|---|
+| State | Last year's shares (naive) | -3.1678 | -3.1624 | 0.212 |  |
+| State | Share model | -3.1679 | -3.1626 | 0.216 | 4 of 8 |
+| County | Last year's shares (naive) | -1.8632 | -1.7631 | 1.824 |  |
+| County | Share model | -1.8624 | -1.7623 | 1.825 | 4 of 8 |
+
+Log-score gap by held-out year, model minus naive (a gap under 0.0005 is a tie):
+
+| Year | States | Counties |
+|---|---|---|
+| FY2018 | +0.0026 | +0.0022 |
+| FY2019 | -0.0063 | -0.0014 |
+| FY2020 | +0.0006 | +0.0013 |
+| FY2021 | -0.0012 | +0.0004 |
+| FY2022 | -0.0003 | -0.0006 |
+| FY2023 | +0.0018 | +0.0020 |
+| FY2024 | +0.0027 | +0.0028 |
+| FY2025 | -0.0014 | -0.0004 |
+
+- **The rule, fixed before the backtest (AS-20).** The model is used only if both of its average log scores
+  beat naive's and it wins at least 6 of the 8 years, with gaps under 0.0005 counted as ties. It won
+  4 years for states and 4 for counties.
+- **States.** The model is slightly worse on average (-0.0001 per child, release-weighted). Its worst
+  year is FY2019 (-0.0063).
+- **Counties.** The model is slightly better on average (+0.0008), but in only 4 of
+  the 8 years, which the rule treats as noise.
+- **Pessimistic scorings.** The outcome is the same under all three. With naive floored at half a release, the
+  model's FY2020 state win disappears (3 wins instead of 4). With places that had no
+  releases the year before left out instead, it stays a win by a hair (+0.0005).
+- **What the model learned.** ρ came out at 0.92 to 0.94 for states and
+  0.94 to 0.95 for counties: a mild pull back toward each place's usual
+  share. The pull is real in the training years but did not make the next year's forecast reliably better.
+- **Sampler checks.** Every fit passed: largest R-hat 1.0062 (limit 1.01), smallest bulk
+  effective sample size 1,076 (limit 400), no divergences. Settings: 4
+  chains, 2,000 tuning and 2,000 kept draws each, target acceptance 0.95.
+- **Floor check (AS-14).** Refitting with a floor of half a release moved ρ from 0.915 to 0.931.
+- **County scoring.** In each state the categories are the counties listed in both years plus "other
+  counties"; states with only "other counties" are skipped. Scores are pooled over the scored states
+  (15,044 to 126,929 releases a year). Knowing the held-out
+  year's list is a small peek at that year (AS-16).
+- **Checks.** `tests/test_share_model.py` works the scoring and the winner rule by hand, and fits the model
+  to made-up data to confirm it recovers a known ρ and κ.
+
 ## Scenario engine: results on the fallback
 
-`python src/scenarios.py` writes the scenario tables the app shows (about 30 seconds). Until the share
-model is validated it runs on the fallback the BRD allows (risk R-03): next year's expected shares are
-FY2025's actual shares, and an error model sets the ranges around them (AS-39).
+`python src/scenarios.py` writes the scenario tables the app shows (about 30 seconds). It runs on the
+fallback the BRD allows (risk R-03): next year's expected shares are FY2025's actual shares, and an error
+model sets the ranges around them (AS-39). The share model did not beat last year's shares, so this is also
+what the winner rule picks.
 
 | Scenario | National releases | Year it comes from | Texas: expected (80% range) | County rows | In "other counties" |
 |---|---|---|---|---|---|
@@ -391,19 +447,20 @@ The project owner set the question, scope, guardrails and tools, and reviewed th
 Weeks 1–4 and Week 7 was written with AI assistance (Claude, by Anthropic): data assembly, measures, geography,
 maps, the app and the tests. This section, not the commit history, records which parts are which.
 
-**In this fork the scenario engine is AI-written.** The plan was for the project owner to write the share
-model, the scenario engine and the written summary, with AI help limited to the spec, the acceptance tests,
-step-by-step guidance without code, and review. On November 14, 2026, short on time, the owner had Claude
-write the scenario engine in a fork of the repository instead. Claude wrote `src/scenarios.py` and
-`tests/test_scenarios.py`, following the spec, the acceptance tests and the step guide it had written
-earlier. It also made two choices the assumptions register leaves to the owner, both marked there as not
-confirmed: the year of ORR's age mix behind the point estimate (FY2025, AS-37) and the rule that picks between
-the two versions of the error model (AS-40). In the original repository the scenario engine is still the
-owner's to write.
+**In this fork the scenario engine and the share model are AI-written.** The plan was for the project
+owner to write the share model, the scenario engine and the written summary, with AI help limited to the
+spec, the acceptance tests, step-by-step guidance without code, and review. In November 2026, short on time,
+the owner had Claude write both in a fork of the repository instead: `src/scenarios.py` and
+`tests/test_scenarios.py` on November 14, and `src/share_model.py` and `tests/test_share_model.py` on
+November 16. Claude followed the spec, the acceptance tests and the step guides it had written earlier. It
+also made choices the assumptions register leaves to the owner, all marked there as not confirmed: the year
+of ORR's age mix behind the point estimate (FY2025, AS-37), the rule that picks between the two versions of
+the error model (AS-40), and the share model's priors and county scoring (AS-13, AS-16). In the original
+repository both parts are still the owner's to write.
 
-The share model is not written in either repository. The written summary is the owner's. The assumptions
-register ([`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md)) was written with AI assistance; the items marked
-"Decided" are the owner's decisions.
+The written summary is the owner's. The assumptions register
+([`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md)) was written with AI assistance; the items marked "Decided"
+are the owner's decisions.
 
 ## Exchange with adjacent projects
 

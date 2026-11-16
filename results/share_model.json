@@ -1,0 +1,249 @@
+{
+ "model_method": "dirichlet_multinomial",
+ "winner_rule": "Fixed before the backtest and applied to each level separately. The model is used only if (1) its release-weighted mean log score is higher than naive's, (2) its equal-weighted mean log score is also higher, and (3) its log score is higher than naive's in at least 6 of the 8 held-out years. A difference smaller than 0.0005 per child is a tie, and ties go to naive. MAE is reported but does not decide. The rule is pessimistic: it must hold under three scorings (floor_0.0001, the main one; floor_0.5, naive floored at half a release; zeros_left_out, places with no releases the year before left out).",
+ "winner": {
+  "state": "naive",
+  "county": "naive"
+ },
+ "scorings": [
+  "floor_0.0001",
+  "floor_0.5",
+  "zeros_left_out"
+ ],
+ "first_lag_year": 2014,
+ "floor": 0.0001,
+ "floor_check": [
+  {
+   "level": "state",
+   "trained_through": 2025,
+   "floor": 0.0001,
+   "rho_mean": 0.9152,
+   "max_rhat": 1.0025,
+   "min_ess_bulk": 1131,
+   "divergences": 0
+  },
+  {
+   "level": "state",
+   "trained_through": 2025,
+   "floor": 0.5,
+   "rho_mean": 0.9313,
+   "max_rhat": 1.0028,
+   "min_ess_bulk": 1421,
+   "divergences": 0
+  }
+ ],
+ "priors": {
+  "alpha": "sigma x ZeroSumNormal(1), one per state, summing to 0 (state model only)",
+  "sigma": "HalfNormal(0.5): the spread of the state tilts",
+  "rho": "Normal(1, 0.25), at both levels",
+  "kappa": "LogNormal(log 1000, 2): from the tens to the tens of thousands, at both levels",
+  "delta": "Normal(0, 1): the offset for 'other counties' (county model only)"
+ },
+ "sampler": {
+  "chains": 4,
+  "draws": 2000,
+  "tune": 2000,
+  "target_accept": 0.95,
+  "seed": 20261101
+ },
+ "diagnostics": [
+  {
+   "level": "state",
+   "trained_through": 2017,
+   "transitions": 3,
+   "max_rhat": 1.0028,
+   "min_ess_bulk": 2241,
+   "divergences": 0,
+   "rho_mean": 0.9417,
+   "kappa_mean": 2146.8941,
+   "sigma_mean": 0.0544
+  },
+  {
+   "level": "state",
+   "trained_through": 2018,
+   "transitions": 4,
+   "max_rhat": 1.0024,
+   "min_ess_bulk": 2676,
+   "divergences": 0,
+   "rho_mean": 0.9198,
+   "kappa_mean": 1913.354,
+   "sigma_mean": 0.0565
+  },
+  {
+   "level": "state",
+   "trained_through": 2019,
+   "transitions": 5,
+   "max_rhat": 1.0026,
+   "min_ess_bulk": 1979,
+   "divergences": 0,
+   "rho_mean": 0.9382,
+   "kappa_mean": 1848.867,
+   "sigma_mean": 0.0312
+  },
+  {
+   "level": "state",
+   "trained_through": 2020,
+   "transitions": 6,
+   "max_rhat": 1.003,
+   "min_ess_bulk": 1584,
+   "divergences": 0,
+   "rho_mean": 0.9235,
+   "kappa_mean": 1990.5796,
+   "sigma_mean": 0.0542
+  },
+  {
+   "level": "state",
+   "trained_through": 2021,
+   "transitions": 7,
+   "max_rhat": 1.0031,
+   "min_ess_bulk": 1145,
+   "divergences": 0,
+   "rho_mean": 0.9305,
+   "kappa_mean": 1909.1118,
+   "sigma_mean": 0.0386
+  },
+  {
+   "level": "state",
+   "trained_through": 2022,
+   "transitions": 8,
+   "max_rhat": 1.0062,
+   "min_ess_bulk": 1083,
+   "divergences": 0,
+   "rho_mean": 0.9278,
+   "kappa_mean": 2128.3964,
+   "sigma_mean": 0.0475
+  },
+  {
+   "level": "state",
+   "trained_through": 2023,
+   "transitions": 9,
+   "max_rhat": 1.0058,
+   "min_ess_bulk": 1076,
+   "divergences": 0,
+   "rho_mean": 0.9262,
+   "kappa_mean": 2297.8419,
+   "sigma_mean": 0.0472
+  },
+  {
+   "level": "state",
+   "trained_through": 2024,
+   "transitions": 10,
+   "max_rhat": 1.0029,
+   "min_ess_bulk": 1276,
+   "divergences": 0,
+   "rho_mean": 0.9184,
+   "kappa_mean": 2387.3761,
+   "sigma_mean": 0.0536
+  },
+  {
+   "level": "state",
+   "trained_through": 2025,
+   "transitions": 11,
+   "max_rhat": 1.0025,
+   "min_ess_bulk": 1131,
+   "divergences": 0,
+   "rho_mean": 0.9152,
+   "kappa_mean": 2506.9809,
+   "sigma_mean": 0.0592
+  },
+  {
+   "level": "county",
+   "trained_through": 2017,
+   "transitions": 3,
+   "max_rhat": 1.0008,
+   "min_ess_bulk": 6409,
+   "divergences": 0,
+   "rho_mean": 0.9476,
+   "kappa_mean": 285.7145,
+   "delta_mean": 0.0037
+  },
+  {
+   "level": "county",
+   "trained_through": 2018,
+   "transitions": 4,
+   "max_rhat": 1.0012,
+   "min_ess_bulk": 6437,
+   "divergences": 0,
+   "rho_mean": 0.9372,
+   "kappa_mean": 248.6501,
+   "delta_mean": 0.0349
+  },
+  {
+   "level": "county",
+   "trained_through": 2019,
+   "transitions": 5,
+   "max_rhat": 1.001,
+   "min_ess_bulk": 6202,
+   "divergences": 0,
+   "rho_mean": 0.9454,
+   "kappa_mean": 222.0804,
+   "delta_mean": 0.0175
+  },
+  {
+   "level": "county",
+   "trained_through": 2020,
+   "transitions": 6,
+   "max_rhat": 1.0007,
+   "min_ess_bulk": 6823,
+   "divergences": 0,
+   "rho_mean": 0.9417,
+   "kappa_mean": 217.1838,
+   "delta_mean": 0.0237
+  },
+  {
+   "level": "county",
+   "trained_through": 2021,
+   "transitions": 7,
+   "max_rhat": 1.0003,
+   "min_ess_bulk": 6856,
+   "divergences": 0,
+   "rho_mean": 0.9405,
+   "kappa_mean": 203.0703,
+   "delta_mean": 0.0172
+  },
+  {
+   "level": "county",
+   "trained_through": 2022,
+   "transitions": 8,
+   "max_rhat": 1.0019,
+   "min_ess_bulk": 7197,
+   "divergences": 0,
+   "rho_mean": 0.951,
+   "kappa_mean": 267.9338,
+   "delta_mean": 0.0214
+  },
+  {
+   "level": "county",
+   "trained_through": 2023,
+   "transitions": 9,
+   "max_rhat": 1.0013,
+   "min_ess_bulk": 7034,
+   "divergences": 0,
+   "rho_mean": 0.9457,
+   "kappa_mean": 315.3739,
+   "delta_mean": 0.03
+  },
+  {
+   "level": "county",
+   "trained_through": 2024,
+   "transitions": 10,
+   "max_rhat": 1.0009,
+   "min_ess_bulk": 6835,
+   "divergences": 0,
+   "rho_mean": 0.9419,
+   "kappa_mean": 333.0534,
+   "delta_mean": 0.048
+  },
+  {
+   "level": "county",
+   "trained_through": 2025,
+   "transitions": 11,
+   "max_rhat": 1.0014,
+   "min_ess_bulk": 7207,
+   "divergences": 0,
+   "rho_mean": 0.9413,
+   "kappa_mean": 338.098,
+   "delta_mean": 0.0405
+  }
+ ]
+}

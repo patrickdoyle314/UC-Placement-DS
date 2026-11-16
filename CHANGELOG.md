@@ -6,6 +6,20 @@ dates are when the change was made.
 ## [Unreleased]
 
 ### Added
+- **Share model, in the fork** (2026-11-16): `src/share_model.py`, written with AI assistance at the owner's
+  direction (README, "How this was built"). A Dirichlet-multinomial model in PyMC for state shares and for
+  county shares inside each state, backtested on FY2018–FY2025 against last year's shares.
+  - **Result: last year's shares win at both levels** under the pessimistic winner rule (AS-20). The model
+    beat naive in 4 of 8 years for states and 4 of 8 for counties; 6 are needed.
+  - Writes `results/share_model_backtest.csv`, `share_model_backtest_checks.csv`, `share_model_summary.csv` and
+    `share_model.json` (priors, sampler settings, diagnostics for all 19 fits, the floor check).
+  - Every fit passed the sampler checks (R-hat at most 1.0062, bulk ESS at least
+    1,076, no divergences).
+  - `tests/test_share_model.py`: 11 unit tests, plus a recovery test on made-up data that runs with
+    `UC_SLOW_TESTS=1`. All 20 acceptance tests now run and pass.
+  - The scenario engine reads the backtest's result and says in `scenarios.json` that the share model did
+    not beat last year's shares; its tables are unchanged.
+  - `requirements.txt` now lists PyMC, ArviZ and Numba.
 - **Scenario engine, in a fork of the repository** (2026-11-14): `src/scenarios.py`, written with AI assistance
   at the owner's direction (README, "How this was built"). It runs on the fallback (AS-39): FY2025's shares
   with a Dirichlet error model, children counted out with a multinomial, in two versions compared head to head

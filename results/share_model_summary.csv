@@ -1,0 +1,9 @@
+level,method,weighting,mae_share_points,log_score,years_beating_naive_mae,years_beating_naive_log
+state,naive,release,0.2122,-3.167779,0,0
+state,naive,equal,0.222,-3.16241,0,0
+state,dirichlet_multinomial,release,0.2163,-3.167926,3,4
+state,dirichlet_multinomial,equal,0.2275,-3.16259,3,4
+county,naive,release,1.8242,-1.863176,0,0
+county,naive,equal,2.1235,-1.763076,0,0
+county,dirichlet_multinomial,release,1.825,-1.862398,4,4
+county,dirichlet_multinomial,equal,2.1161,-1.762289,4,4
