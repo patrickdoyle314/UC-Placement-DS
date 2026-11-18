@@ -453,10 +453,11 @@ spec, the acceptance tests, step-by-step guidance without code, and review. In N
 the owner had Claude write both in a fork of the repository instead: `src/scenarios.py` and
 `tests/test_scenarios.py` on November 14, and `src/share_model.py` and `tests/test_share_model.py` on
 November 16. Claude followed the spec, the acceptance tests and the step guides it had written earlier. It
-also made choices the assumptions register leaves to the owner, all marked there as not confirmed: the year
-of ORR's age mix behind the point estimate (FY2025, AS-37), the rule that picks between the two versions of
-the error model (AS-40), and the share model's priors and county scoring (AS-13, AS-16). In the original
-repository both parts are still the owner's to write.
+also made choices the assumptions register leaves to the owner. The owner confirmed four of them on
+November 17, 2026: the year of ORR's age mix behind the point estimate (FY2025, AS-37), version (b) of the
+error model (AS-40), the share model's priors and county scoring (AS-13), and the 50-release test (AS-26).
+Which counties the calibration scores (AS-16) is not yet confirmed. In the original repository both parts
+are still the owner's to write.
 
 The written summary is the owner's. The assumptions register
 ([`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md)) was written with AI assistance; the items marked "Decided"

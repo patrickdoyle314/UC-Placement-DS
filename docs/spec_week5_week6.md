@@ -134,7 +134,7 @@ plainly and make naive the shares the scenario engine uses. That is FR-12's acce
   x ~ Multinomial(N, θ), and count each state's x_s out across its county categories,
   Multinomial(x_s, φ), with φ from the county model. Do not multiply N by θ: that leaves out counting
   noise. In theory county ranges would then hold only about 70% of outcomes; measured on the fallback the
-  difference is small (84% against 86%), and why is still being looked into (AS-24). N is the full national total,
+  difference is 84.7% against 86.3% overall, but 6 to 8 points in the two lowest-volume years (AS-24). N is the full national total,
   including the few releases to Puerto Rico and the Virgin Islands, which the counting spreads over the 51
   places. Report the mean of the draws as the expected value, and the 10th and 90th percentiles as the 80%
   range.

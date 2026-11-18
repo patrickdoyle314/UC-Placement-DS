@@ -6,6 +6,11 @@ dates are when the change was made.
 ## [Unreleased]
 
 ### Changed
+- **The owner's answers on the register** (2026-11-17, in the fork). Confirmed as built: AS-37 (FY2025's age mix),
+  AS-40 (version (b)), AS-13 (priors, county scoring) and AS-26 (the 50-release test). AS-43 Decided: last year's
+  shares are the method. AS-24 kept Open with measured figures: counting out is worth 0 to 2 points of county
+  coverage in most years and 6 to 8 in the two lowest-volume years. New AS-44 (Open): coverage swings from year
+  to year (69% to 96%), which the pooled figure hides. AS-16 and AS-18 left for another day.
 - **The fork's repository made public** (2026-11-16) at the project owner's direction. FSO and contract-lead
   sign-off was not yet recorded (AS-38). Before the change, all 23 commits were checked: no local-only
   folder (`alignment/`, `coaching/`, `writeups/`, `data/`, `exchange/outbox/`), key or personal detail is in them.
