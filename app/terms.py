@@ -9,7 +9,8 @@ GLOSSARY = {
     "Fiscal year": "The federal fiscal year, October 1 to September 30. FY2025 ran from October 2024 through "
                    "September 2025.",
     "Scenario": "A possible national total of children released in one year, taken from the record: the lowest "
-                "(Low), middle (Median) and highest (High) years from FY2015 to FY2025. It is a planning case, "
+                "(Low), middle (Median) and highest (High) years from FY2015 to FY2025, leaving out FY2020, which was "
+                "far outside the usual range. It is a planning case, "
                 "not a forecast.",
     "Place": "A state, a listed county, or a state's other counties.",
     "Expected": "The average over all simulated outcomes for the scenario.",

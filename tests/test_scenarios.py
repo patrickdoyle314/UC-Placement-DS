@@ -32,13 +32,24 @@ def comparison(a_cover, a_score, b_cover, b_score) -> pd.DataFrame:
 
 # --------------------------------------------------------------------------- step 1: scenarios
 
-def test_scenarios_are_the_lowest_middle_and_highest_year():
+def test_scenarios_are_the_lowest_middle_and_highest_year_without_fy2020():
     national = pd.Series({2014: 5, 2015: 30, 2016: 50, 2017: 40, 2018: 35, 2019: 70, 2020: 10, 2021: 110,
                           2022: 120, 2023: 110 + 1, 2024: 100, 2025: 25})
     low, median, high = sc.scenario_volumes(national)
-    assert (low["national_releases"], low["source_fiscal_year"]) == (10, 2020)
-    assert (median["national_releases"], median["source_fiscal_year"]) == (50, 2016)  # the 6th of 11 values
+    assert (low["national_releases"], low["source_fiscal_year"]) == (25, 2025)       # FY2020's 10 is set aside (AS-45)
+    assert (median["national_releases"], median["source_fiscal_year"]) == (50, 2016)  # the lower middle of 10 values
     assert (high["national_releases"], high["source_fiscal_year"]) == (120, 2022)     # FY2014's 5 is not used
+
+
+def test_changes_into_and_out_of_fy2020_do_not_set_kappa():
+    years = range(2014, 2026)
+    states = pd.DataFrame({"AA": [1000.0 + 10 * i for i, _ in enumerate(years)],
+                           "BB": [500.0 - 5 * i for i, _ in enumerate(years)]}, index=years)
+    h = sc.History(national=states.sum(axis=1).astype(int), states=states, counties={}, state_names={},
+                   county_info=pd.DataFrame())
+    ratios = sc.state_ratios(h)
+    assert sorted(set(ratios.year)) == [2015, 2016, 2017, 2018, 2019, 2022, 2023, 2024, 2025]  # no 2020, no 2021
+    assert sc.counted_change(2019) and not sc.counted_change(2020) and not sc.counted_change(2021)
 
 
 # --------------------------------------------------------------------------- step 3: the error model

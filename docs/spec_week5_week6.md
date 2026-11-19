@@ -128,7 +128,9 @@ plainly and make naive the shares the scenario engine uses. That is FR-12's acce
 
 - **Scenarios (FR-13):** `low`, `median` and `high` are the lowest, median and highest national release
   totals in FY2015–FY2025, from `data/processed/releases_by_fy_geo.parquet`. Record which fiscal year each
-  one comes from.
+  one comes from. **FY2020 is left out (decided 2026-11-18, AS-45):** it was far outside the usual range,
+  so it is not a scenario, and the changes into and out of it do not help fit the error model's κ. With ten
+  years left, the median is the lower of the two middle years. FY2020 is still replayed in the calibration.
 - **Simulation (FR-14, decided):** in each draw, take next year's state shares θ from the share model,
   starting from FY2025's actual shares. Then count the scenario's N children out across the 51 places,
   x ~ Multinomial(N, θ), and count each state's x_s out across its county categories,
@@ -208,8 +210,8 @@ plainly and make naive the shares the scenario engine uses. That is FR-12's acce
   - **One-county remainders (decided 2026-11-11).** If a state's "other counties" row covers exactly one
     county (the state's counties minus the county rows shown), the figure is that county's own. Write the
     row as usual so the totals add up; the app leaves it blank by itself (`one_county_remainders` in
-    `src/scenario_contract.py`). With FY2025 as the base year this happens only for the District of
-    Columbia in the low scenario.
+    `src/scenario_contract.py`). With FY2025 as the base year and FY2020 set aside (AS-45), no scenario
+    has one; when Low was FY2020's 16,864 it happened for the District of Columbia.
 
 **Writes three files to `results/`:**
 

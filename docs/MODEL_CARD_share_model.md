@@ -142,13 +142,13 @@ Replaying FY2018–FY2025 from earlier years only (`results/scenario_variant_com
 
 | Version | 80% range held, all 408 state-years | 10 largest states | Other 41 | Mean interval score |
 |---|---|---|---|---|
-| (a) one κ | 83.3% | 60.0% | 89.0% | 1.13 |
-| (b) two κ | 83.6% | 77.5% | 85.1% | 1.04 |
+| (a) one κ | 82.4% | 58.8% | 88.1% | 1.13 |
+| (b) two κ | 83.1% | 76.2% | 84.8% | 1.03 |
 
-- The tables use version (b), which has the lower interval score. Fitted on all eleven changes, κ is
-  988 for the 10 largest states, 3,659 for the other 41 and 404 for
-  counties.
-- County ranges held for 86.3% of the county-years scored.
+- The tables use version (b), which has the lower interval score. Fitted on the nine changes that do not
+  touch FY2020 (set aside as far outside the usual range, AS-45), κ is 1,228 for the 10 largest states,
+  3,698 for the other 41 and 459 for counties.
+- County ranges held for 85.7% of the county-years scored.
 - Limits: California's range held in only 3 of 8 years under (b); coverage runs from
   69% of states in FY2018 to 96% in
   FY2022; and the replay that picks the version is the same one that scores it.

@@ -266,15 +266,17 @@ def test_every_fit_passes_the_sampler_checks():  # FR-11 (review)
 
 @week6
 @needs_data
-def test_scenarios_are_the_lowest_median_and_highest_years():  # FR-13
+def test_scenarios_are_the_lowest_median_and_highest_years():  # FR-13, with FY2020 set aside (AS-45)
     df = measure.load()
     national = df[(df.geo_level == "national") & df.fiscal_year.isin(measure.FISCAL_YEARS)]
     national = national.set_index("fiscal_year").releases
-    target = {"low": national.min(), "median": national.median(), "high": national.max()}
+    kept = national.drop(index=[2020]).sort_values()  # the owner's decision of 2026-11-18
+    target = {"low": kept.iloc[0], "median": kept.iloc[(len(kept) - 1) // 2], "high": kept.iloc[-1]}  # lower middle
     manifest, _, _ = sc.load()
     for s in manifest["scenarios"]:
         assert s["national_releases"] == target[s["id"]]
         assert national[s["source_fiscal_year"]] == s["national_releases"]
+        assert s["source_fiscal_year"] != 2020
 
 
 @week6

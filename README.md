@@ -214,46 +214,51 @@ what the winner rule picks.
 
 | Scenario | National releases | Year it comes from | Texas: expected (80% range) | County rows | In "other counties" |
 |---|---|---|---|---|---|
-| Low | 16,864 | FY2020 | 2,385 (2,148 to 2,631) | 81 | 42.2% |
-| Median | 52,267 | FY2016 | 7,394 (6,672 to 8,138) | 110 | 34.9% |
-| High | 127,512 | FY2022 | 18,006 (16,239 to 19,835) | 110 | 34.9% |
+| Low | 24,259 | FY2025 | 3,429 (3,121 to 3,745) | 110 | 34.9% |
+| Median | 52,267 | FY2016 | 7,398 (6,754 to 8,061) | 110 | 34.9% |
+| High | 127,512 | FY2022 | 18,012 (16,431 to 19,641) | 110 | 34.9% |
+
+FY2020 (16,864 releases) is set aside as far outside the usual range (AS-45, the owner's decision of
+2026-11-18): it is not a scenario, and the changes into and out of it do not set κ. Low is therefore FY2025's
+own total, and its expected figures are FY2025's actual counts.
 
 - **Simulation.** Each of 10,000 simulated years draws the states' shares around FY2025's, counts the
   scenario's children out across the 51 places, and does the same inside each state for its FY2025-listed
   counties and one "other counties" group. Expected is the average of the draws; the 80% range runs from
   their 10th to their 90th percentile.
 - **Error model.** One number, κ, says how far shares really moved from one year to the next in
-  FY2014–FY2025. A smaller κ means wider ranges. It is fitted with every place weighted equally.
+  FY2014–FY2025, leaving out the two changes that touch FY2020. A smaller κ means wider ranges. It is fitted
+  with every place weighted equally.
 - **Two versions, compared head to head (AS-40).** Each held-out year FY2018–FY2025 was replayed from
   earlier years only, with the same seed for both versions:
 
   | Version | State-years | 80% range held | Mean width (share points) | Mean interval score (lower is better) |
   |---|---|---|---|---|
-  | (a) one κ for all states | all 408 | 83.3% | 0.623 | 1.127 |
-  |  | 10 largest states, 80 | 60.0% | 1.434 | 3.655 |
-  |  | other 41 states, 328 | 89.0% | 0.425 | 0.510 |
-  | (b) one κ for the 10 largest states, one for the rest | all 408 | 83.6% | 0.704 | 1.039 |
-  |  | 10 largest states, 80 | 77.5% | 2.126 | 3.268 |
-  |  | other 41 states, 328 | 85.1% | 0.358 | 0.496 |
+  | (a) one κ for all states | all 408 | 82.4% | 0.610 | 1.131 |
+  |  | 10 largest states, 80 | 58.8% | 1.406 | 3.688 |
+  |  | other 41 states, 328 | 88.1% | 0.416 | 0.508 |
+  | (b) one κ for the 10 largest states, one for the rest | all 408 | 83.1% | 0.685 | 1.029 |
+  |  | 10 largest states, 80 | 76.2% | 2.021 | 3.210 |
+  |  | other 41 states, 328 | 84.8% | 0.359 | 0.497 |
 
   The tables use **version (b)**. The engine takes the version with the lower mean interval score among those
-  whose pooled coverage is 70% to 90%; a tie goes to (a). Fitted on all eleven changes, κ is
-  988 for the 10 largest states and 3,659 for the other 41 (one κ for all
-  would be 2,387), and 404 for counties.
-- **What the comparison does not settle.** Under (b), 79% of children were in a state whose range
-  held (65% under (a)), but California's range held in only 3 of the 8 years.
+  whose pooled coverage is 70% to 90%; a tie goes to (a). Fitted on the nine changes that do not touch FY2020,
+  κ is 1,228 for the 10 largest states and 3,698 for the other 41 (one κ for all
+  would be 2,650), and 459 for counties.
+- **What the comparison does not settle.** Under (b), 76.3% of children were in a state whose range
+  held (63.5% under (a)), but California's range held in only 3 of the 8 years.
   Coverage also changes from year to year: from 69% of states in FY2018 to
   96% in FY2022. The same replay picks the version, so its coverage is not
   an independent check.
-- **Counties.** The ranges held for 86.3% of the 1,345 county-years scored: counties
+- **Counties.** The ranges held for 85.7% of the 1,345 county-years scored: counties
   listed in both years and expecting 50 or more releases.
 - **School-age children.** Releases × 0.967, from ORR's FY2025 age mix of children in
   its care. The fraction could be as low as 0.908 or as high as 1.0 (AS-34 to AS-37).
 - **50-release rule.** A county gets a row only if it was listed in FY2025 and expects 50 or more releases in
-  the scenario; otherwise it is inside its state's "other counties" figure. In the low scenario
-  29 of the 110 listed counties are folded this way. Whether a county expects 50 is
-  worked out before any random draw, so the same counties are shown whatever the seed (AS-26). The District of
-  Columbia's remainder in the low scenario covers one county, so the app leaves it blank (AS-41).
+  the scenario; otherwise it is inside its state's "other counties" figure. At the three scenario volumes
+  all 110 listed counties expect 50 or more, so none is folded. Whether a county expects 50 is
+  worked out before any random draw, so the same counties are shown whatever the seed (AS-26). An "other
+  counties" figure that covers one county would be left blank by the app (AS-41); no scenario has one now.
 - **Checks.** `tests/test_acceptance.py` checks the files. `tests/test_scenarios.py` checks the steps on
   made-up data, including that the κ fit finds a known κ again (within 15%).
 

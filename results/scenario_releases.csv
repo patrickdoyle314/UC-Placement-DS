@@ -1,1214 +1,1272 @@
 scenario,geo_level,state,state_name,county_key,county_fips,county_name,measure,expected,lower_80,upper_80
-low,state,AK,Alaska,,,,releases,3,0,7
-low,state,AK,Alaska,,,,school_age,3,0,7
-low,other_counties,AK,Alaska,,,"Other counties, AK",releases,3,0,7
-low,other_counties,AK,Alaska,,,"Other counties, AK",school_age,3,0,7
-low,state,AL,Alabama,,,,releases,302,251,357
-low,state,AL,Alabama,,,,school_age,292,243,345
-low,county,AL,Alabama,jefferson|AL,01073,"Jefferson County, AL",releases,50,36,65
-low,county,AL,Alabama,jefferson|AL,01073,"Jefferson County, AL",school_age,48,35,63
-low,other_counties,AL,Alabama,,,"Other counties, AL",releases,252,207,300
-low,other_counties,AL,Alabama,,,"Other counties, AL",school_age,244,200,290
-low,state,AR,Arkansas,,,,releases,118,86,151
-low,state,AR,Arkansas,,,,school_age,114,83,146
-low,other_counties,AR,Arkansas,,,"Other counties, AR",releases,118,86,151
-low,other_counties,AR,Arkansas,,,"Other counties, AR",school_age,114,83,146
-low,state,AZ,Arizona,,,,releases,222,178,268
-low,state,AZ,Arizona,,,,school_age,214,172,259
-low,county,AZ,Arizona,maricopa|AZ,04013,"Maricopa County, AZ",releases,195,155,236
-low,county,AZ,Arizona,maricopa|AZ,04013,"Maricopa County, AZ",school_age,188,150,228
-low,other_counties,AZ,Arizona,,,"Other counties, AZ",releases,27,18,37
-low,other_counties,AZ,Arizona,,,"Other counties, AZ",school_age,26,17,36
-low,state,CA,California,,,,releases,2085,1859,2319
-low,state,CA,California,,,,school_age,2016,1798,2243
-low,county,CA,California,los angeles|CA,06037,"Los Angeles County, CA",releases,694,594,797
-low,county,CA,California,los angeles|CA,06037,"Los Angeles County, CA",school_age,671,574,771
-low,county,CA,California,alameda|CA,06001,"Alameda County, CA",releases,133,96,172
-low,county,CA,California,alameda|CA,06001,"Alameda County, CA",school_age,128,93,166
-low,county,CA,California,san mateo|CA,06081,"San Mateo County, CA",releases,82,54,113
-low,county,CA,California,san mateo|CA,06081,"San Mateo County, CA",school_age,80,52,109
-low,county,CA,California,orange|CA,06059,"Orange County, CA",releases,115,81,151
-low,county,CA,California,orange|CA,06059,"Orange County, CA",school_age,111,78,146
-low,county,CA,California,riverside|CA,06065,"Riverside County, CA",releases,85,57,116
-low,county,CA,California,riverside|CA,06065,"Riverside County, CA",school_age,82,55,112
-low,county,CA,California,contra costa|CA,06013,"Contra Costa County, CA",releases,75,48,104
-low,county,CA,California,contra costa|CA,06013,"Contra Costa County, CA",school_age,73,46,101
-low,county,CA,California,santa clara|CA,06085,"Santa Clara County, CA",releases,91,61,123
-low,county,CA,California,santa clara|CA,06085,"Santa Clara County, CA",school_age,88,59,119
-low,county,CA,California,san francisco|CA,06075,"San Francisco County, CA",releases,71,45,99
-low,county,CA,California,san francisco|CA,06075,"San Francisco County, CA",school_age,69,44,96
-low,county,CA,California,san diego|CA,06073,"San Diego County, CA",releases,79,52,108
-low,county,CA,California,san diego|CA,06073,"San Diego County, CA",school_age,76,50,105
-low,county,CA,California,san bernardino|CA,06071,"San Bernardino County, CA",releases,82,54,113
-low,county,CA,California,san bernardino|CA,06071,"San Bernardino County, CA",school_age,79,52,109
-low,county,CA,California,fresno|CA,06019,"Fresno County, CA",releases,58,35,83
-low,county,CA,California,fresno|CA,06019,"Fresno County, CA",school_age,56,34,80
-low,county,CA,California,sacramento|CA,06067,"Sacramento County, CA",releases,60,37,86
-low,county,CA,California,sacramento|CA,06067,"Sacramento County, CA",school_age,58,36,83
-low,county,CA,California,san joaquin|CA,06077,"San Joaquin County, CA",releases,50,28,73
-low,county,CA,California,san joaquin|CA,06077,"San Joaquin County, CA",school_age,48,27,71
-low,county,CA,California,santa barbara|CA,06083,"Santa Barbara County, CA",releases,52,30,76
-low,county,CA,California,santa barbara|CA,06083,"Santa Barbara County, CA",school_age,50,29,73
-low,other_counties,CA,California,,,"Other counties, CA",releases,360,295,429
-low,other_counties,CA,California,,,"Other counties, CA",school_age,348,285,415
-low,state,CO,Colorado,,,,releases,298,247,350
-low,state,CO,Colorado,,,,school_age,288,239,338
-low,county,CO,Colorado,arapahoe|CO,08005,"Arapahoe County, CO",releases,92,71,113
-low,county,CO,Colorado,arapahoe|CO,08005,"Arapahoe County, CO",school_age,89,69,109
-low,other_counties,CO,Colorado,,,"Other counties, CO",releases,206,169,245
-low,other_counties,CO,Colorado,,,"Other counties, CO",school_age,199,163,237
-low,state,CT,Connecticut,,,,releases,135,101,172
-low,state,CT,Connecticut,,,,school_age,130,98,166
-low,county,CT,Connecticut,fairfield|CT,,"Fairfield County, CT",releases,72,52,94
-low,county,CT,Connecticut,fairfield|CT,,"Fairfield County, CT",school_age,70,50,91
-low,other_counties,CT,Connecticut,,,"Other counties, CT",releases,63,45,81
-low,other_counties,CT,Connecticut,,,"Other counties, CT",school_age,61,44,78
-low,state,DC,District of Columbia,,,,releases,43,25,64
-low,state,DC,District of Columbia,,,,school_age,42,24,62
-low,other_counties,DC,District of Columbia,,,"Other counties, DC",releases,43,25,64
-low,other_counties,DC,District of Columbia,,,"Other counties, DC",school_age,42,24,62
-low,state,DE,Delaware,,,,releases,70,46,96
-low,state,DE,Delaware,,,,school_age,68,44,93
-low,other_counties,DE,Delaware,,,"Other counties, DE",releases,70,46,96
-low,other_counties,DE,Delaware,,,"Other counties, DE",school_age,68,44,93
-low,state,FL,Florida,,,,releases,1359,1171,1551
-low,state,FL,Florida,,,,school_age,1314,1132,1500
-low,county,FL,Florida,miami-dade|FL,12086,"Miami-Dade County, FL",releases,214,169,261
-low,county,FL,Florida,miami-dade|FL,12086,"Miami-Dade County, FL",school_age,207,163,252
-low,county,FL,Florida,palm beach|FL,12099,"Palm Beach County, FL",releases,203,159,250
-low,county,FL,Florida,palm beach|FL,12099,"Palm Beach County, FL",school_age,197,154,242
-low,county,FL,Florida,lee|FL,12071,"Lee County, FL",releases,99,71,129
-low,county,FL,Florida,lee|FL,12071,"Lee County, FL",school_age,96,69,125
-low,county,FL,Florida,broward|FL,12011,"Broward County, FL",releases,103,74,134
-low,county,FL,Florida,broward|FL,12011,"Broward County, FL",school_age,99,72,130
-low,county,FL,Florida,orange|FL,12095,"Orange County, FL",releases,134,101,170
-low,county,FL,Florida,orange|FL,12095,"Orange County, FL",school_age,130,98,164
-low,county,FL,Florida,hillsborough|FL,12057,"Hillsborough County, FL",releases,101,73,131
-low,county,FL,Florida,hillsborough|FL,12057,"Hillsborough County, FL",school_age,98,71,127
-low,county,FL,Florida,collier|FL,12021,"Collier County, FL",releases,52,33,73
-low,county,FL,Florida,collier|FL,12021,"Collier County, FL",school_age,50,32,71
-low,county,FL,Florida,duval|FL,12031,"Duval County, FL",releases,66,44,89
-low,county,FL,Florida,duval|FL,12031,"Duval County, FL",school_age,64,43,86
-low,county,FL,Florida,manatee|FL,12081,"Manatee County, FL",releases,54,34,75
-low,county,FL,Florida,manatee|FL,12081,"Manatee County, FL",school_age,52,33,73
-low,other_counties,FL,Florida,,,"Other counties, FL",releases,333,272,397
-low,other_counties,FL,Florida,,,"Other counties, FL",school_age,322,263,384
-low,state,GA,Georgia,,,,releases,679,543,820
-low,state,GA,Georgia,,,,school_age,657,525,793
-low,county,GA,Georgia,dekalb|GA,13089,"DeKalb County, GA",releases,118,87,151
-low,county,GA,Georgia,dekalb|GA,13089,"DeKalb County, GA",school_age,114,84,146
-low,county,GA,Georgia,gwinnett|GA,13135,"Gwinnett County, GA",releases,150,113,189
-low,county,GA,Georgia,gwinnett|GA,13135,"Gwinnett County, GA",school_age,145,109,183
-low,county,GA,Georgia,cobb|GA,13067,"Cobb County, GA",releases,65,45,86
-low,county,GA,Georgia,cobb|GA,13067,"Cobb County, GA",school_age,63,44,83
-low,other_counties,GA,Georgia,,,"Other counties, GA",releases,347,274,424
-low,other_counties,GA,Georgia,,,"Other counties, GA",school_age,336,265,410
-low,state,HI,Hawaii,,,,releases,8,1,17
-low,state,HI,Hawaii,,,,school_age,7,1,16
-low,other_counties,HI,Hawaii,,,"Other counties, HI",releases,8,1,17
-low,other_counties,HI,Hawaii,,,"Other counties, HI",school_age,7,1,16
-low,state,IA,Iowa,,,,releases,118,87,153
-low,state,IA,Iowa,,,,school_age,115,84,148
-low,other_counties,IA,Iowa,,,"Other counties, IA",releases,118,87,153
-low,other_counties,IA,Iowa,,,"Other counties, IA",school_age,115,84,148
-low,state,ID,Idaho,,,,releases,52,31,74
-low,state,ID,Idaho,,,,school_age,50,30,72
-low,other_counties,ID,Idaho,,,"Other counties, ID",releases,52,31,74
-low,other_counties,ID,Idaho,,,"Other counties, ID",school_age,50,30,72
-low,state,IL,Illinois,,,,releases,472,408,538
-low,state,IL,Illinois,,,,school_age,456,395,520
-low,county,IL,Illinois,cook|IL,17031,"Cook County, IL",releases,277,234,321
-low,county,IL,Illinois,cook|IL,17031,"Cook County, IL",school_age,268,226,310
-low,other_counties,IL,Illinois,,,"Other counties, IL",releases,194,161,229
-low,other_counties,IL,Illinois,,,"Other counties, IL",school_age,188,156,221
-low,state,IN,Indiana,,,,releases,298,247,351
-low,state,IN,Indiana,,,,school_age,288,239,340
-low,county,IN,Indiana,marion|IN,18097,"Marion County, IN",releases,143,115,172
-low,county,IN,Indiana,marion|IN,18097,"Marion County, IN",school_age,138,111,166
-low,other_counties,IN,Indiana,,,"Other counties, IN",releases,155,124,187
-low,other_counties,IN,Indiana,,,"Other counties, IN",school_age,150,120,181
-low,state,KS,Kansas,,,,releases,135,101,171
-low,state,KS,Kansas,,,,school_age,130,98,165
-low,other_counties,KS,Kansas,,,"Other counties, KS",releases,135,101,171
-low,other_counties,KS,Kansas,,,"Other counties, KS",school_age,130,98,165
-low,state,KY,Kentucky,,,,releases,186,145,228
-low,state,KY,Kentucky,,,,school_age,180,140,220
-low,county,KY,Kentucky,jefferson|KY,21111,"Jefferson County, KY",releases,57,42,74
-low,county,KY,Kentucky,jefferson|KY,21111,"Jefferson County, KY",school_age,55,41,72
-low,other_counties,KY,Kentucky,,,"Other counties, KY",releases,129,99,160
-low,other_counties,KY,Kentucky,,,"Other counties, KY",school_age,125,96,155
-low,state,LA,Louisiana,,,,releases,273,224,324
-low,state,LA,Louisiana,,,,school_age,264,217,313
-low,county,LA,Louisiana,jefferson|LA,22051,"Jefferson Parish, LA",releases,76,58,95
-low,county,LA,Louisiana,jefferson|LA,22051,"Jefferson Parish, LA",school_age,73,56,92
-low,county,LA,Louisiana,east baton rouge|LA,22033,"East Baton Rouge Parish, LA",releases,54,40,69
-low,county,LA,Louisiana,east baton rouge|LA,22033,"East Baton Rouge Parish, LA",school_age,53,39,67
-low,other_counties,LA,Louisiana,,,"Other counties, LA",releases,143,114,173
-low,other_counties,LA,Louisiana,,,"Other counties, LA",school_age,138,110,167
-low,state,MA,Massachusetts,,,,releases,352,297,411
-low,state,MA,Massachusetts,,,,school_age,341,287,397
-low,county,MA,Massachusetts,suffolk|MA,25025,"Suffolk County, MA",releases,75,57,93
-low,county,MA,Massachusetts,suffolk|MA,25025,"Suffolk County, MA",school_age,72,55,90
-low,county,MA,Massachusetts,essex|MA,25009,"Essex County, MA",releases,107,85,131
-low,county,MA,Massachusetts,essex|MA,25009,"Essex County, MA",school_age,103,82,127
-low,county,MA,Massachusetts,middlesex|MA,25017,"Middlesex County, MA",releases,65,49,82
-low,county,MA,Massachusetts,middlesex|MA,25017,"Middlesex County, MA",school_age,63,47,79
-low,other_counties,MA,Massachusetts,,,"Other counties, MA",releases,106,84,129
-low,other_counties,MA,Massachusetts,,,"Other counties, MA",school_age,102,81,125
-low,state,MD,Maryland,,,,releases,667,533,808
-low,state,MD,Maryland,,,,school_age,645,515,781
-low,county,MD,Maryland,prince george's|MD,24033,"Prince George's County, MD",releases,193,147,241
-low,county,MD,Maryland,prince george's|MD,24033,"Prince George's County, MD",school_age,186,142,233
-low,county,MD,Maryland,montgomery|MD,24031,"Montgomery County, MD",releases,126,94,160
-low,county,MD,Maryland,montgomery|MD,24031,"Montgomery County, MD",school_age,122,91,155
-low,county,MD,Maryland,baltimore city|MD,24510,"Baltimore city, MD",releases,93,67,120
-low,county,MD,Maryland,baltimore city|MD,24510,"Baltimore city, MD",school_age,90,65,116
-low,county,MD,Maryland,baltimore|MD,24005,"Baltimore County, MD",releases,77,54,101
-low,county,MD,Maryland,baltimore|MD,24005,"Baltimore County, MD",school_age,74,52,98
-low,county,MD,Maryland,anne arundel|MD,24003,"Anne Arundel County, MD",releases,57,39,76
-low,county,MD,Maryland,anne arundel|MD,24003,"Anne Arundel County, MD",school_age,55,38,73
-low,other_counties,MD,Maryland,,,"Other counties, MD",releases,123,91,156
-low,other_counties,MD,Maryland,,,"Other counties, MD",school_age,118,88,151
-low,state,ME,Maine,,,,releases,24,11,41
-low,state,ME,Maine,,,,school_age,24,11,40
-low,other_counties,ME,Maine,,,"Other counties, ME",releases,24,11,41
-low,other_counties,ME,Maine,,,"Other counties, ME",school_age,24,11,40
-low,state,MI,Michigan,,,,releases,126,93,160
-low,state,MI,Michigan,,,,school_age,121,90,155
-low,other_counties,MI,Michigan,,,"Other counties, MI",releases,126,93,160
-low,other_counties,MI,Michigan,,,"Other counties, MI",school_age,121,90,155
-low,state,MN,Minnesota,,,,releases,184,144,226
-low,state,MN,Minnesota,,,,school_age,178,139,219
-low,county,MN,Minnesota,hennepin|MN,27053,"Hennepin County, MN",releases,54,39,70
-low,county,MN,Minnesota,hennepin|MN,27053,"Hennepin County, MN",school_age,52,38,68
-low,other_counties,MN,Minnesota,,,"Other counties, MN",releases,131,101,162
-low,other_counties,MN,Minnesota,,,"Other counties, MN",school_age,126,98,157
-low,state,MO,Missouri,,,,releases,177,138,219
-low,state,MO,Missouri,,,,school_age,172,133,212
-low,other_counties,MO,Missouri,,,"Other counties, MO",releases,177,138,219
-low,other_counties,MO,Missouri,,,"Other counties, MO",school_age,172,133,212
-low,state,MS,Mississippi,,,,releases,95,66,125
-low,state,MS,Mississippi,,,,school_age,92,64,121
-low,other_counties,MS,Mississippi,,,"Other counties, MS",releases,95,66,125
-low,other_counties,MS,Mississippi,,,"Other counties, MS",school_age,92,64,121
-low,state,MT,Montana,,,,releases,10,2,20
-low,state,MT,Montana,,,,school_age,10,2,19
-low,other_counties,MT,Montana,,,"Other counties, MT",releases,10,2,20
-low,other_counties,MT,Montana,,,"Other counties, MT",school_age,10,2,19
-low,state,NC,North Carolina,,,,releases,689,554,829
-low,state,NC,North Carolina,,,,school_age,666,536,802
-low,county,NC,North Carolina,mecklenburg|NC,37119,"Mecklenburg County, NC",releases,155,117,195
-low,county,NC,North Carolina,mecklenburg|NC,37119,"Mecklenburg County, NC",school_age,150,113,189
-low,county,NC,North Carolina,wake|NC,37183,"Wake County, NC",releases,74,52,98
-low,county,NC,North Carolina,wake|NC,37183,"Wake County, NC",school_age,72,50,95
-low,county,NC,North Carolina,durham|NC,37063,"Durham County, NC",releases,53,36,72
-low,county,NC,North Carolina,durham|NC,37063,"Durham County, NC",school_age,52,35,70
-low,other_counties,NC,North Carolina,,,"Other counties, NC",releases,407,322,495
-low,other_counties,NC,North Carolina,,,"Other counties, NC",school_age,393,311,479
-low,state,ND,North Dakota,,,,releases,6,1,15
-low,state,ND,North Dakota,,,,school_age,6,1,15
-low,other_counties,ND,North Dakota,,,"Other counties, ND",releases,6,1,15
-low,other_counties,ND,North Dakota,,,"Other counties, ND",school_age,6,1,15
-low,state,NE,Nebraska,,,,releases,133,99,169
-low,state,NE,Nebraska,,,,school_age,129,96,163
-low,county,NE,Nebraska,douglas|NE,31055,"Douglas County, NE",releases,63,45,82
-low,county,NE,Nebraska,douglas|NE,31055,"Douglas County, NE",school_age,61,44,79
-low,other_counties,NE,Nebraska,,,"Other counties, NE",releases,70,51,91
-low,other_counties,NE,Nebraska,,,"Other counties, NE",school_age,68,49,88
-low,state,NH,New Hampshire,,,,releases,8,1,16
-low,state,NH,New Hampshire,,,,school_age,7,1,15
-low,other_counties,NH,New Hampshire,,,"Other counties, NH",releases,8,1,16
-low,other_counties,NH,New Hampshire,,,"Other counties, NH",school_age,7,1,15
-low,state,NJ,New Jersey,,,,releases,721,581,869
-low,state,NJ,New Jersey,,,,school_age,697,562,840
-low,county,NJ,New Jersey,union|NJ,34039,"Union County, NJ",releases,77,55,101
-low,county,NJ,New Jersey,union|NJ,34039,"Union County, NJ",school_age,75,53,98
-low,county,NJ,New Jersey,essex|NJ,34013,"Essex County, NJ",releases,98,71,127
-low,county,NJ,New Jersey,essex|NJ,34013,"Essex County, NJ",school_age,95,69,123
-low,county,NJ,New Jersey,mercer|NJ,34021,"Mercer County, NJ",releases,82,59,107
-low,county,NJ,New Jersey,mercer|NJ,34021,"Mercer County, NJ",school_age,79,57,103
-low,county,NJ,New Jersey,hudson|NJ,34017,"Hudson County, NJ",releases,65,45,87
-low,county,NJ,New Jersey,hudson|NJ,34017,"Hudson County, NJ",school_age,63,44,84
-low,county,NJ,New Jersey,bergen|NJ,34003,"Bergen County, NJ",releases,56,38,75
-low,county,NJ,New Jersey,bergen|NJ,34003,"Bergen County, NJ",school_age,54,37,73
-low,county,NJ,New Jersey,monmouth|NJ,34025,"Monmouth County, NJ",releases,51,34,70
-low,county,NJ,New Jersey,monmouth|NJ,34025,"Monmouth County, NJ",school_age,50,33,68
-low,other_counties,NJ,New Jersey,,,"Other counties, NJ",releases,290,228,357
-low,other_counties,NJ,New Jersey,,,"Other counties, NJ",school_age,281,220,345
-low,state,NM,New Mexico,,,,releases,54,33,77
-low,state,NM,New Mexico,,,,school_age,52,32,74
-low,other_counties,NM,New Mexico,,,"Other counties, NM",releases,54,33,77
-low,other_counties,NM,New Mexico,,,"Other counties, NM",school_age,52,32,74
-low,state,NV,Nevada,,,,releases,102,73,135
-low,state,NV,Nevada,,,,school_age,99,71,131
-low,county,NV,Nevada,clark|NV,32003,"Clark County, NV",releases,79,55,105
-low,county,NV,Nevada,clark|NV,32003,"Clark County, NV",school_age,76,53,102
-low,other_counties,NV,Nevada,,,"Other counties, NV",releases,24,15,33
-low,other_counties,NV,Nevada,,,"Other counties, NV",school_age,23,15,32
-low,state,NY,New York,,,,releases,1136,961,1318
-low,state,NY,New York,,,,school_age,1099,929,1275
-low,county,NY,New York,suffolk|NY,36103,"Suffolk County, NY",releases,188,147,232
-low,county,NY,New York,suffolk|NY,36103,"Suffolk County, NY",school_age,182,142,224
-low,county,NY,New York,queens|NY,36081,"Queens County, NY",releases,259,208,314
-low,county,NY,New York,queens|NY,36081,"Queens County, NY",school_age,251,201,304
-low,county,NY,New York,nassau|NY,36059,"Nassau County, NY",releases,111,82,143
-low,county,NY,New York,nassau|NY,36059,"Nassau County, NY",school_age,108,79,138
-low,county,NY,New York,kings|NY,36047,"Kings County, NY",releases,187,146,231
-low,county,NY,New York,kings|NY,36047,"Kings County, NY",school_age,181,141,223
-low,county,NY,New York,bronx|NY,36005,"Bronx County, NY",releases,90,64,117
-low,county,NY,New York,bronx|NY,36005,"Bronx County, NY",school_age,87,62,113
-low,county,NY,New York,westchester|NY,36119,"Westchester County, NY",releases,68,46,92
-low,county,NY,New York,westchester|NY,36119,"Westchester County, NY",school_age,66,44,89
-low,other_counties,NY,New York,,,"Other counties, NY",releases,232,184,284
-low,other_counties,NY,New York,,,"Other counties, NY",school_age,225,178,275
-low,state,OH,Ohio,,,,releases,330,276,386
-low,state,OH,Ohio,,,,school_age,319,267,373
-low,county,OH,Ohio,hamilton|OH,39061,"Hamilton County, OH",releases,69,52,86
-low,county,OH,Ohio,hamilton|OH,39061,"Hamilton County, OH",school_age,67,50,83
-low,county,OH,Ohio,franklin|OH,39049,"Franklin County, OH",releases,117,92,142
-low,county,OH,Ohio,franklin|OH,39049,"Franklin County, OH",school_age,113,89,137
-low,other_counties,OH,Ohio,,,"Other counties, OH",releases,145,117,174
-low,other_counties,OH,Ohio,,,"Other counties, OH",school_age,140,113,168
-low,state,OK,Oklahoma,,,,releases,152,116,190
-low,state,OK,Oklahoma,,,,school_age,147,112,184
-low,county,OK,Oklahoma,oklahoma|OK,40109,"Oklahoma County, OK",releases,70,51,90
-low,county,OK,Oklahoma,oklahoma|OK,40109,"Oklahoma County, OK",school_age,67,49,87
-low,other_counties,OK,Oklahoma,,,"Other counties, OK",releases,83,61,106
-low,other_counties,OK,Oklahoma,,,"Other counties, OK",school_age,80,59,103
-low,state,OR,Oregon,,,,releases,124,91,159
-low,state,OR,Oregon,,,,school_age,120,88,154
-low,other_counties,OR,Oregon,,,"Other counties, OR",releases,124,91,159
-low,other_counties,OR,Oregon,,,"Other counties, OR",school_age,120,88,154
-low,state,PA,Pennsylvania,,,,releases,302,250,356
-low,state,PA,Pennsylvania,,,,school_age,292,242,344
-low,county,PA,Pennsylvania,philadelphia|PA,42101,"Philadelphia County, PA",releases,82,63,102
-low,county,PA,Pennsylvania,philadelphia|PA,42101,"Philadelphia County, PA",school_age,79,61,99
-low,other_counties,PA,Pennsylvania,,,"Other counties, PA",releases,220,180,263
-low,other_counties,PA,Pennsylvania,,,"Other counties, PA",school_age,213,174,254
-low,state,RI,Rhode Island,,,,releases,69,46,96
-low,state,RI,Rhode Island,,,,school_age,67,44,93
-low,county,RI,Rhode Island,providence|RI,44007,"Providence County, RI",releases,59,39,82
-low,county,RI,Rhode Island,providence|RI,44007,"Providence County, RI",school_age,57,38,79
-low,other_counties,RI,Rhode Island,,,"Other counties, RI",releases,10,5,16
-low,other_counties,RI,Rhode Island,,,"Other counties, RI",school_age,10,5,15
-low,state,SC,South Carolina,,,,releases,308,255,363
-low,state,SC,South Carolina,,,,school_age,298,247,351
-low,county,SC,South Carolina,greenville|SC,45045,"Greenville County, SC",releases,61,46,78
-low,county,SC,South Carolina,greenville|SC,45045,"Greenville County, SC",school_age,59,44,75
-low,other_counties,SC,South Carolina,,,"Other counties, SC",releases,246,203,293
-low,other_counties,SC,South Carolina,,,"Other counties, SC",school_age,238,196,283
-low,state,SD,South Dakota,,,,releases,24,10,39
-low,state,SD,South Dakota,,,,school_age,23,10,38
-low,other_counties,SD,South Dakota,,,"Other counties, SD",releases,24,10,39
-low,other_counties,SD,South Dakota,,,"Other counties, SD",school_age,23,10,38
-low,state,TN,Tennessee,,,,releases,586,460,719
-low,state,TN,Tennessee,,,,school_age,567,445,695
-low,county,TN,Tennessee,davidson|TN,47037,"Davidson County, TN",releases,180,136,227
-low,county,TN,Tennessee,davidson|TN,47037,"Davidson County, TN",school_age,174,132,220
-low,county,TN,Tennessee,shelby|TN,47157,"Shelby County, TN",releases,94,68,123
-low,county,TN,Tennessee,shelby|TN,47157,"Shelby County, TN",school_age,91,66,119
-low,county,TN,Tennessee,rutherford|TN,47149,"Rutherford County, TN",releases,57,39,77
-low,county,TN,Tennessee,rutherford|TN,47149,"Rutherford County, TN",school_age,55,38,74
-low,other_counties,TN,Tennessee,,,"Other counties, TN",releases,255,196,318
-low,other_counties,TN,Tennessee,,,"Other counties, TN",school_age,247,190,308
-low,state,TX,Texas,,,,releases,2385,2148,2631
-low,state,TX,Texas,,,,school_age,2306,2077,2544
-low,county,TX,Texas,harris|TX,48201,"Harris County, TX",releases,780,672,891
-low,county,TX,Texas,harris|TX,48201,"Harris County, TX",school_age,754,650,862
-low,county,TX,Texas,dallas|TX,48113,"Dallas County, TX",releases,449,372,529
-low,county,TX,Texas,dallas|TX,48113,"Dallas County, TX",school_age,434,360,512
-low,county,TX,Texas,travis|TX,48453,"Travis County, TX",releases,222,171,275
-low,county,TX,Texas,travis|TX,48453,"Travis County, TX",school_age,215,165,266
-low,county,TX,Texas,tarrant|TX,48439,"Tarrant County, TX",releases,135,97,178
-low,county,TX,Texas,tarrant|TX,48439,"Tarrant County, TX",school_age,131,94,172
-low,county,TX,Texas,bexar|TX,48029,"Bexar County, TX",releases,119,83,159
-low,county,TX,Texas,bexar|TX,48029,"Bexar County, TX",school_age,115,80,154
-low,county,TX,Texas,denton|TX,48121,"Denton County, TX",releases,82,53,115
-low,county,TX,Texas,denton|TX,48121,"Denton County, TX",school_age,80,51,111
-low,other_counties,TX,Texas,,,"Other counties, TX",releases,598,508,693
-low,other_counties,TX,Texas,,,"Other counties, TX",school_age,578,491,670
-low,state,UT,Utah,,,,releases,138,103,176
-low,state,UT,Utah,,,,school_age,134,100,170
-low,county,UT,Utah,salt lake|UT,49035,"Salt Lake County, UT",releases,70,51,92
-low,county,UT,Utah,salt lake|UT,49035,"Salt Lake County, UT",school_age,68,49,89
-low,other_counties,UT,Utah,,,"Other counties, UT",releases,68,49,88
-low,other_counties,UT,Utah,,,"Other counties, UT",school_age,66,47,85
-low,state,VA,Virginia,,,,releases,655,522,793
-low,state,VA,Virginia,,,,school_age,634,505,767
-low,county,VA,Virginia,fairfax|VA,51059,"Fairfax County, VA",releases,131,98,167
-low,county,VA,Virginia,fairfax|VA,51059,"Fairfax County, VA",school_age,127,95,162
-low,county,VA,Virginia,prince william|VA,51153,"Prince William County, VA",releases,81,58,106
-low,county,VA,Virginia,prince william|VA,51153,"Prince William County, VA",school_age,79,56,103
-low,county,VA,Virginia,chesterfield|VA,51041,"Chesterfield County, VA",releases,54,36,73
-low,county,VA,Virginia,chesterfield|VA,51041,"Chesterfield County, VA",school_age,52,35,71
-low,other_counties,VA,Virginia,,,"Other counties, VA",releases,389,306,476
-low,other_counties,VA,Virginia,,,"Other counties, VA",school_age,377,296,460
-low,state,VT,Vermont,,,,releases,6,0,13
-low,state,VT,Vermont,,,,school_age,5,0,13
-low,other_counties,VT,Vermont,,,"Other counties, VT",releases,6,0,13
-low,other_counties,VT,Vermont,,,"Other counties, VT",school_age,5,0,13
-low,state,WA,Washington,,,,releases,295,244,349
-low,state,WA,Washington,,,,school_age,286,236,338
-low,county,WA,Washington,king|WA,53033,"King County, WA",releases,129,103,157
-low,county,WA,Washington,king|WA,53033,"King County, WA",school_age,125,100,152
-low,other_counties,WA,Washington,,,"Other counties, WA",releases,166,134,199
-low,other_counties,WA,Washington,,,"Other counties, WA",school_age,161,130,192
-low,state,WI,Wisconsin,,,,releases,133,100,169
-low,state,WI,Wisconsin,,,,school_age,129,97,163
-low,other_counties,WI,Wisconsin,,,"Other counties, WI",releases,133,100,169
-low,other_counties,WI,Wisconsin,,,"Other counties, WI",school_age,129,97,163
-low,state,WV,West Virginia,,,,releases,10,2,20
-low,state,WV,West Virginia,,,,school_age,9,2,19
-low,other_counties,WV,West Virginia,,,"Other counties, WV",releases,10,2,20
-low,other_counties,WV,West Virginia,,,"Other counties, WV",school_age,9,2,19
-low,state,WY,Wyoming,,,,releases,7,1,16
-low,state,WY,Wyoming,,,,school_age,7,1,15
-low,other_counties,WY,Wyoming,,,"Other counties, WY",releases,7,1,16
-low,other_counties,WY,Wyoming,,,"Other counties, WY",school_age,7,1,15
+low,state,AK,Alaska,,,,releases,4,0,11
+low,state,AK,Alaska,,,,school_age,4,0,11
+low,other_counties,AK,Alaska,,,"Other counties, AK",releases,4,0,11
+low,other_counties,AK,Alaska,,,"Other counties, AK",school_age,4,0,11
+low,state,AL,Alabama,,,,releases,435,364,511
+low,state,AL,Alabama,,,,school_age,421,352,494
+low,county,AL,Alabama,jefferson|AL,01073,"Jefferson County, AL",releases,72,55,91
+low,county,AL,Alabama,jefferson|AL,01073,"Jefferson County, AL",school_age,70,53,88
+low,other_counties,AL,Alabama,,,"Other counties, AL",releases,363,302,428
+low,other_counties,AL,Alabama,,,"Other counties, AL",school_age,351,292,414
+low,state,AR,Arkansas,,,,releases,169,125,216
+low,state,AR,Arkansas,,,,school_age,163,121,209
+low,other_counties,AR,Arkansas,,,"Other counties, AR",releases,169,125,216
+low,other_counties,AR,Arkansas,,,"Other counties, AR",school_age,163,121,209
+low,state,AZ,Arizona,,,,releases,318,257,382
+low,state,AZ,Arizona,,,,school_age,308,249,369
+low,county,AZ,Arizona,maricopa|AZ,04013,"Maricopa County, AZ",releases,280,225,337
+low,county,AZ,Arizona,maricopa|AZ,04013,"Maricopa County, AZ",school_age,270,218,326
+low,other_counties,AZ,Arizona,,,"Other counties, AZ",releases,39,27,52
+low,other_counties,AZ,Arizona,,,"Other counties, AZ",school_age,38,26,50
+low,state,CA,California,,,,releases,3001,2707,3305
+low,state,CA,California,,,,school_age,2903,2618,3196
+low,county,CA,California,los angeles|CA,06037,"Los Angeles County, CA",releases,1000,867,1136
+low,county,CA,California,los angeles|CA,06037,"Los Angeles County, CA",school_age,967,838,1099
+low,county,CA,California,alameda|CA,06001,"Alameda County, CA",releases,190,142,240
+low,county,CA,California,alameda|CA,06001,"Alameda County, CA",school_age,183,137,232
+low,county,CA,California,san mateo|CA,06081,"San Mateo County, CA",releases,119,81,158
+low,county,CA,California,san mateo|CA,06081,"San Mateo County, CA",school_age,115,78,153
+low,county,CA,California,orange|CA,06059,"Orange County, CA",releases,166,121,215
+low,county,CA,California,orange|CA,06059,"Orange County, CA",school_age,160,117,208
+low,county,CA,California,riverside|CA,06065,"Riverside County, CA",releases,122,84,162
+low,county,CA,California,riverside|CA,06065,"Riverside County, CA",school_age,118,81,157
+low,county,CA,California,contra costa|CA,06013,"Contra Costa County, CA",releases,108,73,146
+low,county,CA,California,contra costa|CA,06013,"Contra Costa County, CA",school_age,104,71,141
+low,county,CA,California,santa clara|CA,06085,"Santa Clara County, CA",releases,131,92,174
+low,county,CA,California,santa clara|CA,06085,"Santa Clara County, CA",school_age,127,89,168
+low,county,CA,California,san francisco|CA,06075,"San Francisco County, CA",releases,102,68,140
+low,county,CA,California,san francisco|CA,06075,"San Francisco County, CA",school_age,99,66,135
+low,county,CA,California,san diego|CA,06073,"San Diego County, CA",releases,113,77,153
+low,county,CA,California,san diego|CA,06073,"San Diego County, CA",school_age,109,74,148
+low,county,CA,California,san bernardino|CA,06071,"San Bernardino County, CA",releases,118,81,159
+low,county,CA,California,san bernardino|CA,06071,"San Bernardino County, CA",school_age,114,78,154
+low,county,CA,California,fresno|CA,06019,"Fresno County, CA",releases,83,52,117
+low,county,CA,California,fresno|CA,06019,"Fresno County, CA",school_age,80,50,113
+low,county,CA,California,marin|CA,06041,"Marin County, CA",releases,50,27,76
+low,county,CA,California,marin|CA,06041,"Marin County, CA",school_age,48,26,73
+low,county,CA,California,monterey|CA,06053,"Monterey County, CA",releases,66,39,96
+low,county,CA,California,monterey|CA,06053,"Monterey County, CA",school_age,64,38,93
+low,county,CA,California,kern|CA,06029,"Kern County, CA",releases,67,40,97
+low,county,CA,California,kern|CA,06029,"Kern County, CA",school_age,65,39,94
+low,county,CA,California,sacramento|CA,06067,"Sacramento County, CA",releases,86,55,121
+low,county,CA,California,sacramento|CA,06067,"Sacramento County, CA",school_age,83,53,117
+low,county,CA,California,san joaquin|CA,06077,"San Joaquin County, CA",releases,72,44,103
+low,county,CA,California,san joaquin|CA,06077,"San Joaquin County, CA",school_age,69,43,100
+low,county,CA,California,ventura|CA,06111,"Ventura County, CA",releases,59,34,87
+low,county,CA,California,ventura|CA,06111,"Ventura County, CA",school_age,57,33,84
+low,county,CA,California,santa barbara|CA,06083,"Santa Barbara County, CA",releases,74,45,106
+low,county,CA,California,santa barbara|CA,06083,"Santa Barbara County, CA",school_age,72,44,103
+low,other_counties,CA,California,,,"Other counties, CA",releases,276,217,339
+low,other_counties,CA,California,,,"Other counties, CA",school_age,267,210,328
+low,state,CO,Colorado,,,,releases,428,357,501
+low,state,CO,Colorado,,,,school_age,414,345,485
+low,county,CO,Colorado,arapahoe|CO,08005,"Arapahoe County, CO",releases,132,104,160
+low,county,CO,Colorado,arapahoe|CO,08005,"Arapahoe County, CO",school_age,127,101,155
+low,county,CO,Colorado,denver|CO,08031,"Denver County, CO",releases,68,51,86
+low,county,CO,Colorado,denver|CO,08031,"Denver County, CO",school_age,66,49,83
+low,county,CO,Colorado,adams|CO,08001,"Adams County, CO",releases,51,37,66
+low,county,CO,Colorado,adams|CO,08001,"Adams County, CO",school_age,49,36,64
+low,other_counties,CO,Colorado,,,"Other counties, CO",releases,178,143,214
+low,other_counties,CO,Colorado,,,"Other counties, CO",school_age,172,138,207
+low,state,CT,Connecticut,,,,releases,194,146,245
+low,state,CT,Connecticut,,,,school_age,188,141,237
+low,county,CT,Connecticut,fairfield|CT,,"Fairfield County, CT",releases,104,77,134
+low,county,CT,Connecticut,fairfield|CT,,"Fairfield County, CT",school_age,101,74,130
+low,other_counties,CT,Connecticut,,,"Other counties, CT",releases,90,66,116
+low,other_counties,CT,Connecticut,,,"Other counties, CT",school_age,87,64,112
+low,state,DC,District of Columbia,,,,releases,62,36,91
+low,state,DC,District of Columbia,,,,school_age,60,35,88
+low,county,DC,District of Columbia,district of columbia|DC,11001,"District of Columbia, DC",releases,62,36,91
+low,county,DC,District of Columbia,district of columbia|DC,11001,"District of Columbia, DC",school_age,60,35,88
+low,other_counties,DC,District of Columbia,,,"Other counties, DC",releases,0,0,0
+low,other_counties,DC,District of Columbia,,,"Other counties, DC",school_age,0,0,0
+low,state,DE,Delaware,,,,releases,101,68,138
+low,state,DE,Delaware,,,,school_age,98,66,133
+low,county,DE,Delaware,sussex|DE,10005,"Sussex County, DE",releases,61,40,84
+low,county,DE,Delaware,sussex|DE,10005,"Sussex County, DE",school_age,59,39,81
+low,other_counties,DE,Delaware,,,"Other counties, DE",releases,40,25,56
+low,other_counties,DE,Delaware,,,"Other counties, DE",school_age,39,24,54
+low,state,FL,Florida,,,,releases,1957,1716,2208
+low,state,FL,Florida,,,,school_age,1893,1660,2135
+low,county,FL,Florida,miami-dade|FL,12086,"Miami-Dade County, FL",releases,308,249,371
+low,county,FL,Florida,miami-dade|FL,12086,"Miami-Dade County, FL",school_age,298,241,359
+low,county,FL,Florida,palm beach|FL,12099,"Palm Beach County, FL",releases,293,235,353
+low,county,FL,Florida,palm beach|FL,12099,"Palm Beach County, FL",school_age,283,227,341
+low,county,FL,Florida,lee|FL,12071,"Lee County, FL",releases,143,106,182
+low,county,FL,Florida,lee|FL,12071,"Lee County, FL",school_age,138,103,176
+low,county,FL,Florida,broward|FL,12011,"Broward County, FL",releases,148,110,189
+low,county,FL,Florida,broward|FL,12011,"Broward County, FL",school_age,143,106,183
+low,county,FL,Florida,orange|FL,12095,"Orange County, FL",releases,193,149,239
+low,county,FL,Florida,orange|FL,12095,"Orange County, FL",school_age,186,144,231
+low,county,FL,Florida,hillsborough|FL,12057,"Hillsborough County, FL",releases,146,109,186
+low,county,FL,Florida,hillsborough|FL,12057,"Hillsborough County, FL",school_age,141,105,180
+low,county,FL,Florida,collier|FL,12021,"Collier County, FL",releases,75,50,103
+low,county,FL,Florida,collier|FL,12021,"Collier County, FL",school_age,73,48,100
+low,county,FL,Florida,duval|FL,12031,"Duval County, FL",releases,95,66,127
+low,county,FL,Florida,duval|FL,12031,"Duval County, FL",school_age,92,64,123
+low,county,FL,Florida,manatee|FL,12081,"Manatee County, FL",releases,77,52,106
+low,county,FL,Florida,manatee|FL,12081,"Manatee County, FL",school_age,75,50,103
+low,county,FL,Florida,polk|FL,12105,"Polk County, FL",releases,53,32,76
+low,county,FL,Florida,polk|FL,12105,"Polk County, FL",school_age,51,31,73
+low,other_counties,FL,Florida,,,"Other counties, FL",releases,427,353,505
+low,other_counties,FL,Florida,,,"Other counties, FL",school_age,413,341,488
+low,state,GA,Georgia,,,,releases,976,801,1156
+low,state,GA,Georgia,,,,school_age,943,775,1118
+low,county,GA,Georgia,dekalb|GA,13089,"DeKalb County, GA",releases,170,130,212
+low,county,GA,Georgia,dekalb|GA,13089,"DeKalb County, GA",school_age,164,126,205
+low,county,GA,Georgia,gwinnett|GA,13135,"Gwinnett County, GA",releases,215,168,265
+low,county,GA,Georgia,gwinnett|GA,13135,"Gwinnett County, GA",school_age,208,162,256
+low,county,GA,Georgia,cobb|GA,13067,"Cobb County, GA",releases,93,68,121
+low,county,GA,Georgia,cobb|GA,13067,"Cobb County, GA",school_age,90,66,117
+low,county,GA,Georgia,chatham|GA,13051,"Chatham County, GA",releases,59,40,80
+low,county,GA,Georgia,chatham|GA,13051,"Chatham County, GA",school_age,57,39,77
+low,other_counties,GA,Georgia,,,"Other counties, GA",releases,439,353,528
+low,other_counties,GA,Georgia,,,"Other counties, GA",school_age,424,341,511
+low,state,HI,Hawaii,,,,releases,11,2,23
+low,state,HI,Hawaii,,,,school_age,11,2,22
+low,other_counties,HI,Hawaii,,,"Other counties, HI",releases,11,2,23
+low,other_counties,HI,Hawaii,,,"Other counties, HI",school_age,11,2,22
+low,state,IA,Iowa,,,,releases,171,126,218
+low,state,IA,Iowa,,,,school_age,165,122,211
+low,other_counties,IA,Iowa,,,"Other counties, IA",releases,171,126,218
+low,other_counties,IA,Iowa,,,"Other counties, IA",school_age,165,122,211
+low,state,ID,Idaho,,,,releases,74,45,106
+low,state,ID,Idaho,,,,school_age,72,44,103
+low,other_counties,ID,Idaho,,,"Other counties, ID",releases,74,45,106
+low,other_counties,ID,Idaho,,,"Other counties, ID",school_age,72,44,103
+low,state,IL,Illinois,,,,releases,679,590,772
+low,state,IL,Illinois,,,,school_age,657,571,747
+low,county,IL,Illinois,cook|IL,17031,"Cook County, IL",releases,399,341,459
+low,county,IL,Illinois,cook|IL,17031,"Cook County, IL",school_age,386,330,444
+low,county,IL,Illinois,dupage|IL,17043,"DuPage County, IL",releases,55,40,71
+low,county,IL,Illinois,dupage|IL,17043,"DuPage County, IL",school_age,53,39,69
+low,other_counties,IL,Illinois,,,"Other counties, IL",releases,225,187,265
+low,other_counties,IL,Illinois,,,"Other counties, IL",school_age,218,181,256
+low,state,IN,Indiana,,,,releases,428,357,502
+low,state,IN,Indiana,,,,school_age,414,345,485
+low,county,IN,Indiana,marion|IN,18097,"Marion County, IN",releases,205,167,246
+low,county,IN,Indiana,marion|IN,18097,"Marion County, IN",school_age,199,162,238
+low,other_counties,IN,Indiana,,,"Other counties, IN",releases,222,181,266
+low,other_counties,IN,Indiana,,,"Other counties, IN",school_age,215,175,257
+low,state,KS,Kansas,,,,releases,194,147,243
+low,state,KS,Kansas,,,,school_age,187,142,235
+low,county,KS,Kansas,wyandotte|KS,20209,"Wyandotte County, KS",releases,61,44,80
+low,county,KS,Kansas,wyandotte|KS,20209,"Wyandotte County, KS",school_age,59,43,77
+low,other_counties,KS,Kansas,,,"Other counties, KS",releases,133,99,168
+low,other_counties,KS,Kansas,,,"Other counties, KS",school_age,128,96,162
+low,state,KY,Kentucky,,,,releases,267,212,326
+low,state,KY,Kentucky,,,,school_age,259,205,315
+low,county,KY,Kentucky,jefferson|KY,21111,"Jefferson County, KY",releases,82,62,104
+low,county,KY,Kentucky,jefferson|KY,21111,"Jefferson County, KY",school_age,79,60,101
+low,other_counties,KY,Kentucky,,,"Other counties, KY",releases,185,145,228
+low,other_counties,KY,Kentucky,,,"Other counties, KY",school_age,179,140,220
+low,state,LA,Louisiana,,,,releases,392,324,463
+low,state,LA,Louisiana,,,,school_age,379,313,448
+low,county,LA,Louisiana,jefferson|LA,22051,"Jefferson Parish, LA",releases,109,85,135
+low,county,LA,Louisiana,jefferson|LA,22051,"Jefferson Parish, LA",school_age,106,82,131
+low,county,LA,Louisiana,east baton rouge|LA,22033,"East Baton Rouge Parish, LA",releases,78,59,98
+low,county,LA,Louisiana,east baton rouge|LA,22033,"East Baton Rouge Parish, LA",school_age,75,57,95
+low,other_counties,LA,Louisiana,,,"Other counties, LA",releases,205,166,246
+low,other_counties,LA,Louisiana,,,"Other counties, LA",school_age,198,161,238
+low,state,MA,Massachusetts,,,,releases,507,431,588
+low,state,MA,Massachusetts,,,,school_age,490,417,569
+low,county,MA,Massachusetts,suffolk|MA,25025,"Suffolk County, MA",releases,108,85,133
+low,county,MA,Massachusetts,suffolk|MA,25025,"Suffolk County, MA",school_age,104,82,129
+low,county,MA,Massachusetts,essex|MA,25009,"Essex County, MA",releases,154,124,186
+low,county,MA,Massachusetts,essex|MA,25009,"Essex County, MA",school_age,149,120,180
+low,county,MA,Massachusetts,middlesex|MA,25017,"Middlesex County, MA",releases,93,72,115
+low,county,MA,Massachusetts,middlesex|MA,25017,"Middlesex County, MA",school_age,90,70,111
+low,county,MA,Massachusetts,bristol|MA,25005,"Bristol County, MA",releases,54,39,70
+low,county,MA,Massachusetts,bristol|MA,25005,"Bristol County, MA",school_age,52,38,68
+low,other_counties,MA,Massachusetts,,,"Other counties, MA",releases,98,76,121
+low,other_counties,MA,Massachusetts,,,"Other counties, MA",school_age,95,73,117
+low,state,MD,Maryland,,,,releases,958,785,1140
+low,state,MD,Maryland,,,,school_age,927,759,1102
+low,county,MD,Maryland,prince george's|MD,24033,"Prince George's County, MD",releases,277,219,339
+low,county,MD,Maryland,prince george's|MD,24033,"Prince George's County, MD",school_age,268,212,328
+low,county,MD,Maryland,montgomery|MD,24031,"Montgomery County, MD",releases,181,140,225
+low,county,MD,Maryland,montgomery|MD,24031,"Montgomery County, MD",school_age,175,135,218
+low,county,MD,Maryland,baltimore city|MD,24510,"Baltimore city, MD",releases,133,100,168
+low,county,MD,Maryland,baltimore city|MD,24510,"Baltimore city, MD",school_age,129,97,162
+low,county,MD,Maryland,baltimore|MD,24005,"Baltimore County, MD",releases,110,81,141
+low,county,MD,Maryland,baltimore|MD,24005,"Baltimore County, MD",school_age,106,78,136
+low,county,MD,Maryland,anne arundel|MD,24003,"Anne Arundel County, MD",releases,81,57,107
+low,county,MD,Maryland,anne arundel|MD,24003,"Anne Arundel County, MD",school_age,78,55,103
+low,other_counties,MD,Maryland,,,"Other counties, MD",releases,176,135,219
+low,other_counties,MD,Maryland,,,"Other counties, MD",school_age,170,131,212
+low,state,ME,Maine,,,,releases,35,16,58
+low,state,ME,Maine,,,,school_age,34,15,56
+low,other_counties,ME,Maine,,,"Other counties, ME",releases,35,16,58
+low,other_counties,ME,Maine,,,"Other counties, ME",school_age,34,15,56
+low,state,MI,Michigan,,,,releases,181,135,230
+low,state,MI,Michigan,,,,school_age,175,131,222
+low,county,MI,Michigan,wayne|MI,26163,"Wayne County, MI",releases,66,47,86
+low,county,MI,Michigan,wayne|MI,26163,"Wayne County, MI",school_age,64,45,83
+low,other_counties,MI,Michigan,,,"Other counties, MI",releases,115,85,148
+low,other_counties,MI,Michigan,,,"Other counties, MI",school_age,111,82,143
+low,state,MN,Minnesota,,,,releases,265,210,322
+low,state,MN,Minnesota,,,,school_age,256,203,311
+low,county,MN,Minnesota,hennepin|MN,27053,"Hennepin County, MN",releases,77,57,97
+low,county,MN,Minnesota,hennepin|MN,27053,"Hennepin County, MN",school_age,74,55,94
+low,other_counties,MN,Minnesota,,,"Other counties, MN",releases,188,147,230
+low,other_counties,MN,Minnesota,,,"Other counties, MN",school_age,182,142,222
+low,state,MO,Missouri,,,,releases,255,200,313
+low,state,MO,Missouri,,,,school_age,247,193,303
+low,county,MO,Missouri,jackson|MO,29095,"Jackson County, MO",releases,69,51,89
+low,county,MO,Missouri,jackson|MO,29095,"Jackson County, MO",school_age,67,49,86
+low,county,MO,Missouri,st. louis|MO,29189,"St. Louis County, MO",releases,60,44,78
+low,county,MO,Missouri,st. louis|MO,29189,"St. Louis County, MO",school_age,58,43,75
+low,other_counties,MO,Missouri,,,"Other counties, MO",releases,126,97,158
+low,other_counties,MO,Missouri,,,"Other counties, MO",school_age,122,94,153
+low,state,MS,Mississippi,,,,releases,136,96,179
+low,state,MS,Mississippi,,,,school_age,132,93,173
+low,other_counties,MS,Mississippi,,,"Other counties, MS",releases,136,96,179
+low,other_counties,MS,Mississippi,,,"Other counties, MS",school_age,132,93,173
+low,state,MT,Montana,,,,releases,15,4,29
+low,state,MT,Montana,,,,school_age,14,4,28
+low,other_counties,MT,Montana,,,"Other counties, MT",releases,15,4,29
+low,other_counties,MT,Montana,,,"Other counties, MT",school_age,14,4,28
+low,state,NC,North Carolina,,,,releases,991,816,1173
+low,state,NC,North Carolina,,,,school_age,958,789,1134
+low,county,NC,North Carolina,mecklenburg|NC,37119,"Mecklenburg County, NC",releases,222,174,275
+low,county,NC,North Carolina,mecklenburg|NC,37119,"Mecklenburg County, NC",school_age,215,168,266
+low,county,NC,North Carolina,wake|NC,37183,"Wake County, NC",releases,107,79,137
+low,county,NC,North Carolina,wake|NC,37183,"Wake County, NC",school_age,103,76,132
+low,county,NC,North Carolina,durham|NC,37063,"Durham County, NC",releases,77,55,101
+low,county,NC,North Carolina,durham|NC,37063,"Durham County, NC",school_age,74,53,98
+low,other_counties,NC,North Carolina,,,"Other counties, NC",releases,585,478,699
+low,other_counties,NC,North Carolina,,,"Other counties, NC",school_age,566,462,676
+low,state,ND,North Dakota,,,,releases,9,1,20
+low,state,ND,North Dakota,,,,school_age,9,1,19
+low,other_counties,ND,North Dakota,,,"Other counties, ND",releases,9,1,20
+low,other_counties,ND,North Dakota,,,"Other counties, ND",school_age,9,1,19
+low,state,NE,Nebraska,,,,releases,191,144,242
+low,state,NE,Nebraska,,,,school_age,185,139,234
+low,county,NE,Nebraska,douglas|NE,31055,"Douglas County, NE",releases,91,66,117
+low,county,NE,Nebraska,douglas|NE,31055,"Douglas County, NE",school_age,88,64,113
+low,other_counties,NE,Nebraska,,,"Other counties, NE",releases,101,74,129
+low,other_counties,NE,Nebraska,,,"Other counties, NE",school_age,97,72,125
+low,state,NH,New Hampshire,,,,releases,11,2,24
+low,state,NH,New Hampshire,,,,school_age,11,2,23
+low,other_counties,NH,New Hampshire,,,"Other counties, NH",releases,11,2,24
+low,other_counties,NH,New Hampshire,,,"Other counties, NH",school_age,11,2,23
+low,state,NJ,New Jersey,,,,releases,1036,856,1227
+low,state,NJ,New Jersey,,,,school_age,1002,828,1187
+low,county,NJ,New Jersey,union|NJ,34039,"Union County, NJ",releases,111,82,142
+low,county,NJ,New Jersey,union|NJ,34039,"Union County, NJ",school_age,107,79,137
+low,county,NJ,New Jersey,essex|NJ,34013,"Essex County, NJ",releases,141,107,178
+low,county,NJ,New Jersey,essex|NJ,34013,"Essex County, NJ",school_age,136,103,172
+low,county,NJ,New Jersey,mercer|NJ,34021,"Mercer County, NJ",releases,118,88,152
+low,county,NJ,New Jersey,mercer|NJ,34021,"Mercer County, NJ",school_age,114,85,147
+low,county,NJ,New Jersey,hudson|NJ,34017,"Hudson County, NJ",releases,94,68,122
+low,county,NJ,New Jersey,hudson|NJ,34017,"Hudson County, NJ",school_age,91,66,118
+low,county,NJ,New Jersey,bergen|NJ,34003,"Bergen County, NJ",releases,80,57,105
+low,county,NJ,New Jersey,bergen|NJ,34003,"Bergen County, NJ",school_age,77,55,102
+low,county,NJ,New Jersey,morris|NJ,34027,"Morris County, NJ",releases,70,49,93
+low,county,NJ,New Jersey,morris|NJ,34027,"Morris County, NJ",school_age,68,47,90
+low,county,NJ,New Jersey,middlesex|NJ,34023,"Middlesex County, NJ",releases,58,39,79
+low,county,NJ,New Jersey,middlesex|NJ,34023,"Middlesex County, NJ",school_age,56,38,76
+low,county,NJ,New Jersey,passaic|NJ,34031,"Passaic County, NJ",releases,69,48,92
+low,county,NJ,New Jersey,passaic|NJ,34031,"Passaic County, NJ",school_age,67,46,89
+low,county,NJ,New Jersey,monmouth|NJ,34025,"Monmouth County, NJ",releases,74,52,98
+low,county,NJ,New Jersey,monmouth|NJ,34025,"Monmouth County, NJ",school_age,72,50,95
+low,other_counties,NJ,New Jersey,,,"Other counties, NJ",releases,220,173,271
+low,other_counties,NJ,New Jersey,,,"Other counties, NJ",school_age,213,167,262
+low,state,NM,New Mexico,,,,releases,78,49,110
+low,state,NM,New Mexico,,,,school_age,75,47,106
+low,other_counties,NM,New Mexico,,,"Other counties, NM",releases,78,49,110
+low,other_counties,NM,New Mexico,,,"Other counties, NM",school_age,75,47,106
+low,state,NV,Nevada,,,,releases,147,106,191
+low,state,NV,Nevada,,,,school_age,142,103,185
+low,county,NV,Nevada,clark|NV,32003,"Clark County, NV",releases,113,81,148
+low,county,NV,Nevada,clark|NV,32003,"Clark County, NV",school_age,110,78,143
+low,other_counties,NV,Nevada,,,"Other counties, NV",releases,34,22,47
+low,other_counties,NV,Nevada,,,"Other counties, NV",school_age,33,21,45
+low,state,NY,New York,,,,releases,1633,1406,1866
+low,state,NY,New York,,,,school_age,1580,1360,1805
+low,county,NY,New York,suffolk|NY,36103,"Suffolk County, NY",releases,271,217,328
+low,county,NY,New York,suffolk|NY,36103,"Suffolk County, NY",school_age,262,210,317
+low,county,NY,New York,queens|NY,36081,"Queens County, NY",releases,372,304,444
+low,county,NY,New York,queens|NY,36081,"Queens County, NY",school_age,360,294,429
+low,county,NY,New York,nassau|NY,36059,"Nassau County, NY",releases,160,121,201
+low,county,NY,New York,nassau|NY,36059,"Nassau County, NY",school_age,155,117,194
+low,county,NY,New York,kings|NY,36047,"Kings County, NY",releases,270,216,328
+low,county,NY,New York,kings|NY,36047,"Kings County, NY",school_age,261,209,317
+low,county,NY,New York,bronx|NY,36005,"Bronx County, NY",releases,129,96,165
+low,county,NY,New York,bronx|NY,36005,"Bronx County, NY",school_age,125,93,160
+low,county,NY,New York,westchester|NY,36119,"Westchester County, NY",releases,98,69,129
+low,county,NY,New York,westchester|NY,36119,"Westchester County, NY",school_age,95,67,125
+low,county,NY,New York,rockland|NY,36087,"Rockland County, NY",releases,52,33,74
+low,county,NY,New York,rockland|NY,36087,"Rockland County, NY",school_age,50,32,72
+low,county,NY,New York,orange|NY,36071,"Orange County, NY",releases,65,43,90
+low,county,NY,New York,orange|NY,36071,"Orange County, NY",school_age,63,42,87
+low,other_counties,NY,New York,,,"Other counties, NY",releases,216,169,266
+low,other_counties,NY,New York,,,"Other counties, NY",school_age,209,163,257
+low,state,OH,Ohio,,,,releases,475,399,553
+low,state,OH,Ohio,,,,school_age,460,386,535
+low,county,OH,Ohio,hamilton|OH,39061,"Hamilton County, OH",releases,99,77,122
+low,county,OH,Ohio,hamilton|OH,39061,"Hamilton County, OH",school_age,96,74,118
+low,county,OH,Ohio,franklin|OH,39049,"Franklin County, OH",releases,168,135,202
+low,county,OH,Ohio,franklin|OH,39049,"Franklin County, OH",school_age,163,131,195
+low,other_counties,OH,Ohio,,,"Other counties, OH",releases,208,170,248
+low,other_counties,OH,Ohio,,,"Other counties, OH",school_age,201,164,240
+low,state,OK,Oklahoma,,,,releases,219,169,271
+low,state,OK,Oklahoma,,,,school_age,212,163,262
+low,county,OK,Oklahoma,oklahoma|OK,40109,"Oklahoma County, OK",releases,100,75,127
+low,county,OK,Oklahoma,oklahoma|OK,40109,"Oklahoma County, OK",school_age,97,73,123
+low,county,OK,Oklahoma,tulsa|OK,40143,"Tulsa County, OK",releases,66,48,85
+low,county,OK,Oklahoma,tulsa|OK,40143,"Tulsa County, OK",school_age,64,46,82
+low,other_counties,OK,Oklahoma,,,"Other counties, OK",releases,53,38,70
+low,other_counties,OK,Oklahoma,,,"Other counties, OK",school_age,51,37,68
+low,state,OR,Oregon,,,,releases,178,133,228
+low,state,OR,Oregon,,,,school_age,172,129,220
+low,other_counties,OR,Oregon,,,"Other counties, OR",releases,178,133,228
+low,other_counties,OR,Oregon,,,"Other counties, OR",school_age,172,129,220
+low,state,PA,Pennsylvania,,,,releases,434,363,508
+low,state,PA,Pennsylvania,,,,school_age,420,351,491
+low,county,PA,Pennsylvania,philadelphia|PA,42101,"Philadelphia County, PA",releases,118,93,145
+low,county,PA,Pennsylvania,philadelphia|PA,42101,"Philadelphia County, PA",school_age,114,90,140
+low,county,PA,Pennsylvania,montgomery|PA,42091,"Montgomery County, PA",releases,50,36,65
+low,county,PA,Pennsylvania,montgomery|PA,42091,"Montgomery County, PA",school_age,48,35,63
+low,other_counties,PA,Pennsylvania,,,"Other counties, PA",releases,266,219,316
+low,other_counties,PA,Pennsylvania,,,"Other counties, PA",school_age,258,212,306
+low,state,RI,Rhode Island,,,,releases,100,66,136
+low,state,RI,Rhode Island,,,,school_age,96,64,132
+low,county,RI,Rhode Island,providence|RI,44007,"Providence County, RI",releases,85,56,116
+low,county,RI,Rhode Island,providence|RI,44007,"Providence County, RI",school_age,82,54,112
+low,other_counties,RI,Rhode Island,,,"Other counties, RI",releases,15,8,22
+low,other_counties,RI,Rhode Island,,,"Other counties, RI",school_age,14,8,21
+low,state,SC,South Carolina,,,,releases,442,369,520
+low,state,SC,South Carolina,,,,school_age,428,357,503
+low,county,SC,South Carolina,greenville|SC,45045,"Greenville County, SC",releases,88,68,109
+low,county,SC,South Carolina,greenville|SC,45045,"Greenville County, SC",school_age,85,66,105
+low,other_counties,SC,South Carolina,,,"Other counties, SC",releases,354,293,418
+low,other_counties,SC,South Carolina,,,"Other counties, SC",school_age,343,283,404
+low,state,SD,South Dakota,,,,releases,34,15,56
+low,state,SD,South Dakota,,,,school_age,33,15,54
+low,other_counties,SD,South Dakota,,,"Other counties, SD",releases,34,15,56
+low,other_counties,SD,South Dakota,,,"Other counties, SD",school_age,33,15,54
+low,state,TN,Tennessee,,,,releases,845,683,1019
+low,state,TN,Tennessee,,,,school_age,817,661,985
+low,county,TN,Tennessee,davidson|TN,47037,"Davidson County, TN",releases,259,202,320
+low,county,TN,Tennessee,davidson|TN,47037,"Davidson County, TN",school_age,251,195,309
+low,county,TN,Tennessee,shelby|TN,47157,"Shelby County, TN",releases,135,102,172
+low,county,TN,Tennessee,shelby|TN,47157,"Shelby County, TN",school_age,131,99,166
+low,county,TN,Tennessee,knox|TN,47093,"Knox County, TN",releases,71,50,95
+low,county,TN,Tennessee,knox|TN,47093,"Knox County, TN",school_age,69,48,92
+low,county,TN,Tennessee,rutherford|TN,47149,"Rutherford County, TN",releases,82,59,107
+low,county,TN,Tennessee,rutherford|TN,47149,"Rutherford County, TN",school_age,79,57,103
+low,other_counties,TN,Tennessee,,,"Other counties, TN",releases,296,233,365
+low,other_counties,TN,Tennessee,,,"Other counties, TN",school_age,287,225,353
+low,state,TX,Texas,,,,releases,3429,3121,3745
+low,state,TX,Texas,,,,school_age,3316,3018,3622
+low,county,TX,Texas,harris|TX,48201,"Harris County, TX",releases,1123,980,1268
+low,county,TX,Texas,harris|TX,48201,"Harris County, TX",school_age,1086,948,1226
+low,county,TX,Texas,dallas|TX,48113,"Dallas County, TX",releases,644,544,749
+low,county,TX,Texas,dallas|TX,48113,"Dallas County, TX",school_age,623,526,724
+low,county,TX,Texas,travis|TX,48453,"Travis County, TX",releases,319,252,391
+low,county,TX,Texas,travis|TX,48453,"Travis County, TX",school_age,309,244,378
+low,county,TX,Texas,tarrant|TX,48439,"Tarrant County, TX",releases,195,144,251
+low,county,TX,Texas,tarrant|TX,48439,"Tarrant County, TX",school_age,189,139,243
+low,county,TX,Texas,bexar|TX,48029,"Bexar County, TX",releases,170,122,220
+low,county,TX,Texas,bexar|TX,48029,"Bexar County, TX",school_age,164,118,213
+low,county,TX,Texas,montgomery|TX,48339,"Montgomery County, TX",releases,63,36,94
+low,county,TX,Texas,montgomery|TX,48339,"Montgomery County, TX",school_age,61,35,91
+low,county,TX,Texas,collin|TX,48085,"Collin County, TX",releases,68,39,101
+low,county,TX,Texas,collin|TX,48085,"Collin County, TX",school_age,66,38,98
+low,county,TX,Texas,denton|TX,48121,"Denton County, TX",releases,118,79,160
+low,county,TX,Texas,denton|TX,48121,"Denton County, TX",school_age,114,76,155
+low,other_counties,TX,Texas,,,"Other counties, TX",releases,729,621,842
+low,other_counties,TX,Texas,,,"Other counties, TX",school_age,705,601,814
+low,state,UT,Utah,,,,releases,199,150,252
+low,state,UT,Utah,,,,school_age,193,145,244
+low,county,UT,Utah,salt lake|UT,49035,"Salt Lake County, UT",releases,101,74,131
+low,county,UT,Utah,salt lake|UT,49035,"Salt Lake County, UT",school_age,98,72,127
+low,other_counties,UT,Utah,,,"Other counties, UT",releases,98,72,126
+low,other_counties,UT,Utah,,,"Other counties, UT",school_age,95,70,122
+low,state,VA,Virginia,,,,releases,943,773,1122
+low,state,VA,Virginia,,,,school_age,912,748,1085
+low,county,VA,Virginia,fairfax|VA,51059,"Fairfax County, VA",releases,188,145,233
+low,county,VA,Virginia,fairfax|VA,51059,"Fairfax County, VA",school_age,182,140,225
+low,county,VA,Virginia,prince william|VA,51153,"Prince William County, VA",releases,117,87,149
+low,county,VA,Virginia,prince william|VA,51153,"Prince William County, VA",school_age,113,84,144
+low,county,VA,Virginia,chesterfield|VA,51041,"Chesterfield County, VA",releases,78,55,102
+low,county,VA,Virginia,chesterfield|VA,51041,"Chesterfield County, VA",school_age,75,53,99
+low,county,VA,Virginia,richmond city|VA,51760,"Richmond city, VA",releases,64,44,86
+low,county,VA,Virginia,richmond city|VA,51760,"Richmond city, VA",school_age,62,43,83
+low,other_counties,VA,Virginia,,,"Other counties, VA",releases,497,401,597
+low,other_counties,VA,Virginia,,,"Other counties, VA",school_age,480,388,577
+low,state,VT,Vermont,,,,releases,8,1,18
+low,state,VT,Vermont,,,,school_age,8,1,17
+low,other_counties,VT,Vermont,,,"Other counties, VT",releases,8,1,18
+low,other_counties,VT,Vermont,,,"Other counties, VT",school_age,8,1,17
+low,state,WA,Washington,,,,releases,425,354,500
+low,state,WA,Washington,,,,school_age,411,342,484
+low,county,WA,Washington,king|WA,53033,"King County, WA",releases,186,150,223
+low,county,WA,Washington,king|WA,53033,"King County, WA",school_age,180,145,216
+low,county,WA,Washington,snohomish|WA,53061,"Snohomish County, WA",releases,57,42,73
+low,county,WA,Washington,snohomish|WA,53061,"Snohomish County, WA",school_age,55,41,71
+low,other_counties,WA,Washington,,,"Other counties, WA",releases,182,147,220
+low,other_counties,WA,Washington,,,"Other counties, WA",school_age,176,142,213
+low,state,WI,Wisconsin,,,,releases,192,145,242
+low,state,WI,Wisconsin,,,,school_age,186,140,234
+low,county,WI,Wisconsin,milwaukee|WI,55079,"Milwaukee County, WI",releases,64,46,83
+low,county,WI,Wisconsin,milwaukee|WI,55079,"Milwaukee County, WI",school_age,62,44,80
+low,other_counties,WI,Wisconsin,,,"Other counties, WI",releases,128,95,163
+low,other_counties,WI,Wisconsin,,,"Other counties, WI",school_age,124,92,158
+low,state,WV,West Virginia,,,,releases,14,3,28
+low,state,WV,West Virginia,,,,school_age,13,3,27
+low,other_counties,WV,West Virginia,,,"Other counties, WV",releases,14,3,28
+low,other_counties,WV,West Virginia,,,"Other counties, WV",school_age,13,3,27
+low,state,WY,Wyoming,,,,releases,10,1,22
+low,state,WY,Wyoming,,,,school_age,10,1,21
+low,other_counties,WY,Wyoming,,,"Other counties, WY",releases,10,1,22
+low,other_counties,WY,Wyoming,,,"Other counties, WY",school_age,10,1,21
 median,state,AK,Alaska,,,,releases,9,0,23
 median,state,AK,Alaska,,,,school_age,8,0,22
 median,other_counties,AK,Alaska,,,"Other counties, AK",releases,9,0,23
 median,other_counties,AK,Alaska,,,"Other counties, AK",school_age,8,0,22
-median,state,AL,Alabama,,,,releases,938,786,1099
-median,state,AL,Alabama,,,,school_age,907,760,1063
-median,county,AL,Alabama,jefferson|AL,01073,"Jefferson County, AL",releases,155,120,193
-median,county,AL,Alabama,jefferson|AL,01073,"Jefferson County, AL",school_age,150,116,187
-median,other_counties,AL,Alabama,,,"Other counties, AL",releases,783,654,920
-median,other_counties,AL,Alabama,,,"Other counties, AL",school_age,757,632,890
-median,state,AR,Arkansas,,,,releases,364,273,463
-median,state,AR,Arkansas,,,,school_age,352,264,448
-median,other_counties,AR,Arkansas,,,"Other counties, AR",releases,364,273,463
-median,other_counties,AR,Arkansas,,,"Other counties, AR",school_age,352,264,448
-median,state,AZ,Arizona,,,,releases,686,559,820
-median,state,AZ,Arizona,,,,school_age,663,541,793
-median,county,AZ,Arizona,maricopa|AZ,04013,"Maricopa County, AZ",releases,602,491,721
-median,county,AZ,Arizona,maricopa|AZ,04013,"Maricopa County, AZ",school_age,583,475,697
-median,other_counties,AZ,Arizona,,,"Other counties, AZ",releases,84,61,109
-median,other_counties,AZ,Arizona,,,"Other counties, AZ",school_age,81,59,105
-median,state,CA,California,,,,releases,6454,5771,7158
-median,state,CA,California,,,,school_age,6241,5581,6923
-median,county,CA,California,los angeles|CA,06037,"Los Angeles County, CA",releases,2147,1851,2461
-median,county,CA,California,los angeles|CA,06037,"Los Angeles County, CA",school_age,2076,1790,2380
-median,county,CA,California,alameda|CA,06001,"Alameda County, CA",releases,409,301,524
-median,county,CA,California,alameda|CA,06001,"Alameda County, CA",school_age,395,291,507
-median,county,CA,California,san mateo|CA,06081,"San Mateo County, CA",releases,256,173,348
-median,county,CA,California,san mateo|CA,06081,"San Mateo County, CA",school_age,248,167,337
-median,county,CA,California,orange|CA,06059,"Orange County, CA",releases,356,257,462
-median,county,CA,California,orange|CA,06059,"Orange County, CA",school_age,344,249,447
-median,county,CA,California,riverside|CA,06065,"Riverside County, CA",releases,263,180,355
-median,county,CA,California,riverside|CA,06065,"Riverside County, CA",school_age,254,174,343
-median,county,CA,California,contra costa|CA,06013,"Contra Costa County, CA",releases,231,153,318
-median,county,CA,California,contra costa|CA,06013,"Contra Costa County, CA",school_age,224,148,308
-median,county,CA,California,santa clara|CA,06085,"Santa Clara County, CA",releases,281,195,377
-median,county,CA,California,santa clara|CA,06085,"Santa Clara County, CA",school_age,272,189,365
-median,county,CA,California,san francisco|CA,06075,"San Francisco County, CA",releases,220,145,305
-median,county,CA,California,san francisco|CA,06075,"San Francisco County, CA",school_age,213,140,295
-median,county,CA,California,san diego|CA,06073,"San Diego County, CA",releases,244,163,333
-median,county,CA,California,san diego|CA,06073,"San Diego County, CA",school_age,236,158,322
-median,county,CA,California,san bernardino|CA,06071,"San Bernardino County, CA",releases,255,174,344
-median,county,CA,California,san bernardino|CA,06071,"San Bernardino County, CA",school_age,246,168,333
-median,county,CA,California,fresno|CA,06019,"Fresno County, CA",releases,179,111,256
-median,county,CA,California,fresno|CA,06019,"Fresno County, CA",school_age,173,107,248
-median,county,CA,California,marin|CA,06041,"Marin County, CA",releases,108,58,166
-median,county,CA,California,marin|CA,06041,"Marin County, CA",school_age,104,56,161
-median,county,CA,California,monterey|CA,06053,"Monterey County, CA",releases,141,82,208
-median,county,CA,California,monterey|CA,06053,"Monterey County, CA",school_age,137,79,201
-median,county,CA,California,kern|CA,06029,"Kern County, CA",releases,144,83,213
-median,county,CA,California,kern|CA,06029,"Kern County, CA",school_age,140,80,206
-median,county,CA,California,sacramento|CA,06067,"Sacramento County, CA",releases,184,116,261
-median,county,CA,California,sacramento|CA,06067,"Sacramento County, CA",school_age,178,112,252
-median,county,CA,California,san joaquin|CA,06077,"San Joaquin County, CA",releases,155,92,224
-median,county,CA,California,san joaquin|CA,06077,"San Joaquin County, CA",school_age,149,89,217
-median,county,CA,California,ventura|CA,06111,"Ventura County, CA",releases,127,72,189
-median,county,CA,California,ventura|CA,06111,"Ventura County, CA",school_age,123,70,183
-median,county,CA,California,santa barbara|CA,06083,"Santa Barbara County, CA",releases,160,97,230
-median,county,CA,California,santa barbara|CA,06083,"Santa Barbara County, CA",school_age,154,94,222
-median,other_counties,CA,California,,,"Other counties, CA",releases,594,463,735
-median,other_counties,CA,California,,,"Other counties, CA",school_age,574,448,711
+median,state,AL,Alabama,,,,releases,937,789,1095
+median,state,AL,Alabama,,,,school_age,906,763,1059
+median,county,AL,Alabama,jefferson|AL,01073,"Jefferson County, AL",releases,155,120,192
+median,county,AL,Alabama,jefferson|AL,01073,"Jefferson County, AL",school_age,150,116,186
+median,other_counties,AL,Alabama,,,"Other counties, AL",releases,782,656,917
+median,other_counties,AL,Alabama,,,"Other counties, AL",school_age,756,634,887
+median,state,AR,Arkansas,,,,releases,365,273,463
+median,state,AR,Arkansas,,,,school_age,353,264,448
+median,other_counties,AR,Arkansas,,,"Other counties, AR",releases,365,273,463
+median,other_counties,AR,Arkansas,,,"Other counties, AR",school_age,353,264,448
+median,state,AZ,Arizona,,,,releases,686,561,817
+median,state,AZ,Arizona,,,,school_age,664,543,790
+median,county,AZ,Arizona,maricopa|AZ,04013,"Maricopa County, AZ",releases,602,492,718
+median,county,AZ,Arizona,maricopa|AZ,04013,"Maricopa County, AZ",school_age,583,476,694
+median,other_counties,AZ,Arizona,,,"Other counties, AZ",releases,84,61,108
+median,other_counties,AZ,Arizona,,,"Other counties, AZ",school_age,81,59,104
+median,state,CA,California,,,,releases,6456,5848,7083
+median,state,CA,California,,,,school_age,6244,5656,6850
+median,county,CA,California,los angeles|CA,06037,"Los Angeles County, CA",releases,2149,1877,2433
+median,county,CA,California,los angeles|CA,06037,"Los Angeles County, CA",school_age,2078,1815,2353
+median,county,CA,California,alameda|CA,06001,"Alameda County, CA",releases,409,309,517
+median,county,CA,California,alameda|CA,06001,"Alameda County, CA",school_age,395,299,500
+median,county,CA,California,san mateo|CA,06081,"San Mateo County, CA",releases,257,178,343
+median,county,CA,California,san mateo|CA,06081,"San Mateo County, CA",school_age,248,172,332
+median,county,CA,California,orange|CA,06059,"Orange County, CA",releases,357,262,458
+median,county,CA,California,orange|CA,06059,"Orange County, CA",school_age,345,253,443
+median,county,CA,California,riverside|CA,06065,"Riverside County, CA",releases,263,184,347
+median,county,CA,California,riverside|CA,06065,"Riverside County, CA",school_age,254,178,336
+median,county,CA,California,contra costa|CA,06013,"Contra Costa County, CA",releases,232,158,313
+median,county,CA,California,contra costa|CA,06013,"Contra Costa County, CA",school_age,224,153,303
+median,county,CA,California,santa clara|CA,06085,"Santa Clara County, CA",releases,282,201,370
+median,county,CA,California,santa clara|CA,06085,"Santa Clara County, CA",school_age,273,194,358
+median,county,CA,California,san francisco|CA,06075,"San Francisco County, CA",releases,220,148,297
+median,county,CA,California,san francisco|CA,06075,"San Francisco County, CA",school_age,212,143,287
+median,county,CA,California,san diego|CA,06073,"San Diego County, CA",releases,244,167,328
+median,county,CA,California,san diego|CA,06073,"San Diego County, CA",school_age,236,162,317
+median,county,CA,California,san bernardino|CA,06071,"San Bernardino County, CA",releases,254,177,338
+median,county,CA,California,san bernardino|CA,06071,"San Bernardino County, CA",school_age,246,171,327
+median,county,CA,California,fresno|CA,06019,"Fresno County, CA",releases,178,115,248
+median,county,CA,California,fresno|CA,06019,"Fresno County, CA",school_age,172,111,240
+median,county,CA,California,marin|CA,06041,"Marin County, CA",releases,108,61,163
+median,county,CA,California,marin|CA,06041,"Marin County, CA",school_age,105,59,158
+median,county,CA,California,monterey|CA,06053,"Monterey County, CA",releases,141,86,203
+median,county,CA,California,monterey|CA,06053,"Monterey County, CA",school_age,137,83,196
+median,county,CA,California,kern|CA,06029,"Kern County, CA",releases,144,86,207
+median,county,CA,California,kern|CA,06029,"Kern County, CA",school_age,140,83,200
+median,county,CA,California,sacramento|CA,06067,"Sacramento County, CA",releases,184,121,253
+median,county,CA,California,sacramento|CA,06067,"Sacramento County, CA",school_age,178,117,245
+median,county,CA,California,san joaquin|CA,06077,"San Joaquin County, CA",releases,154,96,219
+median,county,CA,California,san joaquin|CA,06077,"San Joaquin County, CA",school_age,149,93,212
+median,county,CA,California,ventura|CA,06111,"Ventura County, CA",releases,126,74,185
+median,county,CA,California,ventura|CA,06111,"Ventura County, CA",school_age,122,72,179
+median,county,CA,California,santa barbara|CA,06083,"Santa Barbara County, CA",releases,160,99,227
+median,county,CA,California,santa barbara|CA,06083,"Santa Barbara County, CA",school_age,154,96,220
+median,other_counties,CA,California,,,"Other counties, CA",releases,594,470,727
+median,other_counties,CA,California,,,"Other counties, CA",school_age,575,455,703
 median,state,CO,Colorado,,,,releases,925,776,1082
 median,state,CO,Colorado,,,,school_age,895,750,1046
 median,county,CO,Colorado,arapahoe|CO,08005,"Arapahoe County, CO",releases,285,230,343
 median,county,CO,Colorado,arapahoe|CO,08005,"Arapahoe County, CO",school_age,275,222,332
-median,county,CO,Colorado,denver|CO,08031,"Denver County, CO",releases,146,112,183
-median,county,CO,Colorado,denver|CO,08031,"Denver County, CO",school_age,142,108,177
-median,county,CO,Colorado,adams|CO,08001,"Adams County, CO",releases,110,82,140
-median,county,CO,Colorado,adams|CO,08001,"Adams County, CO",school_age,106,79,135
+median,county,CO,Colorado,denver|CO,08031,"Denver County, CO",releases,147,114,182
+median,county,CO,Colorado,denver|CO,08031,"Denver County, CO",school_age,142,110,176
+median,county,CO,Colorado,adams|CO,08001,"Adams County, CO",releases,110,83,139
+median,county,CO,Colorado,adams|CO,08001,"Adams County, CO",school_age,106,80,134
 median,other_counties,CO,Colorado,,,"Other counties, CO",releases,384,314,458
 median,other_counties,CO,Colorado,,,"Other counties, CO",school_age,371,304,443
-median,state,CT,Connecticut,,,,releases,418,319,522
-median,state,CT,Connecticut,,,,school_age,404,309,505
-median,county,CT,Connecticut,fairfield|CT,,"Fairfield County, CT",releases,224,169,284
-median,county,CT,Connecticut,fairfield|CT,,"Fairfield County, CT",school_age,217,163,275
-median,other_counties,CT,Connecticut,,,"Other counties, CT",releases,194,145,246
-median,other_counties,CT,Connecticut,,,"Other counties, CT",school_age,187,140,238
-median,state,DC,District of Columbia,,,,releases,134,80,194
-median,state,DC,District of Columbia,,,,school_age,129,77,188
-median,county,DC,District of Columbia,district of columbia|DC,11001,"District of Columbia, DC",releases,134,80,194
-median,county,DC,District of Columbia,district of columbia|DC,11001,"District of Columbia, DC",school_age,129,77,188
+median,state,CT,Connecticut,,,,releases,417,319,521
+median,state,CT,Connecticut,,,,school_age,403,309,504
+median,county,CT,Connecticut,fairfield|CT,,"Fairfield County, CT",releases,223,168,282
+median,county,CT,Connecticut,fairfield|CT,,"Fairfield County, CT",school_age,216,162,273
+median,other_counties,CT,Connecticut,,,"Other counties, CT",releases,193,145,245
+median,other_counties,CT,Connecticut,,,"Other counties, CT",school_age,187,140,237
+median,state,DC,District of Columbia,,,,releases,133,80,193
+median,state,DC,District of Columbia,,,,school_age,129,77,187
+median,county,DC,District of Columbia,district of columbia|DC,11001,"District of Columbia, DC",releases,133,80,193
+median,county,DC,District of Columbia,district of columbia|DC,11001,"District of Columbia, DC",school_age,129,77,187
 median,other_counties,DC,District of Columbia,,,"Other counties, DC",releases,0,0,0
 median,other_counties,DC,District of Columbia,,,"Other counties, DC",school_age,0,0,0
-median,state,DE,Delaware,,,,releases,217,149,293
-median,state,DE,Delaware,,,,school_age,210,144,283
-median,county,DE,Delaware,sussex|DE,10005,"Sussex County, DE",releases,131,89,178
-median,county,DE,Delaware,sussex|DE,10005,"Sussex County, DE",school_age,127,86,172
+median,state,DE,Delaware,,,,releases,218,148,292
+median,state,DE,Delaware,,,,school_age,211,143,282
+median,county,DE,Delaware,sussex|DE,10005,"Sussex County, DE",releases,131,88,177
+median,county,DE,Delaware,sussex|DE,10005,"Sussex County, DE",school_age,127,85,171
 median,other_counties,DE,Delaware,,,"Other counties, DE",releases,86,57,118
-median,other_counties,DE,Delaware,,,"Other counties, DE",school_age,83,55,114
-median,state,FL,Florida,,,,releases,4215,3644,4802
-median,state,FL,Florida,,,,school_age,4077,3524,4644
-median,county,FL,Florida,miami-dade|FL,12086,"Miami-Dade County, FL",releases,664,534,802
-median,county,FL,Florida,miami-dade|FL,12086,"Miami-Dade County, FL",school_age,642,516,776
-median,county,FL,Florida,palm beach|FL,12099,"Palm Beach County, FL",releases,631,503,767
-median,county,FL,Florida,palm beach|FL,12099,"Palm Beach County, FL",school_age,610,486,742
-median,county,FL,Florida,lee|FL,12071,"Lee County, FL",releases,308,227,397
-median,county,FL,Florida,lee|FL,12071,"Lee County, FL",school_age,298,220,384
-median,county,FL,Florida,broward|FL,12011,"Broward County, FL",releases,318,235,405
-median,county,FL,Florida,broward|FL,12011,"Broward County, FL",school_age,307,227,392
-median,county,FL,Florida,orange|FL,12095,"Orange County, FL",releases,416,318,521
-median,county,FL,Florida,orange|FL,12095,"Orange County, FL",school_age,402,308,504
-median,county,FL,Florida,hillsborough|FL,12057,"Hillsborough County, FL",releases,315,234,401
-median,county,FL,Florida,hillsborough|FL,12057,"Hillsborough County, FL",school_age,304,226,388
-median,county,FL,Florida,collier|FL,12021,"Collier County, FL",releases,162,107,223
-median,county,FL,Florida,collier|FL,12021,"Collier County, FL",school_age,157,103,216
-median,county,FL,Florida,duval|FL,12031,"Duval County, FL",releases,205,141,274
-median,county,FL,Florida,duval|FL,12031,"Duval County, FL",school_age,198,136,265
-median,county,FL,Florida,manatee|FL,12081,"Manatee County, FL",releases,165,110,227
-median,county,FL,Florida,manatee|FL,12081,"Manatee County, FL",school_age,160,106,220
-median,county,FL,Florida,polk|FL,12105,"Polk County, FL",releases,114,70,165
-median,county,FL,Florida,polk|FL,12105,"Polk County, FL",school_age,111,68,160
-median,other_counties,FL,Florida,,,"Other counties, FL",releases,918,753,1092
-median,other_counties,FL,Florida,,,"Other counties, FL",school_age,888,728,1056
-median,state,GA,Georgia,,,,releases,2091,1693,2512
-median,state,GA,Georgia,,,,school_age,2022,1637,2429
-median,county,GA,Georgia,dekalb|GA,13089,"DeKalb County, GA",releases,364,276,460
-median,county,GA,Georgia,dekalb|GA,13089,"DeKalb County, GA",school_age,352,267,445
-median,county,GA,Georgia,gwinnett|GA,13135,"Gwinnett County, GA",releases,460,355,573
-median,county,GA,Georgia,gwinnett|GA,13135,"Gwinnett County, GA",school_age,445,343,554
-median,county,GA,Georgia,cobb|GA,13067,"Cobb County, GA",releases,200,144,262
-median,county,GA,Georgia,cobb|GA,13067,"Cobb County, GA",school_age,193,139,253
-median,county,GA,Georgia,chatham|GA,13051,"Chatham County, GA",releases,127,87,171
-median,county,GA,Georgia,chatham|GA,13051,"Chatham County, GA",school_age,123,84,165
-median,other_counties,GA,Georgia,,,"Other counties, GA",releases,940,749,1142
-median,other_counties,GA,Georgia,,,"Other counties, GA",school_age,909,724,1104
+median,other_counties,DE,Delaware,,,"Other counties, DE",school_age,84,55,114
+median,state,FL,Florida,,,,releases,4210,3691,4727
+median,state,FL,Florida,,,,school_age,4071,3569,4571
+median,county,FL,Florida,miami-dade|FL,12086,"Miami-Dade County, FL",releases,663,541,792
+median,county,FL,Florida,miami-dade|FL,12086,"Miami-Dade County, FL",school_age,641,523,766
+median,county,FL,Florida,palm beach|FL,12099,"Palm Beach County, FL",releases,628,510,754
+median,county,FL,Florida,palm beach|FL,12099,"Palm Beach County, FL",school_age,608,493,729
+median,county,FL,Florida,lee|FL,12071,"Lee County, FL",releases,308,233,389
+median,county,FL,Florida,lee|FL,12071,"Lee County, FL",school_age,297,225,376
+median,county,FL,Florida,broward|FL,12011,"Broward County, FL",releases,318,240,400
+median,county,FL,Florida,broward|FL,12011,"Broward County, FL",school_age,307,232,387
+median,county,FL,Florida,orange|FL,12095,"Orange County, FL",releases,415,326,511
+median,county,FL,Florida,orange|FL,12095,"Orange County, FL",school_age,402,315,494
+median,county,FL,Florida,hillsborough|FL,12057,"Hillsborough County, FL",releases,314,238,395
+median,county,FL,Florida,hillsborough|FL,12057,"Hillsborough County, FL",school_age,303,230,382
+median,county,FL,Florida,collier|FL,12021,"Collier County, FL",releases,162,109,218
+median,county,FL,Florida,collier|FL,12021,"Collier County, FL",school_age,156,105,211
+median,county,FL,Florida,duval|FL,12031,"Duval County, FL",releases,204,145,268
+median,county,FL,Florida,duval|FL,12031,"Duval County, FL",school_age,198,140,259
+median,county,FL,Florida,manatee|FL,12081,"Manatee County, FL",releases,166,114,223
+median,county,FL,Florida,manatee|FL,12081,"Manatee County, FL",school_age,160,110,216
+median,county,FL,Florida,polk|FL,12105,"Polk County, FL",releases,114,71,162
+median,county,FL,Florida,polk|FL,12105,"Polk County, FL",school_age,110,69,157
+median,other_counties,FL,Florida,,,"Other counties, FL",releases,918,763,1078
+median,other_counties,FL,Florida,,,"Other counties, FL",school_age,888,738,1043
+median,state,GA,Georgia,,,,releases,2092,1728,2471
+median,state,GA,Georgia,,,,school_age,2023,1671,2390
+median,county,GA,Georgia,dekalb|GA,13089,"DeKalb County, GA",releases,364,283,452
+median,county,GA,Georgia,dekalb|GA,13089,"DeKalb County, GA",school_age,352,274,437
+median,county,GA,Georgia,gwinnett|GA,13135,"Gwinnett County, GA",releases,461,364,563
+median,county,GA,Georgia,gwinnett|GA,13135,"Gwinnett County, GA",school_age,446,352,544
+median,county,GA,Georgia,cobb|GA,13067,"Cobb County, GA",releases,200,147,256
+median,county,GA,Georgia,cobb|GA,13067,"Cobb County, GA",school_age,193,142,248
+median,county,GA,Georgia,chatham|GA,13051,"Chatham County, GA",releases,127,88,169
+median,county,GA,Georgia,chatham|GA,13051,"Chatham County, GA",school_age,123,85,163
+median,other_counties,GA,Georgia,,,"Other counties, GA",releases,940,762,1126
+median,other_counties,GA,Georgia,,,"Other counties, GA",school_age,909,737,1089
 median,state,HI,Hawaii,,,,releases,24,5,49
 median,state,HI,Hawaii,,,,school_age,23,5,47
 median,other_counties,HI,Hawaii,,,"Other counties, HI",releases,24,5,49
 median,other_counties,HI,Hawaii,,,"Other counties, HI",school_age,23,5,47
-median,state,IA,Iowa,,,,releases,367,276,464
-median,state,IA,Iowa,,,,school_age,355,267,449
-median,other_counties,IA,Iowa,,,"Other counties, IA",releases,367,276,464
-median,other_counties,IA,Iowa,,,"Other counties, IA",school_age,355,267,449
-median,state,ID,Idaho,,,,releases,160,100,227
-median,state,ID,Idaho,,,,school_age,154,97,220
-median,other_counties,ID,Idaho,,,"Other counties, ID",releases,160,100,227
-median,other_counties,ID,Idaho,,,"Other counties, ID",school_age,154,97,220
-median,state,IL,Illinois,,,,releases,1464,1277,1658
-median,state,IL,Illinois,,,,school_age,1416,1235,1604
-median,county,IL,Illinois,cook|IL,17031,"Cook County, IL",releases,860,738,984
-median,county,IL,Illinois,cook|IL,17031,"Cook County, IL",school_age,831,714,952
-median,county,IL,Illinois,dupage|IL,17043,"DuPage County, IL",releases,118,87,151
-median,county,IL,Illinois,dupage|IL,17043,"DuPage County, IL",school_age,114,84,146
-median,other_counties,IL,Illinois,,,"Other counties, IL",releases,486,408,567
-median,other_counties,IL,Illinois,,,"Other counties, IL",school_age,470,395,548
-median,state,IN,Indiana,,,,releases,921,771,1079
-median,state,IN,Indiana,,,,school_age,891,746,1044
-median,county,IN,Indiana,marion|IN,18097,"Marion County, IN",releases,442,363,526
-median,county,IN,Indiana,marion|IN,18097,"Marion County, IN",school_age,428,351,509
-median,other_counties,IN,Indiana,,,"Other counties, IN",releases,479,396,568
-median,other_counties,IN,Indiana,,,"Other counties, IN",school_age,463,383,549
-median,state,KS,Kansas,,,,releases,417,317,520
-median,state,KS,Kansas,,,,school_age,404,307,503
-median,county,KS,Kansas,wyandotte|KS,20209,"Wyandotte County, KS",releases,131,96,169
-median,county,KS,Kansas,wyandotte|KS,20209,"Wyandotte County, KS",school_age,127,93,163
-median,other_counties,KS,Kansas,,,"Other counties, KS",releases,286,215,360
-median,other_counties,KS,Kansas,,,"Other counties, KS",school_age,277,208,348
-median,state,KY,Kentucky,,,,releases,575,458,697
-median,state,KY,Kentucky,,,,school_age,556,443,674
-median,county,KY,Kentucky,jefferson|KY,21111,"Jefferson County, KY",releases,177,135,221
-median,county,KY,Kentucky,jefferson|KY,21111,"Jefferson County, KY",school_age,171,131,214
-median,other_counties,KY,Kentucky,,,"Other counties, KY",releases,398,315,486
-median,other_counties,KY,Kentucky,,,"Other counties, KY",school_age,385,305,470
-median,state,LA,Louisiana,,,,releases,845,704,994
-median,state,LA,Louisiana,,,,school_age,817,681,961
-median,county,LA,Louisiana,jefferson|LA,22051,"Jefferson Parish, LA",releases,235,186,286
-median,county,LA,Louisiana,jefferson|LA,22051,"Jefferson Parish, LA",school_age,227,180,277
-median,county,LA,Louisiana,east baton rouge|LA,22033,"East Baton Rouge Parish, LA",releases,169,131,210
-median,county,LA,Louisiana,east baton rouge|LA,22033,"East Baton Rouge Parish, LA",school_age,163,127,203
-median,other_counties,LA,Louisiana,,,"Other counties, LA",releases,441,361,526
-median,other_counties,LA,Louisiana,,,"Other counties, LA",school_age,427,349,509
-median,state,MA,Massachusetts,,,,releases,1094,931,1265
-median,state,MA,Massachusetts,,,,school_age,1058,900,1223
-median,county,MA,Massachusetts,suffolk|MA,25025,"Suffolk County, MA",releases,233,186,284
-median,county,MA,Massachusetts,suffolk|MA,25025,"Suffolk County, MA",school_age,226,180,275
-median,county,MA,Massachusetts,essex|MA,25009,"Essex County, MA",releases,332,271,397
-median,county,MA,Massachusetts,essex|MA,25009,"Essex County, MA",school_age,321,262,384
-median,county,MA,Massachusetts,middlesex|MA,25017,"Middlesex County, MA",releases,201,158,245
-median,county,MA,Massachusetts,middlesex|MA,25017,"Middlesex County, MA",school_age,194,153,237
-median,county,MA,Massachusetts,bristol|MA,25005,"Bristol County, MA",releases,116,87,148
-median,county,MA,Massachusetts,bristol|MA,25005,"Bristol County, MA",school_age,113,84,143
-median,other_counties,MA,Massachusetts,,,"Other counties, MA",releases,212,167,259
-median,other_counties,MA,Massachusetts,,,"Other counties, MA",school_age,205,162,250
-median,state,MD,Maryland,,,,releases,2065,1658,2491
-median,state,MD,Maryland,,,,school_age,1997,1603,2409
-median,county,MD,Maryland,prince george's|MD,24033,"Prince George's County, MD",releases,597,466,737
-median,county,MD,Maryland,prince george's|MD,24033,"Prince George's County, MD",school_age,578,451,713
-median,county,MD,Maryland,montgomery|MD,24031,"Montgomery County, MD",releases,390,298,489
-median,county,MD,Maryland,montgomery|MD,24031,"Montgomery County, MD",school_age,377,288,473
-median,county,MD,Maryland,baltimore city|MD,24510,"Baltimore city, MD",releases,288,214,365
-median,county,MD,Maryland,baltimore city|MD,24510,"Baltimore city, MD",school_age,278,207,353
-median,county,MD,Maryland,baltimore|MD,24005,"Baltimore County, MD",releases,236,173,305
-median,county,MD,Maryland,baltimore|MD,24005,"Baltimore County, MD",school_age,229,167,295
-median,county,MD,Maryland,anne arundel|MD,24003,"Anne Arundel County, MD",releases,175,125,229
-median,county,MD,Maryland,anne arundel|MD,24003,"Anne Arundel County, MD",school_age,169,121,221
-median,other_counties,MD,Maryland,,,"Other counties, MD",releases,379,289,476
-median,other_counties,MD,Maryland,,,"Other counties, MD",school_age,366,279,460
-median,state,ME,Maine,,,,releases,75,36,120
-median,state,ME,Maine,,,,school_age,73,35,116
-median,other_counties,ME,Maine,,,"Other counties, ME",releases,75,36,120
-median,other_counties,ME,Maine,,,"Other counties, ME",school_age,73,35,116
-median,state,MI,Michigan,,,,releases,390,295,493
-median,state,MI,Michigan,,,,school_age,378,285,477
-median,county,MI,Michigan,wayne|MI,26163,"Wayne County, MI",releases,142,104,184
-median,county,MI,Michigan,wayne|MI,26163,"Wayne County, MI",school_age,138,101,178
-median,other_counties,MI,Michigan,,,"Other counties, MI",releases,248,185,315
-median,other_counties,MI,Michigan,,,"Other counties, MI",school_age,240,179,305
-median,state,MN,Minnesota,,,,releases,572,455,694
-median,state,MN,Minnesota,,,,school_age,553,440,671
+median,state,IA,Iowa,,,,releases,367,276,463
+median,state,IA,Iowa,,,,school_age,355,267,448
+median,other_counties,IA,Iowa,,,"Other counties, IA",releases,367,276,463
+median,other_counties,IA,Iowa,,,"Other counties, IA",school_age,355,267,448
+median,state,ID,Idaho,,,,releases,160,101,224
+median,state,ID,Idaho,,,,school_age,154,98,217
+median,other_counties,ID,Idaho,,,"Other counties, ID",releases,160,101,224
+median,other_counties,ID,Idaho,,,"Other counties, ID",school_age,154,98,217
+median,state,IL,Illinois,,,,releases,1465,1278,1658
+median,state,IL,Illinois,,,,school_age,1417,1236,1603
+median,county,IL,Illinois,cook|IL,17031,"Cook County, IL",releases,861,741,984
+median,county,IL,Illinois,cook|IL,17031,"Cook County, IL",school_age,832,717,952
+median,county,IL,Illinois,dupage|IL,17043,"DuPage County, IL",releases,118,88,151
+median,county,IL,Illinois,dupage|IL,17043,"DuPage County, IL",school_age,115,85,146
+median,other_counties,IL,Illinois,,,"Other counties, IL",releases,486,407,567
+median,other_counties,IL,Illinois,,,"Other counties, IL",school_age,470,394,548
+median,state,IN,Indiana,,,,releases,919,773,1074
+median,state,IN,Indiana,,,,school_age,889,748,1039
+median,county,IN,Indiana,marion|IN,18097,"Marion County, IN",releases,441,364,520
+median,county,IN,Indiana,marion|IN,18097,"Marion County, IN",school_age,427,352,503
+median,other_counties,IN,Indiana,,,"Other counties, IN",releases,478,395,565
+median,other_counties,IN,Indiana,,,"Other counties, IN",school_age,462,382,546
+median,state,KS,Kansas,,,,releases,416,318,519
+median,state,KS,Kansas,,,,school_age,403,308,502
+median,county,KS,Kansas,wyandotte|KS,20209,"Wyandotte County, KS",releases,131,96,168
+median,county,KS,Kansas,wyandotte|KS,20209,"Wyandotte County, KS",school_age,127,93,162
+median,other_counties,KS,Kansas,,,"Other counties, KS",releases,285,217,358
+median,other_counties,KS,Kansas,,,"Other counties, KS",school_age,276,210,346
+median,state,KY,Kentucky,,,,releases,576,459,699
+median,state,KY,Kentucky,,,,school_age,557,444,676
+median,county,KY,Kentucky,jefferson|KY,21111,"Jefferson County, KY",releases,177,136,221
+median,county,KY,Kentucky,jefferson|KY,21111,"Jefferson County, KY",school_age,171,132,214
+median,other_counties,KY,Kentucky,,,"Other counties, KY",releases,399,315,487
+median,other_counties,KY,Kentucky,,,"Other counties, KY",school_age,386,305,471
+median,state,LA,Louisiana,,,,releases,846,704,996
+median,state,LA,Louisiana,,,,school_age,818,681,963
+median,county,LA,Louisiana,jefferson|LA,22051,"Jefferson Parish, LA",releases,235,188,286
+median,county,LA,Louisiana,jefferson|LA,22051,"Jefferson Parish, LA",school_age,228,182,277
+median,county,LA,Louisiana,east baton rouge|LA,22033,"East Baton Rouge Parish, LA",releases,169,132,209
+median,county,LA,Louisiana,east baton rouge|LA,22033,"East Baton Rouge Parish, LA",school_age,163,128,202
+median,other_counties,LA,Louisiana,,,"Other counties, LA",releases,442,363,527
+median,other_counties,LA,Louisiana,,,"Other counties, LA",school_age,428,351,510
+median,state,MA,Massachusetts,,,,releases,1095,933,1262
+median,state,MA,Massachusetts,,,,school_age,1059,902,1220
+median,county,MA,Massachusetts,suffolk|MA,25025,"Suffolk County, MA",releases,233,187,283
+median,county,MA,Massachusetts,suffolk|MA,25025,"Suffolk County, MA",school_age,225,181,274
+median,county,MA,Massachusetts,essex|MA,25009,"Essex County, MA",releases,332,272,396
+median,county,MA,Massachusetts,essex|MA,25009,"Essex County, MA",school_age,321,263,383
+median,county,MA,Massachusetts,middlesex|MA,25017,"Middlesex County, MA",releases,201,160,245
+median,county,MA,Massachusetts,middlesex|MA,25017,"Middlesex County, MA",school_age,194,155,237
+median,county,MA,Massachusetts,bristol|MA,25005,"Bristol County, MA",releases,117,88,147
+median,county,MA,Massachusetts,bristol|MA,25005,"Bristol County, MA",school_age,113,85,142
+median,other_counties,MA,Massachusetts,,,"Other counties, MA",releases,212,168,257
+median,other_counties,MA,Massachusetts,,,"Other counties, MA",school_age,205,162,249
+median,state,MD,Maryland,,,,releases,2065,1703,2447
+median,state,MD,Maryland,,,,school_age,1997,1647,2367
+median,county,MD,Maryland,prince george's|MD,24033,"Prince George's County, MD",releases,597,477,723
+median,county,MD,Maryland,prince george's|MD,24033,"Prince George's County, MD",school_age,577,461,699
+median,county,MD,Maryland,montgomery|MD,24031,"Montgomery County, MD",releases,391,307,479
+median,county,MD,Maryland,montgomery|MD,24031,"Montgomery County, MD",school_age,378,297,463
+median,county,MD,Maryland,baltimore city|MD,24510,"Baltimore city, MD",releases,287,220,359
+median,county,MD,Maryland,baltimore city|MD,24510,"Baltimore city, MD",school_age,277,213,347
+median,county,MD,Maryland,baltimore|MD,24005,"Baltimore County, MD",releases,237,178,301
+median,county,MD,Maryland,baltimore|MD,24005,"Baltimore County, MD",school_age,229,172,291
+median,county,MD,Maryland,anne arundel|MD,24003,"Anne Arundel County, MD",releases,174,128,225
+median,county,MD,Maryland,anne arundel|MD,24003,"Anne Arundel County, MD",school_age,169,124,218
+median,other_counties,MD,Maryland,,,"Other counties, MD",releases,379,297,467
+median,other_counties,MD,Maryland,,,"Other counties, MD",school_age,366,287,452
+median,state,ME,Maine,,,,releases,75,37,119
+median,state,ME,Maine,,,,school_age,73,36,115
+median,other_counties,ME,Maine,,,"Other counties, ME",releases,75,37,119
+median,other_counties,ME,Maine,,,"Other counties, ME",school_age,73,36,115
+median,state,MI,Michigan,,,,releases,389,294,489
+median,state,MI,Michigan,,,,school_age,377,284,473
+median,county,MI,Michigan,wayne|MI,26163,"Wayne County, MI",releases,142,104,182
+median,county,MI,Michigan,wayne|MI,26163,"Wayne County, MI",school_age,137,101,176
+median,other_counties,MI,Michigan,,,"Other counties, MI",releases,247,185,313
+median,other_counties,MI,Michigan,,,"Other counties, MI",school_age,239,179,303
+median,state,MN,Minnesota,,,,releases,573,457,697
+median,state,MN,Minnesota,,,,school_age,554,442,674
 median,county,MN,Minnesota,hennepin|MN,27053,"Hennepin County, MN",releases,166,127,209
 median,county,MN,Minnesota,hennepin|MN,27053,"Hennepin County, MN",school_age,161,123,202
-median,other_counties,MN,Minnesota,,,"Other counties, MN",releases,406,321,495
-median,other_counties,MN,Minnesota,,,"Other counties, MN",school_age,392,310,479
-median,state,MO,Missouri,,,,releases,549,436,669
-median,state,MO,Missouri,,,,school_age,531,422,647
+median,other_counties,MN,Minnesota,,,"Other counties, MN",releases,406,321,497
+median,other_counties,MN,Minnesota,,,"Other counties, MN",school_age,393,310,481
+median,state,MO,Missouri,,,,releases,549,437,667
+median,state,MO,Missouri,,,,school_age,531,423,645
 median,county,MO,Missouri,jackson|MO,29095,"Jackson County, MO",releases,149,113,187
 median,county,MO,Missouri,jackson|MO,29095,"Jackson County, MO",school_age,144,109,181
-median,county,MO,Missouri,st. louis|MO,29189,"St. Louis County, MO",releases,129,97,164
-median,county,MO,Missouri,st. louis|MO,29189,"St. Louis County, MO",school_age,125,94,159
-median,other_counties,MO,Missouri,,,"Other counties, MO",releases,271,211,336
-median,other_counties,MO,Missouri,,,"Other counties, MO",school_age,262,204,325
-median,state,MS,Mississippi,,,,releases,294,211,383
-median,state,MS,Mississippi,,,,school_age,284,204,370
-median,other_counties,MS,Mississippi,,,"Other counties, MS",releases,294,211,383
-median,other_counties,MS,Mississippi,,,"Other counties, MS",school_age,284,204,370
-median,state,MT,Montana,,,,releases,32,9,62
+median,county,MO,Missouri,st. louis|MO,29189,"St. Louis County, MO",releases,129,98,163
+median,county,MO,Missouri,st. louis|MO,29189,"St. Louis County, MO",school_age,125,95,158
+median,other_counties,MO,Missouri,,,"Other counties, MO",releases,271,211,334
+median,other_counties,MO,Missouri,,,"Other counties, MO",school_age,262,204,323
+median,state,MS,Mississippi,,,,releases,293,211,380
+median,state,MS,Mississippi,,,,school_age,283,204,367
+median,other_counties,MS,Mississippi,,,"Other counties, MS",releases,293,211,380
+median,other_counties,MS,Mississippi,,,"Other counties, MS",school_age,283,204,367
+median,state,MT,Montana,,,,releases,33,9,62
 median,state,MT,Montana,,,,school_age,31,9,60
-median,other_counties,MT,Montana,,,"Other counties, MT",releases,32,9,62
+median,other_counties,MT,Montana,,,"Other counties, MT",releases,33,9,62
 median,other_counties,MT,Montana,,,"Other counties, MT",school_age,31,9,60
-median,state,NC,North Carolina,,,,releases,2145,1737,2579
-median,state,NC,North Carolina,,,,school_age,2074,1680,2494
-median,county,NC,North Carolina,mecklenburg|NC,37119,"Mecklenburg County, NC",releases,481,372,598
-median,county,NC,North Carolina,mecklenburg|NC,37119,"Mecklenburg County, NC",school_age,465,360,578
-median,county,NC,North Carolina,wake|NC,37183,"Wake County, NC",releases,232,170,298
-median,county,NC,North Carolina,wake|NC,37183,"Wake County, NC",school_age,224,164,288
-median,county,NC,North Carolina,durham|NC,37063,"Durham County, NC",releases,166,117,220
-median,county,NC,North Carolina,durham|NC,37063,"Durham County, NC",school_age,161,113,213
-median,other_counties,NC,North Carolina,,,"Other counties, NC",releases,1266,1013,1538
-median,other_counties,NC,North Carolina,,,"Other counties, NC",school_age,1225,980,1487
+median,state,NC,North Carolina,,,,releases,2145,1776,2532
+median,state,NC,North Carolina,,,,school_age,2075,1718,2449
+median,county,NC,North Carolina,mecklenburg|NC,37119,"Mecklenburg County, NC",releases,482,380,589
+median,county,NC,North Carolina,mecklenburg|NC,37119,"Mecklenburg County, NC",school_age,466,367,570
+median,county,NC,North Carolina,wake|NC,37183,"Wake County, NC",releases,231,174,294
+median,county,NC,North Carolina,wake|NC,37183,"Wake County, NC",school_age,224,168,284
+median,county,NC,North Carolina,durham|NC,37063,"Durham County, NC",releases,166,120,216
+median,county,NC,North Carolina,durham|NC,37063,"Durham County, NC",school_age,161,116,209
+median,other_counties,NC,North Carolina,,,"Other counties, NC",releases,1266,1038,1504
+median,other_counties,NC,North Carolina,,,"Other counties, NC",school_age,1224,1004,1455
 median,state,ND,North Dakota,,,,releases,19,3,42
 median,state,ND,North Dakota,,,,school_age,19,3,41
 median,other_counties,ND,North Dakota,,,"Other counties, ND",releases,19,3,42
 median,other_counties,ND,North Dakota,,,"Other counties, ND",school_age,19,3,41
-median,state,NE,Nebraska,,,,releases,415,317,517
-median,state,NE,Nebraska,,,,school_age,401,307,500
-median,county,NE,Nebraska,douglas|NE,31055,"Douglas County, NE",releases,196,147,250
-median,county,NE,Nebraska,douglas|NE,31055,"Douglas County, NE",school_age,190,142,242
-median,other_counties,NE,Nebraska,,,"Other counties, NE",releases,218,163,276
-median,other_counties,NE,Nebraska,,,"Other counties, NE",school_age,211,158,267
-median,state,NH,New Hampshire,,,,releases,24,5,50
-median,state,NH,New Hampshire,,,,school_age,23,5,48
-median,other_counties,NH,New Hampshire,,,"Other counties, NH",releases,24,5,50
-median,other_counties,NH,New Hampshire,,,"Other counties, NH",school_age,23,5,48
-median,state,NJ,New Jersey,,,,releases,2224,1806,2660
-median,state,NJ,New Jersey,,,,school_age,2151,1747,2572
-median,county,NJ,New Jersey,union|NJ,34039,"Union County, NJ",releases,239,175,307
-median,county,NJ,New Jersey,union|NJ,34039,"Union County, NJ",school_age,231,169,297
-median,county,NJ,New Jersey,essex|NJ,34013,"Essex County, NJ",releases,303,228,384
-median,county,NJ,New Jersey,essex|NJ,34013,"Essex County, NJ",school_age,293,220,371
-median,county,NJ,New Jersey,mercer|NJ,34021,"Mercer County, NJ",releases,254,188,325
-median,county,NJ,New Jersey,mercer|NJ,34021,"Mercer County, NJ",school_age,245,182,314
-median,county,NJ,New Jersey,hudson|NJ,34017,"Hudson County, NJ",releases,202,146,262
-median,county,NJ,New Jersey,hudson|NJ,34017,"Hudson County, NJ",school_age,195,141,253
-median,county,NJ,New Jersey,bergen|NJ,34003,"Bergen County, NJ",releases,172,122,226
-median,county,NJ,New Jersey,bergen|NJ,34003,"Bergen County, NJ",school_age,166,118,219
-median,county,NJ,New Jersey,morris|NJ,34027,"Morris County, NJ",releases,150,104,201
-median,county,NJ,New Jersey,morris|NJ,34027,"Morris County, NJ",school_age,145,101,194
-median,county,NJ,New Jersey,middlesex|NJ,34023,"Middlesex County, NJ",releases,124,85,169
-median,county,NJ,New Jersey,middlesex|NJ,34023,"Middlesex County, NJ",school_age,120,82,163
-median,county,NJ,New Jersey,passaic|NJ,34031,"Passaic County, NJ",releases,147,103,197
-median,county,NJ,New Jersey,passaic|NJ,34031,"Passaic County, NJ",school_age,143,100,191
-median,county,NJ,New Jersey,monmouth|NJ,34025,"Monmouth County, NJ",releases,159,112,212
-median,county,NJ,New Jersey,monmouth|NJ,34025,"Monmouth County, NJ",school_age,154,108,205
-median,other_counties,NJ,New Jersey,,,"Other counties, NJ",releases,474,367,586
-median,other_counties,NJ,New Jersey,,,"Other counties, NJ",school_age,458,355,567
-median,state,NM,New Mexico,,,,releases,168,106,236
-median,state,NM,New Mexico,,,,school_age,162,103,228
-median,other_counties,NM,New Mexico,,,"Other counties, NM",releases,168,106,236
-median,other_counties,NM,New Mexico,,,"Other counties, NM",school_age,162,103,228
-median,state,NV,Nevada,,,,releases,318,232,410
-median,state,NV,Nevada,,,,school_age,308,224,397
-median,county,NV,Nevada,clark|NV,32003,"Clark County, NV",releases,245,179,318
-median,county,NV,Nevada,clark|NV,32003,"Clark County, NV",school_age,237,173,308
+median,state,NE,Nebraska,,,,releases,415,316,516
+median,state,NE,Nebraska,,,,school_age,401,306,499
+median,county,NE,Nebraska,douglas|NE,31055,"Douglas County, NE",releases,197,147,249
+median,county,NE,Nebraska,douglas|NE,31055,"Douglas County, NE",school_age,190,142,241
+median,other_counties,NE,Nebraska,,,"Other counties, NE",releases,218,164,274
+median,other_counties,NE,Nebraska,,,"Other counties, NE",school_age,211,159,265
+median,state,NH,New Hampshire,,,,releases,24,5,49
+median,state,NH,New Hampshire,,,,school_age,23,5,47
+median,other_counties,NH,New Hampshire,,,"Other counties, NH",releases,24,5,49
+median,other_counties,NH,New Hampshire,,,"Other counties, NH",school_age,23,5,47
+median,state,NJ,New Jersey,,,,releases,2226,1850,2619
+median,state,NJ,New Jersey,,,,school_age,2153,1789,2533
+median,county,NJ,New Jersey,union|NJ,34039,"Union County, NJ",releases,238,180,302
+median,county,NJ,New Jersey,union|NJ,34039,"Union County, NJ",school_age,231,174,292
+median,county,NJ,New Jersey,essex|NJ,34013,"Essex County, NJ",releases,303,234,377
+median,county,NJ,New Jersey,essex|NJ,34013,"Essex County, NJ",school_age,293,226,365
+median,county,NJ,New Jersey,mercer|NJ,34021,"Mercer County, NJ",releases,253,191,320
+median,county,NJ,New Jersey,mercer|NJ,34021,"Mercer County, NJ",school_age,245,185,309
+median,county,NJ,New Jersey,hudson|NJ,34017,"Hudson County, NJ",releases,202,151,258
+median,county,NJ,New Jersey,hudson|NJ,34017,"Hudson County, NJ",school_age,196,146,250
+median,county,NJ,New Jersey,bergen|NJ,34003,"Bergen County, NJ",releases,172,126,223
+median,county,NJ,New Jersey,bergen|NJ,34003,"Bergen County, NJ",school_age,167,122,216
+median,county,NJ,New Jersey,morris|NJ,34027,"Morris County, NJ",releases,151,108,197
+median,county,NJ,New Jersey,morris|NJ,34027,"Morris County, NJ",school_age,146,104,191
+median,county,NJ,New Jersey,middlesex|NJ,34023,"Middlesex County, NJ",releases,125,86,167
+median,county,NJ,New Jersey,middlesex|NJ,34023,"Middlesex County, NJ",school_age,121,83,162
+median,county,NJ,New Jersey,passaic|NJ,34031,"Passaic County, NJ",releases,148,106,195
+median,county,NJ,New Jersey,passaic|NJ,34031,"Passaic County, NJ",school_age,143,103,189
+median,county,NJ,New Jersey,monmouth|NJ,34025,"Monmouth County, NJ",releases,160,115,208
+median,county,NJ,New Jersey,monmouth|NJ,34025,"Monmouth County, NJ",school_age,154,111,201
+median,other_counties,NJ,New Jersey,,,"Other counties, NJ",releases,473,375,578
+median,other_counties,NJ,New Jersey,,,"Other counties, NJ",school_age,458,363,559
+median,state,NM,New Mexico,,,,releases,167,107,233
+median,state,NM,New Mexico,,,,school_age,162,103,225
+median,other_counties,NM,New Mexico,,,"Other counties, NM",releases,167,107,233
+median,other_counties,NM,New Mexico,,,"Other counties, NM",school_age,162,103,225
+median,state,NV,Nevada,,,,releases,318,233,409
+median,state,NV,Nevada,,,,school_age,308,225,396
+median,county,NV,Nevada,clark|NV,32003,"Clark County, NV",releases,245,178,316
+median,county,NV,Nevada,clark|NV,32003,"Clark County, NV",school_age,237,172,306
 median,other_counties,NV,Nevada,,,"Other counties, NV",releases,73,50,98
 median,other_counties,NV,Nevada,,,"Other counties, NV",school_age,71,48,95
-median,state,NY,New York,,,,releases,3523,3003,4064
-median,state,NY,New York,,,,school_age,3407,2904,3930
-median,county,NY,New York,suffolk|NY,36103,"Suffolk County, NY",releases,584,464,713
-median,county,NY,New York,suffolk|NY,36103,"Suffolk County, NY",school_age,565,449,690
-median,county,NY,New York,queens|NY,36081,"Queens County, NY",releases,805,654,965
-median,county,NY,New York,queens|NY,36081,"Queens County, NY",school_age,778,632,933
-median,county,NY,New York,nassau|NY,36059,"Nassau County, NY",releases,346,260,438
-median,county,NY,New York,nassau|NY,36059,"Nassau County, NY",school_age,335,251,424
-median,county,NY,New York,kings|NY,36047,"Kings County, NY",releases,581,461,706
-median,county,NY,New York,kings|NY,36047,"Kings County, NY",school_age,562,446,683
-median,county,NY,New York,bronx|NY,36005,"Bronx County, NY",releases,279,205,357
-median,county,NY,New York,bronx|NY,36005,"Bronx County, NY",school_age,269,198,345
-median,county,NY,New York,westchester|NY,36119,"Westchester County, NY",releases,211,149,279
-median,county,NY,New York,westchester|NY,36119,"Westchester County, NY",school_age,204,144,270
-median,county,NY,New York,rockland|NY,36087,"Rockland County, NY",releases,112,71,158
-median,county,NY,New York,rockland|NY,36087,"Rockland County, NY",school_age,108,69,153
-median,county,NY,New York,orange|NY,36071,"Orange County, NY",releases,141,93,193
-median,county,NY,New York,orange|NY,36071,"Orange County, NY",school_age,136,90,187
-median,other_counties,NY,New York,,,"Other counties, NY",releases,465,361,576
-median,other_counties,NY,New York,,,"Other counties, NY",school_age,450,349,557
-median,state,OH,Ohio,,,,releases,1025,867,1187
-median,state,OH,Ohio,,,,school_age,991,838,1148
-median,county,OH,Ohio,hamilton|OH,39061,"Hamilton County, OH",releases,214,170,261
-median,county,OH,Ohio,hamilton|OH,39061,"Hamilton County, OH",school_age,207,164,252
-median,county,OH,Ohio,franklin|OH,39049,"Franklin County, OH",releases,363,297,433
-median,county,OH,Ohio,franklin|OH,39049,"Franklin County, OH",school_age,351,287,419
-median,other_counties,OH,Ohio,,,"Other counties, OH",releases,449,371,528
-median,other_counties,OH,Ohio,,,"Other counties, OH",school_age,434,359,511
-median,state,OK,Oklahoma,,,,releases,472,367,585
-median,state,OK,Oklahoma,,,,school_age,456,355,566
-median,county,OK,Oklahoma,oklahoma|OK,40109,"Oklahoma County, OK",releases,215,164,271
-median,county,OK,Oklahoma,oklahoma|OK,40109,"Oklahoma County, OK",school_age,208,159,262
-median,county,OK,Oklahoma,tulsa|OK,40143,"Tulsa County, OK",releases,142,106,181
-median,county,OK,Oklahoma,tulsa|OK,40143,"Tulsa County, OK",school_age,138,103,175
+median,state,NY,New York,,,,releases,3520,3048,4007
+median,state,NY,New York,,,,school_age,3405,2948,3875
+median,county,NY,New York,suffolk|NY,36103,"Suffolk County, NY",releases,583,470,701
+median,county,NY,New York,suffolk|NY,36103,"Suffolk County, NY",school_age,564,455,678
+median,county,NY,New York,queens|NY,36081,"Queens County, NY",releases,805,664,955
+median,county,NY,New York,queens|NY,36081,"Queens County, NY",school_age,778,642,924
+median,county,NY,New York,nassau|NY,36059,"Nassau County, NY",releases,345,267,428
+median,county,NY,New York,nassau|NY,36059,"Nassau County, NY",school_age,334,258,414
+median,county,NY,New York,kings|NY,36047,"Kings County, NY",releases,581,471,699
+median,county,NY,New York,kings|NY,36047,"Kings County, NY",school_age,562,456,676
+median,county,NY,New York,bronx|NY,36005,"Bronx County, NY",releases,278,208,353
+median,county,NY,New York,bronx|NY,36005,"Bronx County, NY",school_age,269,201,341
+median,county,NY,New York,westchester|NY,36119,"Westchester County, NY",releases,212,153,276
+median,county,NY,New York,westchester|NY,36119,"Westchester County, NY",school_age,205,148,267
+median,county,NY,New York,rockland|NY,36087,"Rockland County, NY",releases,112,73,155
+median,county,NY,New York,rockland|NY,36087,"Rockland County, NY",school_age,108,71,150
+median,county,NY,New York,orange|NY,36071,"Orange County, NY",releases,140,95,190
+median,county,NY,New York,orange|NY,36071,"Orange County, NY",school_age,136,92,184
+median,other_counties,NY,New York,,,"Other counties, NY",releases,464,368,566
+median,other_counties,NY,New York,,,"Other counties, NY",school_age,449,356,547
+median,state,OH,Ohio,,,,releases,1026,870,1187
+median,state,OH,Ohio,,,,school_age,992,841,1148
+median,county,OH,Ohio,hamilton|OH,39061,"Hamilton County, OH",releases,214,170,260
+median,county,OH,Ohio,hamilton|OH,39061,"Hamilton County, OH",school_age,207,164,251
+median,county,OH,Ohio,franklin|OH,39049,"Franklin County, OH",releases,362,298,430
+median,county,OH,Ohio,franklin|OH,39049,"Franklin County, OH",school_age,351,288,416
+median,other_counties,OH,Ohio,,,"Other counties, OH",releases,449,374,529
+median,other_counties,OH,Ohio,,,"Other counties, OH",school_age,435,362,512
+median,state,OK,Oklahoma,,,,releases,472,369,583
+median,state,OK,Oklahoma,,,,school_age,457,357,564
+median,county,OK,Oklahoma,oklahoma|OK,40109,"Oklahoma County, OK",releases,216,165,271
+median,county,OK,Oklahoma,oklahoma|OK,40109,"Oklahoma County, OK",school_age,209,160,262
+median,county,OK,Oklahoma,tulsa|OK,40143,"Tulsa County, OK",releases,142,107,180
+median,county,OK,Oklahoma,tulsa|OK,40143,"Tulsa County, OK",school_age,137,103,174
 median,other_counties,OK,Oklahoma,,,"Other counties, OK",releases,114,84,147
-median,other_counties,OK,Oklahoma,,,"Other counties, OK",school_age,111,81,142
-median,state,OR,Oregon,,,,releases,384,290,485
-median,state,OR,Oregon,,,,school_age,371,280,469
-median,other_counties,OR,Oregon,,,"Other counties, OR",releases,384,290,485
-median,other_counties,OR,Oregon,,,"Other counties, OR",school_age,371,280,469
-median,state,PA,Pennsylvania,,,,releases,938,784,1094
-median,state,PA,Pennsylvania,,,,school_age,907,758,1058
-median,county,PA,Pennsylvania,philadelphia|PA,42101,"Philadelphia County, PA",releases,254,204,308
-median,county,PA,Pennsylvania,philadelphia|PA,42101,"Philadelphia County, PA",school_age,246,197,298
-median,county,PA,Pennsylvania,montgomery|PA,42091,"Montgomery County, PA",releases,108,80,137
-median,county,PA,Pennsylvania,montgomery|PA,42091,"Montgomery County, PA",school_age,104,77,132
-median,other_counties,PA,Pennsylvania,,,"Other counties, PA",releases,576,478,679
-median,other_counties,PA,Pennsylvania,,,"Other counties, PA",school_age,557,462,657
-median,state,RI,Rhode Island,,,,releases,216,148,292
-median,state,RI,Rhode Island,,,,school_age,209,143,282
-median,county,RI,Rhode Island,providence|RI,44007,"Providence County, RI",releases,184,124,249
-median,county,RI,Rhode Island,providence|RI,44007,"Providence County, RI",school_age,178,120,241
-median,other_counties,RI,Rhode Island,,,"Other counties, RI",releases,32,19,47
-median,other_counties,RI,Rhode Island,,,"Other counties, RI",school_age,31,18,45
-median,state,SC,South Carolina,,,,releases,953,804,1109
-median,state,SC,South Carolina,,,,school_age,921,778,1073
-median,county,SC,South Carolina,greenville|SC,45045,"Greenville County, SC",releases,189,149,232
-median,county,SC,South Carolina,greenville|SC,45045,"Greenville County, SC",school_age,183,144,224
-median,other_counties,SC,South Carolina,,,"Other counties, SC",releases,763,639,892
-median,other_counties,SC,South Carolina,,,"Other counties, SC",school_age,738,618,863
+median,other_counties,OK,Oklahoma,,,"Other counties, OK",school_age,110,81,142
+median,state,OR,Oregon,,,,releases,384,290,483
+median,state,OR,Oregon,,,,school_age,371,280,467
+median,other_counties,OR,Oregon,,,"Other counties, OR",releases,384,290,483
+median,other_counties,OR,Oregon,,,"Other counties, OR",school_age,371,280,467
+median,state,PA,Pennsylvania,,,,releases,938,786,1094
+median,state,PA,Pennsylvania,,,,school_age,907,760,1058
+median,county,PA,Pennsylvania,philadelphia|PA,42101,"Philadelphia County, PA",releases,254,204,307
+median,county,PA,Pennsylvania,philadelphia|PA,42101,"Philadelphia County, PA",school_age,246,197,297
+median,county,PA,Pennsylvania,montgomery|PA,42091,"Montgomery County, PA",releases,108,81,137
+median,county,PA,Pennsylvania,montgomery|PA,42091,"Montgomery County, PA",school_age,104,78,132
+median,other_counties,PA,Pennsylvania,,,"Other counties, PA",releases,576,479,678
+median,other_counties,PA,Pennsylvania,,,"Other counties, PA",school_age,557,463,656
+median,state,RI,Rhode Island,,,,releases,216,147,293
+median,state,RI,Rhode Island,,,,school_age,209,142,283
+median,county,RI,Rhode Island,providence|RI,44007,"Providence County, RI",releases,183,124,248
+median,county,RI,Rhode Island,providence|RI,44007,"Providence County, RI",school_age,177,120,240
+median,other_counties,RI,Rhode Island,,,"Other counties, RI",releases,32,20,47
+median,other_counties,RI,Rhode Island,,,"Other counties, RI",school_age,31,19,45
+median,state,SC,South Carolina,,,,releases,952,804,1107
+median,state,SC,South Carolina,,,,school_age,921,778,1071
+median,county,SC,South Carolina,greenville|SC,45045,"Greenville County, SC",releases,189,150,231
+median,county,SC,South Carolina,greenville|SC,45045,"Greenville County, SC",school_age,183,145,223
+median,other_counties,SC,South Carolina,,,"Other counties, SC",releases,763,641,890
+median,other_counties,SC,South Carolina,,,"Other counties, SC",school_age,738,620,861
 median,state,SD,South Dakota,,,,releases,73,35,117
 median,state,SD,South Dakota,,,,school_age,70,34,113
 median,other_counties,SD,South Dakota,,,"Other counties, SD",releases,73,35,117
 median,other_counties,SD,South Dakota,,,"Other counties, SD",school_age,70,34,113
-median,state,TN,Tennessee,,,,releases,1813,1433,2213
-median,state,TN,Tennessee,,,,school_age,1753,1386,2140
-median,county,TN,Tennessee,davidson|TN,47037,"Davidson County, TN",releases,556,427,693
-median,county,TN,Tennessee,davidson|TN,47037,"Davidson County, TN",school_age,538,413,670
-median,county,TN,Tennessee,shelby|TN,47157,"Shelby County, TN",releases,292,218,372
-median,county,TN,Tennessee,shelby|TN,47157,"Shelby County, TN",school_age,282,211,360
-median,county,TN,Tennessee,knox|TN,47093,"Knox County, TN",releases,153,107,203
-median,county,TN,Tennessee,knox|TN,47093,"Knox County, TN",school_age,148,103,196
-median,county,TN,Tennessee,rutherford|TN,47149,"Rutherford County, TN",releases,177,126,233
-median,county,TN,Tennessee,rutherford|TN,47149,"Rutherford County, TN",school_age,171,122,225
-median,other_counties,TN,Tennessee,,,"Other counties, TN",releases,635,491,790
-median,other_counties,TN,Tennessee,,,"Other counties, TN",school_age,615,475,764
-median,state,TX,Texas,,,,releases,7394,6672,8138
-median,state,TX,Texas,,,,school_age,7151,6452,7870
-median,county,TX,Texas,harris|TX,48201,"Harris County, TX",releases,2422,2103,2754
-median,county,TX,Texas,harris|TX,48201,"Harris County, TX",school_age,2343,2034,2663
-median,county,TX,Texas,dallas|TX,48113,"Dallas County, TX",releases,1392,1164,1627
-median,county,TX,Texas,dallas|TX,48113,"Dallas County, TX",school_age,1346,1126,1573
-median,county,TX,Texas,travis|TX,48453,"Travis County, TX",releases,687,538,845
-median,county,TX,Texas,travis|TX,48453,"Travis County, TX",school_age,665,520,817
-median,county,TX,Texas,tarrant|TX,48439,"Tarrant County, TX",releases,420,306,543
-median,county,TX,Texas,tarrant|TX,48439,"Tarrant County, TX",school_age,406,296,525
-median,county,TX,Texas,bexar|TX,48029,"Bexar County, TX",releases,367,262,480
-median,county,TX,Texas,bexar|TX,48029,"Bexar County, TX",school_age,355,253,464
-median,county,TX,Texas,montgomery|TX,48339,"Montgomery County, TX",releases,136,75,203
-median,county,TX,Texas,montgomery|TX,48339,"Montgomery County, TX",school_age,131,73,196
-median,county,TX,Texas,collin|TX,48085,"Collin County, TX",releases,146,84,217
-median,county,TX,Texas,collin|TX,48085,"Collin County, TX",school_age,141,81,210
-median,county,TX,Texas,denton|TX,48121,"Denton County, TX",releases,254,166,349
-median,county,TX,Texas,denton|TX,48121,"Denton County, TX",school_age,245,161,338
-median,other_counties,TX,Texas,,,"Other counties, TX",releases,1571,1329,1825
-median,other_counties,TX,Texas,,,"Other counties, TX",school_age,1519,1285,1765
-median,state,UT,Utah,,,,releases,431,330,538
-median,state,UT,Utah,,,,school_age,416,319,520
-median,county,UT,Utah,salt lake|UT,49035,"Salt Lake County, UT",releases,219,165,277
-median,county,UT,Utah,salt lake|UT,49035,"Salt Lake County, UT",school_age,211,160,268
-median,other_counties,UT,Utah,,,"Other counties, UT",releases,212,159,268
-median,other_counties,UT,Utah,,,"Other counties, UT",school_age,205,154,259
-median,state,VA,Virginia,,,,releases,2039,1643,2465
-median,state,VA,Virginia,,,,school_age,1972,1589,2384
-median,county,VA,Virginia,fairfax|VA,51059,"Fairfax County, VA",releases,407,312,512
-median,county,VA,Virginia,fairfax|VA,51059,"Fairfax County, VA",school_age,394,302,495
-median,county,VA,Virginia,prince william|VA,51153,"Prince William County, VA",releases,252,187,323
-median,county,VA,Virginia,prince william|VA,51153,"Prince William County, VA",school_age,244,181,312
-median,county,VA,Virginia,chesterfield|VA,51041,"Chesterfield County, VA",releases,168,118,221
-median,county,VA,Virginia,chesterfield|VA,51041,"Chesterfield County, VA",school_age,162,114,214
-median,county,VA,Virginia,richmond city|VA,51760,"Richmond city, VA",releases,138,95,185
-median,county,VA,Virginia,richmond city|VA,51760,"Richmond city, VA",school_age,133,92,179
-median,other_counties,VA,Virginia,,,"Other counties, VA",releases,1074,851,1310
-median,other_counties,VA,Virginia,,,"Other counties, VA",school_age,1039,823,1267
+median,state,TN,Tennessee,,,,releases,1813,1471,2168
+median,state,TN,Tennessee,,,,school_age,1754,1423,2097
+median,county,TN,Tennessee,davidson|TN,47037,"Davidson County, TN",releases,556,437,682
+median,county,TN,Tennessee,davidson|TN,47037,"Davidson County, TN",school_age,537,423,660
+median,county,TN,Tennessee,shelby|TN,47157,"Shelby County, TN",releases,291,223,363
+median,county,TN,Tennessee,shelby|TN,47157,"Shelby County, TN",school_age,281,216,351
+median,county,TN,Tennessee,knox|TN,47093,"Knox County, TN",releases,153,110,199
+median,county,TN,Tennessee,knox|TN,47093,"Knox County, TN",school_age,148,106,192
+median,county,TN,Tennessee,rutherford|TN,47149,"Rutherford County, TN",releases,177,130,229
+median,county,TN,Tennessee,rutherford|TN,47149,"Rutherford County, TN",school_age,171,126,221
+median,other_counties,TN,Tennessee,,,"Other counties, TN",releases,637,505,775
+median,other_counties,TN,Tennessee,,,"Other counties, TN",school_age,616,488,750
+median,state,TX,Texas,,,,releases,7398,6754,8061
+median,state,TX,Texas,,,,school_age,7154,6532,7796
+median,county,TX,Texas,harris|TX,48201,"Harris County, TX",releases,2420,2128,2724
+median,county,TX,Texas,harris|TX,48201,"Harris County, TX",school_age,2340,2058,2634
+median,county,TX,Texas,dallas|TX,48113,"Dallas County, TX",releases,1389,1179,1602
+median,county,TX,Texas,dallas|TX,48113,"Dallas County, TX",school_age,1344,1140,1549
+median,county,TX,Texas,travis|TX,48453,"Travis County, TX",releases,689,549,836
+median,county,TX,Texas,travis|TX,48453,"Travis County, TX",school_age,667,531,808
+median,county,TX,Texas,tarrant|TX,48439,"Tarrant County, TX",releases,421,314,535
+median,county,TX,Texas,tarrant|TX,48439,"Tarrant County, TX",school_age,407,304,517
+median,county,TX,Texas,bexar|TX,48029,"Bexar County, TX",releases,366,269,471
+median,county,TX,Texas,bexar|TX,48029,"Bexar County, TX",school_age,354,260,456
+median,county,TX,Texas,montgomery|TX,48339,"Montgomery County, TX",releases,136,78,200
+median,county,TX,Texas,montgomery|TX,48339,"Montgomery County, TX",school_age,132,75,193
+median,county,TX,Texas,collin|TX,48085,"Collin County, TX",releases,147,87,214
+median,county,TX,Texas,collin|TX,48085,"Collin County, TX",school_age,142,84,207
+median,county,TX,Texas,denton|TX,48121,"Denton County, TX",releases,255,174,344
+median,county,TX,Texas,denton|TX,48121,"Denton County, TX",school_age,246,168,333
+median,other_counties,TX,Texas,,,"Other counties, TX",releases,1575,1345,1812
+median,other_counties,TX,Texas,,,"Other counties, TX",school_age,1523,1301,1752
+median,state,UT,Utah,,,,releases,430,330,535
+median,state,UT,Utah,,,,school_age,415,319,517
+median,county,UT,Utah,salt lake|UT,49035,"Salt Lake County, UT",releases,218,165,275
+median,county,UT,Utah,salt lake|UT,49035,"Salt Lake County, UT",school_age,211,160,266
+median,other_counties,UT,Utah,,,"Other counties, UT",releases,211,159,266
+median,other_counties,UT,Utah,,,"Other counties, UT",school_age,205,154,257
+median,state,VA,Virginia,,,,releases,2041,1681,2422
+median,state,VA,Virginia,,,,school_age,1974,1626,2342
+median,county,VA,Virginia,fairfax|VA,51059,"Fairfax County, VA",releases,407,319,504
+median,county,VA,Virginia,fairfax|VA,51059,"Fairfax County, VA",school_age,394,309,487
+median,county,VA,Virginia,prince william|VA,51153,"Prince William County, VA",releases,252,191,317
+median,county,VA,Virginia,prince william|VA,51153,"Prince William County, VA",school_age,244,185,307
+median,county,VA,Virginia,chesterfield|VA,51041,"Chesterfield County, VA",releases,168,123,217
+median,county,VA,Virginia,chesterfield|VA,51041,"Chesterfield County, VA",school_age,163,119,210
+median,county,VA,Virginia,richmond city|VA,51760,"Richmond city, VA",releases,138,98,181
+median,county,VA,Virginia,richmond city|VA,51760,"Richmond city, VA",school_age,133,95,175
+median,other_counties,VA,Virginia,,,"Other counties, VA",releases,1075,875,1286
+median,other_counties,VA,Virginia,,,"Other counties, VA",school_age,1040,846,1244
 median,state,VT,Vermont,,,,releases,17,2,38
-median,state,VT,Vermont,,,,school_age,16,2,37
+median,state,VT,Vermont,,,,school_age,17,2,37
 median,other_counties,VT,Vermont,,,"Other counties, VT",releases,17,2,38
-median,other_counties,VT,Vermont,,,"Other counties, VT",school_age,16,2,37
-median,state,WA,Washington,,,,releases,916,766,1072
-median,state,WA,Washington,,,,school_age,886,741,1037
-median,county,WA,Washington,king|WA,53033,"King County, WA",releases,400,326,477
-median,county,WA,Washington,king|WA,53033,"King County, WA",school_age,387,315,461
-median,county,WA,Washington,snohomish|WA,53061,"Snohomish County, WA",releases,123,92,156
-median,county,WA,Washington,snohomish|WA,53061,"Snohomish County, WA",school_age,119,89,151
-median,other_counties,WA,Washington,,,"Other counties, WA",releases,394,321,470
-median,other_counties,WA,Washington,,,"Other counties, WA",school_age,381,310,455
-median,state,WI,Wisconsin,,,,releases,414,315,521
-median,state,WI,Wisconsin,,,,school_age,401,305,504
-median,county,WI,Wisconsin,milwaukee|WI,55079,"Milwaukee County, WI",releases,138,101,178
-median,county,WI,Wisconsin,milwaukee|WI,55079,"Milwaukee County, WI",school_age,133,98,172
-median,other_counties,WI,Wisconsin,,,"Other counties, WI",releases,276,208,349
-median,other_counties,WI,Wisconsin,,,"Other counties, WI",school_age,267,201,338
-median,state,WV,West Virginia,,,,releases,30,7,58
-median,state,WV,West Virginia,,,,school_age,29,7,56
-median,other_counties,WV,West Virginia,,,"Other counties, WV",releases,30,7,58
-median,other_counties,WV,West Virginia,,,"Other counties, WV",school_age,29,7,56
-median,state,WY,Wyoming,,,,releases,21,4,45
+median,other_counties,VT,Vermont,,,"Other counties, VT",school_age,17,2,37
+median,state,WA,Washington,,,,releases,917,768,1070
+median,state,WA,Washington,,,,school_age,886,743,1035
+median,county,WA,Washington,king|WA,53033,"King County, WA",releases,400,328,476
+median,county,WA,Washington,king|WA,53033,"King County, WA",school_age,387,317,460
+median,county,WA,Washington,snohomish|WA,53061,"Snohomish County, WA",releases,122,93,154
+median,county,WA,Washington,snohomish|WA,53061,"Snohomish County, WA",school_age,118,90,149
+median,other_counties,WA,Washington,,,"Other counties, WA",releases,394,323,469
+median,other_counties,WA,Washington,,,"Other counties, WA",school_age,381,312,454
+median,state,WI,Wisconsin,,,,releases,414,314,518
+median,state,WI,Wisconsin,,,,school_age,400,304,501
+median,county,WI,Wisconsin,milwaukee|WI,55079,"Milwaukee County, WI",releases,138,101,177
+median,county,WI,Wisconsin,milwaukee|WI,55079,"Milwaukee County, WI",school_age,133,98,171
+median,other_counties,WI,Wisconsin,,,"Other counties, WI",releases,276,209,349
+median,other_counties,WI,Wisconsin,,,"Other counties, WI",school_age,267,202,338
+median,state,WV,West Virginia,,,,releases,30,8,58
+median,state,WV,West Virginia,,,,school_age,29,8,56
+median,other_counties,WV,West Virginia,,,"Other counties, WV",releases,30,8,58
+median,other_counties,WV,West Virginia,,,"Other counties, WV",school_age,29,8,56
+median,state,WY,Wyoming,,,,releases,22,4,46
 median,state,WY,Wyoming,,,,school_age,21,4,44
-median,other_counties,WY,Wyoming,,,"Other counties, WY",releases,21,4,45
+median,other_counties,WY,Wyoming,,,"Other counties, WY",releases,22,4,46
 median,other_counties,WY,Wyoming,,,"Other counties, WY",school_age,21,4,44
 high,state,AK,Alaska,,,,releases,21,0,56
 high,state,AK,Alaska,,,,school_age,21,0,54
 high,other_counties,AK,Alaska,,,"Other counties, AK",releases,21,0,56
 high,other_counties,AK,Alaska,,,"Other counties, AK",school_age,21,0,54
-high,state,AL,Alabama,,,,releases,2290,1926,2667
-high,state,AL,Alabama,,,,school_age,2215,1863,2579
-high,county,AL,Alabama,jefferson|AL,01073,"Jefferson County, AL",releases,380,298,467
-high,county,AL,Alabama,jefferson|AL,01073,"Jefferson County, AL",school_age,367,288,452
-high,other_counties,AL,Alabama,,,"Other counties, AL",releases,1911,1604,2231
-high,other_counties,AL,Alabama,,,"Other counties, AL",school_age,1848,1551,2158
-high,state,AR,Arkansas,,,,releases,892,672,1126
-high,state,AR,Arkansas,,,,school_age,863,650,1089
-high,other_counties,AR,Arkansas,,,"Other counties, AR",releases,892,672,1126
-high,other_counties,AR,Arkansas,,,"Other counties, AR",school_age,863,650,1089
-high,state,AZ,Arizona,,,,releases,1676,1376,1996
-high,state,AZ,Arizona,,,,school_age,1621,1331,1930
-high,county,AZ,Arizona,maricopa|AZ,04013,"Maricopa County, AZ",releases,1470,1202,1757
-high,county,AZ,Arizona,maricopa|AZ,04013,"Maricopa County, AZ",school_age,1422,1162,1699
-high,other_counties,AZ,Arizona,,,"Other counties, AZ",releases,206,154,263
-high,other_counties,AZ,Arizona,,,"Other counties, AZ",school_age,199,149,254
-high,state,CA,California,,,,releases,15793,14098,17500
-high,state,CA,California,,,,school_age,15273,13634,16924
-high,county,CA,California,los angeles|CA,06037,"Los Angeles County, CA",releases,5255,4529,6007
-high,county,CA,California,los angeles|CA,06037,"Los Angeles County, CA",school_age,5082,4380,5809
-high,county,CA,California,alameda|CA,06001,"Alameda County, CA",releases,994,741,1267
-high,county,CA,California,alameda|CA,06001,"Alameda County, CA",school_age,961,717,1225
-high,county,CA,California,san mateo|CA,06081,"San Mateo County, CA",releases,627,431,844
-high,county,CA,California,san mateo|CA,06081,"San Mateo County, CA",school_age,606,417,816
-high,county,CA,California,orange|CA,06059,"Orange County, CA",releases,870,631,1128
-high,county,CA,California,orange|CA,06059,"Orange County, CA",school_age,841,610,1091
-high,county,CA,California,riverside|CA,06065,"Riverside County, CA",releases,643,441,861
-high,county,CA,California,riverside|CA,06065,"Riverside County, CA",school_age,622,426,833
-high,county,CA,California,contra costa|CA,06013,"Contra Costa County, CA",releases,570,381,779
-high,county,CA,California,contra costa|CA,06013,"Contra Costa County, CA",school_age,552,368,753
-high,county,CA,California,santa clara|CA,06085,"Santa Clara County, CA",releases,692,482,927
-high,county,CA,California,santa clara|CA,06085,"Santa Clara County, CA",school_age,669,466,897
-high,county,CA,California,san francisco|CA,06075,"San Francisco County, CA",releases,536,356,738
-high,county,CA,California,san francisco|CA,06075,"San Francisco County, CA",school_age,518,344,714
-high,county,CA,California,san diego|CA,06073,"San Diego County, CA",releases,593,399,805
-high,county,CA,California,san diego|CA,06073,"San Diego County, CA",school_age,574,386,779
-high,county,CA,California,san bernardino|CA,06071,"San Bernardino County, CA",releases,621,423,836
-high,county,CA,California,san bernardino|CA,06071,"San Bernardino County, CA",school_age,601,409,808
-high,county,CA,California,fresno|CA,06019,"Fresno County, CA",releases,437,275,616
-high,county,CA,California,fresno|CA,06019,"Fresno County, CA",school_age,422,266,596
-high,county,CA,California,marin|CA,06041,"Marin County, CA",releases,263,143,401
-high,county,CA,California,marin|CA,06041,"Marin County, CA",school_age,255,138,388
-high,county,CA,California,monterey|CA,06053,"Monterey County, CA",releases,348,203,510
-high,county,CA,California,monterey|CA,06053,"Monterey County, CA",school_age,336,196,493
-high,county,CA,California,kern|CA,06029,"Kern County, CA",releases,354,210,517
-high,county,CA,California,kern|CA,06029,"Kern County, CA",school_age,343,203,500
-high,county,CA,California,sacramento|CA,06067,"Sacramento County, CA",releases,452,289,635
-high,county,CA,California,sacramento|CA,06067,"Sacramento County, CA",school_age,437,279,614
-high,county,CA,California,san joaquin|CA,06077,"San Joaquin County, CA",releases,380,230,549
-high,county,CA,California,san joaquin|CA,06077,"San Joaquin County, CA",school_age,367,222,531
-high,county,CA,California,ventura|CA,06111,"Ventura County, CA",releases,310,178,462
-high,county,CA,California,ventura|CA,06111,"Ventura County, CA",school_age,300,172,447
-high,county,CA,California,santa barbara|CA,06083,"Santa Barbara County, CA",releases,390,238,564
-high,county,CA,California,santa barbara|CA,06083,"Santa Barbara County, CA",school_age,377,230,545
-high,other_counties,CA,California,,,"Other counties, CA",releases,1458,1134,1798
-high,other_counties,CA,California,,,"Other counties, CA",school_age,1410,1097,1739
-high,state,CO,Colorado,,,,releases,2251,1893,2624
-high,state,CO,Colorado,,,,school_age,2177,1831,2538
-high,county,CO,Colorado,arapahoe|CO,08005,"Arapahoe County, CO",releases,692,564,828
-high,county,CO,Colorado,arapahoe|CO,08005,"Arapahoe County, CO",school_age,669,545,801
-high,county,CO,Colorado,denver|CO,08031,"Denver County, CO",releases,357,279,441
-high,county,CO,Colorado,denver|CO,08031,"Denver County, CO",school_age,346,270,426
-high,county,CO,Colorado,adams|CO,08001,"Adams County, CO",releases,268,204,336
-high,county,CO,Colorado,adams|CO,08001,"Adams County, CO",school_age,259,197,325
-high,other_counties,CO,Colorado,,,"Other counties, CO",releases,934,768,1109
-high,other_counties,CO,Colorado,,,"Other counties, CO",school_age,904,743,1073
-high,state,CT,Connecticut,,,,releases,1020,784,1272
-high,state,CT,Connecticut,,,,school_age,987,758,1230
-high,county,CT,Connecticut,fairfield|CT,,"Fairfield County, CT",releases,547,415,689
-high,county,CT,Connecticut,fairfield|CT,,"Fairfield County, CT",school_age,529,401,666
-high,other_counties,CT,Connecticut,,,"Other counties, CT",releases,473,358,600
-high,other_counties,CT,Connecticut,,,"Other counties, CT",school_age,458,346,580
-high,state,DC,District of Columbia,,,,releases,327,200,475
-high,state,DC,District of Columbia,,,,school_age,317,193,459
-high,county,DC,District of Columbia,district of columbia|DC,11001,"District of Columbia, DC",releases,327,200,475
-high,county,DC,District of Columbia,district of columbia|DC,11001,"District of Columbia, DC",school_age,317,193,459
+high,state,AL,Alabama,,,,releases,2288,1927,2662
+high,state,AL,Alabama,,,,school_age,2213,1864,2574
+high,county,AL,Alabama,jefferson|AL,01073,"Jefferson County, AL",releases,379,300,465
+high,county,AL,Alabama,jefferson|AL,01073,"Jefferson County, AL",school_age,366,290,450
+high,other_counties,AL,Alabama,,,"Other counties, AL",releases,1909,1602,2229
+high,other_counties,AL,Alabama,,,"Other counties, AL",school_age,1847,1549,2156
+high,state,AR,Arkansas,,,,releases,891,672,1120
+high,state,AR,Arkansas,,,,school_age,861,650,1083
+high,other_counties,AR,Arkansas,,,"Other counties, AR",releases,891,672,1120
+high,other_counties,AR,Arkansas,,,"Other counties, AR",school_age,861,650,1083
+high,state,AZ,Arizona,,,,releases,1674,1371,1989
+high,state,AZ,Arizona,,,,school_age,1619,1326,1924
+high,county,AZ,Arizona,maricopa|AZ,04013,"Maricopa County, AZ",releases,1469,1200,1746
+high,county,AZ,Arizona,maricopa|AZ,04013,"Maricopa County, AZ",school_age,1420,1161,1689
+high,other_counties,AZ,Arizona,,,"Other counties, AZ",releases,205,154,260
+high,other_counties,AZ,Arizona,,,"Other counties, AZ",school_age,198,149,251
+high,state,CA,California,,,,releases,15791,14262,17305
+high,state,CA,California,,,,school_age,15272,13793,16736
+high,county,CA,California,los angeles|CA,06037,"Los Angeles County, CA",releases,5253,4594,5931
+high,county,CA,California,los angeles|CA,06037,"Los Angeles County, CA",school_age,5081,4443,5736
+high,county,CA,California,alameda|CA,06001,"Alameda County, CA",releases,1000,755,1259
+high,county,CA,California,alameda|CA,06001,"Alameda County, CA",school_age,967,730,1218
+high,county,CA,California,san mateo|CA,06081,"San Mateo County, CA",releases,628,443,830
+high,county,CA,California,san mateo|CA,06081,"San Mateo County, CA",school_age,607,428,803
+high,county,CA,California,orange|CA,06059,"Orange County, CA",releases,869,647,1111
+high,county,CA,California,orange|CA,06059,"Orange County, CA",school_age,840,626,1074
+high,county,CA,California,riverside|CA,06065,"Riverside County, CA",releases,640,453,845
+high,county,CA,California,riverside|CA,06065,"Riverside County, CA",school_age,619,438,817
+high,county,CA,California,contra costa|CA,06013,"Contra Costa County, CA",releases,569,394,766
+high,county,CA,California,contra costa|CA,06013,"Contra Costa County, CA",school_age,551,381,741
+high,county,CA,California,santa clara|CA,06085,"Santa Clara County, CA",releases,691,495,903
+high,county,CA,California,santa clara|CA,06085,"Santa Clara County, CA",school_age,668,479,873
+high,county,CA,California,san francisco|CA,06075,"San Francisco County, CA",releases,539,369,726
+high,county,CA,California,san francisco|CA,06075,"San Francisco County, CA",school_age,521,357,702
+high,county,CA,California,san diego|CA,06073,"San Diego County, CA",releases,593,411,790
+high,county,CA,California,san diego|CA,06073,"San Diego County, CA",school_age,574,397,764
+high,county,CA,California,san bernardino|CA,06071,"San Bernardino County, CA",releases,623,436,829
+high,county,CA,California,san bernardino|CA,06071,"San Bernardino County, CA",school_age,602,422,802
+high,county,CA,California,fresno|CA,06019,"Fresno County, CA",releases,437,283,600
+high,county,CA,California,fresno|CA,06019,"Fresno County, CA",school_age,422,274,580
+high,county,CA,California,marin|CA,06041,"Marin County, CA",releases,263,148,392
+high,county,CA,California,marin|CA,06041,"Marin County, CA",school_age,254,143,379
+high,county,CA,California,monterey|CA,06053,"Monterey County, CA",releases,348,212,498
+high,county,CA,California,monterey|CA,06053,"Monterey County, CA",school_age,337,205,482
+high,county,CA,California,kern|CA,06029,"Kern County, CA",releases,353,219,504
+high,county,CA,California,kern|CA,06029,"Kern County, CA",school_age,341,212,487
+high,county,CA,California,sacramento|CA,06067,"Sacramento County, CA",releases,454,297,625
+high,county,CA,California,sacramento|CA,06067,"Sacramento County, CA",school_age,439,287,604
+high,county,CA,California,san joaquin|CA,06077,"San Joaquin County, CA",releases,378,238,535
+high,county,CA,California,san joaquin|CA,06077,"San Joaquin County, CA",school_age,366,230,517
+high,county,CA,California,ventura|CA,06111,"Ventura County, CA",releases,310,185,451
+high,county,CA,California,ventura|CA,06111,"Ventura County, CA",school_age,300,179,436
+high,county,CA,California,santa barbara|CA,06083,"Santa Barbara County, CA",releases,390,249,546
+high,county,CA,California,santa barbara|CA,06083,"Santa Barbara County, CA",school_age,377,241,528
+high,other_counties,CA,California,,,"Other counties, CA",releases,1455,1157,1775
+high,other_counties,CA,California,,,"Other counties, CA",school_age,1407,1119,1717
+high,state,CO,Colorado,,,,releases,2253,1901,2621
+high,state,CO,Colorado,,,,school_age,2179,1838,2535
+high,county,CO,Colorado,arapahoe|CO,08005,"Arapahoe County, CO",releases,694,568,826
+high,county,CO,Colorado,arapahoe|CO,08005,"Arapahoe County, CO",school_age,671,549,799
+high,county,CO,Colorado,denver|CO,08031,"Denver County, CO",releases,357,282,436
+high,county,CO,Colorado,denver|CO,08031,"Denver County, CO",school_age,345,273,422
+high,county,CO,Colorado,adams|CO,08001,"Adams County, CO",releases,268,207,334
+high,county,CO,Colorado,adams|CO,08001,"Adams County, CO",school_age,259,200,323
+high,other_counties,CO,Colorado,,,"Other counties, CO",releases,935,772,1105
+high,other_counties,CO,Colorado,,,"Other counties, CO",school_age,904,747,1069
+high,state,CT,Connecticut,,,,releases,1018,786,1267
+high,state,CT,Connecticut,,,,school_age,985,760,1225
+high,county,CT,Connecticut,fairfield|CT,,"Fairfield County, CT",releases,546,415,685
+high,county,CT,Connecticut,fairfield|CT,,"Fairfield County, CT",school_age,528,401,662
+high,other_counties,CT,Connecticut,,,"Other counties, CT",releases,473,360,594
+high,other_counties,CT,Connecticut,,,"Other counties, CT",school_age,457,348,574
+high,state,DC,District of Columbia,,,,releases,327,200,471
+high,state,DC,District of Columbia,,,,school_age,316,193,456
+high,county,DC,District of Columbia,district of columbia|DC,11001,"District of Columbia, DC",releases,327,200,471
+high,county,DC,District of Columbia,district of columbia|DC,11001,"District of Columbia, DC",school_age,316,193,456
 high,other_counties,DC,District of Columbia,,,"Other counties, DC",releases,0,0,0
 high,other_counties,DC,District of Columbia,,,"Other counties, DC",school_age,0,0,0
-high,state,DE,Delaware,,,,releases,532,363,714
-high,state,DE,Delaware,,,,school_age,514,351,691
-high,county,DE,Delaware,sussex|DE,10005,"Sussex County, DE",releases,321,216,433
-high,county,DE,Delaware,sussex|DE,10005,"Sussex County, DE",school_age,310,209,419
-high,other_counties,DE,Delaware,,,"Other counties, DE",releases,211,141,286
-high,other_counties,DE,Delaware,,,"Other counties, DE",school_age,204,136,277
-high,state,FL,Florida,,,,releases,10303,8918,11733
-high,state,FL,Florida,,,,school_age,9964,8625,11347
-high,county,FL,Florida,miami-dade|FL,12086,"Miami-Dade County, FL",releases,1622,1305,1965
-high,county,FL,Florida,miami-dade|FL,12086,"Miami-Dade County, FL",school_age,1569,1262,1900
-high,county,FL,Florida,palm beach|FL,12099,"Palm Beach County, FL",releases,1540,1232,1869
-high,county,FL,Florida,palm beach|FL,12099,"Palm Beach County, FL",school_age,1490,1191,1808
-high,county,FL,Florida,lee|FL,12071,"Lee County, FL",releases,753,560,964
-high,county,FL,Florida,lee|FL,12071,"Lee County, FL",school_age,728,542,932
-high,county,FL,Florida,broward|FL,12011,"Broward County, FL",releases,780,584,994
-high,county,FL,Florida,broward|FL,12011,"Broward County, FL",school_age,754,565,961
-high,county,FL,Florida,orange|FL,12095,"Orange County, FL",releases,1018,786,1270
-high,county,FL,Florida,orange|FL,12095,"Orange County, FL",school_age,985,760,1228
-high,county,FL,Florida,hillsborough|FL,12057,"Hillsborough County, FL",releases,766,570,978
-high,county,FL,Florida,hillsborough|FL,12057,"Hillsborough County, FL",school_age,741,551,946
-high,county,FL,Florida,collier|FL,12021,"Collier County, FL",releases,395,265,540
-high,county,FL,Florida,collier|FL,12021,"Collier County, FL",school_age,382,256,522
-high,county,FL,Florida,duval|FL,12031,"Duval County, FL",releases,500,349,664
-high,county,FL,Florida,duval|FL,12031,"Duval County, FL",school_age,484,338,642
-high,county,FL,Florida,manatee|FL,12081,"Manatee County, FL",releases,406,273,551
-high,county,FL,Florida,manatee|FL,12081,"Manatee County, FL",school_age,393,264,533
-high,county,FL,Florida,polk|FL,12105,"Polk County, FL",releases,279,173,399
-high,county,FL,Florida,polk|FL,12105,"Polk County, FL",school_age,270,167,386
-high,other_counties,FL,Florida,,,"Other counties, FL",releases,2242,1847,2665
-high,other_counties,FL,Florida,,,"Other counties, FL",school_age,2169,1786,2577
-high,state,GA,Georgia,,,,releases,5099,4111,6098
-high,state,GA,Georgia,,,,school_age,4931,3976,5897
-high,county,GA,Georgia,dekalb|GA,13089,"DeKalb County, GA",releases,889,681,1110
-high,county,GA,Georgia,dekalb|GA,13089,"DeKalb County, GA",school_age,859,659,1073
-high,county,GA,Georgia,gwinnett|GA,13135,"Gwinnett County, GA",releases,1121,870,1382
-high,county,GA,Georgia,gwinnett|GA,13135,"Gwinnett County, GA",school_age,1085,841,1337
-high,county,GA,Georgia,cobb|GA,13067,"Cobb County, GA",releases,488,357,632
-high,county,GA,Georgia,cobb|GA,13067,"Cobb County, GA",school_age,472,345,611
-high,county,GA,Georgia,chatham|GA,13051,"Chatham County, GA",releases,310,214,415
-high,county,GA,Georgia,chatham|GA,13051,"Chatham County, GA",school_age,300,207,401
-high,other_counties,GA,Georgia,,,"Other counties, GA",releases,2291,1823,2779
-high,other_counties,GA,Georgia,,,"Other counties, GA",school_age,2215,1763,2688
-high,state,HI,Hawaii,,,,releases,58,12,119
-high,state,HI,Hawaii,,,,school_age,56,12,115
-high,other_counties,HI,Hawaii,,,"Other counties, HI",releases,58,12,119
-high,other_counties,HI,Hawaii,,,"Other counties, HI",school_age,56,12,115
-high,state,IA,Iowa,,,,releases,893,672,1136
-high,state,IA,Iowa,,,,school_age,863,650,1099
-high,other_counties,IA,Iowa,,,"Other counties, IA",releases,893,672,1136
-high,other_counties,IA,Iowa,,,"Other counties, IA",school_age,863,650,1099
-high,state,ID,Idaho,,,,releases,388,245,545
-high,state,ID,Idaho,,,,school_age,376,237,527
-high,other_counties,ID,Idaho,,,"Other counties, ID",releases,388,245,545
-high,other_counties,ID,Idaho,,,"Other counties, ID",school_age,376,237,527
-high,state,IL,Illinois,,,,releases,3570,3115,4035
-high,state,IL,Illinois,,,,school_age,3453,3013,3902
-high,county,IL,Illinois,cook|IL,17031,"Cook County, IL",releases,2097,1810,2397
-high,county,IL,Illinois,cook|IL,17031,"Cook County, IL",school_age,2028,1750,2318
-high,county,IL,Illinois,dupage|IL,17043,"DuPage County, IL",releases,289,217,366
-high,county,IL,Illinois,dupage|IL,17043,"DuPage County, IL",school_age,279,210,354
-high,other_counties,IL,Illinois,,,"Other counties, IL",releases,1184,1000,1376
-high,other_counties,IL,Illinois,,,"Other counties, IL",school_age,1145,967,1331
-high,state,IN,Indiana,,,,releases,2241,1886,2613
-high,state,IN,Indiana,,,,school_age,2168,1824,2527
-high,county,IN,Indiana,marion|IN,18097,"Marion County, IN",releases,1075,888,1272
-high,county,IN,Indiana,marion|IN,18097,"Marion County, IN",school_age,1040,859,1230
-high,other_counties,IN,Indiana,,,"Other counties, IN",releases,1166,965,1374
-high,other_counties,IN,Indiana,,,"Other counties, IN",school_age,1128,933,1329
-high,state,KS,Kansas,,,,releases,1017,781,1266
-high,state,KS,Kansas,,,,school_age,983,755,1224
-high,county,KS,Kansas,wyandotte|KS,20209,"Wyandotte County, KS",releases,320,239,407
-high,county,KS,Kansas,wyandotte|KS,20209,"Wyandotte County, KS",school_age,309,231,394
-high,other_counties,KS,Kansas,,,"Other counties, KS",releases,697,533,871
-high,other_counties,KS,Kansas,,,"Other counties, KS",school_age,674,515,842
-high,state,KY,Kentucky,,,,releases,1404,1126,1703
-high,state,KY,Kentucky,,,,school_age,1358,1089,1647
-high,county,KY,Kentucky,jefferson|KY,21111,"Jefferson County, KY",releases,431,336,534
-high,county,KY,Kentucky,jefferson|KY,21111,"Jefferson County, KY",school_age,417,325,516
-high,other_counties,KY,Kentucky,,,"Other counties, KY",releases,973,777,1184
-high,other_counties,KY,Kentucky,,,"Other counties, KY",school_age,941,751,1145
-high,state,LA,Louisiana,,,,releases,2063,1717,2420
-high,state,LA,Louisiana,,,,school_age,1995,1661,2340
-high,county,LA,Louisiana,jefferson|LA,22051,"Jefferson Parish, LA",releases,574,460,693
-high,county,LA,Louisiana,jefferson|LA,22051,"Jefferson Parish, LA",school_age,555,445,670
-high,county,LA,Louisiana,east baton rouge|LA,22033,"East Baton Rouge Parish, LA",releases,410,324,502
-high,county,LA,Louisiana,east baton rouge|LA,22033,"East Baton Rouge Parish, LA",school_age,396,313,485
-high,other_counties,LA,Louisiana,,,"Other counties, LA",releases,1080,884,1281
-high,other_counties,LA,Louisiana,,,"Other counties, LA",school_age,1044,855,1239
-high,state,MA,Massachusetts,,,,releases,2674,2282,3082
-high,state,MA,Massachusetts,,,,school_age,2586,2207,2981
-high,county,MA,Massachusetts,suffolk|MA,25025,"Suffolk County, MA",releases,569,460,684
-high,county,MA,Massachusetts,suffolk|MA,25025,"Suffolk County, MA",school_age,551,445,661
-high,county,MA,Massachusetts,essex|MA,25009,"Essex County, MA",releases,813,669,964
-high,county,MA,Massachusetts,essex|MA,25009,"Essex County, MA",school_age,786,647,932
-high,county,MA,Massachusetts,middlesex|MA,25017,"Middlesex County, MA",releases,491,392,595
-high,county,MA,Massachusetts,middlesex|MA,25017,"Middlesex County, MA",school_age,475,379,575
-high,county,MA,Massachusetts,bristol|MA,25005,"Bristol County, MA",releases,285,217,356
-high,county,MA,Massachusetts,bristol|MA,25005,"Bristol County, MA",school_age,275,210,344
-high,other_counties,MA,Massachusetts,,,"Other counties, MA",releases,516,414,624
-high,other_counties,MA,Massachusetts,,,"Other counties, MA",school_age,499,400,604
-high,state,MD,Maryland,,,,releases,5036,4043,6064
-high,state,MD,Maryland,,,,school_age,4870,3910,5865
-high,county,MD,Maryland,prince george's|MD,24033,"Prince George's County, MD",releases,1455,1135,1793
-high,county,MD,Maryland,prince george's|MD,24033,"Prince George's County, MD",school_age,1407,1098,1734
-high,county,MD,Maryland,montgomery|MD,24031,"Montgomery County, MD",releases,950,725,1187
-high,county,MD,Maryland,montgomery|MD,24031,"Montgomery County, MD",school_age,919,701,1148
-high,county,MD,Maryland,baltimore city|MD,24510,"Baltimore city, MD",releases,700,527,892
-high,county,MD,Maryland,baltimore city|MD,24510,"Baltimore city, MD",school_age,677,510,863
-high,county,MD,Maryland,baltimore|MD,24005,"Baltimore County, MD",releases,577,426,743
-high,county,MD,Maryland,baltimore|MD,24005,"Baltimore County, MD",school_age,558,412,719
-high,county,MD,Maryland,anne arundel|MD,24003,"Anne Arundel County, MD",releases,427,307,558
-high,county,MD,Maryland,anne arundel|MD,24003,"Anne Arundel County, MD",school_age,413,297,540
-high,other_counties,MD,Maryland,,,"Other counties, MD",releases,926,710,1160
-high,other_counties,MD,Maryland,,,"Other counties, MD",school_age,895,687,1122
-high,state,ME,Maine,,,,releases,183,90,293
-high,state,ME,Maine,,,,school_age,177,87,283
-high,other_counties,ME,Maine,,,"Other counties, ME",releases,183,90,293
-high,other_counties,ME,Maine,,,"Other counties, ME",school_age,177,87,283
-high,state,MI,Michigan,,,,releases,952,726,1194
-high,state,MI,Michigan,,,,school_age,921,702,1155
-high,county,MI,Michigan,wayne|MI,26163,"Wayne County, MI",releases,347,260,445
-high,county,MI,Michigan,wayne|MI,26163,"Wayne County, MI",school_age,336,251,430
-high,other_counties,MI,Michigan,,,"Other counties, MI",releases,604,456,762
-high,other_counties,MI,Michigan,,,"Other counties, MI",school_age,585,441,737
-high,state,MN,Minnesota,,,,releases,1391,1114,1682
-high,state,MN,Minnesota,,,,school_age,1345,1077,1627
-high,county,MN,Minnesota,hennepin|MN,27053,"Hennepin County, MN",releases,404,314,500
-high,county,MN,Minnesota,hennepin|MN,27053,"Hennepin County, MN",school_age,391,304,484
-high,other_counties,MN,Minnesota,,,"Other counties, MN",releases,986,786,1202
-high,other_counties,MN,Minnesota,,,"Other counties, MN",school_age,954,760,1162
-high,state,MO,Missouri,,,,releases,1342,1064,1634
-high,state,MO,Missouri,,,,school_age,1298,1029,1580
-high,county,MO,Missouri,jackson|MO,29095,"Jackson County, MO",releases,363,278,453
-high,county,MO,Missouri,jackson|MO,29095,"Jackson County, MO",school_age,351,269,438
-high,county,MO,Missouri,st. louis|MO,29189,"St. Louis County, MO",releases,316,240,396
-high,county,MO,Missouri,st. louis|MO,29189,"St. Louis County, MO",school_age,305,232,383
-high,other_counties,MO,Missouri,,,"Other counties, MO",releases,663,520,816
-high,other_counties,MO,Missouri,,,"Other counties, MO",school_age,641,503,789
-high,state,MS,Mississippi,,,,releases,717,520,934
-high,state,MS,Mississippi,,,,school_age,693,503,903
-high,other_counties,MS,Mississippi,,,"Other counties, MS",releases,717,520,934
-high,other_counties,MS,Mississippi,,,"Other counties, MS",school_age,693,503,903
-high,state,MT,Montana,,,,releases,79,22,154
-high,state,MT,Montana,,,,school_age,77,21,149
-high,other_counties,MT,Montana,,,"Other counties, MT",releases,79,22,154
-high,other_counties,MT,Montana,,,"Other counties, MT",school_age,77,21,149
-high,state,NC,North Carolina,,,,releases,5212,4208,6245
-high,state,NC,North Carolina,,,,school_age,5040,4070,6040
-high,county,NC,North Carolina,mecklenburg|NC,37119,"Mecklenburg County, NC",releases,1172,911,1450
-high,county,NC,North Carolina,mecklenburg|NC,37119,"Mecklenburg County, NC",school_age,1134,881,1402
-high,county,NC,North Carolina,wake|NC,37183,"Wake County, NC",releases,562,413,720
-high,county,NC,North Carolina,wake|NC,37183,"Wake County, NC",school_age,543,399,696
-high,county,NC,North Carolina,durham|NC,37063,"Durham County, NC",releases,402,286,530
-high,county,NC,North Carolina,durham|NC,37063,"Durham County, NC",school_age,389,277,513
-high,other_counties,NC,North Carolina,,,"Other counties, NC",releases,3075,2462,3713
-high,other_counties,NC,North Carolina,,,"Other counties, NC",school_age,2974,2381,3591
+high,state,DE,Delaware,,,,releases,532,364,718
+high,state,DE,Delaware,,,,school_age,515,352,694
+high,county,DE,Delaware,sussex|DE,10005,"Sussex County, DE",releases,322,217,436
+high,county,DE,Delaware,sussex|DE,10005,"Sussex County, DE",school_age,311,210,422
+high,other_counties,DE,Delaware,,,"Other counties, DE",releases,211,141,287
+high,other_counties,DE,Delaware,,,"Other counties, DE",school_age,204,136,278
+high,state,FL,Florida,,,,releases,10295,9062,11584
+high,state,FL,Florida,,,,school_age,9956,8764,11203
+high,county,FL,Florida,miami-dade|FL,12086,"Miami-Dade County, FL",releases,1618,1326,1933
+high,county,FL,Florida,miami-dade|FL,12086,"Miami-Dade County, FL",school_age,1565,1282,1869
+high,county,FL,Florida,palm beach|FL,12099,"Palm Beach County, FL",releases,1541,1256,1840
+high,county,FL,Florida,palm beach|FL,12099,"Palm Beach County, FL",school_age,1490,1215,1780
+high,county,FL,Florida,lee|FL,12071,"Lee County, FL",releases,751,570,943
+high,county,FL,Florida,lee|FL,12071,"Lee County, FL",school_age,727,551,912
+high,county,FL,Florida,broward|FL,12011,"Broward County, FL",releases,779,598,974
+high,county,FL,Florida,broward|FL,12011,"Broward County, FL",school_age,753,578,942
+high,county,FL,Florida,orange|FL,12095,"Orange County, FL",releases,1013,798,1244
+high,county,FL,Florida,orange|FL,12095,"Orange County, FL",school_age,980,772,1203
+high,county,FL,Florida,hillsborough|FL,12057,"Hillsborough County, FL",releases,770,587,965
+high,county,FL,Florida,hillsborough|FL,12057,"Hillsborough County, FL",school_age,744,568,933
+high,county,FL,Florida,collier|FL,12021,"Collier County, FL",releases,394,272,530
+high,county,FL,Florida,collier|FL,12021,"Collier County, FL",school_age,381,263,513
+high,county,FL,Florida,duval|FL,12031,"Duval County, FL",releases,501,362,655
+high,county,FL,Florida,duval|FL,12031,"Duval County, FL",school_age,484,350,633
+high,county,FL,Florida,manatee|FL,12081,"Manatee County, FL",releases,405,281,542
+high,county,FL,Florida,manatee|FL,12081,"Manatee County, FL",school_age,392,272,524
+high,county,FL,Florida,polk|FL,12105,"Polk County, FL",releases,278,177,389
+high,county,FL,Florida,polk|FL,12105,"Polk County, FL",school_age,269,171,376
+high,other_counties,FL,Florida,,,"Other counties, FL",releases,2246,1879,2634
+high,other_counties,FL,Florida,,,"Other counties, FL",school_age,2172,1817,2547
+high,state,GA,Georgia,,,,releases,5098,4204,6018
+high,state,GA,Georgia,,,,school_age,4930,4066,5820
+high,county,GA,Georgia,dekalb|GA,13089,"DeKalb County, GA",releases,886,695,1092
+high,county,GA,Georgia,dekalb|GA,13089,"DeKalb County, GA",school_age,857,672,1056
+high,county,GA,Georgia,gwinnett|GA,13135,"Gwinnett County, GA",releases,1121,887,1366
+high,county,GA,Georgia,gwinnett|GA,13135,"Gwinnett County, GA",school_age,1084,858,1321
+high,county,GA,Georgia,cobb|GA,13067,"Cobb County, GA",releases,489,369,619
+high,county,GA,Georgia,cobb|GA,13067,"Cobb County, GA",school_age,472,357,599
+high,county,GA,Georgia,chatham|GA,13051,"Chatham County, GA",releases,310,220,406
+high,county,GA,Georgia,chatham|GA,13051,"Chatham County, GA",school_age,299,213,393
+high,other_counties,GA,Georgia,,,"Other counties, GA",releases,2293,1869,2741
+high,other_counties,GA,Georgia,,,"Other counties, GA",school_age,2217,1808,2651
+high,state,HI,Hawaii,,,,releases,58,12,118
+high,state,HI,Hawaii,,,,school_age,56,12,114
+high,other_counties,HI,Hawaii,,,"Other counties, HI",releases,58,12,118
+high,other_counties,HI,Hawaii,,,"Other counties, HI",school_age,56,12,114
+high,state,IA,Iowa,,,,releases,891,669,1129
+high,state,IA,Iowa,,,,school_age,862,647,1092
+high,other_counties,IA,Iowa,,,"Other counties, IA",releases,891,669,1129
+high,other_counties,IA,Iowa,,,"Other counties, IA",school_age,862,647,1092
+high,state,ID,Idaho,,,,releases,386,247,539
+high,state,ID,Idaho,,,,school_age,374,239,521
+high,other_counties,ID,Idaho,,,"Other counties, ID",releases,386,247,539
+high,other_counties,ID,Idaho,,,"Other counties, ID",school_age,374,239,521
+high,state,IL,Illinois,,,,releases,3570,3122,4027
+high,state,IL,Illinois,,,,school_age,3453,3019,3895
+high,county,IL,Illinois,cook|IL,17031,"Cook County, IL",releases,2097,1812,2391
+high,county,IL,Illinois,cook|IL,17031,"Cook County, IL",school_age,2028,1752,2312
+high,county,IL,Illinois,dupage|IL,17043,"DuPage County, IL",releases,289,220,362
+high,county,IL,Illinois,dupage|IL,17043,"DuPage County, IL",school_age,280,213,350
+high,other_counties,IL,Illinois,,,"Other counties, IL",releases,1183,1003,1369
+high,other_counties,IL,Illinois,,,"Other counties, IL",school_age,1145,970,1324
+high,state,IN,Indiana,,,,releases,2245,1893,2614
+high,state,IN,Indiana,,,,school_age,2171,1831,2528
+high,county,IN,Indiana,marion|IN,18097,"Marion County, IN",releases,1079,895,1275
+high,county,IN,Indiana,marion|IN,18097,"Marion County, IN",school_age,1043,866,1233
+high,other_counties,IN,Indiana,,,"Other counties, IN",releases,1166,967,1369
+high,other_counties,IN,Indiana,,,"Other counties, IN",school_age,1128,935,1324
+high,state,KS,Kansas,,,,releases,1018,783,1269
+high,state,KS,Kansas,,,,school_age,985,757,1227
+high,county,KS,Kansas,wyandotte|KS,20209,"Wyandotte County, KS",releases,320,239,408
+high,county,KS,Kansas,wyandotte|KS,20209,"Wyandotte County, KS",school_age,310,231,395
+high,other_counties,KS,Kansas,,,"Other counties, KS",releases,698,532,873
+high,other_counties,KS,Kansas,,,"Other counties, KS",school_age,675,514,844
+high,state,KY,Kentucky,,,,releases,1404,1128,1698
+high,state,KY,Kentucky,,,,school_age,1358,1091,1642
+high,county,KY,Kentucky,jefferson|KY,21111,"Jefferson County, KY",releases,431,338,532
+high,county,KY,Kentucky,jefferson|KY,21111,"Jefferson County, KY",school_age,417,327,514
+high,other_counties,KY,Kentucky,,,"Other counties, KY",releases,973,777,1182
+high,other_counties,KY,Kentucky,,,"Other counties, KY",school_age,941,751,1143
+high,state,LA,Louisiana,,,,releases,2065,1718,2424
+high,state,LA,Louisiana,,,,school_age,1997,1661,2344
+high,county,LA,Louisiana,jefferson|LA,22051,"Jefferson Parish, LA",releases,574,463,691
+high,county,LA,Louisiana,jefferson|LA,22051,"Jefferson Parish, LA",school_age,556,448,668
+high,county,LA,Louisiana,east baton rouge|LA,22033,"East Baton Rouge Parish, LA",releases,411,326,502
+high,county,LA,Louisiana,east baton rouge|LA,22033,"East Baton Rouge Parish, LA",school_age,398,315,485
+high,other_counties,LA,Louisiana,,,"Other counties, LA",releases,1079,888,1280
+high,other_counties,LA,Louisiana,,,"Other counties, LA",school_age,1043,859,1238
+high,state,MA,Massachusetts,,,,releases,2671,2283,3075
+high,state,MA,Massachusetts,,,,school_age,2583,2208,2974
+high,county,MA,Massachusetts,suffolk|MA,25025,"Suffolk County, MA",releases,570,462,686
+high,county,MA,Massachusetts,suffolk|MA,25025,"Suffolk County, MA",school_age,551,447,663
+high,county,MA,Massachusetts,essex|MA,25009,"Essex County, MA",releases,811,670,957
+high,county,MA,Massachusetts,essex|MA,25009,"Essex County, MA",school_age,784,648,926
+high,county,MA,Massachusetts,middlesex|MA,25017,"Middlesex County, MA",releases,490,393,592
+high,county,MA,Massachusetts,middlesex|MA,25017,"Middlesex County, MA",school_age,474,380,573
+high,county,MA,Massachusetts,bristol|MA,25005,"Bristol County, MA",releases,284,221,354
+high,county,MA,Massachusetts,bristol|MA,25005,"Bristol County, MA",school_age,275,214,342
+high,other_counties,MA,Massachusetts,,,"Other counties, MA",releases,517,417,623
+high,other_counties,MA,Massachusetts,,,"Other counties, MA",school_age,500,403,603
+high,state,MD,Maryland,,,,releases,5037,4146,5966
+high,state,MD,Maryland,,,,school_age,4871,4010,5770
+high,county,MD,Maryland,prince george's|MD,24033,"Prince George's County, MD",releases,1456,1165,1764
+high,county,MD,Maryland,prince george's|MD,24033,"Prince George's County, MD",school_age,1409,1127,1706
+high,county,MD,Maryland,montgomery|MD,24031,"Montgomery County, MD",releases,951,747,1165
+high,county,MD,Maryland,montgomery|MD,24031,"Montgomery County, MD",school_age,919,722,1127
+high,county,MD,Maryland,baltimore city|MD,24510,"Baltimore city, MD",releases,699,536,876
+high,county,MD,Maryland,baltimore city|MD,24510,"Baltimore city, MD",school_age,676,518,847
+high,county,MD,Maryland,baltimore|MD,24005,"Baltimore County, MD",releases,578,438,729
+high,county,MD,Maryland,baltimore|MD,24005,"Baltimore County, MD",school_age,559,424,705
+high,county,MD,Maryland,anne arundel|MD,24003,"Anne Arundel County, MD",releases,428,316,547
+high,county,MD,Maryland,anne arundel|MD,24003,"Anne Arundel County, MD",school_age,413,306,529
+high,other_counties,MD,Maryland,,,"Other counties, MD",releases,925,724,1139
+high,other_counties,MD,Maryland,,,"Other counties, MD",school_age,894,700,1102
+high,state,ME,Maine,,,,releases,183,91,290
+high,state,ME,Maine,,,,school_age,177,88,280
+high,other_counties,ME,Maine,,,"Other counties, ME",releases,183,91,290
+high,other_counties,ME,Maine,,,"Other counties, ME",school_age,177,88,280
+high,state,MI,Michigan,,,,releases,951,721,1195
+high,state,MI,Michigan,,,,school_age,920,697,1156
+high,county,MI,Michigan,wayne|MI,26163,"Wayne County, MI",releases,347,258,443
+high,county,MI,Michigan,wayne|MI,26163,"Wayne County, MI",school_age,335,250,428
+high,other_counties,MI,Michigan,,,"Other counties, MI",releases,604,455,764
+high,other_counties,MI,Michigan,,,"Other counties, MI",school_age,584,440,739
+high,state,MN,Minnesota,,,,releases,1395,1123,1684
+high,state,MN,Minnesota,,,,school_age,1349,1086,1629
+high,county,MN,Minnesota,hennepin|MN,27053,"Hennepin County, MN",releases,405,315,500
+high,county,MN,Minnesota,hennepin|MN,27053,"Hennepin County, MN",school_age,392,305,484
+high,other_counties,MN,Minnesota,,,"Other counties, MN",releases,990,792,1199
+high,other_counties,MN,Minnesota,,,"Other counties, MN",school_age,957,766,1160
+high,state,MO,Missouri,,,,releases,1342,1067,1632
+high,state,MO,Missouri,,,,school_age,1298,1032,1578
+high,county,MO,Missouri,jackson|MO,29095,"Jackson County, MO",releases,363,280,452
+high,county,MO,Missouri,jackson|MO,29095,"Jackson County, MO",school_age,351,271,437
+high,county,MO,Missouri,st. louis|MO,29189,"St. Louis County, MO",releases,316,241,396
+high,county,MO,Missouri,st. louis|MO,29189,"St. Louis County, MO",school_age,305,233,383
+high,other_counties,MO,Missouri,,,"Other counties, MO",releases,663,522,814
+high,other_counties,MO,Missouri,,,"Other counties, MO",school_age,641,505,787
+high,state,MS,Mississippi,,,,releases,716,517,927
+high,state,MS,Mississippi,,,,school_age,692,500,897
+high,other_counties,MS,Mississippi,,,"Other counties, MS",releases,716,517,927
+high,other_counties,MS,Mississippi,,,"Other counties, MS",school_age,692,500,897
+high,state,MT,Montana,,,,releases,80,23,153
+high,state,MT,Montana,,,,school_age,77,22,148
+high,other_counties,MT,Montana,,,"Other counties, MT",releases,80,23,153
+high,other_counties,MT,Montana,,,"Other counties, MT",school_age,77,22,148
+high,state,NC,North Carolina,,,,releases,5213,4312,6142
+high,state,NC,North Carolina,,,,school_age,5041,4170,5940
+high,county,NC,North Carolina,mecklenburg|NC,37119,"Mecklenburg County, NC",releases,1172,934,1420
+high,county,NC,North Carolina,mecklenburg|NC,37119,"Mecklenburg County, NC",school_age,1133,903,1373
+high,county,NC,North Carolina,wake|NC,37183,"Wake County, NC",releases,561,424,706
+high,county,NC,North Carolina,wake|NC,37183,"Wake County, NC",school_age,542,410,683
+high,county,NC,North Carolina,durham|NC,37063,"Durham County, NC",releases,405,297,520
+high,county,NC,North Carolina,durham|NC,37063,"Durham County, NC",school_age,391,287,503
+high,other_counties,NC,North Carolina,,,"Other counties, NC",releases,3076,2525,3650
+high,other_counties,NC,North Carolina,,,"Other counties, NC",school_age,2974,2442,3530
 high,state,ND,North Dakota,,,,releases,47,7,102
-high,state,ND,North Dakota,,,,school_age,45,7,99
+high,state,ND,North Dakota,,,,school_age,46,7,99
 high,other_counties,ND,North Dakota,,,"Other counties, ND",releases,47,7,102
-high,other_counties,ND,North Dakota,,,"Other counties, ND",school_age,45,7,99
-high,state,NE,Nebraska,,,,releases,1013,778,1261
-high,state,NE,Nebraska,,,,school_age,979,752,1220
-high,county,NE,Nebraska,douglas|NE,31055,"Douglas County, NE",releases,480,364,601
-high,county,NE,Nebraska,douglas|NE,31055,"Douglas County, NE",school_age,464,352,581
-high,other_counties,NE,Nebraska,,,"Other counties, NE",releases,533,404,670
-high,other_counties,NE,Nebraska,,,"Other counties, NE",school_age,515,391,648
-high,state,NH,New Hampshire,,,,releases,57,12,118
-high,state,NH,New Hampshire,,,,school_age,55,12,114
-high,other_counties,NH,New Hampshire,,,"Other counties, NH",releases,57,12,118
-high,other_counties,NH,New Hampshire,,,"Other counties, NH",school_age,55,12,114
-high,state,NJ,New Jersey,,,,releases,5432,4397,6526
-high,state,NJ,New Jersey,,,,school_age,5254,4252,6311
-high,county,NJ,New Jersey,union|NJ,34039,"Union County, NJ",releases,583,433,747
-high,county,NJ,New Jersey,union|NJ,34039,"Union County, NJ",school_age,564,419,722
-high,county,NJ,New Jersey,essex|NJ,34013,"Essex County, NJ",releases,741,560,934
-high,county,NJ,New Jersey,essex|NJ,34013,"Essex County, NJ",school_age,716,542,903
-high,county,NJ,New Jersey,mercer|NJ,34021,"Mercer County, NJ",releases,618,462,790
-high,county,NJ,New Jersey,mercer|NJ,34021,"Mercer County, NJ",school_age,598,447,764
-high,county,NJ,New Jersey,hudson|NJ,34017,"Hudson County, NJ",releases,494,359,642
-high,county,NJ,New Jersey,hudson|NJ,34017,"Hudson County, NJ",school_age,478,347,621
-high,county,NJ,New Jersey,bergen|NJ,34003,"Bergen County, NJ",releases,419,300,549
-high,county,NJ,New Jersey,bergen|NJ,34003,"Bergen County, NJ",school_age,406,290,531
-high,county,NJ,New Jersey,morris|NJ,34027,"Morris County, NJ",releases,368,258,487
-high,county,NJ,New Jersey,morris|NJ,34027,"Morris County, NJ",school_age,356,250,471
-high,county,NJ,New Jersey,middlesex|NJ,34023,"Middlesex County, NJ",releases,305,209,411
-high,county,NJ,New Jersey,middlesex|NJ,34023,"Middlesex County, NJ",school_age,295,202,397
-high,county,NJ,New Jersey,passaic|NJ,34031,"Passaic County, NJ",releases,361,254,479
-high,county,NJ,New Jersey,passaic|NJ,34031,"Passaic County, NJ",school_age,350,246,463
-high,county,NJ,New Jersey,monmouth|NJ,34025,"Monmouth County, NJ",releases,388,275,514
-high,county,NJ,New Jersey,monmouth|NJ,34025,"Monmouth County, NJ",school_age,375,266,497
-high,other_counties,NJ,New Jersey,,,"Other counties, NJ",releases,1155,895,1434
-high,other_counties,NJ,New Jersey,,,"Other counties, NJ",school_age,1117,866,1387
-high,state,NM,New Mexico,,,,releases,409,265,571
-high,state,NM,New Mexico,,,,school_age,395,256,552
-high,other_counties,NM,New Mexico,,,"Other counties, NM",releases,409,265,571
-high,other_counties,NM,New Mexico,,,"Other counties, NM",school_age,395,256,552
+high,other_counties,ND,North Dakota,,,"Other counties, ND",school_age,46,7,99
+high,state,NE,Nebraska,,,,releases,1011,776,1256
+high,state,NE,Nebraska,,,,school_age,978,750,1215
+high,county,NE,Nebraska,douglas|NE,31055,"Douglas County, NE",releases,479,362,602
+high,county,NE,Nebraska,douglas|NE,31055,"Douglas County, NE",school_age,463,350,582
+high,other_counties,NE,Nebraska,,,"Other counties, NE",releases,532,403,667
+high,other_counties,NE,Nebraska,,,"Other counties, NE",school_age,514,390,645
+high,state,NH,New Hampshire,,,,releases,58,12,119
+high,state,NH,New Hampshire,,,,school_age,56,12,115
+high,other_counties,NH,New Hampshire,,,"Other counties, NH",releases,58,12,119
+high,other_counties,NH,New Hampshire,,,"Other counties, NH",school_age,56,12,115
+high,state,NJ,New Jersey,,,,releases,5428,4495,6407
+high,state,NJ,New Jersey,,,,school_age,5249,4347,6196
+high,county,NJ,New Jersey,union|NJ,34039,"Union County, NJ",releases,582,442,733
+high,county,NJ,New Jersey,union|NJ,34039,"Union County, NJ",school_age,563,427,709
+high,county,NJ,New Jersey,essex|NJ,34013,"Essex County, NJ",releases,739,571,920
+high,county,NJ,New Jersey,essex|NJ,34013,"Essex County, NJ",school_age,715,552,890
+high,county,NJ,New Jersey,mercer|NJ,34021,"Mercer County, NJ",releases,619,472,777
+high,county,NJ,New Jersey,mercer|NJ,34021,"Mercer County, NJ",school_age,599,456,751
+high,county,NJ,New Jersey,hudson|NJ,34017,"Hudson County, NJ",releases,494,370,626
+high,county,NJ,New Jersey,hudson|NJ,34017,"Hudson County, NJ",school_age,477,358,605
+high,county,NJ,New Jersey,bergen|NJ,34003,"Bergen County, NJ",releases,419,308,542
+high,county,NJ,New Jersey,bergen|NJ,34003,"Bergen County, NJ",school_age,406,298,524
+high,county,NJ,New Jersey,morris|NJ,34027,"Morris County, NJ",releases,367,266,475
+high,county,NJ,New Jersey,morris|NJ,34027,"Morris County, NJ",school_age,355,257,459
+high,county,NJ,New Jersey,middlesex|NJ,34023,"Middlesex County, NJ",releases,303,214,399
+high,county,NJ,New Jersey,middlesex|NJ,34023,"Middlesex County, NJ",school_age,293,207,386
+high,county,NJ,New Jersey,passaic|NJ,34031,"Passaic County, NJ",releases,362,260,472
+high,county,NJ,New Jersey,passaic|NJ,34031,"Passaic County, NJ",school_age,350,251,456
+high,county,NJ,New Jersey,monmouth|NJ,34025,"Monmouth County, NJ",releases,388,283,504
+high,county,NJ,New Jersey,monmouth|NJ,34025,"Monmouth County, NJ",school_age,375,274,487
+high,other_counties,NJ,New Jersey,,,"Other counties, NJ",releases,1154,916,1408
+high,other_counties,NJ,New Jersey,,,"Other counties, NJ",school_age,1116,886,1362
+high,state,NM,New Mexico,,,,releases,410,268,570
+high,state,NM,New Mexico,,,,school_age,397,259,551
+high,other_counties,NM,New Mexico,,,"Other counties, NM",releases,410,268,570
+high,other_counties,NM,New Mexico,,,"Other counties, NM",school_age,397,259,551
 high,state,NV,Nevada,,,,releases,781,575,1006
 high,state,NV,Nevada,,,,school_age,755,556,973
-high,county,NV,Nevada,clark|NV,32003,"Clark County, NV",releases,602,441,776
-high,county,NV,Nevada,clark|NV,32003,"Clark County, NV",school_age,582,426,750
-high,other_counties,NV,Nevada,,,"Other counties, NV",releases,179,126,238
-high,other_counties,NV,Nevada,,,"Other counties, NV",school_age,173,122,230
-high,state,NY,New York,,,,releases,8582,7317,9886
-high,state,NY,New York,,,,school_age,8299,7076,9561
-high,county,NY,New York,suffolk|NY,36103,"Suffolk County, NY",releases,1424,1136,1735
-high,county,NY,New York,suffolk|NY,36103,"Suffolk County, NY",school_age,1377,1099,1678
-high,county,NY,New York,queens|NY,36081,"Queens County, NY",releases,1961,1594,2347
-high,county,NY,New York,queens|NY,36081,"Queens County, NY",school_age,1896,1542,2270
-high,county,NY,New York,nassau|NY,36059,"Nassau County, NY",releases,839,637,1054
-high,county,NY,New York,nassau|NY,36059,"Nassau County, NY",school_age,811,616,1019
-high,county,NY,New York,kings|NY,36047,"Kings County, NY",releases,1419,1135,1726
-high,county,NY,New York,kings|NY,36047,"Kings County, NY",school_age,1372,1098,1669
-high,county,NY,New York,bronx|NY,36005,"Bronx County, NY",releases,677,502,865
-high,county,NY,New York,bronx|NY,36005,"Bronx County, NY",school_age,655,485,837
-high,county,NY,New York,westchester|NY,36119,"Westchester County, NY",releases,515,370,674
-high,county,NY,New York,westchester|NY,36119,"Westchester County, NY",school_age,498,358,652
-high,county,NY,New York,rockland|NY,36087,"Rockland County, NY",releases,274,175,384
-high,county,NY,New York,rockland|NY,36087,"Rockland County, NY",school_age,265,169,371
-high,county,NY,New York,orange|NY,36071,"Orange County, NY",releases,342,227,468
-high,county,NY,New York,orange|NY,36071,"Orange County, NY",school_age,331,220,453
-high,other_counties,NY,New York,,,"Other counties, NY",releases,1132,891,1393
-high,other_counties,NY,New York,,,"Other counties, NY",school_age,1095,862,1347
-high,state,OH,Ohio,,,,releases,2496,2123,2889
-high,state,OH,Ohio,,,,school_age,2413,2053,2794
-high,county,OH,Ohio,hamilton|OH,39061,"Hamilton County, OH",releases,520,418,628
-high,county,OH,Ohio,hamilton|OH,39061,"Hamilton County, OH",school_age,503,404,607
-high,county,OH,Ohio,franklin|OH,39049,"Franklin County, OH",releases,883,727,1048
-high,county,OH,Ohio,franklin|OH,39049,"Franklin County, OH",school_age,854,703,1014
-high,other_counties,OH,Ohio,,,"Other counties, OH",releases,1093,912,1286
-high,other_counties,OH,Ohio,,,"Other counties, OH",school_age,1057,882,1244
-high,state,OK,Oklahoma,,,,releases,1150,904,1411
-high,state,OK,Oklahoma,,,,school_age,1112,874,1365
-high,county,OK,Oklahoma,oklahoma|OK,40109,"Oklahoma County, OK",releases,525,405,654
-high,county,OK,Oklahoma,oklahoma|OK,40109,"Oklahoma County, OK",school_age,508,392,632
-high,county,OK,Oklahoma,tulsa|OK,40143,"Tulsa County, OK",releases,347,265,435
-high,county,OK,Oklahoma,tulsa|OK,40143,"Tulsa County, OK",school_age,335,256,421
-high,other_counties,OK,Oklahoma,,,"Other counties, OK",releases,278,209,353
-high,other_counties,OK,Oklahoma,,,"Other counties, OK",school_age,269,202,341
-high,state,OR,Oregon,,,,releases,937,712,1178
-high,state,OR,Oregon,,,,school_age,906,689,1139
-high,other_counties,OR,Oregon,,,"Other counties, OR",releases,937,712,1178
-high,other_counties,OR,Oregon,,,"Other counties, OR",school_age,906,689,1139
-high,state,PA,Pennsylvania,,,,releases,2286,1921,2659
-high,state,PA,Pennsylvania,,,,school_age,2211,1858,2572
-high,county,PA,Pennsylvania,philadelphia|PA,42101,"Philadelphia County, PA",releases,619,500,743
-high,county,PA,Pennsylvania,philadelphia|PA,42101,"Philadelphia County, PA",school_age,599,484,719
-high,county,PA,Pennsylvania,montgomery|PA,42091,"Montgomery County, PA",releases,264,200,332
-high,county,PA,Pennsylvania,montgomery|PA,42091,"Montgomery County, PA",school_age,255,193,321
-high,other_counties,PA,Pennsylvania,,,"Other counties, PA",releases,1403,1171,1648
-high,other_counties,PA,Pennsylvania,,,"Other counties, PA",school_age,1357,1132,1594
-high,state,RI,Rhode Island,,,,releases,527,358,713
-high,state,RI,Rhode Island,,,,school_age,510,346,690
-high,county,RI,Rhode Island,providence|RI,44007,"Providence County, RI",releases,448,303,605
-high,county,RI,Rhode Island,providence|RI,44007,"Providence County, RI",school_age,433,293,585
-high,other_counties,RI,Rhode Island,,,"Other counties, RI",releases,79,50,111
-high,other_counties,RI,Rhode Island,,,"Other counties, RI",school_age,77,48,107
-high,state,SC,South Carolina,,,,releases,2328,1967,2710
-high,state,SC,South Carolina,,,,school_age,2251,1902,2621
-high,county,SC,South Carolina,greenville|SC,45045,"Greenville County, SC",releases,463,369,563
-high,county,SC,South Carolina,greenville|SC,45045,"Greenville County, SC",school_age,448,357,544
-high,other_counties,SC,South Carolina,,,"Other counties, SC",releases,1865,1569,2176
-high,other_counties,SC,South Carolina,,,"Other counties, SC",school_age,1804,1517,2104
-high,state,SD,South Dakota,,,,releases,179,87,289
-high,state,SD,South Dakota,,,,school_age,173,84,279
-high,other_counties,SD,South Dakota,,,"Other counties, SD",releases,179,87,289
-high,other_counties,SD,South Dakota,,,"Other counties, SD",school_age,173,84,279
-high,state,TN,Tennessee,,,,releases,4416,3509,5384
-high,state,TN,Tennessee,,,,school_age,4271,3394,5207
-high,county,TN,Tennessee,davidson|TN,47037,"Davidson County, TN",releases,1354,1044,1682
-high,county,TN,Tennessee,davidson|TN,47037,"Davidson County, TN",school_age,1309,1010,1627
-high,county,TN,Tennessee,shelby|TN,47157,"Shelby County, TN",releases,710,531,904
-high,county,TN,Tennessee,shelby|TN,47157,"Shelby County, TN",school_age,687,513,874
-high,county,TN,Tennessee,knox|TN,47093,"Knox County, TN",releases,373,266,491
-high,county,TN,Tennessee,knox|TN,47093,"Knox County, TN",school_age,361,257,475
-high,county,TN,Tennessee,rutherford|TN,47149,"Rutherford County, TN",releases,431,311,565
-high,county,TN,Tennessee,rutherford|TN,47149,"Rutherford County, TN",school_age,417,301,546
-high,other_counties,TN,Tennessee,,,"Other counties, TN",releases,1549,1204,1920
-high,other_counties,TN,Tennessee,,,"Other counties, TN",school_age,1498,1164,1857
-high,state,TX,Texas,,,,releases,18006,16239,19835
-high,state,TX,Texas,,,,school_age,17414,15705,19183
-high,county,TX,Texas,harris|TX,48201,"Harris County, TX",releases,5903,5125,6725
-high,county,TX,Texas,harris|TX,48201,"Harris County, TX",school_age,5709,4956,6504
-high,county,TX,Texas,dallas|TX,48113,"Dallas County, TX",releases,3381,2832,3959
-high,county,TX,Texas,dallas|TX,48113,"Dallas County, TX",school_age,3270,2739,3829
-high,county,TX,Texas,travis|TX,48453,"Travis County, TX",releases,1673,1304,2064
-high,county,TX,Texas,travis|TX,48453,"Travis County, TX",school_age,1618,1261,1996
-high,county,TX,Texas,tarrant|TX,48439,"Tarrant County, TX",releases,1021,748,1311
-high,county,TX,Texas,tarrant|TX,48439,"Tarrant County, TX",school_age,987,723,1268
-high,county,TX,Texas,bexar|TX,48029,"Bexar County, TX",releases,893,639,1172
-high,county,TX,Texas,bexar|TX,48029,"Bexar County, TX",school_age,863,618,1133
-high,county,TX,Texas,montgomery|TX,48339,"Montgomery County, TX",releases,331,187,496
-high,county,TX,Texas,montgomery|TX,48339,"Montgomery County, TX",school_age,320,181,480
-high,county,TX,Texas,collin|TX,48085,"Collin County, TX",releases,357,205,525
-high,county,TX,Texas,collin|TX,48085,"Collin County, TX",school_age,345,198,508
-high,county,TX,Texas,denton|TX,48121,"Denton County, TX",releases,618,409,845
-high,county,TX,Texas,denton|TX,48121,"Denton County, TX",school_age,597,396,817
-high,other_counties,TX,Texas,,,"Other counties, TX",releases,3831,3243,4449
-high,other_counties,TX,Texas,,,"Other counties, TX",school_age,3704,3136,4303
-high,state,UT,Utah,,,,releases,1047,808,1300
-high,state,UT,Utah,,,,school_age,1013,781,1257
-high,county,UT,Utah,salt lake|UT,49035,"Salt Lake County, UT",releases,532,405,667
-high,county,UT,Utah,salt lake|UT,49035,"Salt Lake County, UT",school_age,515,392,645
-high,other_counties,UT,Utah,,,"Other counties, UT",releases,515,393,646
-high,other_counties,UT,Utah,,,"Other counties, UT",school_age,498,380,625
-high,state,VA,Virginia,,,,releases,4977,3994,6008
-high,state,VA,Virginia,,,,school_age,4814,3863,5810
-high,county,VA,Virginia,fairfax|VA,51059,"Fairfax County, VA",releases,997,762,1245
-high,county,VA,Virginia,fairfax|VA,51059,"Fairfax County, VA",school_age,964,737,1204
-high,county,VA,Virginia,prince william|VA,51153,"Prince William County, VA",releases,615,457,792
-high,county,VA,Virginia,prince william|VA,51153,"Prince William County, VA",school_age,595,442,766
-high,county,VA,Virginia,chesterfield|VA,51041,"Chesterfield County, VA",releases,411,294,540
-high,county,VA,Virginia,chesterfield|VA,51041,"Chesterfield County, VA",school_age,397,284,522
-high,county,VA,Virginia,richmond city|VA,51760,"Richmond city, VA",releases,336,236,447
-high,county,VA,Virginia,richmond city|VA,51760,"Richmond city, VA",school_age,325,228,432
-high,other_counties,VA,Virginia,,,"Other counties, VA",releases,2619,2081,3187
-high,other_counties,VA,Virginia,,,"Other counties, VA",school_age,2533,2013,3082
+high,county,NV,Nevada,clark|NV,32003,"Clark County, NV",releases,601,442,778
+high,county,NV,Nevada,clark|NV,32003,"Clark County, NV",school_age,582,427,752
+high,other_counties,NV,Nevada,,,"Other counties, NV",releases,179,126,236
+high,other_counties,NV,Nevada,,,"Other counties, NV",school_age,173,122,228
+high,state,NY,New York,,,,releases,8596,7447,9784
+high,state,NY,New York,,,,school_age,8313,7202,9462
+high,county,NY,New York,suffolk|NY,36103,"Suffolk County, NY",releases,1424,1159,1707
+high,county,NY,New York,suffolk|NY,36103,"Suffolk County, NY",school_age,1377,1121,1651
+high,county,NY,New York,queens|NY,36081,"Queens County, NY",releases,1960,1629,2313
+high,county,NY,New York,queens|NY,36081,"Queens County, NY",school_age,1896,1575,2237
+high,county,NY,New York,nassau|NY,36059,"Nassau County, NY",releases,843,657,1042
+high,county,NY,New York,nassau|NY,36059,"Nassau County, NY",school_age,815,635,1008
+high,county,NY,New York,kings|NY,36047,"Kings County, NY",releases,1425,1156,1712
+high,county,NY,New York,kings|NY,36047,"Kings County, NY",school_age,1378,1118,1656
+high,county,NY,New York,bronx|NY,36005,"Bronx County, NY",releases,679,516,854
+high,county,NY,New York,bronx|NY,36005,"Bronx County, NY",school_age,657,499,826
+high,county,NY,New York,westchester|NY,36119,"Westchester County, NY",releases,515,379,663
+high,county,NY,New York,westchester|NY,36119,"Westchester County, NY",school_age,498,367,641
+high,county,NY,New York,rockland|NY,36087,"Rockland County, NY",releases,274,181,376
+high,county,NY,New York,rockland|NY,36087,"Rockland County, NY",school_age,265,175,364
+high,county,NY,New York,orange|NY,36071,"Orange County, NY",releases,343,237,459
+high,county,NY,New York,orange|NY,36071,"Orange County, NY",school_age,332,229,444
+high,other_counties,NY,New York,,,"Other counties, NY",releases,1134,904,1382
+high,other_counties,NY,New York,,,"Other counties, NY",school_age,1097,874,1337
+high,state,OH,Ohio,,,,releases,2496,2126,2880
+high,state,OH,Ohio,,,,school_age,2414,2056,2785
+high,county,OH,Ohio,hamilton|OH,39061,"Hamilton County, OH",releases,521,422,626
+high,county,OH,Ohio,hamilton|OH,39061,"Hamilton County, OH",school_age,504,408,605
+high,county,OH,Ohio,franklin|OH,39049,"Franklin County, OH",releases,883,731,1041
+high,county,OH,Ohio,franklin|OH,39049,"Franklin County, OH",school_age,854,707,1007
+high,other_counties,OH,Ohio,,,"Other counties, OH",releases,1093,912,1284
+high,other_counties,OH,Ohio,,,"Other counties, OH",school_age,1057,882,1242
+high,state,OK,Oklahoma,,,,releases,1150,903,1411
+high,state,OK,Oklahoma,,,,school_age,1112,873,1365
+high,county,OK,Oklahoma,oklahoma|OK,40109,"Oklahoma County, OK",releases,525,406,652
+high,county,OK,Oklahoma,oklahoma|OK,40109,"Oklahoma County, OK",school_age,508,393,631
+high,county,OK,Oklahoma,tulsa|OK,40143,"Tulsa County, OK",releases,346,264,434
+high,county,OK,Oklahoma,tulsa|OK,40143,"Tulsa County, OK",school_age,335,255,420
+high,other_counties,OK,Oklahoma,,,"Other counties, OK",releases,278,211,351
+high,other_counties,OK,Oklahoma,,,"Other counties, OK",school_age,269,204,340
+high,state,OR,Oregon,,,,releases,938,713,1180
+high,state,OR,Oregon,,,,school_age,907,689,1141
+high,other_counties,OR,Oregon,,,"Other counties, OR",releases,938,713,1180
+high,other_counties,OR,Oregon,,,"Other counties, OR",school_age,907,689,1141
+high,state,PA,Pennsylvania,,,,releases,2290,1930,2661
+high,state,PA,Pennsylvania,,,,school_age,2215,1867,2573
+high,county,PA,Pennsylvania,philadelphia|PA,42101,"Philadelphia County, PA",releases,621,506,745
+high,county,PA,Pennsylvania,philadelphia|PA,42101,"Philadelphia County, PA",school_age,601,489,720
+high,county,PA,Pennsylvania,montgomery|PA,42091,"Montgomery County, PA",releases,263,202,328
+high,county,PA,Pennsylvania,montgomery|PA,42091,"Montgomery County, PA",school_age,254,195,317
+high,other_counties,PA,Pennsylvania,,,"Other counties, PA",releases,1406,1176,1646
+high,other_counties,PA,Pennsylvania,,,"Other counties, PA",school_age,1359,1137,1592
+high,state,RI,Rhode Island,,,,releases,525,359,703
+high,state,RI,Rhode Island,,,,school_age,508,347,680
+high,county,RI,Rhode Island,providence|RI,44007,"Providence County, RI",releases,446,304,598
+high,county,RI,Rhode Island,providence|RI,44007,"Providence County, RI",school_age,432,294,578
+high,other_counties,RI,Rhode Island,,,"Other counties, RI",releases,79,50,110
+high,other_counties,RI,Rhode Island,,,"Other counties, RI",school_age,76,48,106
+high,state,SC,South Carolina,,,,releases,2323,1964,2697
+high,state,SC,South Carolina,,,,school_age,2247,1899,2608
+high,county,SC,South Carolina,greenville|SC,45045,"Greenville County, SC",releases,462,371,561
+high,county,SC,South Carolina,greenville|SC,45045,"Greenville County, SC",school_age,447,359,543
+high,other_counties,SC,South Carolina,,,"Other counties, SC",releases,1861,1567,2167
+high,other_counties,SC,South Carolina,,,"Other counties, SC",school_age,1800,1515,2096
+high,state,SD,South Dakota,,,,releases,180,87,287
+high,state,SD,South Dakota,,,,school_age,174,84,278
+high,other_counties,SD,South Dakota,,,"Other counties, SD",releases,180,87,287
+high,other_counties,SD,South Dakota,,,"Other counties, SD",school_age,174,84,278
+high,state,TN,Tennessee,,,,releases,4419,3590,5311
+high,state,TN,Tennessee,,,,school_age,4274,3472,5136
+high,county,TN,Tennessee,davidson|TN,47037,"Davidson County, TN",releases,1355,1074,1653
+high,county,TN,Tennessee,davidson|TN,47037,"Davidson County, TN",school_age,1310,1039,1599
+high,county,TN,Tennessee,shelby|TN,47157,"Shelby County, TN",releases,710,548,887
+high,county,TN,Tennessee,shelby|TN,47157,"Shelby County, TN",school_age,687,530,858
+high,county,TN,Tennessee,knox|TN,47093,"Knox County, TN",releases,373,273,482
+high,county,TN,Tennessee,knox|TN,47093,"Knox County, TN",school_age,361,264,466
+high,county,TN,Tennessee,rutherford|TN,47149,"Rutherford County, TN",releases,432,319,553
+high,county,TN,Tennessee,rutherford|TN,47149,"Rutherford County, TN",school_age,418,309,535
+high,other_counties,TN,Tennessee,,,"Other counties, TN",releases,1549,1232,1888
+high,other_counties,TN,Tennessee,,,"Other counties, TN",school_age,1498,1191,1826
+high,state,TX,Texas,,,,releases,18012,16431,19641
+high,state,TX,Texas,,,,school_age,17420,15890,18995
+high,county,TX,Texas,harris|TX,48201,"Harris County, TX",releases,5908,5187,6654
+high,county,TX,Texas,harris|TX,48201,"Harris County, TX",school_age,5714,5016,6435
+high,county,TX,Texas,dallas|TX,48113,"Dallas County, TX",releases,3382,2878,3919
+high,county,TX,Texas,dallas|TX,48113,"Dallas County, TX",school_age,3271,2783,3790
+high,county,TX,Texas,travis|TX,48453,"Travis County, TX",releases,1676,1336,2040
+high,county,TX,Texas,travis|TX,48453,"Travis County, TX",school_age,1621,1292,1973
+high,county,TX,Texas,tarrant|TX,48439,"Tarrant County, TX",releases,1022,769,1291
+high,county,TX,Texas,tarrant|TX,48439,"Tarrant County, TX",school_age,989,744,1249
+high,county,TX,Texas,bexar|TX,48029,"Bexar County, TX",releases,893,654,1150
+high,county,TX,Texas,bexar|TX,48029,"Bexar County, TX",school_age,864,632,1112
+high,county,TX,Texas,montgomery|TX,48339,"Montgomery County, TX",releases,330,194,484
+high,county,TX,Texas,montgomery|TX,48339,"Montgomery County, TX",school_age,319,188,468
+high,county,TX,Texas,collin|TX,48085,"Collin County, TX",releases,356,213,515
+high,county,TX,Texas,collin|TX,48085,"Collin County, TX",school_age,344,206,498
+high,county,TX,Texas,denton|TX,48121,"Denton County, TX",releases,618,422,830
+high,county,TX,Texas,denton|TX,48121,"Denton County, TX",school_age,598,408,803
+high,other_counties,TX,Texas,,,"Other counties, TX",releases,3827,3278,4396
+high,other_counties,TX,Texas,,,"Other counties, TX",school_age,3701,3170,4251
+high,state,UT,Utah,,,,releases,1044,805,1292
+high,state,UT,Utah,,,,school_age,1010,779,1249
+high,county,UT,Utah,salt lake|UT,49035,"Salt Lake County, UT",releases,529,403,661
+high,county,UT,Utah,salt lake|UT,49035,"Salt Lake County, UT",school_age,512,390,639
+high,other_counties,UT,Utah,,,"Other counties, UT",releases,515,391,644
+high,other_counties,UT,Utah,,,"Other counties, UT",school_age,498,378,623
+high,state,VA,Virginia,,,,releases,4973,4088,5896
+high,state,VA,Virginia,,,,school_age,4810,3954,5702
+high,county,VA,Virginia,fairfax|VA,51059,"Fairfax County, VA",releases,994,785,1218
+high,county,VA,Virginia,fairfax|VA,51059,"Fairfax County, VA",school_age,961,759,1178
+high,county,VA,Virginia,prince william|VA,51153,"Prince William County, VA",releases,615,469,773
+high,county,VA,Virginia,prince william|VA,51153,"Prince William County, VA",school_age,594,454,748
+high,county,VA,Virginia,chesterfield|VA,51041,"Chesterfield County, VA",releases,411,302,528
+high,county,VA,Virginia,chesterfield|VA,51041,"Chesterfield County, VA",school_age,397,292,511
+high,county,VA,Virginia,richmond city|VA,51760,"Richmond city, VA",releases,337,243,441
+high,county,VA,Virginia,richmond city|VA,51760,"Richmond city, VA",school_age,326,235,426
+high,other_counties,VA,Virginia,,,"Other counties, VA",releases,2617,2124,3126
+high,other_counties,VA,Virginia,,,"Other counties, VA",school_age,2531,2054,3023
 high,state,VT,Vermont,,,,releases,42,6,92
-high,state,VT,Vermont,,,,school_age,41,6,89
+high,state,VT,Vermont,,,,school_age,40,6,89
 high,other_counties,VT,Vermont,,,"Other counties, VT",releases,42,6,92
-high,other_counties,VT,Vermont,,,"Other counties, VT",school_age,41,6,89
-high,state,WA,Washington,,,,releases,2239,1880,2604
-high,state,WA,Washington,,,,school_age,2165,1818,2518
-high,county,WA,Washington,king|WA,53033,"King County, WA",releases,977,805,1154
-high,county,WA,Washington,king|WA,53033,"King County, WA",school_age,945,779,1116
-high,county,WA,Washington,snohomish|WA,53061,"Snohomish County, WA",releases,300,232,374
-high,county,WA,Washington,snohomish|WA,53061,"Snohomish County, WA",school_age,290,224,362
-high,other_counties,WA,Washington,,,"Other counties, WA",releases,962,793,1134
-high,other_counties,WA,Washington,,,"Other counties, WA",school_age,930,767,1097
-high,state,WI,Wisconsin,,,,releases,1009,771,1263
-high,state,WI,Wisconsin,,,,school_age,976,746,1221
-high,county,WI,Wisconsin,milwaukee|WI,55079,"Milwaukee County, WI",releases,336,250,429
-high,county,WI,Wisconsin,milwaukee|WI,55079,"Milwaukee County, WI",school_age,325,242,415
-high,other_counties,WI,Wisconsin,,,"Other counties, WI",releases,672,513,844
-high,other_counties,WI,Wisconsin,,,"Other counties, WI",school_age,650,496,816
-high,state,WV,West Virginia,,,,releases,74,20,143
-high,state,WV,West Virginia,,,,school_age,71,19,138
-high,other_counties,WV,West Virginia,,,"Other counties, WV",releases,74,20,143
-high,other_counties,WV,West Virginia,,,"Other counties, WV",school_age,71,19,138
+high,other_counties,VT,Vermont,,,"Other counties, VT",school_age,40,6,89
+high,state,WA,Washington,,,,releases,2240,1885,2600
+high,state,WA,Washington,,,,school_age,2166,1823,2514
+high,county,WA,Washington,king|WA,53033,"King County, WA",releases,978,806,1153
+high,county,WA,Washington,king|WA,53033,"King County, WA",school_age,946,779,1115
+high,county,WA,Washington,snohomish|WA,53061,"Snohomish County, WA",releases,300,233,370
+high,county,WA,Washington,snohomish|WA,53061,"Snohomish County, WA",school_age,290,225,358
+high,other_counties,WA,Washington,,,"Other counties, WA",releases,962,794,1134
+high,other_counties,WA,Washington,,,"Other counties, WA",school_age,931,768,1097
+high,state,WI,Wisconsin,,,,releases,1009,774,1260
+high,state,WI,Wisconsin,,,,school_age,976,749,1219
+high,county,WI,Wisconsin,milwaukee|WI,55079,"Milwaukee County, WI",releases,337,252,428
+high,county,WI,Wisconsin,milwaukee|WI,55079,"Milwaukee County, WI",school_age,326,244,414
+high,other_counties,WI,Wisconsin,,,"Other counties, WI",releases,672,512,844
+high,other_counties,WI,Wisconsin,,,"Other counties, WI",school_age,650,495,816
+high,state,WV,West Virginia,,,,releases,73,20,141
+high,state,WV,West Virginia,,,,school_age,71,19,136
+high,other_counties,WV,West Virginia,,,"Other counties, WV",releases,73,20,141
+high,other_counties,WV,West Virginia,,,"Other counties, WV",school_age,71,19,136
 high,state,WY,Wyoming,,,,releases,52,10,109
 high,state,WY,Wyoming,,,,school_age,50,10,105
 high,other_counties,WY,Wyoming,,,"Other counties, WY",releases,52,10,109

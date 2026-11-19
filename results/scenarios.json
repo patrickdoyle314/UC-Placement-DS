@@ -11,8 +11,8 @@
   {
    "id": "low",
    "label": "Low",
-   "national_releases": 16864,
-   "source_fiscal_year": 2020
+   "national_releases": 24259,
+   "source_fiscal_year": 2025
   },
   {
    "id": "median",
@@ -50,14 +50,14 @@
   "low": 0.9077,
   "high": 1.0
  },
- "fallback_error_model": "Next year's expected shares are FY2025's actual shares. Each simulated year draws the states' shares around them with one kappa for the 10 largest states (988) and one for the other 41 (3,659), then counts the scenario's children out across the states (a multinomial draw). Inside each state the listed counties and other counties are drawn the same way with kappa 404. Kappa is fitted to the year-over-year changes FY2014-FY2025: each place's squared miss under last year's shares is divided by its counting noise, and kappa is the value at which the Dirichlet-multinomial expects the same total, every place weighted equally.",
+ "fallback_error_model": "Next year's expected shares are FY2025's actual shares. Each simulated year draws the states' shares around them with one kappa for the 10 largest states (1,228) and one for the other 41 (3,698), then counts the scenario's children out across the states (a multinomial draw). Inside each state the listed counties and other counties are drawn the same way with kappa 459. Kappa is fitted to the year-over-year changes FY2014-FY2025, leaving out the two that touch FY2020 (set aside as far outside the usual range): each place's squared miss under last year's shares is divided by its counting noise, and kappa is the value at which the Dirichlet-multinomial expects the same total, every place weighted equally.",
  "error_model_version": "b",
- "version_choice": "Version (b) has the lower mean interval score over the 408 held-out state-years (1.04 against 1.13 share points). Its ranges held for 78% of the 10 largest states' years and 85% of the others', against 60% and 89%. The rule is in choose_version in src/scenarios.py. The same replay picks the version, so its coverage is not an independent check.",
+ "version_choice": "Version (b) has the lower mean interval score over the 408 held-out state-years (1.03 against 1.13 share points). Its ranges held for 76% of the 10 largest states' years and 85% of the others', against 59% and 88%. The rule is in choose_version in src/scenarios.py. The same replay picks the version, so its coverage is not an independent check.",
  "kappa": {
-  "state_one_kappa": 2387,
-  "state_large": 988,
-  "state_small": 3659,
-  "county": 404,
+  "state_one_kappa": 2650,
+  "state_large": 1228,
+  "state_small": 3698,
+  "county": 459,
   "large_states": [
    "TX",
    "CA",
@@ -70,6 +70,6 @@
    "NC",
    "TN"
   ],
-  "fitted_on": "FY2014-FY2025"
+  "fitted_on": "FY2014-FY2025, without the changes into and out of FY2020"
  }
 }

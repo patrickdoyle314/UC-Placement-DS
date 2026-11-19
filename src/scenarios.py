@@ -23,9 +23,10 @@ Usage : python src/scenarios.py   (after src/build_dataset.py and src/measure.py
 #
 # The idea in four steps (docs/spec_week5_week6.md; the step numbers match coaching/scenario_engine_steps.md):
 #   1-2  Scenarios and starting shares: three national totals taken from history, and each place's share
-#        of FY2025's releases.
+#        of FY2025's releases. FY2020 is set aside as far outside the usual range (AS-45).
 #   3    The error model: how far did shares really move from one year to the next? One number, kappa,
 #        measures it. A large kappa means shares stay close to last year's; a small one means they wander.
+#        The two changes that touch FY2020 (into it and out of it) are left out of the fit (AS-45).
 #   4-6  Simulation: draw possible shares 10,000 times, count the children out place by place, apply
 #        ORR's 50-release rule to counties, and convert releases to school-age children.
 #   8    Calibration: replay FY2018-FY2025 using only earlier years, and count how often the 80% range
@@ -61,6 +62,8 @@ BASE_YEAR = 2025              # the most recent published year: next year starts
 FIRST_LAG_YEAR = 2014         # FY2014 serves only as "last year" for FY2015 (AS-15)
 ANALYSIS_YEARS = range(2015, 2026)  # the scenarios come from these years' national totals
 HELD_OUT = range(2018, 2026)  # years replayed in the calibration, each from earlier years only (AS-19)
+EXCLUDED_YEARS = (2020,)      # far outside the usual range: not a scenario, and its changes do not set kappa.
+                              # It is still replayed in the calibration, to show how the ranges do in such a year (AS-45)
 TERRITORIES = ["PR", "VI"]    # in the national total, not among the 51 places (AS-07)
 
 DRAWS = 10_000                # simulated next years per scenario (AS-27)
@@ -125,12 +128,14 @@ def category_counts(h: History, state: str, year: int, keys: list) -> np.ndarray
 # --------------------------------------------------------------------------- step 1: the three scenarios
 
 def scenario_volumes(national: pd.Series) -> list[dict]:
-    """Low, median and high: the lowest, middle and highest national totals of the analysis years (FR-13).
+    """Low, median and high: the lowest, middle and highest national totals of the analysis years (FR-13),
+    leaving out EXCLUDED_YEARS (AS-45).
 
-    Eleven years have a real middle year. With an even number of years the median would fall between two
-    years; the lower of the two is used then, so every scenario is a volume that actually happened.
+    With FY2020 set aside, ten years are left, so the median falls between two years; the lower of the two
+    is used, so every scenario is a volume that actually happened.
     """
-    years = national[national.index.isin(ANALYSIS_YEARS)].sort_values(kind="stable")
+    kept = national.index.isin(ANALYSIS_YEARS) & ~national.index.isin(EXCLUDED_YEARS)
+    years = national[kept].sort_values(kind="stable")
     position = {"low": 0, "median": (len(years) - 1) // 2, "high": len(years) - 1}
     return [{"id": sid, "label": sid.capitalize(), "national_releases": int(years.iloc[i]),
              "source_fiscal_year": int(years.index[i])} for sid, i in position.items()]
@@ -156,19 +161,26 @@ def miss_ratios(last: np.ndarray, now: np.ndarray) -> tuple:
     return n, ratio, keep
 
 
+def counted_change(year: int) -> bool:
+    """Whether the change from year - 1 to year may help set kappa: not if either year is set aside (AS-45)."""
+    return year not in EXCLUDED_YEARS and year - 1 not in EXCLUDED_YEARS
+
+
 def state_ratios(h: History) -> pd.DataFrame:
-    """One row per state and year-over-year change (FY2014-15 through FY2024-25)."""
+    """One row per state and year-over-year change (FY2014-15 through FY2024-25), without the changes that
+    touch an excluded year (FY2019-20 and FY2020-21)."""
     rows = []
-    for year in range(FIRST_LAG_YEAR + 1, BASE_YEAR + 1):
+    for year in filter(counted_change, range(FIRST_LAG_YEAR + 1, BASE_YEAR + 1)):
         n, ratio, keep = miss_ratios(h.states.loc[year - 1].to_numpy(), h.states.loc[year].to_numpy())
         rows += [(year, st, n, r) for st, r, k in zip(h.states.columns, ratio, keep) if k]
     return pd.DataFrame(rows, columns=["year", "state", "n", "ratio"])
 
 
 def county_ratios(h: History) -> pd.DataFrame:
-    """The same inside each state: its counties listed in both years, plus "other", pooled over states."""
+    """The same inside each state: its counties listed in both years, plus "other", pooled over states.
+    The changes that touch an excluded year are left out here too."""
     rows = []
-    for year in range(FIRST_LAG_YEAR + 1, BASE_YEAR + 1):
+    for year in filter(counted_change, range(FIRST_LAG_YEAR + 1, BASE_YEAR + 1)):
         for st in h.states.columns:
             keys = [k for k in listed(h, st, year - 1) if k in set(listed(h, st, year))]
             if not keys:
@@ -496,7 +508,8 @@ def manifest(volumes: list, mix: dict, version: str, reason: str, kappa: dict) -
             "Next year's expected shares are FY2025's actual shares. Each simulated year draws the states' shares "
             f"around them with {spread}, then counts the scenario's children out across the states (a multinomial "
             f"draw). Inside each state the listed counties and other counties are drawn the same way with kappa "
-            f"{kappa['county']:,.0f}. Kappa is fitted to the year-over-year changes FY2014-FY2025: each place's "
+            f"{kappa['county']:,.0f}. Kappa is fitted to the year-over-year changes FY2014-FY2025, leaving out the two "
+            f"that touch {', '.join(f'FY{y}' for y in EXCLUDED_YEARS)} (set aside as far outside the usual range): each place's "
             "squared miss under last year's shares is divided by its counting noise, and kappa is the value at which "
             "the Dirichlet-multinomial expects the same total, every place weighted equally."),
         "error_model_version": version,
@@ -516,13 +529,14 @@ def main():
     version, reason = choose_version(comparison)
     calibration, by_size = calibration_tables(*runs[version])
 
-    # Steps 2 to 7: the scenario tables, with kappa fitted on all eleven changes.
+    # Steps 2 to 7: the scenario tables, with kappa fitted on the nine changes that do not touch FY2020.
     large = large_states(h, BASE_YEAR + 1)
     kappas, kappa_county = state_kappas(ratios_s, version, large, h.states.columns), fit_kappa(ratios_c)
     in_large = ratios_s.state.isin(large)
     kappa = {"state_one_kappa": round(fit_kappa(ratios_s)), "state_large": round(fit_kappa(ratios_s[in_large])),
              "state_small": round(fit_kappa(ratios_s[~in_large])), "county": round(kappa_county),
-             "large_states": large, "fitted_on": f"FY{FIRST_LAG_YEAR}-FY{BASE_YEAR}"}
+             "large_states": large, "fitted_on": f"FY{FIRST_LAG_YEAR}-FY{BASE_YEAR}, without the changes into and out of "
+                                                 + ", ".join(f"FY{y}" for y in EXCLUDED_YEARS)}
     mix = age_mix()
     table = scenario_table(h, volumes, kappas, kappa_county, mix["school_age_fraction"])
 

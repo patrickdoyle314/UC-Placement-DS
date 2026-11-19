@@ -6,6 +6,15 @@ dates are when the change was made.
 ## [Unreleased]
 
 ### Changed
+- **FY2020 set aside in the scenario engine** (2026-11-18, in the fork, the owner's decision; AS-45). FY2020
+  (16,864 releases) was far outside the usual range. It is no longer a scenario, and the changes into and out
+  of it no longer help fit κ; it is still replayed in the calibration. Low is now 24,259 (FY2025), so its
+  expected figures are FY2025's actual counts; Median and High are unchanged. κ: 1,228 for the 10 largest
+  states (was 988), 3,698 for the other 41 (was 3,659), 459 for counties (was 404), so the large states'
+  ranges are about 10% narrower. Version (b) is still chosen; pooled coverage is 83.1% for states (was 83.6%)
+  and 85.7% for counties (was 86.3%), and the year-to-year swing is unchanged (AS-44). Updated:
+  `src/scenarios.py`, `tests/test_scenarios.py`, `tests/test_acceptance.py` (FR-13), the app's definition
+  of "Scenario", the results files, the register, the spec, the README and the model card.
 - **The owner's answers on the register** (2026-11-17, in the fork). Confirmed as built: AS-37 (FY2025's age mix),
   AS-40 (version (b)), AS-13 (priors, county scoring) and AS-26 (the 50-release test). AS-43 Decided: last year's
   shares are the method. AS-24 kept Open with measured figures: counting out is worth 0 to 2 points of county
