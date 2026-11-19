@@ -1,0 +1,10 @@
+# What the scenario app needs to run on its own, for hosting (Streamlit Community Cloud reads this file
+# because it sits next to app/streamlit_app.py). The project's full list, for rebuilding the data and
+# running the models, is requirements.txt at the root.
+#
+# The hosted app reads only results/. Without data/ (never committed) its History tab and county map
+# show a note instead; geopandas is needed only for that map, so it is left out here.
+streamlit>=1.40
+plotly>=5.24
+pandas>=2.1
+numpy>=1.26
