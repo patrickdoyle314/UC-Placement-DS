@@ -35,13 +35,6 @@ sign-off was recorded (AS-38). The original's current work is kept in a separate
 [UC-Public](https://github.com/patrickdoyle314/UC-Public), released by the project owner on November 4, 2026.
 The alignment notes with the MP project stay local and unpublished.
 
-## Built alongside another project
-
-This project is being built alongside **[MP](https://github.com/patrickdoyle314/MP)**, a separate
-project on open missing-person cases for children and young adults. The two stay separate: each has
-its own data, code, README and changelog. They communicate only through aggregate tables under the
-shared contract in [`exchange/EXCHANGE.md`](exchange/EXCHANGE.md); no individual records pass between
-them, and MP's adult figures never enter this project's comparisons.
 
 ## Guardrails
 
@@ -444,27 +437,6 @@ Every assumption behind the analysis and the model, with its status and a dated 
 - **Language spoken at home** (ACS) is not yet included.
 - **Source revisions.** MPI and ORR can revise published figures. Each downloaded file is listed above with its
   date.
-
-## How this was built
-
-The project owner set the question, scope, guardrails and tools, and reviewed the results.
-
-**The scenario engine and the share model were built in this fork:** `src/scenarios.py` and
-`tests/test_scenarios.py` on November 14, 2026, and `src/share_model.py` and `tests/test_share_model.py` on
-November 16, following the spec and the acceptance tests. Building them meant making some choices the
-assumptions register leaves to the owner. The owner confirmed four of them on November 17, 2026: the year
-of ORR's age mix behind the point estimate (FY2025, AS-37), version (b) of the error model (AS-40), the share
-model's priors and county scoring (AS-13), and the 50-release test (AS-26).
-Which counties the calibration scores (AS-16) is not yet confirmed.
-
-The written summary is the owner's. In the assumptions register
-([`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md)), the items marked "Decided" are the owner's decisions.
-
-## Exchange with adjacent projects
-
-This project and the MP project (missing children and young adults, `../MP`) are **separate
-projects that share aggregates only**, through the contract in
-[`exchange/EXCHANGE.md`](exchange/EXCHANGE.md) (v1.0). Each writes `exchange/outbox/` and reads the
 other's; no raw records cross. From MP, only **child** measures are used. Adult measures
 (ages 18–25) are kept apart and never enter child comparisons.
 
