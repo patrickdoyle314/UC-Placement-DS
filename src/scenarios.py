@@ -21,7 +21,7 @@ Usage : python src/scenarios.py   (after src/build_dataset.py and src/measure.py
 # how many children would each place expect, and how sure is that?" The answer for each place is an
 # expected number and an 80% range, never a single promise.
 #
-# The idea in four steps (docs/spec_week5_week6.md; the step numbers match coaching/scenario_engine_steps.md):
+# The idea in four steps (docs/spec_share_model_scenarios.md; the step numbers match coaching/scenario_engine_steps.md):
 #   1-2  Scenarios and starting shares: three national totals taken from history, and each place's share
 #        of FY2025's releases. FY2020 is set aside as far outside the usual range (AS-45).
 #   3    The error model: how far did shares really move from one year to the next? One number, kappa,
@@ -94,7 +94,7 @@ class History:
 
 
 def history(df: pd.DataFrame | None = None) -> History:
-    """Read the Week 1 table and lay it out the way the steps below need it."""
+    """Read the release table and lay it out the way the steps below need it."""
     df = pd.read_parquet(DATA) if df is None else df
     df = df[df.fiscal_year.between(FIRST_LAG_YEAR, BASE_YEAR)]
     places = df[(df.geo_level == "state") & ~df.state.isin(TERRITORIES)]

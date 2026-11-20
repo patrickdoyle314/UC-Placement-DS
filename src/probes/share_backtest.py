@@ -1,4 +1,4 @@
-"""Probe: how predictable are next year's release shares? (feasibility check for the Week 5 share model)
+"""Probe: how predictable are next year's release shares? (feasibility check for the share model)
 
 For each held-out fiscal year, predict each state's share of national releases (and each county's
 share within its state, with "other counties" as one category) from earlier years only:

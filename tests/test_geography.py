@@ -1,7 +1,7 @@
-"""Tests for the Week 4 code: county tiers, Moran's I, cluster grouping and the school-age ratio."""
+"""Tests for the geography code: county tiers, Moran's I, cluster grouping and the school-age ratio."""
 # ===================================================================================================
 # HOW TO READ THIS FILE
-# Business purpose: the Week 4 memo rests on a few calculations; these tests check each one on tiny
+# Business purpose: the findings memo rests on a few calculations; these tests check each one on tiny
 # made-up inputs whose answers are known, plus one check on the real data (tier counts must match the
 # published county rows exactly, so no county-year is invented or lost).
 #
@@ -26,7 +26,7 @@ needs_data = pytest.mark.skipif(not (ROOT / "data/processed/releases_by_fy_geo.p
 
 
 def county_rows(values: dict) -> pd.DataFrame:
-    """values: {county_key: {fiscal_year: releases}} -> rows shaped like the Week 1 table."""
+    """values: {county_key: {fiscal_year: releases}} -> rows shaped like the release table."""
     return pd.DataFrame([{"geo_level": "county", "county_key": k, "fiscal_year": fy, "releases": v}
                          for k, years in values.items() for fy, v in years.items()])
 

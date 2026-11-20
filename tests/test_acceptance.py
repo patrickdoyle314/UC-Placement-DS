@@ -1,6 +1,6 @@
-"""Acceptance tests for the owner's Week 5 share model and Week 6 scenario engine.
+"""Acceptance tests for the owner's share model and scenario engine.
 
-Each test is skipped until the output it checks exists (see docs/spec_week5_week6.md). The tests marked
+Each test is skipped until the output it checks exists (see docs/spec_share_model_scenarios.md). The tests marked
 "review" come from the outside review of the math doc (2026-11-05); "decided" marks the model decisions
 the owner confirmed on 2026-11-08, and "decided 2026-11-11" those made after the logic check: the
 pessimistic winner rule and the two versions of the fallback's error model.
@@ -39,17 +39,17 @@ LAMBDA_EVEN = 8 / 13   # (decided) the low end: ages spread evenly within ORR's 
 CHECK_SCORINGS = ("floor_0.5", "zeros_left_out")
 SIZE_GROUPS = {"all": 408, "large": 80, "small": 328}  # state-years pooled over the 8 held-out years
 
-week5 = pytest.mark.skipif(not BACKTEST.exists() or not SUMMARY.exists(),
-                           reason="Week 5 output not built yet (src/share_model.py)")
-week5_record = pytest.mark.skipif(not MODEL_RECORD.exists(),
-                                  reason="Week 5 model record not written yet (results/share_model.json)")
-week6 = pytest.mark.skipif(not sc.available(), reason="Week 6 output not built yet (src/scenarios.py)")
-week6_by_size = pytest.mark.skipif(not BY_SIZE.exists(),
-                                   reason="Week 6 calibration by state size not written yet")
-week5_checks = pytest.mark.skipif(not CHECKS.exists(),
+model_built = pytest.mark.skipif(not BACKTEST.exists() or not SUMMARY.exists(),
+                                 reason="Share model output not built yet (src/share_model.py)")
+model_record = pytest.mark.skipif(not MODEL_RECORD.exists(),
+                                  reason="Share model record not written yet (results/share_model.json)")
+engine_built = pytest.mark.skipif(not sc.available(), reason="Scenario engine output not built yet (src/scenarios.py)")
+engine_by_size = pytest.mark.skipif(not BY_SIZE.exists(),
+                                    reason="Scenario calibration by state size not written yet")
+model_checks = pytest.mark.skipif(not CHECKS.exists(),
                                   reason="pessimistic scorings not written yet (share_model_backtest_checks.csv)")
-week6_versions = pytest.mark.skipif(not VERSIONS.exists(),
-                                    reason="comparison of the two fallback versions not written yet")
+engine_versions = pytest.mark.skipif(not VERSIONS.exists(),
+                                     reason="comparison of the two fallback versions not written yet")
 needs_data = pytest.mark.skipif(not (ROOT / "data/processed/releases_by_fy_geo.parquet").exists(),
                                 reason="run src/build_dataset.py and src/measure.py first")
 
@@ -121,7 +121,7 @@ def school_age_fraction(shares: dict, lam: float) -> float:
     return 1 - (1 - lam) * shares["0-12"]
 
 
-@week5
+@model_built
 def test_backtest_has_every_held_out_year_and_the_baseline():  # FR-12
     bt = pd.read_csv(BACKTEST)
     for level in LEVELS:
@@ -130,14 +130,14 @@ def test_backtest_has_every_held_out_year_and_the_baseline():  # FR-12
             assert "naive" in methods and len(methods) >= 2, (level, fy, methods)
 
 
-@week5
+@model_built
 def test_backtest_scores_are_valid():  # FR-12
     bt = pd.read_csv(BACKTEST)
     assert bt[["mae_share_points", "log_score"]].notna().all().all()
     assert (bt.mae_share_points >= 0).all() and (bt.log_score <= 0).all()
 
 
-@week5
+@model_built
 def test_summary_compares_the_model_with_naive():  # FR-12
     summary = pd.read_csv(SUMMARY)
     for level in LEVELS:
@@ -145,7 +145,7 @@ def test_summary_compares_the_model_with_naive():  # FR-12
         assert "naive" in methods and len(methods) >= 2, (level, methods)
 
 
-@week5
+@model_built
 def test_summary_matches_the_backtest():  # FR-12 (review: both averages, and years won against naive)
     bt, summary = pd.read_csv(BACKTEST), pd.read_csv(SUMMARY)
     assert "releases" in bt.columns and (bt.releases > 0).all()
@@ -168,7 +168,7 @@ def test_summary_matches_the_backtest():  # FR-12 (review: both averages, and ye
                 (level, method, weighting)
 
 
-@week5_record
+@model_record
 def test_model_record_has_the_rule_the_winner_priors_and_sampler():  # FR-12, NFR-07 (review)
     record = json.loads(MODEL_RECORD.read_text(encoding="utf-8"))
     for key in ("winner_rule", "winner", "priors", "sampler", "diagnostics"):
@@ -184,8 +184,8 @@ def test_model_record_has_the_rule_the_winner_priors_and_sampler():  # FR-12, NF
             assert record["winner"][level] in set(summary[summary.level == level].method), level
 
 
-@week5
-@week5_record
+@model_built
+@model_record
 def test_the_winner_is_the_one_the_fixed_rule_picks():  # FR-12 (decided; pessimistic since 2026-11-11)
     assert CHECKS.exists(), "the winner needs the pessimistic scorings: write results/share_model_backtest_checks.csv"
     bt, checks = pd.read_csv(BACKTEST), pd.read_csv(CHECKS)
@@ -199,8 +199,8 @@ def test_the_winner_is_the_one_the_fixed_rule_picks():  # FR-12 (decided; pessim
         assert record["winner"][level] == expected, (level, record["winner"][level], expected)
 
 
-@week5
-@week5_checks
+@model_built
+@model_checks
 def test_pessimistic_scorings_cover_every_year_level_and_method():  # FR-12 (decided 2026-11-11)
     bt, checks = pd.read_csv(BACKTEST), pd.read_csv(CHECKS)
     assert {"fiscal_year", "level", "method", "scoring", "releases", "log_score"} <= set(checks.columns)
@@ -218,7 +218,7 @@ def test_pessimistic_scorings_cover_every_year_level_and_method():  # FR-12 (dec
             assert (both.releases <= both.releases_main).all()
 
 
-@week5_checks
+@model_checks
 @needs_data
 def test_naive_state_scores_under_the_check_scorings_match_the_data():  # FR-12 (decided 2026-11-11)
     checks, wide = pd.read_csv(CHECKS), state_shares()
@@ -231,7 +231,7 @@ def test_naive_state_scores_under_the_check_scorings_match_the_data():  # FR-12 
             assert row.releases == releases, (scoring, fy)
 
 
-@week5_record
+@model_record
 def test_the_floor_matches_naive_and_the_refit_is_recorded():  # FR-11 (decided)
     record = json.loads(MODEL_RECORD.read_text(encoding="utf-8"))
     assert record.get("floor") == pytest.approx(EPS), "use the floor naive uses (EPS in src/share_baseline.py)"
@@ -243,7 +243,7 @@ def test_the_floor_matches_naive_and_the_refit_is_recorded():  # FR-11 (decided)
     assert state["rho_mean"].notna().all()
 
 
-@week5_record
+@model_record
 def test_fy2014_is_the_first_last_year():  # FR-11, FR-12 (decided)
     record = json.loads(MODEL_RECORD.read_text(encoding="utf-8"))
     assert record.get("first_lag_year") == FIRST_LAG_YEAR
@@ -253,7 +253,7 @@ def test_fy2014_is_the_first_last_year():  # FR-11, FR-12 (decided)
     assert wrong.empty, wrong[["level", "trained_through", "transitions"]].to_dict("records")[:3]
 
 
-@week5_record
+@model_record
 def test_every_fit_passes_the_sampler_checks():  # FR-11 (review)
     fits = pd.DataFrame(json.loads(MODEL_RECORD.read_text(encoding="utf-8"))["diagnostics"])
     for level in LEVELS:
@@ -264,7 +264,7 @@ def test_every_fit_passes_the_sampler_checks():  # FR-11 (review)
     assert failed.empty, failed.to_dict("records")[:3]
 
 
-@week6
+@engine_built
 @needs_data
 def test_scenarios_are_the_lowest_median_and_highest_years():  # FR-13, with FY2020 set aside (AS-45)
     df = measure.load()
@@ -279,12 +279,12 @@ def test_scenarios_are_the_lowest_median_and_highest_years():  # FR-13, with FY2
         assert s["source_fiscal_year"] != 2020
 
 
-@week6
+@engine_built
 def test_outputs_pass_the_contract_checks():  # FR-18, FR-19, NFR-03
     assert sc.problems(*sc.load()) == []
 
 
-@week6
+@engine_built
 @needs_data
 def test_only_counties_listed_in_fy2025_appear():  # FR-19, NFR-03 (decided)
     df = measure.load()
@@ -294,7 +294,7 @@ def test_only_counties_listed_in_fy2025_appear():  # FR-19, NFR-03 (decided)
     assert shown <= listed_2025, sorted(shown - listed_2025)[:5]
 
 
-@week6
+@engine_built
 def test_every_place_has_a_school_age_figure():  # FR-15
     _, table, _ = sc.load()
     places = table.assign(county_key=table.county_key.fillna(""))
@@ -302,7 +302,7 @@ def test_every_place_has_a_school_age_figure():  # FR-15
     assert per_place.apply(lambda m: {"releases", "school_age"} <= m).all()
 
 
-@week6
+@engine_built
 def test_80_percent_ranges_cover_about_80_percent():  # FR-14, NFR-10
     _, _, calibration = sc.load()
     assert set(HELD_OUT) <= set(calibration.fiscal_year)
@@ -311,7 +311,7 @@ def test_80_percent_ranges_cover_about_80_percent():  # FR-14, NFR-10
         assert 0.70 <= cover[level] <= 0.90, (level, cover[level])
 
 
-@week6_by_size
+@engine_by_size
 def test_coverage_is_reported_for_large_and_small_states():  # FR-14, NFR-10 (review)
     by_size = pd.read_csv(BY_SIZE)
     assert {"fiscal_year", "size_group", "places", "inside_80", "coverage", "mean_width_share_points"} <= set(
@@ -329,7 +329,7 @@ def test_coverage_is_reported_for_large_and_small_states():  # FR-14, NFR-10 (re
             assert tuple(both.loc[fy]) == (states.places[fy], states.inside_80[fy]), fy
 
 
-@week6
+@engine_built
 def test_school_age_fraction_and_its_range_are_recorded():  # FR-15, A-03 (review)
     manifest, _, _ = sc.load()
     mix = manifest.get("age_mix")
@@ -350,15 +350,15 @@ def test_school_age_fraction_and_its_range_are_recorded():  # FR-15, A-03 (revie
         assert mix["school_age_fraction"] == pytest.approx(point, abs=0.005), (mix["school_age_fraction"], point)
 
 
-@week6
+@engine_built
 def test_a_fallback_says_what_error_model_it_uses():  # R-03 (review)
     manifest, _, _ = sc.load()
     if "dirichlet" not in manifest["share_model"].lower():
         assert str(manifest.get("fallback_error_model", "")).strip(), "describe the fallback's error model"
 
 
-@week6
-@week6_versions
+@engine_built
+@engine_versions
 def test_the_two_fallback_versions_are_compared_head_to_head():  # FR-14, NFR-10 (decided 2026-11-11)
     versions = pd.read_csv(VERSIONS)
     assert {"version", "size_group", "places", "inside_80", "coverage", "mean_width_share_points",

@@ -11,7 +11,7 @@ Usage: python src/share_baseline.py   (after src/build_dataset.py)
 """
 # ===================================================================================================
 # HOW TO READ THIS FILE
-# Business purpose: before building a forecasting model (Week 5), set the bar it must beat. Three
+# Business purpose: before building a forecasting model (the share model), set the bar it must beat. Three
 # simple rules predict next year's state shares; if a model can't beat "same as last year", it is not
 # worth using. The results feed docs/MODEL_CARD_share_model.md.
 #

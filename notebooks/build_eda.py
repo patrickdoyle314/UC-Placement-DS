@@ -1,16 +1,16 @@
-"""Build and run the Week 2 exploratory notebook (notebooks/week2_eda.ipynb).
+"""Build and run the exploratory notebook (notebooks/eda.ipynb).
 
 The notebook is generated here so it stays reproducible: edit the cells below, then run
-    python notebooks/build_week2_eda.py
+    python notebooks/build_eda.py
 It executes every cell and saves the outputs (charts, finding sentences) inside the notebook, and
-writes each chart to results/figures/week2_*.png. Needs nbformat, nbclient, ipykernel.
-It reads only Week 1's tables and the raw map files, so it runs right after src/build_dataset.py.
+writes each chart to results/figures/*.png. Needs nbformat, nbclient, ipykernel.
+It reads only the release table and the raw map files, so it runs right after src/build_dataset.py.
 """
 # ===================================================================================================
 # HOW TO READ THIS FILE
-# Business purpose: the Week 2 deliverable is a notebook of five findings, each backed by a chart
-# (BRD FR-05), with state and county maps for every year (FR-06). It first checks the Week 2 review
-# question on the Week 1 table: do county rows plus "other counties" match each state total?
+# Business purpose: the exploratory deliverable is a notebook of five findings, each backed by a chart
+# (BRD FR-05), with state and county maps for every year (FR-06). It first checks the data review
+# question on the release table: do county rows plus "other counties" match each state total?
 # Instead of editing the notebook by hand, this script writes it: every cell is listed below as
 # md(...) (text) or code(...) (Python). The script then runs the notebook and saves it with its outputs,
 # so the findings are always rebuilt from the data and cannot drift from the numbers.
@@ -24,13 +24,13 @@ import nbformat as nbf
 from nbclient import NotebookClient
 
 HERE = Path(__file__).resolve().parent
-NB = HERE / "week2_eda.ipynb"
+NB = HERE / "eda.ipynb"
 
 md = nbf.v4.new_markdown_cell  # short aliases: md(text) makes a text cell, code(text) a code cell
 code = nbf.v4.new_code_cell
 
 cells = [
-    md("""# Week 2: exploratory analysis
+    md("""# Exploratory analysis
 
 **Where unaccompanied children are released to sponsors, FY2015–FY2025.** Five findings, each backed by a
 chart. Service planning only: counts describe the communities' service needs (schools, legal aid, case
@@ -39,10 +39,10 @@ management), not the communities.
 **Guardrails.** Public, aggregate data only. Counties appear only for years with 50 or more releases (ORR's
 threshold); all other counties in a state are one "other counties" group and are never split or estimated.
 
-**Data.** Migration Policy Institute tabulation of ACF/ORR data (`data/raw/mpi/`), reshaped in Week 1
+**Data.** Migration Policy Institute tabulation of ACF/ORR data (`data/raw/mpi/`), reshaped by the dataset step
 into `data/processed/releases_by_fy_geo.csv`; Census Bureau Vintage 2024 population (ages 5–17 = school-age)
 and 2023 cartographic boundary files (`data/raw/geo/`). Fiscal years run October to September. Nothing here
-comes from a later week, so the notebook runs right after `python src/build_dataset.py`."""),
+comes from a later step, so the notebook runs right after `python src/build_dataset.py`."""),
     code("""from pathlib import Path
 import pandas as pd
 import geopandas as gpd
@@ -59,7 +59,7 @@ BLUE, ORANGE, AQUA, GREY = "#2a78d6", "#eb6834", "#1baf7a", "#b8bcc2"
 plt.rcParams.update({"font.family": "Arial", "font.size": 9, "axes.spines.top": False, "axes.spines.right": False,
                      "axes.edgecolor": "#c9c8c3", "axes.grid": True, "grid.color": "#e6e5e1", "axes.axisbelow": True})
 
-# Week 1's table, read as written. dtype keeps FIPS codes as text so leading zeros survive (01001).
+# The release table, read as written. dtype keeps FIPS codes as text so leading zeros survive (01001).
 df = pd.read_csv(ROOT / "data/processed/releases_by_fy_geo.csv", dtype={"county_fips": "string"})
 df = df[df["fiscal_year"].isin(FY)].copy()
 # Split the table by level once; every finding below reuses these four tables.
@@ -71,12 +71,12 @@ findings = []
 def save(fig, name, tight=True):  # tidy the layout, save a PNG for the report, show the chart here
     if tight:
         fig.tight_layout()
-    fig.savefig(FIG / f"week2_{name}.png", dpi=200, facecolor="white"); plt.show()
+    fig.savefig(FIG / f"{name}.png", dpi=200, facecolor="white"); plt.show()
 print(f"{len(df):,} rows; FY{FY[0]}-FY{FY[-1]}; {counties.county_key.nunique()} counties listed at least once")"""),
 
-    md("""## Before the findings: does the Week 1 table reconcile?
+    md("""## Before the findings: does the release table reconcile?
 
-The Week 2 review question: do county rows plus "other counties" match each state total? It is checked
+The data review question: do county rows plus "other counties" match each state total? It is checked
 again here, on the table this notebook uses, for the 50 states, DC, Puerto Rico and the Virgin Islands in
 every year. The notebook stops if any state-year does not match."""),
     code("""all_states = df[df.geo_level == "state"].set_index(["fiscal_year", "state"])["releases"]
@@ -84,7 +84,7 @@ parts = df[df.geo_level.isin(["county", "other_counties"])].groupby(["fiscal_yea
 gap = all_states.sub(parts, fill_value=0)  # state total minus (listed counties + other counties)
 national_gap = nat - all_states.groupby("fiscal_year").sum()
 assert (gap == 0).all() and (national_gap == 0).all() and (other.releases >= 0).all(), \\
-    "The Week 1 table does not reconcile: rerun python src/build_dataset.py"
+    "The release table does not reconcile: rerun python src/build_dataset.py"
 print(f"{(gap == 0).sum()} of {len(gap)} state-years: listed counties + other counties = the state total. "
       f"States add up to the national total in all {len(national_gap)} years.")"""),
 

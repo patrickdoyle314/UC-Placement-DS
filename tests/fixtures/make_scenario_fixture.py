@@ -1,7 +1,7 @@
 """Write a small, synthetic set of scenario files for the app tests.
 
 The numbers are made up (round national totals, fixed shares) and are not estimates of anything.
-They only follow the file format in docs/spec_week5_week6.md. Run: python tests/fixtures/make_scenario_fixture.py
+They only follow the file format in docs/spec_share_model_scenarios.md. Run: python tests/fixtures/make_scenario_fixture.py
 """
 import json
 from pathlib import Path

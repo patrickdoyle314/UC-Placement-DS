@@ -2,7 +2,7 @@
 --
 -- Uses: two CTEs; window functions SUM() OVER (share of the national total, running share),
 -- RANK() OVER (rank within each year) and LAG() OVER (change from the year before).
--- Source: the Week 1 table as parquet (python src/measure.py writes it). Run: python src/run_sql.py
+-- Source: the release table as parquet (python src/measure.py writes it). Run: python src/run_sql.py
 
 -- HOW TO READ THIS QUERY
 -- Business question: which states receive the most children each year, how does their rank change,

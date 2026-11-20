@@ -1,4 +1,4 @@
-"""Week 3 checks: county concentration bounds on made-up counties, and BRD FR-07 / FR-08 on the results tables."""
+"""Concentration checks: county concentration bounds on made-up counties, and BRD FR-07 / FR-08 on the results tables."""
 from pathlib import Path
 
 import numpy as np
@@ -67,7 +67,7 @@ def test_lorenz_curves_every_year_both_levels():
     ends = points.groupby(["level", "fiscal_year"]).release_share.agg(["first", "last"])
     assert len(ends) == 2 * len(YEARS)
     assert (ends["first"] == 0).all() and np.allclose(ends["last"], 1)
-    assert (RESULTS / "figures" / "week3_lorenz.png").exists()
+    assert (RESULTS / "figures" / "lorenz.png").exists()
 
 
 def test_persistence_and_transitions_every_year_pair():

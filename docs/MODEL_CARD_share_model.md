@@ -7,7 +7,7 @@ year's shares with an error model. Last updated 2026-11-16.*
 ## Purpose
 
 Predict each state's share of next year's releases of unaccompanied children to sponsors, so that a
-national volume scenario can be turned into expected releases, and service needs, by state (Week 6).
+national volume scenario can be turned into expected releases, and service needs, by state (the scenario engine).
 **Service planning only.** The model works on aggregate public counts and never on individual children,
 sponsors or households.
 

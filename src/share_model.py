@@ -3,7 +3,7 @@
 A Dirichlet-multinomial model in PyMC, for state shares and for county shares inside each state. Each
 held-out year FY2018-FY2025 is predicted by a model fitted on earlier years only, and scored against the
 naive baseline (last year's shares) under three scorings. A rule fixed before the backtest picks the winner
-at each level; ties go to naive (docs/spec_week5_week6.md, docs/ASSUMPTIONS.md AS-08 to AS-21).
+at each level; ties go to naive (docs/spec_share_model_scenarios.md, docs/ASSUMPTIONS.md AS-08 to AS-21).
 
 Reads : data/processed/releases_by_fy_geo.parquet
 Writes: results/share_model_backtest.csv, share_model_backtest_checks.csv, share_model_summary.csv,

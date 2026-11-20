@@ -1,4 +1,4 @@
-# Spec: Week 5 share model and Week 6 scenario engine
+# Spec: share model and scenario engine
 
 The project owner writes these two pieces. This spec covers **what** each one must produce, so that the
 app (`app/streamlit_app.py`) and the acceptance tests (`tests/test_acceptance.py`) can use it. **How** to
@@ -31,7 +31,7 @@ python -m pytest tests/test_acceptance.py -v
 
 Each test is skipped until the file it checks exists. Once the file is there, the test must pass.
 
-## Week 5: share model (FR-11, FR-12)
+## Share model (FR-11, FR-12)
 
 **Code:** `src/share_model.py`
 
@@ -122,7 +122,7 @@ Each test is skipped until the file it checks exists. Once the file is there, th
 Then update `docs/MODEL_CARD_share_model.md` with which method won and why. If the baseline wins, say so
 plainly and make naive the shares the scenario engine uses. That is FR-12's acceptance condition.
 
-## Week 6: scenario engine (FR-13, FR-14, FR-15)
+## Scenario engine (FR-13, FR-14, FR-15)
 
 **Code:** `src/scenarios.py`
 
@@ -143,9 +143,9 @@ plainly and make naive the shares the scenario engine uses. That is FR-12's acce
 - **County categories (decided):** the counties listed in FY2025 (110 counties, in 34 states and the
   District of Columbia) plus one "other counties" group per state. A county listed only in earlier years
   has no FY2025 count to start from, so it stays inside "other counties". The District of Columbia is
-  treated as a county (decided 2026-11-11): in the Week 1 table its one category is its county row, and
+  treated as a county (decided 2026-11-11): in the release table its one category is its county row, and
   its "other counties" is zero.
-- **Fallback:** until Week 5 is validated, "last year's shares" with an error model is the BRD's allowed
+- **Fallback:** until the share model is validated, "last year's shares" with an error model is the BRD's allowed
   fallback (risk R-03). Say which one you used in `share_model`. If it is the fallback, describe the error
   model in `fallback_error_model`: how the ranges around last year's shares are made (review).
 - **Two versions of the fallback, compared head to head (decided 2026-11-11).** With one κ for all 51
@@ -220,7 +220,7 @@ plainly and make naive the shares the scenario engine uses. That is FR-12's acce
 ```json
 {
   "base_fiscal_year": 2025,
-  "share_model": "Dirichlet-multinomial (Week 5)",
+  "share_model": "Dirichlet-multinomial (share model)",
   "draws": 10000,
   "seed": 20261101,
   "range": [0.1, 0.9],
@@ -249,7 +249,7 @@ plainly and make naive the shares the scenario engine uses. That is FR-12's acce
 | `scenario` | `low`, `median` or `high` |
 | `geo_level` | `state`, `county` or `other_counties` |
 | `state`, `state_name` | two-letter code and full name |
-| `county_key`, `county_fips`, `county_name` | as in the Week 1 table, on county rows (`county_fips` is blank for the four Connecticut counties). On other-counties rows, `county_key` and `county_fips` are blank and `county_name` is `Other counties, ST`. State rows leave all three blank. |
+| `county_key`, `county_fips`, `county_name` | as in the release table, on county rows (`county_fips` is blank for the four Connecticut counties). On other-counties rows, `county_key` and `county_fips` are blank and `county_name` is `Other counties, ST`. State rows leave all three blank. |
 | `measure` | an `id` from `scenarios.json` |
 | `expected`, `lower_80`, `upper_80` | mean, 10th and 90th percentile of the draws, whole children |
 

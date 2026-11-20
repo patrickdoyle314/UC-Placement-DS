@@ -1,13 +1,13 @@
-"""Build the Week 4 findings memo (docs/week4_findings_memo.md) from the results tables.
+"""Build the findings memo (docs/findings_memo.md) from the results tables.
 
-Every number in the memo is read from results/ (Week 3: src/measure.py, src/share_baseline.py; Week 4:
+Every number in the memo is read from results/ (concentration: src/measure.py, src/share_baseline.py; geography:
 src/geography.py), so rebuilding after new data updates every sentence. Also draws the tier transition chart.
 
-Usage: python src/build_week4_memo.py   (after src/measure.py, src/share_baseline.py and src/geography.py)
+Usage: python src/build_findings_memo.py   (after src/measure.py, src/share_baseline.py and src/geography.py)
 """
 # ===================================================================================================
 # HOW TO READ THIS FILE
-# Business purpose: the plan's Week 4 milestone is a findings memo on concentration, stability and
+# Business purpose: the plan's geography milestone is a findings memo on concentration, stability and
 # geography, answering the check-in question "Is the pattern stable enough that last year predicts next
 # year?". This script writes it as Markdown (readable on GitHub) with the charts linked in.
 #
@@ -28,7 +28,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parent.parent
 RESULTS = ROOT / "results"
 FIG = RESULTS / "figures"
-OUT = ROOT / "docs" / "week4_findings_memo.md"
+OUT = ROOT / "docs" / "findings_memo.md"
 TIERS = ["not listed (<50)", "50-199", "200-999", "1,000+"]  # same order as src/measure.py
 TIER_LABELS = ["not listed\n(<50)", "50-199", "200-999", "1,000+"]  # two-line label so the ticks don't collide
 INK, MUTED = "#0b0b0b", "#52514e"
@@ -65,7 +65,7 @@ def chart_tiers(trans: pd.DataFrame):
     for s in ax.spines.values():
         s.set_visible(False)
     fig.tight_layout()
-    fig.savefig(FIG / "week4_tier_transitions.png", dpi=200, facecolor="white")
+    fig.savefig(FIG / "tier_transitions.png", dpi=200, facecolor="white")
     plt.close(fig)
 
 
@@ -127,10 +127,10 @@ def main():
     base_table.columns = ["Rule", "Mean absolute error (share points)", "Log score per release (higher is better)"]
 
     L = [
-        "# Week 4 findings memo: concentration, stability and geography",
+        "# Findings memo: concentration, stability and geography",
         "",
         f"*Where Unaccompanied Children Are Placed. Unaccompanied children released to sponsors, FY2015–FY2025. "
-        f"Built from the data by `python src/build_week4_memo.py` on {dt.date.today():%B %d, %Y}; every number is read "
+        f"Built from the data by `python src/build_findings_memo.py` on {dt.date.today():%B %d, %Y}; every number is read "
         f"from `results/`. Service planning only.*",
         "",
         "**Check-in question:** is the pattern stable enough that last year predicts next year?",
@@ -166,7 +166,7 @@ def main():
         f"{co.top10_share.min():.0%}–{co.top10_share.max():.0%}. This has eased too: {early_co.min():.0f}–"
         f"{early_co.max():.0f} equal-sized counties in FY2015–FY2019, {late_co.min():.0f}–{late_co.max():.0f} in "
         f"FY2021–FY2025. Counties under 50 releases are not published and never estimated; each had at most 49, so "
-        f"these figures are lower bounds on how spread out releases were (Week 3).",
+        f"these figures are lower bounds on how spread out releases were (see the concentration measures).",
         "",
         "## 2. Stability",
         "",
@@ -185,7 +185,7 @@ def main():
         f"time. These moves follow national volume: {listed[2019]} counties were listed in FY2019, {listed[2020]} in "
         f"FY2020, {listed[2022]} in FY2022 and {listed[2025]} in FY2025.",
         "",
-        "![Tier transitions](../results/figures/week4_tier_transitions.png)",
+        "![Tier transitions](../results/figures/tier_transitions.png)",
         "",
         "## 3. Geography: releases cluster",
         "",
@@ -200,14 +200,14 @@ def main():
         f"{cy.moran_i.max():.2f} for counties." +
         (" Clustering did not weaken in the surge years or the low years." if all_sig else ""),
         "",
-        "![Moran's I by year](../results/figures/week4_moran_by_year.png)",
+        "![Moran's I by year](../results/figures/moran_by_year.png)",
         "",
         f"- **Local clusters, states (LISA).** High-High: {hh_states} (high rates among high-rate neighbors). "
         f"Low-Low: {ll_states}. Low-High: {lh_states}. With only 49 places, no single state cluster passes a "
         f"false-discovery-rate correction, so read the state clusters as suggestive; the overall result above is "
         f"strong.",
         "",
-        "![State clusters](../results/figures/week4_state_clusters.png)",
+        "![State clusters](../results/figures/state_clusters.png)",
         "",
         f"- **Local clusters, counties (LISA).** {sig('county', 'High-High')} counties are High-High "
         f"({sig('county', 'High-High', 'places_fdr05')} pass the false-discovery-rate correction). Grouped by "
@@ -216,7 +216,7 @@ def main():
         "",
         md_table(cluster_table),
         "",
-        "![County clusters](../results/figures/week4_county_clusters.png)",
+        "![County clusters](../results/figures/county_clusters.png)",
         "",
         "## 4. Release shares compared with school-age population",
         "",
@@ -233,13 +233,13 @@ def main():
         "",
         md_table(ratio_table),
         "",
-        "![Release share vs school-age share](../results/figures/week4_release_vs_school_share.png)",
+        "![Release share vs school-age share](../results/figures/release_vs_school_share.png)",
         "",
         "## What this means for the next phases",
         "",
-        f"- **Week 5 (share model).** \"Last year's shares\" is a strong baseline ({naive.mae_share_points:.2f} share "
+        f"- **Share model.** \"Last year's shares\" is a strong baseline ({naive.mae_share_points:.2f} share "
         f"points); the Bayesian model has to beat it on held-out years, or the write-up explains why not.",
-        "- **Week 6 (scenarios).** County counts depend on whether a county clears the 50-release threshold, which "
+        "- **Scenarios.** County counts depend on whether a county clears the 50-release threshold, which "
         "depends on national volume. The scenario tables therefore report each state, the counties listed in the "
         "latest year, and one other-counties figure per state. The school-age ratios show where the same national "
         "volume means the largest relative need "
@@ -274,11 +274,11 @@ def main():
         "## Files",
         "",
         "- Code: `src/geography.py` (Moran's I, LISA, school-age comparison), `src/measure.py` (concentration, "
-        "persistence, tiers), `src/share_baseline.py`, this memo's builder `src/build_week4_memo.py`.",
+        "persistence, tiers), `src/share_baseline.py`, this memo's builder `src/build_findings_memo.py`.",
         "- Tables: `results/moran_global.csv`, `moran_by_year.csv`, `lisa_states.csv`, `lisa_summary.csv`, "
         "`lisa_county_clusters.csv`, `school_age_comparison.csv`, `county_school_age_always_listed.csv`, "
         "`tier_transitions.csv`, `county_tiers_by_year.csv`.",
-        "- Charts: `results/figures/week4_*.png`.",
+        "- Charts: `results/figures/`.",
         "",
     ]
     OUT.write_text("\n".join(L), "utf-8")

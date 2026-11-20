@@ -1,4 +1,4 @@
-"""Week 4: geography. Do releases cluster in space, and how do release shares compare with school-age population?
+"""Geography. Do releases cluster in space, and how do release shares compare with school-age population?
 
 Spatial clustering, on the contiguous 48 states and DC (Alaska, Hawaii and the territories have no land neighbors):
   states    releases FY2015-FY2025 per 1,000 school-age children (ages 5-17, Census July 2024):
@@ -11,12 +11,12 @@ school-age population (their ratio is a location quotient), and the same for all
 
 Inputs : data/processed/releases_by_fy_geo.parquet (python src/measure.py), data/raw/geo/cb_2023_us_*_20m.zip
 Outputs: results/moran_global.csv, moran_by_year.csv, lisa_states.csv, lisa_summary.csv, lisa_county_clusters.csv,
-         school_age_comparison.csv, county_school_age_always_listed.csv, results/figures/week4_*.png
+         school_age_comparison.csv, county_school_age_always_listed.csv, results/figures/
 Usage  : python src/geography.py
 """
 # ===================================================================================================
 # HOW TO READ THIS FILE
-# Business purpose: the plan's Week 4 questions. (1) Are the places that receive many children next to
+# Business purpose: the plan's geography questions. (1) Are the places that receive many children next to
 # each other? If so, services such as legal aid and school support can be organized regionally. Moran's
 # I answers "is there clustering overall?" and LISA (local Moran) shows where the clusters are.
 # (2) How do release shares compare with the local school-age population? A county that receives 2% of
@@ -304,7 +304,7 @@ def chart_states(g):
     axes[1].set_title("Local clusters (LISA, p < 0.05)", fontsize=9, loc="left")
     for ax in axes:
         ax.set_axis_off()
-    fig.savefig(FIG / "week4_state_clusters.png", dpi=200, facecolor="white")
+    fig.savefig(FIG / "state_clusters.png", dpi=200, facecolor="white")
     plt.close(fig)
 
 
@@ -324,7 +324,7 @@ def chart_counties(g, st, clusters):
     fig.text(0.99, 0.02, "Connecticut is not shown: its 2023 Census counties are planning regions that do not match the "
              "listed counties.", ha="right", fontsize=7, color=MUTED)
     fig.tight_layout()
-    fig.savefig(FIG / "week4_county_clusters.png", dpi=200, facecolor="white")
+    fig.savefig(FIG / "county_clusters.png", dpi=200, facecolor="white")
     plt.close(fig)
 
 
@@ -345,7 +345,7 @@ def chart_moran_by_year(st_year, co_year):
     ax.legend(loc="lower left", fontsize=8, frameon=False, title="Filled dot = p < 0.05; hollow = not significant",
               title_fontsize=7, alignment="left")
     fig.tight_layout()
-    fig.savefig(FIG / "week4_moran_by_year.png", dpi=200, facecolor="white")
+    fig.savefig(FIG / "moran_by_year.png", dpi=200, facecolor="white")
     plt.close(fig)
 
 
@@ -367,7 +367,7 @@ def chart_school_age(a):
         ax.annotate(f"{r.county_name} ({r.ratio:.1f}x)", (r.school_age_share, r.release_share), xytext=(5, 2),
                     textcoords="offset points", fontsize=7, color=INK, path_effects=HALO)
     fig.tight_layout()
-    fig.savefig(FIG / "week4_release_vs_school_share.png", dpi=200, facecolor="white")
+    fig.savefig(FIG / "release_vs_school_share.png", dpi=200, facecolor="white")
     plt.close(fig)
 
 

@@ -1,4 +1,4 @@
-"""Week 1: reshape MPI release data to one row per fiscal year x geography, keyed by county FIPS.
+"""Reshape MPI release data to one row per fiscal year x geography, keyed by county FIPS.
 
 Rows:
   national        all releases that fiscal year
@@ -22,7 +22,7 @@ Usage  : python src/build_dataset.py
 """
 # ===================================================================================================
 # HOW TO READ THIS FILE
-# Business purpose: the Week 1 dataset. It turns MPI's spreadsheet of children released to sponsors
+# Business purpose: the release dataset. It turns MPI's spreadsheet of children released to sponsors
 # into one tidy table: one row per fiscal year and place (nation, state, listed county, "other
 # counties"), with the Census population of each place attached. Every later step reads this table.
 #

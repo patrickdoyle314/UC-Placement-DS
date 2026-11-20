@@ -76,7 +76,7 @@ dates are when the change was made.
     One new acceptance test.
   - **The app shows coverage by state size** next to the pooled figure (`coverage_by_size` in
     `src/scenario_contract.py`), and its national figure for releases is the scenario's own total.
-  - **One-county remainders are marked not publishable** (AS-41). The Week 1 table has two new columns,
+  - **One-county remainders are marked not publishable** (AS-41). The release table has two new columns,
     `unlisted_counties` and `publishable`. An "other counties" row that covers exactly one county is that
     county's own count: Delaware in FY2019, FY2021, FY2022 and FY2023, and the District of Columbia in FY2020.
     `exchange/export_exchange.py` now passes the flag on (it wrote `true` for every row), the manifest's
@@ -95,9 +95,9 @@ dates are when the change was made.
   fallback, 0–9 releases a year in the territories, the two floor scales), the README (status, FY2014, results
   figures), the problem statement, and a dated note on `docs/modeling_candidates.md`, whose county result is
   superseded. AS-24's evidence is now given as a theoretical case with the measured figures beside it.
-- Week 4 memo: 71 counties were listed in all 11 years, of which 70 have a Census population figure (it said
+- Findings memo: 71 counties were listed in all 11 years, of which 70 have a Census population figure (it said
   70); LISA p-values are described as one-sided; the next-phases paragraph matches the spec.
-- README Week 3 results: what the Lorenz curves show, and why county curves (listed counties only) should be
+- README concentration results: what the Lorenz curves show, and why county curves (listed counties only) should be
   compared across years with care. In FY2020 and FY2025 only 73 and 109 counties were listed.
 
 ### Fixed
@@ -108,15 +108,15 @@ dates are when the change was made.
   - MPI's county sheet has no row for DC, which it reports as a state, so DC had no county rows. In the county
     analysis it came out as "never listed, next to a cluster" (Low-High, p = 0.0001), although it had 50 or
     more releases in 10 of the 11 years.
-  - `src/build_dataset.py` now gives DC a county row from its state total in those years. The Week 1 table
+  - `src/build_dataset.py` now gives DC a county row from its state total in those years. The release table
     has 3,684 rows (was 3,673), 2,400 of them county rows (was 2,389), for 394 counties (was 393).
   - New figures: 152 High-High counties, 59 after the false-discovery-rate correction (were 151 and 58);
     Low-High 98, 14 after the correction (were 100 and 15); county Moran's I 0.41 (was 0.40); cluster 1 has 55
     counties and 21.3% of releases (were 54 and 20.9%); the eight largest clusters hold 51.4% (was 51.1%).
     Listed counties per year rise by one in every year but FY2020: 110 in FY2025 (was 109), 339 in FY2022.
-  - No conclusion changes. Regenerated: the Week 1 table, every county table and chart in `results/`, the
-    Week 2 notebook and the Week 4 memo.
-- **Week 4 county clusters (LISA) depended on rounding and on whether numba was installed.**
+  - No conclusion changes. Regenerated: the release table, every county table and chart in `results/`, the
+    exploratory notebook and the findings memo.
+- **County clusters (LISA) depended on rounding and on whether numba was installed.**
   - Found in a clean rebuild on 2026-11-10. Installing PyMC (2026-11-07) also installed numba, and esda then
     switched to a different permutation engine. The county results changed: Low-Low went from 753 counties
     to 0, and High-High counties passing the false-discovery-rate correction went from 105 to 67.
@@ -132,16 +132,16 @@ dates are when the change was made.
     clusters still hold 51% of releases. Cluster 1 has 54 counties (was 53) and cluster 6 has 11 (was 12).
     States: Georgia drops out of High-High (p 0.052) and Ohio joins Low-Low; no state cluster passes the
     correction, as before.
-  - Regenerated: `results/lisa_*.csv`, `results/figures/week4_*_clusters.png`, `docs/week4_findings_memo.md`
+  - Regenerated: `results/lisa_*.csv`, `results/figures/*_clusters.png`, `docs/findings_memo.md`
     (its methods section now explains the tie handling). The [0.5.0] note "105 of 151" is superseded.
   - `tests/test_geography.py`: two new checks. On a grid, a real High-High block is found but zeros among
     zeros are not called Low-Low. The same LISA run in two fresh Python processes, one with numba hidden,
     gives identical p-values.
 
-## [0.6.2] - 2026-10-31 (Week 3 review)
+## [0.6.2] - 2026-10-31 (concentration review)
 
-Week 3 checked on its own against Weeks 1–2 and the BRD (FR-07, FR-08, NFR-03, NFR-07, NFR-08). Week 4 was not
-reviewed. Its memo's county bullet was rewritten because it depended on the Week 3 error fixed below.
+The concentration measures were checked on their own against the dataset, the exploratory analysis and the BRD (FR-07, FR-08, NFR-03, NFR-07, NFR-08). The geography work was not
+reviewed. Its memo's county bullet was rewritten because it depended on the concentration error fixed below.
 
 ### Fixed
 - **County concentration counted every unlisted county in the nation as one place.**
@@ -155,27 +155,27 @@ reviewed. Its memo's county bullet was rewritten because it depended on the Week
   - State figures are unchanged.
 - FR-07 asks for Lorenz curves. `lorenz()` existed but nothing used it. Now written:
   - `results/lorenz_by_year.csv`
-  - `results/figures/week3_lorenz.png`
+  - `results/figures/lorenz.png`
 - FR-08 asks for a transition matrix for every consecutive year pair. Only the pooled matrix was written. Added
   `results/tier_transitions_by_year.csv`.
-- The README's main Run steps skipped Week 3. Week 4 needs Week 3's parquet table, so a clean run in that order
-  failed. The Week 3 steps are now included.
+- The README's main Run steps skipped the concentration step. The geography step needs its parquet table, so a clean run in that order
+  failed. The concentration steps are now included.
 
 ### Added
 - `results/persistence_county_ranks.csv`: Spearman and Kendall rank correlations for counties published in both
   years of each pair (FR-08).
 - `concentration_by_year.csv` columns: `hhi_low`, `effective_n_high`, `unlisted_share`. HHI is now rounded to
   5 decimals.
-- README "Week 3 results": every year's figures, with how to read them.
-- `tests/test_week3.py`: 10 checks.
+- README "Results: concentration and persistence": every year's figures, with how to read them.
+- `tests/test_concentration.py`: 10 checks.
   - The county HHI range holds the true value however the unlisted counties are split.
   - The unlisted group never counts as one county.
   - One transition matrix per year pair.
   - Every year and year pair is present in the results (FR-07, FR-08).
 
 ### Changed
-- `src/build_week4_memo.py` and `docs/week4_findings_memo.md`: the county concentration bullet. Nothing else in
-  Week 4 changed; its other results are byte-identical.
+- `src/build_findings_memo.py` and `docs/findings_memo.md`: the county concentration bullet. Nothing else in
+  the geography work changed; its other results are byte-identical.
 
 ### Notes
 - All 23 Python files compile, with warnings treated as errors.
@@ -186,49 +186,49 @@ reviewed. Its memo's county bullet was rewritten because it depended on the Week
   - all 36 regenerated tables, the charts, the memo and the notebook outputs are byte-identical to the
     committed ones.
 
-## [0.6.1] - 2026-10-31 (Week 2 review)
+## [0.6.1] - 2026-10-31 (exploratory analysis review)
 
-Week 2 checked on its own against Week 1 and the BRD, as v0.5.1 did for Week 1. The BRD items covered are
-FR-05, FR-06, NFR-03, NFR-04, NFR-12 and the Week 2 review question.
+The exploratory analysis was checked on its own against the dataset and the BRD, as v0.5.1 did for the dataset. The BRD items covered are
+FR-05, FR-06, NFR-03, NFR-04, NFR-12 and the data review question.
 
 ### Fixed
-- `notebooks/build_week2_eda.py` used to read two Week 3 outputs from `src/measure.py`: the parquet copy and the
-  persistence table. A clean install run in the README's order (Week 1, then Week 2) failed.
-  - It now reads Week 1's CSV.
-  - It computes the state rank correlations itself, with the same result as Week 3 (0.985, FY2017 to FY2018).
-- The notebook did not answer the Week 2 review question. Before any finding it now checks that:
+- `notebooks/build_eda.py` used to read two outputs from `src/measure.py`: the parquet copy and the
+  persistence table. A clean install run in the README's order (the dataset, then the notebook) failed.
+  - It now reads the release table's CSV.
+  - It computes the state rank correlations itself, with the same result as `src/measure.py` (0.985, FY2017 to FY2018).
+- The notebook did not answer the data review question. Before any finding it now checks that:
   - listed counties plus "other counties" equal each state total (583 of 583 state-years);
   - states add up to the national total (11 of 11 years).
   The notebook stops if either check fails.
 - Chart labels (NFR-12):
-  - The state-share axis said "national releases", but the shares are of the 50 states and DC, as in Weeks 3–4.
+  - The state-share axis said "national releases", but the shares are of the 50 states and DC, as in the concentration and geography results.
   - The top-20 heatmap now says that a blank cell means under 50 and not published.
   - The state map defines school-age as ages 5–17.
 - Finding 4's heading said "surge years". It now says "higher-volume years" (NFR-04, neutral language).
 
 ### Moved
-- The per-year state and county maps (FR-06) moved into the Week 2 notebook. Before, they were made by
-  `src/maps_by_year.py` (v0.6.0), which needed Week 4 code. The script and the `week7_*` images are removed.
-  - `results/figures/week2_state_maps_by_year.png`
-  - `results/figures/week2_county_maps_by_year.png`
+- The per-year state and county maps (FR-06) moved into the exploratory notebook. Before, they were made by
+  `src/maps_by_year.py` (v0.6.0), which needed the geography code. The script and its two images are removed.
+  - `results/figures/state_maps_by_year.png`
+  - `results/figures/county_maps_by_year.png`
 
 ### Added
-- `tests/test_week2.py`: 4 checks on the saved notebook.
+- `tests/test_eda.py`: 4 checks on the saved notebook.
   - Five findings, each with a chart (FR-05).
   - Maps for every year (FR-06).
   - The reconciliation check ran and passed.
-  - The builder reads only Week 1's table and the raw boundary files.
+  - The builder reads only the release table and the raw boundary files.
 
 ### Notes
 - The five finding sentences are unchanged except finding 2: it now gives the correlation to three decimals
   (0.985; it was "0.98").
 - Three charts are byte-identical; three changed only in their labels.
-- 36 tests pass; 8 acceptance tests skip until Weeks 5–6 are built.
+- 36 tests pass; 8 acceptance tests skip until the share model and scenario engine are built.
 
-## [0.6.0] - 2026-10-31 (Week 7: app and tests; spec for Weeks 5–6)
+## [0.6.0] - 2026-10-31 (app and tests; spec for the share model and scenario engine)
 
-Work is now split with the project owner: the owner writes the Week 5 share model, the Week 6 scenario engine
-and the written summary; this release adds what those plug into. Week 5 code is untouched.
+Work is now split with the project owner: the owner writes the share model, the scenario engine
+and the written summary; this release adds what those plug into. The share model code is untouched.
 
 ### Added
 - `app/streamlit_app.py`, `app/terms.py`: Streamlit + Plotly app (BRD FR-16 to FR-20).
@@ -240,9 +240,9 @@ and the written summary; this release adds what those plug into. Week 5 code is 
 - `src/scenario_contract.py`: the format of the scenario engine's three files and the checks run on them.
   Format, ranges, sums, and the 50-release rule: a county appears by itself only with 50+ expected releases.
   The app shows nothing from files that fail.
-- `docs/spec_week5_week6.md`: what the owner's share model and scenario engine must produce. It points to
+- `docs/spec_share_model_scenarios.md`: what the owner's share model and scenario engine must produce. It points to
   ORR's age data (children in care, XLSX) for the school-age measure.
-- `tests/test_acceptance.py`: 8 acceptance tests for Weeks 5–6, mapped to FR-12 to FR-15, FR-19, NFR-03 and
+- `tests/test_acceptance.py`: 8 acceptance tests for the share model and scenario engine, mapped to FR-12 to FR-15, FR-19, NFR-03 and
   NFR-10. They skip until the owner's outputs exist.
 - `tests/test_app.py`: 13 tests.
   - The checks catch each kind of problem.
@@ -254,27 +254,27 @@ and the written summary; this release adds what those plug into. Week 5 code is 
   - Other counties = state minus listed, with population left blank when a county is unmatched.
   - Reconciliation flags counties above their state total.
 - `src/maps_by_year.py`: state and county maps for every fiscal year, FY2015–FY2025, on a shared scale (FR-06).
-  - `results/figures/week7_state_maps_by_year.png`
-  - `results/figures/week7_county_maps_by_year.png`
+  - `results/figures/state_maps_by_year.png`
+  - `results/figures/county_maps_by_year.png`
 - README sections:
   - Fiscal-year alignment for every source (FR-04).
-  - Week 7 app.
+  - The app.
   - Limitations (NFR-09).
   - How this was built.
 - `requirements.txt`: streamlit, plotly.
 
 ### Changed
 - `src/build_dataset.py`: the reshaping step moved out of `main()` into `reshape()`, which reads and writes no
-  files, so it can be unit-tested. The three Week 1 CSV files are byte-identical.
+  files, so it can be unit-tested. The three dataset CSV files are byte-identical.
 
 ### Notes
-- 32 tests pass; 8 acceptance tests skip until Weeks 5–6 are built.
-- New code uses shorter comments than the Weeks 1–4 HOW TO READ blocks.
+- 32 tests pass; 8 acceptance tests skip until the share model and scenario engine are built.
+- New code uses shorter comments than the earlier HOW TO READ blocks.
 
-## [0.5.1] - 2026-10-27 (Week 1 review)
+## [0.5.1] - 2026-10-27 (dataset review)
 
 ### Fixed
-- README Week 1 results said Puerto Rico and the Virgin Islands had 1–9 releases a year; together they had
+- README dataset results said Puerto Rico and the Virgin Islands had 1–9 releases a year; together they had
   0–9, with none in FY2014–FY2016 or FY2021.
 - `src/build_dataset.py`: two comments broken across lines mid-sentence, and a comment that named only the
   Virgin Islands as missing from the Census county file (Puerto Rico is missing too).
@@ -283,30 +283,30 @@ and the written summary; this release adds what those plug into. Week 5 code is 
 - `src/build_dataset.py` comments: a Layout part in HOW TO READ THIS FILE; why a blank MPI state cell counts
   as 0 releases (MPI's own total column does the same); why Connecticut's "other counties" population stays
   blank; long end-of-line comments moved to their own lines. Comments only: the syntax tree matches v0.5.0,
-  and the three Week 1 CSV files are byte-identical.
-- README Data table gives the Census file's size and download date. Week 1 findings add the 15 blank state
+  and the three dataset CSV files are byte-identical.
+- README Data table gives the Census file's size and download date. The dataset findings add the 15 blank state
   cells and note that population comes from the Vintage 2024 estimates while the ACS join is pending.
 
 ### Notes
-- Week 1 checked against the plan of record: `python src/build_dataset.py` gives 3,673 rows, 648 of 648
+- The dataset was checked against the plan of record: `python src/build_dataset.py` gives 3,673 rows, 648 of 648
   reconciliation checks pass, and the 4 Connecticut counties are the only FIPS misses; 13 tests pass.
 - Still pending: FSO and contract-lead approval of the problem statement; ACS language data (needs a Census
-  API key); a Connecticut county-to-planning-region crosswalk, which would change Week 2 and Week 4 county
+  API key); a Connecticut county-to-planning-region crosswalk, which would change the exploratory and geography county
   counts.
 
-## [0.5.0] - 2026-10-26 (Week 4: geography)
+## [0.5.0] - 2026-10-26 (geography)
 
 ### Added
 - `src/geography.py`: global Moran's I and local clusters (LISA) for states (releases per 1,000 school-age
   children) and counties (years listed with 50+ releases, a published fact only), Moran's I for each fiscal
   year, neighboring High-High counties grouped into named clusters, false-discovery-rate counts, and release
   shares compared with school-age population shares (listed counties, other counties as one group, and the
-  70 counties listed every year). Tables in `results/`, charts in `results/figures/week4_*.png`.
-- `src/build_week4_memo.py` and `docs/week4_findings_memo.md`: the Week 4 findings memo on concentration,
+  70 counties listed every year). Tables in `results/`, charts in `results/figures/`.
+- `src/build_findings_memo.py` and `docs/findings_memo.md`: the findings memo on concentration,
   stability and geography, with every number read from `results/`. It answers the check-in question: state
   shares are stable enough that last year predicts next year; county counts move with national volume.
 - County size tiers and their Markov transition matrix in `src/measure.py` (`results/tier_transitions.csv`,
-  `results/county_tiers_by_year.csv`): the Week 3 plan item that had not been built yet.
+  `results/county_tiers_by_year.csv`): the concentration plan item that had not been built yet.
 - `tests/test_geography.py`: tiers, Moran's I on known patterns, cluster grouping, the school-age ratio, and a
   check that tier counts match the published county rows (13 tests in all).
 - `esda` in `requirements.txt`.
@@ -323,7 +323,7 @@ and the written summary; this release adds what those plug into. Week 5 code is 
 - Comments for readers learning Python: every Python and SQL file now opens with a "HOW TO READ THIS FILE"
   block (business purpose, layout, Python ideas used), with notes through the code on why each step exists
   and which Python, pandas or SQL technique it uses. README gains a "Reading the code" section.
-- The notebook builder's comments also appear inside the notebook's code cells; `notebooks/week2_eda.ipynb`
+- The notebook builder's comments also appear inside the notebook's code cells; `notebooks/eda.ipynb`
   was regenerated with identical outputs and byte-identical figures.
 - Comments and docstrings only: syntax trees match the previous version file by file (notebook cell code
   included; SQL compared without comments); tests pass.
@@ -334,18 +334,18 @@ and the written summary; this release adds what those plug into. Week 5 code is 
 - Repository made public on GitHub at the project owner's direction (was private pending sign-off).
   README and problem statement status updated; the alignment notes with MP stay local and unpublished.
 
-## [0.4.0] - 2026-10-25 (Week 2: exploratory analysis)
+## [0.4.0] - 2026-10-25 (exploratory analysis)
 
 ### Added
-- `notebooks/week2_eda.ipynb`: five findings, each with a chart (national releases by year, top state shares,
+- `notebooks/eda.ipynb`: five findings, each with a chart (national releases by year, top state shares,
   top 20 counties over time, listed vs other counties, state and county maps); outputs saved in the notebook.
-- `notebooks/build_week2_eda.py`: builds and runs the notebook so it stays reproducible.
-- `results/figures/week2_*.png`: the notebook's charts.
+- `notebooks/build_eda.py`: builds and runs the notebook so it stays reproducible.
+- `results/figures/`: the notebook's charts.
 - `data/raw/geo/`: Census Bureau 2023 cartographic boundary files (states and counties, 1:20m), not committed.
 - `requirements.txt`: GeoPandas, and nbformat / nbclient / ipykernel for building the notebook.
 
 ### Changed
-- README status: Weeks 1–3 done (Week 3 had landed before Week 2).
+- README status: the dataset, exploratory analysis and concentration measures done (the concentration measures had landed before the exploratory analysis).
 
 ## [0.3.0] - 2026-10-23
 
@@ -364,7 +364,7 @@ and the written summary; this release adds what those plug into. Week 5 code is 
 
 ### Added
 - `requirements.txt`, including `matplotlib` and `python-docx` for reporting, `scipy` for analysis and backtests,
-  and `libpysal` for spatial weights (Week 4 Moran's I and LISA; brings in `geopandas`, `shapely`, `pandas`).
+  and `libpysal` for spatial weights (Moran's I and LISA in the geography step; brings in `geopandas`, `shapely`, `pandas`).
 
 ## [0.2.0] - 2026-10-22
 
@@ -382,7 +382,7 @@ and the written summary; this release adds what those plug into. Week 5 code is 
 ### Changed
 - README and problem statement status: private on GitHub instead of local only.
 
-## [0.1.0] - 2026-10-22 (Week 1: scope and data assembly)
+## [0.1.0] - 2026-10-22 (scope and data assembly)
 
 ### Added
 - Project folder, separate from the MP project and adjacent to it (`../MP`).

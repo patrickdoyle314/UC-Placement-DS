@@ -1,6 +1,6 @@
-# Week 4 findings memo: concentration, stability and geography
+# Findings memo: concentration, stability and geography
 
-*Where Unaccompanied Children Are Placed. Unaccompanied children released to sponsors, FY2015–FY2025. Built from the data by `python src/build_week4_memo.py` on November 11, 2026; every number is read from `results/`. Service planning only.*
+*Where Unaccompanied Children Are Placed. Unaccompanied children released to sponsors, FY2015–FY2025. Built from the data by `python src/build_findings_memo.py` on November 11, 2026; every number is read from `results/`. Service planning only.*
 
 **Check-in question:** is the pattern stable enough that last year predicts next year?
 
@@ -17,7 +17,7 @@
 ## 1. Concentration
 
 - **States.** Each year releases were as concentrated as if spread evenly over 14–17 states (the effective number, 1 / HHI). The ten largest states took 64%–75% of releases. Concentration has eased slowly: the top-ten share was 70%–75% in FY2015–FY2019 and 64%–70% in FY2021–FY2025.
-- **Counties.** Counted county by county, releases were as concentrated as if spread evenly over 60–132 counties each year, and the ten largest counties took 19%–33%. This has eased too: 60–82 equal-sized counties in FY2015–FY2019, 88–132 in FY2021–FY2025. Counties under 50 releases are not published and never estimated; each had at most 49, so these figures are lower bounds on how spread out releases were (Week 3).
+- **Counties.** Counted county by county, releases were as concentrated as if spread evenly over 60–132 counties each year, and the ten largest counties took 19%–33%. This has eased too: 60–82 equal-sized counties in FY2015–FY2019, 88–132 in FY2021–FY2025. Counties under 50 releases are not published and never estimated; each had at most 49, so these figures are lower bounds on how spread out releases were (see the concentration measures).
 
 ## 2. Stability
 
@@ -31,18 +31,18 @@
 
 - **County tiers.** Each of the 394 counties listed at least once is placed in a tier every year. A county with 1,000+ releases stays in that tier the next year 58% of the time and moves to 200–999 41% of the time. A county with 50–199 releases falls below the threshold the next year 34% of the time. These moves follow national volume: 227 counties were listed in FY2019, 73 in FY2020, 339 in FY2022 and 110 in FY2025.
 
-![Tier transitions](../results/figures/week4_tier_transitions.png)
+![Tier transitions](../results/figures/tier_transitions.png)
 
 ## 3. Geography: releases cluster
 
 - **Overall clustering (Moran's I).** States with high release rates per school-age child border other high-rate states: Moran's I = 0.48 (p = 0.0001, 49 contiguous states and DC). Counties that are often listed border other often-listed counties: Moran's I = 0.41 (p = 0.0001, 3,100 counties). Moran's I runs from -1 to +1; 0 means no spatial pattern.
 - **Steady over time.** Every year from FY2015 to FY2025 both tests are significant (p < 0.05): Moran's I 0.39–0.50 for states and 0.29–0.34 for counties. Clustering did not weaken in the surge years or the low years.
 
-![Moran's I by year](../results/figures/week4_moran_by_year.png)
+![Moran's I by year](../results/figures/moran_by_year.png)
 
 - **Local clusters, states (LISA).** High-High: MD, DC, VA, DE, NC, CT (high rates among high-rate neighbors). Low-Low: MT, ID, UT, OH, SD. Low-High: PA. With only 49 places, no single state cluster passes a false-discovery-rate correction, so read the state clusters as suggestive; the overall result above is strong.
 
-![State clusters](../results/figures/week4_state_clusters.png)
+![State clusters](../results/figures/state_clusters.png)
 
 - **Local clusters, counties (LISA).** 152 counties are High-High (59 pass the false-discovery-rate correction). Grouped by shared borders they form 31 clusters; the eight largest hold 51% of all FY2015–FY2025 releases.
 
@@ -57,7 +57,7 @@
 | 7 | Suffolk County, MA to Providence County, RI | MA NH RI | 9 | 2.6% | 7.9 |
 | 8 | DeKalb County, GA | GA | 6 | 2.3% | 8.8 |
 
-![County clusters](../results/figures/week4_county_clusters.png)
+![County clusters](../results/figures/county_clusters.png)
 
 ## 4. Release shares compared with school-age population
 
@@ -75,12 +75,12 @@
 | Union County, NJ | 6,138 | 59.5 | 4.5 |
 | Palm Beach County, FL | 12,844 | 58.9 | 4.5 |
 
-![Release share vs school-age share](../results/figures/week4_release_vs_school_share.png)
+![Release share vs school-age share](../results/figures/release_vs_school_share.png)
 
 ## What this means for the next phases
 
-- **Week 5 (share model).** "Last year's shares" is a strong baseline (0.21 share points); the Bayesian model has to beat it on held-out years, or the write-up explains why not.
-- **Week 6 (scenarios).** County counts depend on whether a county clears the 50-release threshold, which depends on national volume. The scenario tables therefore report each state, the counties listed in the latest year, and one other-counties figure per state. The school-age ratios show where the same national volume means the largest relative need for school services; ORR's published age mix will turn releases into school-age children.
+- **Share model.** "Last year's shares" is a strong baseline (0.21 share points); the Bayesian model has to beat it on held-out years, or the write-up explains why not.
+- **Scenarios.** County counts depend on whether a county clears the 50-release threshold, which depends on national volume. The scenario tables therefore report each state, the counties listed in the latest year, and one other-counties figure per state. The school-age ratios show where the same national volume means the largest relative need for school services; ORR's published age mix will turn releases into school-age children.
 
 ## Methods and limits
 
@@ -93,6 +93,6 @@
 
 ## Files
 
-- Code: `src/geography.py` (Moran's I, LISA, school-age comparison), `src/measure.py` (concentration, persistence, tiers), `src/share_baseline.py`, this memo's builder `src/build_week4_memo.py`.
+- Code: `src/geography.py` (Moran's I, LISA, school-age comparison), `src/measure.py` (concentration, persistence, tiers), `src/share_baseline.py`, this memo's builder `src/build_findings_memo.py`.
 - Tables: `results/moran_global.csv`, `moran_by_year.csv`, `lisa_states.csv`, `lisa_summary.csv`, `lisa_county_clusters.csv`, `school_age_comparison.csv`, `county_school_age_always_listed.csv`, `tier_transitions.csv`, `county_tiers_by_year.csv`.
-- Charts: `results/figures/week4_*.png`.
+- Charts: `results/figures/`.

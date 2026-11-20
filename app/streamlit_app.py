@@ -1,11 +1,11 @@
 """Scenario app: choose a national volume scenario and see expected releases and service needs by state and
-county, with 80% ranges (Week 7, BRD FR-16 to FR-20).
+county, with 80% ranges (BRD FR-16 to FR-20).
 
 Run from the repository root:   streamlit run app/streamlit_app.py
 
-The scenario figures come from the Week 6 engine's files in results/ (format: docs/spec_week5_week6.md).
+The scenario figures come from the scenario engine's files in results/ (format: docs/spec_share_model_scenarios.md).
 src/scenario_contract.py checks them first, and if anything fails, the app shows the problem instead of
-the numbers. The History tab uses only published counts from the Week 1 table. UC_RESULTS_DIR points the
+the numbers. The History tab uses only published counts from the release table. UC_RESULTS_DIR points the
 app at another folder of scenario files; the tests use it to load a synthetic fixture.
 """
 import json
@@ -47,7 +47,7 @@ def history() -> pd.DataFrame:
 
 
 def counties_in_state(hist) -> dict:
-    """{state: number of counties}, from the Week 1 table's other-counties rows (listed + unlisted)."""
+    """{state: number of counties}, from the release table's other-counties rows (listed + unlisted)."""
     if hist is None or "unlisted_counties" not in hist.columns:
         return {}
     other = hist[hist.geo_level == "other_counties"].dropna(subset=["unlisted_counties"])
@@ -168,8 +168,8 @@ tab_scenario, tab_history, tab_terms, tab_about = st.tabs(["Scenario", "History"
 
 with tab_scenario:
     if not ready:
-        st.info("The scenario tables are not built yet. They come from the Week 6 scenario engine "
-                "(src/scenarios.py), described in docs/spec_week5_week6.md. The History tab works now.")
+        st.info("The scenario tables are not built yet. They come from the scenario engine "
+                "(src/scenarios.py), described in docs/spec_share_model_scenarios.md. The History tab works now.")
     else:
         scen, m = scenarios[scenario_id], by_id[measure_id]
         rows = table[table.scenario == scenario_id].copy()
@@ -230,7 +230,7 @@ with tab_scenario:
 
 with tab_history:
     if hist is None:
-        st.info("History needs the Week 1 table: run python src/build_dataset.py, then python src/measure.py.")
+        st.info("History needs the release table: run python src/build_dataset.py, then python src/measure.py.")
     else:
         year = st.select_slider("Fiscal year", FISCAL_YEARS, value=FISCAL_YEARS[-1])
         st.caption("Published counts only. A county is shaded only in years with 50 or more children released.")

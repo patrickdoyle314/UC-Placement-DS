@@ -1,6 +1,6 @@
 # Problem statement: Where Unaccompanied Children Are Placed
 
-**Status:** draft (Week 1). The repository was made public on October 25, 2026, at the project owner's
+**Status:** draft. The repository was made public on October 25, 2026, at the project owner's
 direction; the approval table below is for the owner to complete.
 **Date:** October 22, 2026. Plan of record: `docs/portfolio_plan_2026-10-20.docx`.
 
@@ -43,7 +43,7 @@ scenarios. It does not forecast next month.
 |---|---|
 | Migration Policy Institute, *Unaccompanied Children Released to Sponsors by State and County, FY 2014–2025* (tabulation of ACF/ORR data) | Core release counts by state and county |
 | Census Bureau, Vintage 2024 county population estimates by age | County FIPS codes, total and school-age population |
-| ORR Facts and Data; CBP Southwest Border Encounters | National context and leading indicator (later weeks) |
+| ORR Facts and Data; CBP Southwest Border Encounters | National context and leading indicator (later) |
 | Census American Community Survey, 5-year | Language spoken at home (pending; needs a free Census API key) |
 
 ## Guardrails

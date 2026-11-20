@@ -1,6 +1,6 @@
 """Write this project's exchange outbox (contract v1.0, see exchange/EXCHANGE.md).
 
-Reads the Week 1 table (data/processed/releases_by_fy_geo.csv) and publishes release counts and
+Reads the release table (data/processed/releases_by_fy_geo.csv) and publishes release counts and
 school-age population as aggregates. The counts are public MPI / Census data. One kind of row is marked
 publishable = false: a state's "other counties" figure that covers exactly one county, because it is
 that county's own count, which the source withheld (see src/build_dataset.py).
@@ -36,7 +36,7 @@ def main():
         w = csv.writer(f)
         w.writerow(COLUMNS)
         for r in rows:
-            # The Week 1 table decides what may be published; this file only passes the flag on.
+            # The release table decides what may be published; this file only passes the flag on.
             publishable = "false" if r["publishable"] == "False" else "true"
             w.writerow([r["geo_level"], r["state"], r["county_key"], r["county_name"], r["fiscal_year"],
                         "releases_to_sponsors", r["releases"], publishable])

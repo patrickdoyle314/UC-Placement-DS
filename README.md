@@ -10,19 +10,19 @@ engine (`src/scenarios.py`), the share model (`src/share_model.py`) and their un
 fork. [How this was built](#how-this-was-built) gives the dates and the decisions behind them.
 
 - Plan of record: [`docs/portfolio_plan_2026-10-20.docx`](docs/portfolio_plan_2026-10-20.docx)
-- Problem statement (Week 1, draft for approval): [`docs/problem_statement.md`](docs/problem_statement.md)
-- Week 4 findings memo (concentration, stability, geography): [`docs/week4_findings_memo.md`](docs/week4_findings_memo.md)
-- Spec for the Week 5 share model and Week 6 scenario engine: [`docs/spec_week5_week6.md`](docs/spec_week5_week6.md)
+- Problem statement (draft for approval): [`docs/problem_statement.md`](docs/problem_statement.md)
+- Findings memo (concentration, stability, geography): [`docs/findings_memo.md`](docs/findings_memo.md)
+- Spec for the share model and the scenario engine: [`docs/spec_share_model_scenarios.md`](docs/spec_share_model_scenarios.md)
 - Assumptions register (every assumption, its status and a dated history): [`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md)
 - Math document (methods and mathematical principles, November 6 revision):
   [`docs/math_methods_and_principles_2026-11-06.pdf`](docs/math_methods_and_principles_2026-11-06.pdf)
 - Changes: [`CHANGELOG.md`](CHANGELOG.md)
 
-**Status:** Weeks 1–4 done (data assembly, exploratory analysis, concentration and persistence, geography).
-Week 2 was reviewed against Week 1 and the BRD on its own: it now runs on Week 1's table alone and includes
-the per-year maps. Week 3 was reviewed the same way: county concentration now counts counties one by one
+**Status:** data assembly, exploratory analysis, concentration and persistence, and geography are done.
+The exploratory analysis was reviewed against the dataset and the BRD on its own: it now runs on the release
+table alone and includes the per-year maps. The concentration measures were reviewed the same way: county concentration now counts counties one by one
 (it had counted all unlisted counties as one place), and Lorenz curves and per-year transition matrices are
-added. Week 7 built: the Streamlit app, its tests and a reshaping unit test. The scenario engine
+added. The app is built: the Streamlit app, its tests and a reshaping unit test. The scenario engine
 is built in this fork (November 14, 2026) on the fallback the BRD allows: last year's shares with an error
 model, in two versions compared head to head (AS-39 and AS-40 in
 [`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md)). The app's Scenario tab now shows its tables; the results are
@@ -31,7 +31,7 @@ and tested against last year's shares. It did not beat them at either level, so 
 year's shares ([Share model](#share-model-results)). All 20 acceptance tests now run and pass. FSO and contract-lead sign-off
 is still pending.
 This fork's repository was made public on November 16, 2026, at the project owner's direction, before that
-sign-off was recorded (AS-38). The original's current work is kept in a separate private repository. A copy through v0.6.2 (Weeks 1–4 and the app) is public at
+sign-off was recorded (AS-38). The original's current work is kept in a separate private repository. A copy through v0.6.2 (the analysis and the app) is public at
 [UC-Public](https://github.com/patrickdoyle314/UC-Public), released by the project owner on November 4, 2026.
 The alignment notes with the MP project stay local and unpublished.
 
@@ -58,16 +58,16 @@ These apply to every file, chart and write-up in this project:
 ```
 UC-Placement/
   README.md, CHANGELOG.md
-  docs/                 plan of record (.docx, kept local), problem statement, Week 4 memo, Week 5-6 spec,
+  docs/                 plan of record (.docx, kept local), problem statement, findings memo, model spec,
                         assumptions register, math document (PDF)
-  src/build_dataset.py  Week 1: reshape MPI data, add other-counties rows, join Census
-  src/measure.py, src/share_baseline.py, src/run_sql.py   Week 3 measures, tiers, share baselines, SQL runner
-  src/geography.py, src/build_week4_memo.py              Week 4: Moran's I, LISA, school-age comparison; memo
+  src/build_dataset.py  dataset: reshape MPI data, add other-counties rows, join Census
+  src/measure.py, src/share_baseline.py, src/run_sql.py   concentration measures, tiers, share baselines, SQL runner
+  src/geography.py, src/build_findings_memo.py           geography: Moran's I, LISA, school-age comparison; memo
   src/scenario_contract.py  format and guardrail checks for the scenario engine's files
   src/scenarios.py      scenario engine (fallback): scenarios, error model, simulation, calibration
   src/share_model.py    Bayesian share model (PyMC): fits, backtest against naive, winner rule
-  app/                  Week 7: Streamlit app (streamlit_app.py) and its glossary (terms.py)
-  notebooks/            Week 2 exploratory notebook and its builder (needs only Week 1's table)
+  app/                  Streamlit app (streamlit_app.py) and its glossary (terms.py)
+  notebooks/            exploratory notebook and its builder (needs only the release table)
   sql/                  SQL statements (DuckDB over parquet)
   results/              aggregate outputs
   tests/                pytest checks; tests/fixtures/ holds synthetic scenario files for the app tests
@@ -79,19 +79,19 @@ UC-Placement/
 
 ## Reading the code
 
-Every Python and SQL file from Weeks 1–4 opens with a **HOW TO READ THIS FILE** block: what the file does for the project
+Every Python and SQL file from the data, exploration, concentration and geography steps opens with a **HOW TO READ THIS FILE** block: what the file does for the project
 (business purpose), how it is laid out, and the Python ideas it uses. Comments through the code explain *why*
 each step exists (for example, why "other counties" are never split) and point out Python, pandas and SQL
 techniques where they first appear. A suggested reading order for learning Python: `src/build_dataset.py` →
 `src/measure.py` (NumPy, pandas) → `sql/state_ranks.sql` (window functions) → `src/share_baseline.py` →
-`tests/test_measure.py` (pytest) → `notebooks/build_week2_eda.py`, whose comments also appear inside the
+`tests/test_measure.py` (pytest) → `notebooks/build_eda.py`, whose comments also appear inside the
 notebook's code cells → `src/geography.py` (GeoPandas, spatial statistics).
 
 ## Data
 
 | Source | File | Notes |
 |---|---|---|
-| [Migration Policy Institute: Released to Sponsors by State and County, FY 2014–2025](https://www.migrationpolicy.org/data-tool/unaccompanied-children-state-county) | `data/raw/mpi/mpi-data-hub_uacsbystate-county-fy2014-fy2025.xlsx` (133,945 bytes, downloaded 2026-10-22) | Tabulation of ACF/ORR data. Counties listed only for years with ≥ 50 releases. First release location only. Includes FY2014, Puerto Rico and the U.S. Virgin Islands. Its county sheet has no row for the District of Columbia (see Week 1 results). |
+| [Migration Policy Institute: Released to Sponsors by State and County, FY 2014–2025](https://www.migrationpolicy.org/data-tool/unaccompanied-children-state-county) | `data/raw/mpi/mpi-data-hub_uacsbystate-county-fy2014-fy2025.xlsx` (133,945 bytes, downloaded 2026-10-22) | Tabulation of ACF/ORR data. Counties listed only for years with ≥ 50 releases. First release location only. Includes FY2014, Puerto Rico and the U.S. Virgin Islands. Its county sheet has no row for the District of Columbia (see Results: the dataset). |
 | [Census Bureau Vintage 2024 county estimates by age and sex](https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/counties/asrh/) | `data/raw/census/cc-est2024-agesex-all.csv` (8,723,627 bytes, downloaded 2026-10-22) | County FIPS codes; July 1, 2024 total and ages 5–17 population. Covers the 50 states and DC only. |
 | Census ACS 5-year (language spoken at home) | — | Pending: needs a free Census API key, which you request yourself at api.census.gov. |
 | [Census 2023 cartographic boundary files](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html) (1:20,000,000) | `data/raw/geo/cb_2023_us_state_20m.zip`, `cb_2023_us_county_20m.zip` | State and county shapes for the maps and the app. |
@@ -106,23 +106,23 @@ Every figure is placed on the federal fiscal year (October 1 – September 30):
 | MPI release counts | Federal fiscal year | Used as published. FY2015–FY2025 are analyzed. FY2014 is used only as the starting "last year" for FY2015 in the share model (AS-15). |
 | Census Vintage 2024 estimates | July 1, 2024 (inside FY2024) | One fixed reference population for every fiscal year, not re-estimated year by year. |
 | Census ACS 5-year (pending) | A five-calendar-year period | To be used the same way: a fixed reference, labeled with its period. |
-| ORR age data (Week 6) | Federal fiscal year | The engine uses the fiscal year it names in `results/scenarios.json`. |
+| ORR age data (scenario engine) | Federal fiscal year | The engine uses the fiscal year it names in `results/scenarios.json`. |
 | CBP encounters (optional, not used) | Monthly | Would be summed October through September. |
 
 ## Run
 
 ```bash
 pip install -r requirements.txt   # SciPy, libpysal + esda (spatial statistics), matplotlib and python-docx (reporting)
-python src/build_dataset.py          # Week 1 table + reconciliation
-python notebooks/build_week2_eda.py  # Week 2 notebook and its charts, including maps for every year
-python src/measure.py                # Week 3: concentration, Lorenz curves, persistence, tiers
-python src/share_baseline.py         # Week 3: share baselines and their backtest
-python src/run_sql.py                # Week 3: state ranks in SQL (DuckDB)
-python src/geography.py              # Week 4: Moran's I, LISA, school-age comparison (after src/measure.py)
-python src/build_week4_memo.py       # Week 4 findings memo, from the results tables
+python src/build_dataset.py          # the release table + reconciliation
+python notebooks/build_eda.py        # exploratory notebook and its charts, including maps for every year
+python src/measure.py                # concentration, Lorenz curves, persistence, tiers
+python src/share_baseline.py         # share baselines and their backtest
+python src/run_sql.py                # state ranks in SQL (DuckDB)
+python src/geography.py              # Moran's I, LISA, school-age comparison (after src/measure.py)
+python src/build_findings_memo.py    # findings memo, from the results tables
 python src/share_model.py            # share model: 19 fits and the backtest against naive (about half an hour)
 python src/scenarios.py              # scenario engine: scenario tables, calibration, version comparison
-streamlit run app/streamlit_app.py   # Week 7: the scenario app, in your browser
+streamlit run app/streamlit_app.py   # the scenario app, in your browser
 python exchange/export_exchange.py   # aggregates for adjacent projects
 python alignment/align_mp.py         # optional, local only: coincidence checks with MP
 ```
@@ -133,14 +133,14 @@ python alignment/align_mp.py         # optional, local only: coincidence checks 
 |---|---|
 | `src/measure.py` | pandas + NumPy: concentration (HHI, effective number, Gini, top-10 share, Lorenz) and persistence (Spearman, Kendall) by fiscal year; county size tiers and their Markov transition matrix; writes the parquet table |
 | `src/geography.py` | GeoPandas + libpysal + esda + NumPy: global Moran's I (esda) and LISA clusters (states: releases per school-age child; counties: years listed), Moran's I by year, release share vs school-age share. LISA's permutation test is written in NumPy so that ties count on purpose and results don't change when numba is installed |
-| `src/build_week4_memo.py` | Writes `docs/week4_findings_memo.md` from the results tables, with the tier transition chart |
+| `src/build_findings_memo.py` | Writes `docs/findings_memo.md` from the results tables, with the tier transition chart |
 | `src/share_baseline.py` | Share model, baseline stage: next year's state shares from last year, a 3-year mean, or all years pooled, backtested |
 | `docs/MODEL_CARD_share_model.md` | Model card: data, baselines and scores, the planned Bayesian model, limitations |
 | `sql/state_ranks.sql` | SQL with CTEs and window functions (`RANK`, `LAG`, running `SUM`) over the parquet table |
 | `src/run_sql.py` | Runs a SQL file with DuckDB, saves the result in `results/` |
 | `src/scenario_contract.py` | What the scenario engine's files must contain, and the checks the app runs before showing them |
 | `app/streamlit_app.py` | Streamlit + Plotly app: scenario selector, state and county maps, tables with 80% ranges, history, definitions |
-| `tests/` | pytest: metric checks, the reshaping step on made-up counties, reconciliation, SQL matches pandas, tiers, Moran's I, clusters, school-age ratio, the Week 2 notebook's BRD checks, county concentration bounds and Week 3's BRD checks, the app (Streamlit's AppTest), and acceptance tests for Weeks 5–6 that skip until those outputs exist |
+| `tests/` | pytest: metric checks, the reshaping step on made-up counties, reconciliation, SQL matches pandas, tiers, Moran's I, clusters, school-age ratio, the exploratory notebook's BRD checks, county concentration bounds and the concentration measures' BRD checks, the app (Streamlit's AppTest), and acceptance tests for the share model and scenario engine that skip until those outputs exist |
 | `results/` | Outputs (aggregate, from public MPI data) |
 
 ```bash
@@ -148,7 +148,7 @@ python src/measure.py
 python src/share_baseline.py
 python src/run_sql.py
 python src/geography.py
-python src/build_week4_memo.py
+python src/build_findings_memo.py
 python -m pytest
 ```
 
@@ -261,7 +261,7 @@ own total, and its expected figures are FY2025's actual counts.
 - **Checks.** `tests/test_acceptance.py` checks the files. `tests/test_scenarios.py` checks the steps on
   made-up data, including that the κ fit finds a known κ again (within 15%).
 
-## Week 7: the scenario app
+## The scenario app
 
 `streamlit run app/streamlit_app.py` opens the app in a browser. A planner picks a national volume scenario (Low,
 Median or High, each one a real year's national total from FY2015–FY2025) and a state. The app then shows:
@@ -292,11 +292,11 @@ nothing real. They check that:
 - every column is defined;
 - files that fail the checks are not shown.
 
-The same per-year maps are saved as images by the Week 2 notebook (see Week 2 results).
+The same per-year maps are saved as images by the exploratory notebook (see Results: exploratory analysis).
 
-## Week 4 results: geography
+## Results: geography
 
-Full memo with charts and methods: [`docs/week4_findings_memo.md`](docs/week4_findings_memo.md). Check-in question:
+Full memo with charts and methods: [`docs/findings_memo.md`](docs/findings_memo.md). Check-in question:
 *is the pattern stable enough that last year predicts next year?*
 
 1. **States, yes.** Year-to-year state rank correlations are 0.985 or higher in FY2015–FY2025 (0.983 from FY2014
@@ -314,9 +314,9 @@ Full memo with charts and methods: [`docs/week4_findings_memo.md`](docs/week4_fi
    were listed every year; the 70 with a Census population figure received 59% of releases and have 31% of the
    nation's school-age children.
 
-## Week 3 results: concentration and persistence
+## Results: concentration and persistence
 
-`src/measure.py` (pandas, NumPy) reads only Week 1's table and writes its tables to `results/` for every fiscal
+`src/measure.py` (pandas, NumPy) reads only the release table and writes its tables to `results/` for every fiscal
 year (BRD FR-07, FR-08). The **effective number** (1 / HHI) reads "as concentrated as if releases were spread
 evenly over this many places": higher means more spread out.
 
@@ -335,7 +335,7 @@ evenly over this many places": higher means more spread out.
 | FY2025 | 16.5 | 65% | 110 | 112 | 21% | 35% |
 
 1. **Concentration** (`concentration_by_year.csv`, Lorenz curves in `lorenz_by_year.csv` and
-   [`results/figures/week3_lorenz.png`](results/figures/week3_lorenz.png)). Releases are concentrated, and the
+   [`results/figures/lorenz.png`](results/figures/lorenz.png)). Releases are concentrated, and the
    concentration has eased slowly for both states and counties. The Gini coefficient is 0.61–0.69 for states
    and 0.39–0.61 among listed counties.
    - **States:** the largest fifth of states received 64%–76% of children each year, and the smaller half 7%–10%.
@@ -355,11 +355,11 @@ evenly over this many places": higher means more spread out.
    with 1,000+ releases stays 1,000+ the next year 58% of the time; one with 50–199 falls below the threshold 34%
    of the time.
 
-## Week 2 results: exploratory analysis
+## Results: exploratory analysis
 
-[`notebooks/week2_eda.ipynb`](notebooks/week2_eda.ipynb), built and run by `notebooks/build_week2_eda.py` (pandas,
-matplotlib, GeoPandas with Census 2023 cartographic boundaries). Charts are also in `results/figures/week2_*.png`.
-It reads only Week 1's table and the raw boundary files, so it runs right after `src/build_dataset.py`.
+[`notebooks/eda.ipynb`](notebooks/eda.ipynb), built and run by `notebooks/build_eda.py` (pandas,
+matplotlib, GeoPandas with Census 2023 cartographic boundaries). Charts are also in `results/figures/`.
+It reads only the release table and the raw boundary files, so it runs right after `src/build_dataset.py`.
 
 **Review question:** do county rows plus "other counties" match each state total? Yes. The notebook checks
 this again before any finding: all 583 state-years in FY2015–FY2025 match (50 states, DC, Puerto Rico, the
@@ -381,11 +381,11 @@ Five findings, FY2015–FY2025 (BRD FR-05):
    counties have no FIPS match; Alaska, Hawaii and Puerto Rico are left off the maps).
 
 State and county maps for every fiscal year, on one shared color scale (BRD FR-06):
-[`results/figures/week2_state_maps_by_year.png`](results/figures/week2_state_maps_by_year.png) and
-[`results/figures/week2_county_maps_by_year.png`](results/figures/week2_county_maps_by_year.png). County panels
+[`results/figures/state_maps_by_year.png`](results/figures/state_maps_by_year.png) and
+[`results/figures/county_maps_by_year.png`](results/figures/county_maps_by_year.png). County panels
 shade only published counts (50+ releases).
 
-## Week 1 results
+## Results: the dataset
 
 `src/build_dataset.py` writes:
 

@@ -1,11 +1,11 @@
-"""Week 3 measures with pandas and NumPy: how concentrated releases are, and how stable the pattern is.
+"""Concentration and stability measures with pandas and NumPy: how concentrated releases are, and how stable the pattern is.
 
 Concentration, each fiscal year (BRD FR-07):
   HHI             sum of squared shares (1 = all in one place, 1/n = spread evenly over n)
   effective_n     1 / HHI, "as concentrated as this many equal-sized places"
   gini            inequality of shares, 0 (equal) to near 1 (all in one place)
   top10_share     share of releases in the 10 largest places
-  Lorenz curves   results/lorenz_by_year.csv and results/figures/week3_lorenz.png
+  Lorenz curves   results/lorenz_by_year.csv and results/figures/lorenz.png
 States: the 50 states and DC, computed exactly. Counties: shares of all releases that year. Counties
 under 50 releases are not published and are never split or estimated, so county HHI is given as a
 range (hhi_low to hhi), using only the fact that each unlisted county had at most 49 releases.
@@ -13,7 +13,7 @@ range (hhi_low to hhi), using only the fact that each unlisted county had at mos
 Persistence, each pair of consecutive fiscal years (FR-08): Spearman and Kendall rank correlation of
 state shares, and of county counts among counties published in both years.
 
-Tiers (plan Week 3): every county listed at least once is placed in a size tier each year (not listed,
+Tiers (in the plan): every county listed at least once is placed in a size tier each year (not listed,
 50-199, 200-999, 1,000+ releases); a Markov transition matrix counts how often counties move between
 tiers, pooled and for each pair of years. "Not listed" is ORR's published threshold, never an estimate.
 
@@ -23,7 +23,7 @@ Usage: python src/measure.py   (after src/build_dataset.py)
 """
 # ===================================================================================================
 # HOW TO READ THIS FILE
-# Business purpose: Week 3 measures for service planning. How concentrated are releases (a few
+# Business purpose: concentration and stability measures for service planning. How concentrated are releases (a few
 # places or spread out)? Does the same set of states lead every year? Planners can then focus
 # services (schools, legal aid, case management) where children consistently arrive.
 #
@@ -175,7 +175,7 @@ def chart_lorenz(points: pd.DataFrame) -> None:
     axes[0].set_ylabel("Share of children released")
     norm = BoundaryNorm(np.arange(years[0] - 0.5, years[-1] + 1), cmap.N)
     fig.colorbar(plt.cm.ScalarMappable(norm=norm, cmap=cmap), ax=axes, ticks=[2015, 2020, 2025], label="Fiscal year")
-    fig.savefig(FIG / "week3_lorenz.png", dpi=200, facecolor="white", bbox_inches="tight")
+    fig.savefig(FIG / "lorenz.png", dpi=200, facecolor="white", bbox_inches="tight")
     plt.close(fig)
 
 
