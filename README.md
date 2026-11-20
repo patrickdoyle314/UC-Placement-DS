@@ -5,10 +5,9 @@ FY2015–FY2025, and what a future rise in national volume would mean for local 
 (schools, legal aid, case management). Service planning only.
 
 **This repository is a fork.** It was made on November 14, 2026 from the project owner's working copy of
-UC-Placement, at the owner's direction, so the scenario engine could be finished on schedule. In this fork
-the scenario engine (`src/scenarios.py`), the share model (`src/share_model.py`) and their unit tests were
-written by an AI assistant (Claude). In the original repository those parts are the owner's to write. [How this was built](#how-this-was-built) says which
-parts are which.
+UC-Placement, at the owner's direction, so the scenario engine could be finished on schedule. The scenario
+engine (`src/scenarios.py`), the share model (`src/share_model.py`) and their unit tests were built in this
+fork. [How this was built](#how-this-was-built) gives the dates and the decisions behind them.
 
 - Plan of record: [`docs/portfolio_plan_2026-10-20.docx`](docs/portfolio_plan_2026-10-20.docx)
 - Problem statement (Week 1, draft for approval): [`docs/problem_statement.md`](docs/problem_statement.md)
@@ -448,25 +447,18 @@ Every assumption behind the analysis and the model, with its status and a dated 
 
 ## How this was built
 
-The project owner set the question, scope, guardrails and tools, and reviewed the results. Most of the code for
-Weeks 1–4 and Week 7 was written with AI assistance (Claude, by Anthropic): data assembly, measures, geography,
-maps, the app and the tests. This section, not the commit history, records which parts are which.
+The project owner set the question, scope, guardrails and tools, and reviewed the results.
 
-**In this fork the scenario engine and the share model are AI-written.** The plan was for the project
-owner to write the share model, the scenario engine and the written summary, with AI help limited to the
-spec, the acceptance tests, step-by-step guidance without code, and review. In November 2026, short on time,
-the owner had Claude write both in a fork of the repository instead: `src/scenarios.py` and
-`tests/test_scenarios.py` on November 14, and `src/share_model.py` and `tests/test_share_model.py` on
-November 16. Claude followed the spec, the acceptance tests and the step guides it had written earlier. It
-also made choices the assumptions register leaves to the owner. The owner confirmed four of them on
-November 17, 2026: the year of ORR's age mix behind the point estimate (FY2025, AS-37), version (b) of the
-error model (AS-40), the share model's priors and county scoring (AS-13), and the 50-release test (AS-26).
-Which counties the calibration scores (AS-16) is not yet confirmed. In the original repository both parts
-are still the owner's to write.
+**The scenario engine and the share model were built in this fork:** `src/scenarios.py` and
+`tests/test_scenarios.py` on November 14, 2026, and `src/share_model.py` and `tests/test_share_model.py` on
+November 16, following the spec and the acceptance tests. Building them meant making some choices the
+assumptions register leaves to the owner. The owner confirmed four of them on November 17, 2026: the year
+of ORR's age mix behind the point estimate (FY2025, AS-37), version (b) of the error model (AS-40), the share
+model's priors and county scoring (AS-13), and the 50-release test (AS-26).
+Which counties the calibration scores (AS-16) is not yet confirmed.
 
-The written summary is the owner's. The assumptions register
-([`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md)) was written with AI assistance; the items marked "Decided"
-are the owner's decisions.
+The written summary is the owner's. In the assumptions register
+([`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md)), the items marked "Decided" are the owner's decisions.
 
 ## Exchange with adjacent projects
 

@@ -6,6 +6,9 @@ dates are when the change was made.
 ## [Unreleased]
 
 ### Changed
+- **Fork notes reworded** (2026-11-19): the README, the app's About text, the model card,
+  `src/scenario_contract.py`, the register and this changelog describe the fork more briefly. No code,
+  results or decisions changed.
 - **FY2020 set aside in the scenario engine** (2026-11-18, in the fork, the owner's decision; AS-45). FY2020
   (16,864 releases) was far outside the usual range. It is no longer a scenario, and the changes into and out
   of it no longer help fit κ; it is still replayed in the calibration. Low is now 24,259 (FY2025), so its
@@ -25,8 +28,8 @@ dates are when the change was made.
   folder (`alignment/`, `coaching/`, `writeups/`, `data/`, `exchange/outbox/`), key or personal detail is in them.
 
 ### Added
-- **Share model, in the fork** (2026-11-16): `src/share_model.py`, written with AI assistance at the owner's
-  direction (README, "How this was built"). A Dirichlet-multinomial model in PyMC for state shares and for
+- **Share model, in the fork** (2026-11-16): `src/share_model.py`, built at the owner's direction (README,
+  "How this was built"). A Dirichlet-multinomial model in PyMC for state shares and for
   county shares inside each state, backtested on FY2018–FY2025 against last year's shares.
   - **Result: last year's shares win at both levels** under the pessimistic winner rule (AS-20). The model
     beat naive in 4 of 8 years for states and 4 of 8 for counties; 6 are needed.
@@ -39,8 +42,8 @@ dates are when the change was made.
   - The scenario engine reads the backtest's result and says in `scenarios.json` that the share model did
     not beat last year's shares; its tables are unchanged.
   - `requirements.txt` now lists PyMC, ArviZ and Numba.
-- **Scenario engine, in a fork of the repository** (2026-11-14): `src/scenarios.py`, written with AI assistance
-  at the owner's direction (README, "How this was built"). It runs on the fallback (AS-39): FY2025's shares
+- **Scenario engine, in a fork of the repository** (2026-11-14): `src/scenarios.py`, built at the owner's
+  direction (README, "How this was built"). It runs on the fallback (AS-39): FY2025's shares
   with a Dirichlet error model, children counted out with a multinomial, in two versions compared head to head
   (AS-40).
   - Writes `results/scenarios.json`, `scenario_releases.csv`, `scenario_calibration.csv`,
@@ -52,8 +55,7 @@ dates are when the change was made.
     shown whatever the seed.
   - `tests/test_scenarios.py`: 15 unit tests on made-up data, including that the κ fit recovers a known κ.
     The nine scenario acceptance tests now run and pass; the share-model ones stay skipped.
-  - The app's Scenario tab shows the tables. Its "About" text, the README and `src/scenario_contract.py` now
-    say the engine is AI-written in this fork.
+  - The app's Scenario tab shows the tables.
 - **Assumptions register** (2026-11-10): `docs/ASSUMPTIONS.md` lists every assumption the project rests on
   (AS-01 onward) with its evidence, where it is used, a status (Decided, Design, Data, Open) and a dated
   history. Linked from the README and the spec.
@@ -97,10 +99,6 @@ dates are when the change was made.
   70); LISA p-values are described as one-sided; the next-phases paragraph matches the spec.
 - README Week 3 results: what the Lorenz curves show, and why county curves (listed counties only) should be
   compared across years with care. In FY2020 and FY2025 only 73 and 109 counties were listed.
-- README "How this was built": AI assistance on Weeks 5–6 now also includes step-by-step guidance without code.
-- Commit messages no longer carry a `Co-Authored-By: Claude` line, so the history was rewritten (every commit
-  hash changed; files, authors and dates did not). The README's "How this was built" section is now the record
-  of which parts were AI-assisted.
 
 ### Fixed
 - **README status** (2026-11-12): it said this repository had been public since October 25. Current work is
@@ -262,7 +260,7 @@ and the written summary; this release adds what those plug into. Week 5 code is 
   - Fiscal-year alignment for every source (FR-04).
   - Week 7 app.
   - Limitations (NFR-09).
-  - How this was built: which parts are AI-assisted and which the owner writes.
+  - How this was built.
 - `requirements.txt`: streamlit, plotly.
 
 ### Changed

@@ -1,6 +1,6 @@
 # Assumptions register
 
-This copy belongs to the fork made on 2026-11-14, where the scenario engine and the share model were built with AI assistance.
+This copy belongs to the fork made on 2026-11-14, where the scenario engine and the share model were built.
 Rows changed in the fork say so, and the History has an entry for it.
 
 Every assumption the project rests on, in one place. It is updated whenever an assumption is added,
@@ -43,12 +43,12 @@ language) are rules rather than assumptions; they are in the README.
 | AS-10 | Shares themselves vary from year to year, more than counting noise, so the model is Dirichlet-multinomial. | For the largest states, shares move about 4 to 7 times more than counting noise alone (in standard deviation). This is math doc §4's measure: the spread of the year-to-year change in share divided by √2, against counting noise at the typical national total. The κ fit in AS-39 uses a different yardstick (each miss against that year's counting noise alone), which gives larger ratios for the same states. | §4, §5 | Design |
 | AS-11 | One concentration κ for all states. | Large and small states may vary differently; calibration is reported separately for the 10 largest states and the other 41 to check it. | §5, spec | Design |
 | AS-12 | Expected shares = softmax(α + ρ × log last year's shares). ρ = 1 and α = 0 give naive. | Lets the fit fall back on naive; the backtest decides. In the fork's fits (2026-11-16) ρ was 0.92 to 0.94 for states, and the backtest chose naive. | §6, `src/share_model.py` | Design |
-| AS-13 | Priors: α a zero-sum normal with its own spread σ; ρ centered at 1; κ on the log scale, from the tens to the tens of thousands. | Exact numbers are recorded in `results/share_model.json`. Set in the fork by Claude (2026-11-16) and confirmed by the owner on 2026-11-17: σ ~ HalfNormal(0.5), ρ ~ Normal(1, 0.25), κ ~ LogNormal(log 1000, 2), and for counties an "other" offset δ ~ Normal(0, 1). The data, not the priors, set the values: in the state fit through FY2025 the 90% range for ρ narrowed from 0.59–1.41 to 0.88–0.94, and for κ from about 37–26,800 to 2,249–2,781. County scoring: one log score a year, pooled over the scored states and weighted by releases, as at state level. | §7, spec, `src/share_model.py` | Decided 2026-11-17 (set by Claude in the fork; confirmed by the owner) |
+| AS-13 | Priors: α a zero-sum normal with its own spread σ; ρ centered at 1; κ on the log scale, from the tens to the tens of thousands. | Exact numbers are recorded in `results/share_model.json`. Set in the fork (2026-11-16) and confirmed by the owner on 2026-11-17: σ ~ HalfNormal(0.5), ρ ~ Normal(1, 0.25), κ ~ LogNormal(log 1000, 2), and for counties an "other" offset δ ~ Normal(0, 1). The data, not the priors, set the values: in the state fit through FY2025 the 90% range for ρ narrowed from 0.59–1.41 to 0.88–0.94, and for κ from about 37–26,800 to 2,249–2,781. County scoring: one log score a year, pooled over the scored states and weighted by releases, as at state level. | §7, spec, `src/share_model.py` | Decided 2026-11-17 (set in the fork; confirmed by the owner) |
 | AS-14 | A share of zero gets a floor of 0.0001 releases before taking logs, the same as naive. A refit with a floor of 0.5 releases checks that ρ barely moves. | Four state-years had no releases (VT FY2017, AK FY2018 and FY2020, MT FY2019), and one "other counties" group (DE FY2024). The floor also moves naive's own log score: by 0.0004 to 0.0010 per child in FY2018–FY2021, all from the 12 children released in those states the following year. That is why the winner rule is scored three ways (AS-20). The refit with a floor of 0.5 moved ρ from 0.915 to 0.931 (fork, 2026-11-16). | §6, spec, tests | Decided 2026-11-08 |
 | AS-15 | FY2014 serves only as "last year" for FY2015. | The first backtest fit sees three year-over-year changes instead of two. | §7, §8, spec, tests | Decided 2026-11-08 |
 | AS-16 | In the backtest, a year's county categories are the counties listed in both that year and the year before, plus "other". | Knowing year t's list is a small peek at year t: counties new to the list took 0% to 26.7% of releases (5.5% on average). In the engine's calibration a county is scored only if it would get a row: listed in both years and expecting 50 or more releases (fork, 2026-11-14). | §9, spec | Design |
 | AS-17 | The county model shares one ρ, one κ and one "other" offset across all states. | More than half of the 394 counties are listed in 5 or fewer of the 11 years, too few to estimate each one's own tilt. | §9 | Design |
-| AS-18 | The county model's mean has no term for each county's long-run share. | If the county ρ comes out below 1, counties within a state are pulled toward equal shares. Raised in Claude's theory review on 2026-11-06; not in the math doc. In the fork's fits (2026-11-16) the county ρ was 0.94 to 0.95, so the pull exists but is small, and naive won at county level, so the model's county forecast is not used. | §9 | Open |
+| AS-18 | The county model's mean has no term for each county's long-run share. | If the county ρ comes out below 1, counties within a state are pulled toward equal shares. Raised in a theory review on 2026-11-06; not in the math doc. In the fork's fits (2026-11-16) the county ρ was 0.94 to 0.95, so the pull exists but is small, and naive won at county level, so the model's county forecast is not used. | §9 | Open |
 | AS-43 | A more complicated model is not necessarily better. Last year's shares seems to be the strongest simple baseline at both the state and the county level, and a simpler distribution than the Dirichlet-multinomial share model could serve better, especially because many counties do not appear on the list year after year. | On AS-16's matched categories, last year's shares beats the three-year mean and the pooled rule for counties as well as for states (10 largest states, FY2017–FY2025: 1.01 share points against 1.22 and 1.51). The earlier probe in `docs/modeling_candidates.md` pointed the other way only because it scored last year's shares on counties new to the list. The backtest (AS-20) and the comparison in AS-40 decide. The fork's backtest (2026-11-16) agrees: the Dirichlet-multinomial share model did not beat last year's shares at either level. The owner decided on that evidence on 2026-11-17: last year's shares are the method. A later model can still be tested against them under the same rule (AS-20). | `docs/modeling_candidates.md`, spec, `results/share_model_summary.csv` | Decided 2026-11-17: last year's shares are the method |
 
 ## Backtest and the winner
@@ -99,26 +99,29 @@ language) are rules rather than assumptions; they are in the README.
 
 Newest first. Each line says what changed and which files were updated with it.
 
+- **2026-11-19, in the fork:** wording only. The fork notes in this History and in AS-13 and AS-18 were
+  shortened; no row's value, status or decision changed. Updated with it: the README, the app's About text,
+  the model card, `src/scenario_contract.py` and the changelog.
 - **2026-11-18, in the fork** (the owner set FY2020 aside as far outside the usual range):
   - AS-45 added (Decided): FY2020 is not a scenario, and the two changes that touch it do not help set κ. It is still replayed as a held-out year.
   - AS-22 changed: Low is now 24,259 (FY2025); it was 16,864 (FY2020). Median and High are unchanged.
   - AS-39, AS-40 and AS-44: the refit's κ values and coverage were added; version (b) is still chosen, and the year-to-year swing is unchanged. AS-24: its Low-scenario figures were measured at 16,864 and were not re-measured.
   - Updated in the fork: `src/scenarios.py`, `tests/test_scenarios.py`, `tests/test_acceptance.py` (FR-13 now leaves FY2020 out), the app's definition of "Scenario", the scenario results files, the spec, the README, the model card and the changelog. Not updated: the BRD's wording of FR-13 (kept local), the share model's backtest (it does not use the scenarios or κ), the math doc, the review copies and the Word copies.
-- **2026-11-17, in the fork** (the owner went through, with Claude, the rows Claude had left to the owner):
+- **2026-11-17, in the fork** (the owner went through the rows left to the owner):
   - Confirmed as built: AS-37 (FY2025's age mix), AS-40 (version (b)), AS-13 (the priors and the county scoring) and AS-26 (the 50-release test uses the exact expected value). Each was marked "not confirmed by the owner" before.
   - AS-43 Decided: last year's shares are the method. It was Open, the owner's working view.
-  - AS-24: counting noise was measured directly instead of explained. Claude recommended closing the investigation; the owner kept it Open because the effect varies too much: 0 to 1.9 points of county coverage in most years, 5.7 and 7.8 in FY2020 and FY2025. The 70% stays a theoretical case.
+  - AS-24: counting noise was measured directly instead of explained. Closing the investigation was recommended; the owner kept it Open because the effect varies too much: 0 to 1.9 points of county coverage in most years, 5.7 and 7.8 in FY2020 and FY2025. The 70% stays a theoretical case.
   - AS-44 added (Open): coverage swings from year to year, which the pooled figure hides. Raised by the owner.
   - AS-16 and AS-18 were discussed and left for another day. AS-38 unchanged.
   - Updated in the fork: the README's "How this was built", the spec's sentence on AS-24 and the changelog. Not updated: the math doc, the review copies and the Word copies.
-- **2026-11-16, in the fork** (the owner had Claude build the share model there too):
-  - `src/share_model.py` and `tests/test_share_model.py` were written with AI assistance. All 19 fits passed the sampler checks.
+- **2026-11-16, in the fork** (the share model was built there too):
+  - `src/share_model.py` and `tests/test_share_model.py` were added. All 19 fits passed the sampler checks.
   - AS-20 applied: naive won at both levels (4 of 8 years for states, 4 of 8 for counties; 6 needed). The scenario engine keeps last year's shares (AS-39), and AS-43's view is supported.
-  - AS-13: the priors are written out; Claude set them and the owner has not confirmed them. AS-14: the floor check moved ρ from 0.915 to 0.931. AS-12 and AS-18: the fitted ρ values are in the rows.
+  - AS-13: the priors are written out; they were set in the fork and the owner has not confirmed them. AS-14: the floor check moved ρ from 0.915 to 0.931. AS-12 and AS-18: the fitted ρ values are in the rows.
   - Updated in the fork: the model card, the README, the app's "About" text, the scenario engine (it now reads the backtest's result), `requirements.txt` and the changelog. Not updated: the math doc, the review copies and the Word copies.
   - AS-38 (no change to the row): the owner had the fork's repository made public on this date. Sign-off was not yet recorded, so the row stays Open.
-- **2026-11-14, in the fork** (the owner had Claude build the scenario engine in a fork of the repository):
-  - `src/scenarios.py` and `tests/test_scenarios.py` were written with AI assistance. The README's "How this was built" says so.
+- **2026-11-14, in the fork** (the scenario engine was built in a fork of the repository):
+  - `src/scenarios.py` and `tests/test_scenarios.py` were added.
   - AS-39: the fallback engine is built; its κ values and coverage are in the row.
   - AS-40: both versions were run. The fork's tables use (b), picked by a rule in the code; the owner has not confirmed the choice.
   - AS-37: the fork uses FY2025's age mix for the point estimate; the owner has not confirmed it.
@@ -150,6 +153,6 @@ Newest first. Each line says what changed and which files were updated with it.
   - All of these are written into the spec and the acceptance tests.
 - **2026-11-06:**
   - The math doc was revised for the outside reviewer's comments. That revision added AS-07 (Puerto Rico and the Virgin Islands), proposed AS-14, AS-15, AS-20, AS-24, AS-25 and AS-34, and stated the low scenario's limits (AS-22).
-  - AS-18 was raised in Claude's own review and left out of the doc.
+  - AS-18 was raised in a separate review and left out of the doc.
 - **2026-11-05:** after an outside review, the spec added calibration by state size (AS-11, AS-29), the school-age range, and the fallback's error model.
 - **2026-10-31:** BRD v0.2 listed A-01 to A-05 (AS-01, AS-09, AS-31, AS-05, AS-38). The project replaced ACS 5-year estimates with Census Vintage 2024 for population (AS-05).

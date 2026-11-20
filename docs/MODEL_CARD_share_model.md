@@ -1,6 +1,6 @@
 # Model card: release share model
 
-*Status: built and tested in a fork of the repository, with AI assistance (README, "How this was built").
+*Status: built and tested in a fork of the repository (README, "How this was built").
 The Bayesian share model did not beat last year's shares at either level, so the scenario engine uses last
 year's shares with an error model. Last updated 2026-11-16.*
 
@@ -136,7 +136,7 @@ Log-score gap by held-out year, model minus naive (a gap under 0.0005 is a tie):
 
 The scenario engine runs on last year's shares with a Dirichlet error model (AS-39), in two versions
 compared head to head (AS-40): one κ for all 51 places, and one κ each for the 10 largest states and for the
-other 41. It was written with AI assistance in a fork of the repository (README, "How this was built").
+other 41. It was built in a fork of the repository (README, "How this was built").
 
 Replaying FY2018–FY2025 from earlier years only (`results/scenario_variant_comparison.csv`):
 

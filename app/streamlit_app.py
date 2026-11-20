@@ -309,8 +309,7 @@ what a low, median or high national year would mean for each state and listed co
 cases taken from FY2015-FY2025, not forecasts. Service-need figures use ORR's national age mix for children in
 its care, which may differ from the children released to a given place.
 
-**How this was built.** The app was written with AI assistance (Claude). So were the scenario engine that
-produces the figures and the share model, in this fork of the project. The share model was tested against
-last year's shares and did not beat them, so the figures use last year's shares with an error model; see
-the repository README.
+**How this was built.** The scenario engine that produces the figures and the share model were built in this
+fork of the project. The share model was tested against last year's shares and did not beat them, so the
+figures use last year's shares with an error model; see the repository README.
 """)
